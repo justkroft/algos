@@ -1,10 +1,10 @@
 from libc.math cimport INFINITY
-from cython cimport intp_t
 import numpy as np
 cimport numpy as np
 
 
 DEF INT_NONE_SENTINEL = -999
+ctypedef Py_ssize_t intp_t
 
 
 cdef class DWayHeap:
@@ -30,10 +30,10 @@ cdef class DWayHeap:
         if len(elements) > 0:
             self._heapify(elements, priorities)
 
-    cpdef intp_t __sizeof__(self):
+    def __sizeof__(self) -> intp_t:
         return len(self)
 
-    cpdef intp_t __len__(self):
+    def __len__(self) -> intp_t:
         return len(self._pairs)
 
     cpdef bint is_empty(self):
