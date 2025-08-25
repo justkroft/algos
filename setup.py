@@ -29,7 +29,7 @@ setup(
 #     "NPY_NO_DEPRECATED_API",
 #     "NPY_1_9_API_VERSION",
 # )
-# NUMPY_C_API_ARG = f"-D{DEFINE_MACRO_NUMPY_C_API[0]}={DEFINE_MACRO_NUMPY_C_API[1]}"
+# NUMPY_C_API_ARG = f"-D{DEFINE_MACRO_NUMPY_C_API[0]}={DEFINE_MACRO_NUMPY_C_API[1]}". # noqa: E501
 
 
 # def get_openmp_flag():

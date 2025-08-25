@@ -9,3 +9,18 @@ dependencies = [
     "numpy>=2.2.6",
     "setuptools>=80.9.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.10",
+]
+
+[tool.ruff]
+# Set the maximum line length to 79.
+line-length = 79
+
+[tool.ruff.lint]
+extend-select = ["E501"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
