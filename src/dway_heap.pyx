@@ -13,8 +13,8 @@ cdef class DWayHeap:
     
     def __init__(
         self,
-        list elements,
-        list priorities,
+        list elements = [],
+        list priorities = [],
         const intp_t branching_factor = 2
     ):
         if len(elements) != len(priorities):
@@ -40,7 +40,7 @@ cdef class DWayHeap:
         return len(self) == 0
 
     cpdef object top(self):
-        if self.is_empty:
+        if self.is_empty():
             raise RuntimeError("...")
         if len(self) == 1:
             return self._pairs.pop()[1]
@@ -51,7 +51,7 @@ cdef class DWayHeap:
             return element
 
     cpdef object peek(self):
-        if self.is_empty:
+        if self.is_empty():
             raise RuntimeError("...")
         return self._pairs[0][1]
 
