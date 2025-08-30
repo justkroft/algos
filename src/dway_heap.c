@@ -2132,6 +2132,46 @@ static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
         __Pyx__ArgTypeTest(obj, type, name, exact))
 static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
 
+/* BuildPyUnicode.proto */
+static PyObject* __Pyx_PyUnicode_BuildFromAscii(Py_ssize_t ulength, const char* chars, int clength,
+                                                int prepend_sign, char padding_char);
+
+/* COrdinalToPyUnicode.proto */
+static CYTHON_INLINE int __Pyx_CheckUnicodeValue(int value);
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_FromOrdinal_Padded(int value, Py_ssize_t width, char padding_char);
+
+/* GCCDiagnostics.proto */
+#if !defined(__INTEL_COMPILER) && defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
+#define __Pyx_HAS_GCC_DIAGNOSTIC
+#endif
+
+/* IncludeStdlibH.proto */
+#include <stdlib.h>
+
+/* CIntToPyUnicode.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char);
+
+/* JoinPyUnicode.proto */
+static PyObject* __Pyx_PyUnicode_Join(PyObject** values, Py_ssize_t value_count, Py_ssize_t result_ulength,
+                                      Py_UCS4 max_char);
+
+/* PyObjectFormatSimple.proto */
+#if CYTHON_COMPILING_IN_PYPY
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        PyObject_Format(s, f))
+#elif CYTHON_USE_TYPE_SLOTS
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        likely(PyLong_CheckExact(s)) ? PyLong_Type.tp_repr(s) :\
+        likely(PyFloat_CheckExact(s)) ? PyFloat_Type.tp_repr(s) :\
+        PyObject_Format(s, f))
+#else
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        PyObject_Format(s, f))
+#endif
+
 /* RejectKeywords.proto */
 static void __Pyx_RejectKeywords(const char* function_name, PyObject *kwds);
 
@@ -2550,11 +2590,6 @@ static void __pyx_insert_code_object(int code_line, __Pyx_CachedCodeObjectType* 
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
-/* GCCDiagnostics.proto */
-#if !defined(__INTEL_COMPILER) && defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
-#define __Pyx_HAS_GCC_DIAGNOSTIC
-#endif
-
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -2881,9 +2916,11 @@ static PyObject *__pyx_builtin_AssertionError;
 static PyObject *__pyx_builtin_zip;
 static PyObject *__pyx_builtin_ImportError;
 /* #### Code section: string_decls ### */
-static const char __pyx_k__3[] = "...";
-static const char __pyx_k__4[] = ".";
-static const char __pyx_k__5[] = "?";
+static const char __pyx_k__3[] = ").";
+static const char __pyx_k__4[] = ")";
+static const char __pyx_k__5[] = "...";
+static const char __pyx_k__6[] = ".";
+static const char __pyx_k__7[] = "?";
 static const char __pyx_k_gc[] = "gc";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_avQ[] = "\200\001\330\004&\240a\240v\250Q";
@@ -2965,12 +3002,15 @@ static const char __pyx_k_pyx_unpickle_DWayHeap[] = "__pyx_unpickle_DWayHeap";
 static const char __pyx_k_DWayHeap___reduce_cython[] = "DWayHeap.__reduce_cython__";
 static const char __pyx_k_DWayHeap_first_leaf_index[] = "DWayHeap.first_leaf_index";
 static const char __pyx_k_DWayHeap___setstate_cython[] = "DWayHeap.__setstate_cython__";
+static const char __pyx_k_The_length_of_the_elements[] = "The length of the elements (";
 static const char __pyx_k_hk_A_1_D_D_F_F_G_881A_7_nA_1[] = "\200\001\360\006\000\005\010\200\177\220h\230k\250\033\260A\330\010\r\210^\2301\330\010\016\320\016!\360\000\000\"D\002\360\000\000D\002F\002\360\000\000F\002G\002\330\004\023\2208\2308\2401\240A\330\004\007\200|\2207\230!\330\010*\250!\250;\260n\300A\330\004\013\2101";
 static const char __pyx_k_T_a_G1F_a_vWA_q_t87_q_Qg_q_Qg[] = "\200\001\360\010\000\005\016\210T\220\031\230$\230a\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220A\330\010\022\220!\330\010\027\220q\340\010\027\220t\2308\2407\250!\330\004\007\200q\330\010\017\320\017)\250\024\250Q\250g\260[\300\007\300q\340\010\017\320\017)\250\024\250Q\250g\260[\300\001";
+static const char __pyx_k_must_match_the_length_of_the_pr[] = ") must match the length of the priorities (";
 static const char __pyx_k_A_4y_aq_3avS_4wd_AQ_d_AQ_q_T_A_1[] = "\200A\330\010\013\2104\210y\230\001\330\014\022\220,\230a\230q\330\010\013\2103\210a\210v\220S\230\001\330\014\023\2204\220w\230d\240\"\240A\240Q\340\014\026\220d\230'\240\021\240\"\240A\240Q\330\014\020\220\007\220q\230\005\230T\240\027\250\004\250A\330\014\020\220\013\2301\230A\330\014\023\2201";
 static const char __pyx_k_A_A_6a_nBa_t7_1_r_5H_1A_uA_Bd_aq[] = "\200A\330\010$\240A\330\010!\240\024\320%6\260a\360\010\000\t\017\210n\230B\230a\330\014\037\230t\2407\250!\250>\270\021\270!\330\014\032\230$\320\0361\260\021\260!\330\014\"\240!\240<\250r\260\024\3205H\310\003\3101\310A\330\014\020\220\017\230u\240A\240]\260!\330\020\023\320\023$\240B\240d\250'\260\021\260,\270a\270q\330\024\033\2301\330\014\035\230Q\330\010\017\210q";
 static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0xe808909, 0xf41d0db, 0x7c1c9df) = (_pairs, branching_factor))";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
+static const char __pyx_k_The_branching_factor_must_be_gre[] = "The branching factor must be greater than 1 (";
 static const char __pyx_k_numpy__core_multiarray_failed_to[] = "numpy._core.multiarray failed to import";
 static const char __pyx_k_numpy__core_umath_failed_to_impo[] = "numpy._core.umath failed to import";
 /* #### Code section: decls ### */
@@ -3054,7 +3094,7 @@ typedef struct {
   PyObject *__pyx_k__2;
   PyObject *__pyx_tuple[1];
   PyObject *__pyx_codeobj_tab[10];
-  PyObject *__pyx_string_tab[82];
+  PyObject *__pyx_string_tab[87];
   PyObject *__pyx_int_130140639;
   PyObject *__pyx_int_243304713;
   PyObject *__pyx_int_255971547;
@@ -3111,72 +3151,77 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[13]
 #define __pyx_n_u_PickleError __pyx_string_tab[14]
 #define __pyx_n_u_RuntimeError __pyx_string_tab[15]
-#define __pyx_n_u_ValueError __pyx_string_tab[16]
-#define __pyx_kp_u__3 __pyx_string_tab[17]
-#define __pyx_kp_u__4 __pyx_string_tab[18]
-#define __pyx_kp_u__5 __pyx_string_tab[19]
-#define __pyx_kp_u_add_note __pyx_string_tab[20]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[21]
-#define __pyx_n_u_branching_factor __pyx_string_tab[22]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[23]
-#define __pyx_n_u_dict __pyx_string_tab[24]
-#define __pyx_n_u_dict_2 __pyx_string_tab[25]
-#define __pyx_kp_u_disable __pyx_string_tab[26]
-#define __pyx_n_u_element __pyx_string_tab[27]
-#define __pyx_n_u_elements __pyx_string_tab[28]
-#define __pyx_kp_u_enable __pyx_string_tab[29]
-#define __pyx_n_u_first_leaf_index __pyx_string_tab[30]
-#define __pyx_n_u_func __pyx_string_tab[31]
-#define __pyx_kp_u_gc __pyx_string_tab[32]
-#define __pyx_n_u_getstate __pyx_string_tab[33]
-#define __pyx_n_u_initializing __pyx_string_tab[34]
-#define __pyx_n_u_insert __pyx_string_tab[35]
-#define __pyx_n_u_intp_t __pyx_string_tab[36]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[37]
-#define __pyx_n_u_is_empty __pyx_string_tab[38]
-#define __pyx_kp_u_isenabled __pyx_string_tab[39]
-#define __pyx_n_u_main __pyx_string_tab[40]
-#define __pyx_n_u_module __pyx_string_tab[41]
-#define __pyx_n_u_name __pyx_string_tab[42]
-#define __pyx_n_u_new __pyx_string_tab[43]
-#define __pyx_n_u_np __pyx_string_tab[44]
-#define __pyx_n_u_numpy __pyx_string_tab[45]
-#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[46]
-#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[47]
-#define __pyx_n_u_peek __pyx_string_tab[48]
-#define __pyx_n_u_pickle __pyx_string_tab[49]
-#define __pyx_n_u_pop __pyx_string_tab[50]
-#define __pyx_n_u_priorities __pyx_string_tab[51]
-#define __pyx_n_u_priority __pyx_string_tab[52]
-#define __pyx_n_u_pyx_PickleError __pyx_string_tab[53]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[54]
-#define __pyx_n_u_pyx_result __pyx_string_tab[55]
-#define __pyx_n_u_pyx_state __pyx_string_tab[56]
-#define __pyx_n_u_pyx_type __pyx_string_tab[57]
-#define __pyx_n_u_pyx_unpickle_DWayHeap __pyx_string_tab[58]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[59]
-#define __pyx_n_u_qualname __pyx_string_tab[60]
-#define __pyx_n_u_range __pyx_string_tab[61]
-#define __pyx_n_u_reduce __pyx_string_tab[62]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[63]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[64]
-#define __pyx_n_u_return __pyx_string_tab[65]
-#define __pyx_n_u_self __pyx_string_tab[66]
-#define __pyx_n_u_set_name __pyx_string_tab[67]
-#define __pyx_n_u_setstate __pyx_string_tab[68]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[69]
-#define __pyx_n_u_sizeof __pyx_string_tab[70]
-#define __pyx_n_u_spec __pyx_string_tab[71]
-#define __pyx_n_u_src_dway_heap __pyx_string_tab[72]
-#define __pyx_kp_u_src_dway_heap_pyx __pyx_string_tab[73]
-#define __pyx_n_u_state __pyx_string_tab[74]
-#define __pyx_kp_u_stringsource __pyx_string_tab[75]
-#define __pyx_n_u_test __pyx_string_tab[76]
-#define __pyx_n_u_top __pyx_string_tab[77]
-#define __pyx_n_u_update __pyx_string_tab[78]
-#define __pyx_n_u_use_setstate __pyx_string_tab[79]
-#define __pyx_n_u_validate __pyx_string_tab[80]
-#define __pyx_n_u_zip __pyx_string_tab[81]
+#define __pyx_kp_u_The_branching_factor_must_be_gre __pyx_string_tab[16]
+#define __pyx_kp_u_The_length_of_the_elements __pyx_string_tab[17]
+#define __pyx_n_u_ValueError __pyx_string_tab[18]
+#define __pyx_kp_u__3 __pyx_string_tab[19]
+#define __pyx_kp_u__4 __pyx_string_tab[20]
+#define __pyx_kp_u__5 __pyx_string_tab[21]
+#define __pyx_kp_u__6 __pyx_string_tab[22]
+#define __pyx_kp_u__7 __pyx_string_tab[23]
+#define __pyx_kp_u_add_note __pyx_string_tab[24]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[25]
+#define __pyx_n_u_branching_factor __pyx_string_tab[26]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[27]
+#define __pyx_n_u_dict __pyx_string_tab[28]
+#define __pyx_n_u_dict_2 __pyx_string_tab[29]
+#define __pyx_kp_u_disable __pyx_string_tab[30]
+#define __pyx_n_u_element __pyx_string_tab[31]
+#define __pyx_n_u_elements __pyx_string_tab[32]
+#define __pyx_kp_u_enable __pyx_string_tab[33]
+#define __pyx_n_u_first_leaf_index __pyx_string_tab[34]
+#define __pyx_n_u_func __pyx_string_tab[35]
+#define __pyx_kp_u_gc __pyx_string_tab[36]
+#define __pyx_n_u_getstate __pyx_string_tab[37]
+#define __pyx_n_u_initializing __pyx_string_tab[38]
+#define __pyx_n_u_insert __pyx_string_tab[39]
+#define __pyx_n_u_intp_t __pyx_string_tab[40]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[41]
+#define __pyx_n_u_is_empty __pyx_string_tab[42]
+#define __pyx_kp_u_isenabled __pyx_string_tab[43]
+#define __pyx_n_u_main __pyx_string_tab[44]
+#define __pyx_n_u_module __pyx_string_tab[45]
+#define __pyx_kp_u_must_match_the_length_of_the_pr __pyx_string_tab[46]
+#define __pyx_n_u_name __pyx_string_tab[47]
+#define __pyx_n_u_new __pyx_string_tab[48]
+#define __pyx_n_u_np __pyx_string_tab[49]
+#define __pyx_n_u_numpy __pyx_string_tab[50]
+#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[51]
+#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[52]
+#define __pyx_n_u_peek __pyx_string_tab[53]
+#define __pyx_n_u_pickle __pyx_string_tab[54]
+#define __pyx_n_u_pop __pyx_string_tab[55]
+#define __pyx_n_u_priorities __pyx_string_tab[56]
+#define __pyx_n_u_priority __pyx_string_tab[57]
+#define __pyx_n_u_pyx_PickleError __pyx_string_tab[58]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[59]
+#define __pyx_n_u_pyx_result __pyx_string_tab[60]
+#define __pyx_n_u_pyx_state __pyx_string_tab[61]
+#define __pyx_n_u_pyx_type __pyx_string_tab[62]
+#define __pyx_n_u_pyx_unpickle_DWayHeap __pyx_string_tab[63]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[64]
+#define __pyx_n_u_qualname __pyx_string_tab[65]
+#define __pyx_n_u_range __pyx_string_tab[66]
+#define __pyx_n_u_reduce __pyx_string_tab[67]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[68]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[69]
+#define __pyx_n_u_return __pyx_string_tab[70]
+#define __pyx_n_u_self __pyx_string_tab[71]
+#define __pyx_n_u_set_name __pyx_string_tab[72]
+#define __pyx_n_u_setstate __pyx_string_tab[73]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[74]
+#define __pyx_n_u_sizeof __pyx_string_tab[75]
+#define __pyx_n_u_spec __pyx_string_tab[76]
+#define __pyx_n_u_src_dway_heap __pyx_string_tab[77]
+#define __pyx_kp_u_src_dway_heap_pyx __pyx_string_tab[78]
+#define __pyx_n_u_state __pyx_string_tab[79]
+#define __pyx_kp_u_stringsource __pyx_string_tab[80]
+#define __pyx_n_u_test __pyx_string_tab[81]
+#define __pyx_n_u_top __pyx_string_tab[82]
+#define __pyx_n_u_update __pyx_string_tab[83]
+#define __pyx_n_u_use_setstate __pyx_string_tab[84]
+#define __pyx_n_u_validate __pyx_string_tab[85]
+#define __pyx_n_u_zip __pyx_string_tab[86]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -3219,7 +3264,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_k__2);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<10; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<82; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<87; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_int_130140639);
   Py_CLEAR(clear_module_state->__pyx_int_243304713);
   Py_CLEAR(clear_module_state->__pyx_int_255971547);
@@ -3265,7 +3310,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_k__2);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<10; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<82; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<87; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_130140639);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_243304713);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_255971547);
@@ -5135,7 +5180,12 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
-  size_t __pyx_t_7;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9[5];
+  PyObject *__pyx_t_10 = NULL;
+  size_t __pyx_t_11;
+  PyObject *__pyx_t_12[3];
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -5145,8 +5195,8 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
  *         const intp_t branching_factor = 2
  *     ):
  *         if len(elements) != len(priorities):             # <<<<<<<<<<<<<<
- *             raise ValueError("...")
- * 
+ *             raise ValueError(
+ *                 f"The length of the elements ({len(elements)}) must match the"
 */
   if (unlikely(__pyx_v_elements == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
@@ -5164,18 +5214,67 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
     /* "src/dway_heap.pyx":21
  *     ):
  *         if len(elements) != len(priorities):
- *             raise ValueError("...")             # <<<<<<<<<<<<<<
- * 
- *         if branching_factor < 2:
+ *             raise ValueError(             # <<<<<<<<<<<<<<
+ *                 f"The length of the elements ({len(elements)}) must match the"
+ *                 f" length of the priorities ({len(priorities)})."
 */
     __pyx_t_5 = NULL;
     __Pyx_INCREF(__pyx_builtin_ValueError);
     __pyx_t_6 = __pyx_builtin_ValueError; 
-    __pyx_t_7 = 1;
+
+    /* "src/dway_heap.pyx":22
+ *         if len(elements) != len(priorities):
+ *             raise ValueError(
+ *                 f"The length of the elements ({len(elements)}) must match the"             # <<<<<<<<<<<<<<
+ *                 f" length of the priorities ({len(priorities)})."
+ *             )
+*/
+    if (unlikely(__pyx_v_elements == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+      __PYX_ERR(0, 22, __pyx_L1_error)
+    }
+    __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_elements); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_2, 0, ' ', 'd'); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+
+    /* "src/dway_heap.pyx":23
+ *             raise ValueError(
+ *                 f"The length of the elements ({len(elements)}) must match the"
+ *                 f" length of the priorities ({len(priorities)})."             # <<<<<<<<<<<<<<
+ *             )
+ * 
+*/
+    if (unlikely(__pyx_v_priorities == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+      __PYX_ERR(0, 23, __pyx_L1_error)
+    }
+    __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_priorities); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_2, 0, ' ', 'd'); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_The_length_of_the_elements;
+    __pyx_t_9[1] = __pyx_t_7;
+    __pyx_t_9[2] = __pyx_mstate_global->__pyx_kp_u_must_match_the_length_of_the_pr;
+    __pyx_t_9[3] = __pyx_t_8;
+    __pyx_t_9[4] = __pyx_mstate_global->__pyx_kp_u__3;
+
+    /* "src/dway_heap.pyx":22
+ *         if len(elements) != len(priorities):
+ *             raise ValueError(
+ *                 f"The length of the elements ({len(elements)}) must match the"             # <<<<<<<<<<<<<<
+ *                 f" length of the priorities ({len(priorities)})."
+ *             )
+*/
+    __pyx_t_10 = __Pyx_PyUnicode_Join(__pyx_t_9, 5, 28 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_7) + 43 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_8) + 2, 127);
+    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_11 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u__3};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_10};
+      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+__pyx_t_11, (2-__pyx_t_11) | (__pyx_t_11*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
@@ -5188,66 +5287,87 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
  *         const intp_t branching_factor = 2
  *     ):
  *         if len(elements) != len(priorities):             # <<<<<<<<<<<<<<
- *             raise ValueError("...")
- * 
-*/
-  }
-
-  /* "src/dway_heap.pyx":23
- *             raise ValueError("...")
- * 
- *         if branching_factor < 2:             # <<<<<<<<<<<<<<
- *             raise ValueError("...")
- * 
-*/
-  __pyx_t_3 = (__pyx_v_branching_factor < 2);
-  if (unlikely(__pyx_t_3)) {
-
-    /* "src/dway_heap.pyx":24
- * 
- *         if branching_factor < 2:
- *             raise ValueError("...")             # <<<<<<<<<<<<<<
- * 
- *         cdef list _pairs = []  # list of tuples
-*/
-    __pyx_t_6 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_5 = __pyx_builtin_ValueError; 
-    __pyx_t_7 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_mstate_global->__pyx_kp_u__3};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-    }
-    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 24, __pyx_L1_error)
-
-    /* "src/dway_heap.pyx":23
- *             raise ValueError("...")
- * 
- *         if branching_factor < 2:             # <<<<<<<<<<<<<<
- *             raise ValueError("...")
- * 
+ *             raise ValueError(
+ *                 f"The length of the elements ({len(elements)}) must match the"
 */
   }
 
   /* "src/dway_heap.pyx":26
- *             raise ValueError("...")
+ *             )
+ * 
+ *         if branching_factor < 2:             # <<<<<<<<<<<<<<
+ *             raise ValueError(
+ *                 f"The branching factor must be greater than 1 ({branching_factor})"
+*/
+  __pyx_t_3 = (__pyx_v_branching_factor < 2);
+  if (unlikely(__pyx_t_3)) {
+
+    /* "src/dway_heap.pyx":27
+ * 
+ *         if branching_factor < 2:
+ *             raise ValueError(             # <<<<<<<<<<<<<<
+ *                 f"The branching factor must be greater than 1 ({branching_factor})"
+ *             )
+*/
+    __pyx_t_6 = NULL;
+    __Pyx_INCREF(__pyx_builtin_ValueError);
+    __pyx_t_10 = __pyx_builtin_ValueError; 
+
+    /* "src/dway_heap.pyx":28
+ *         if branching_factor < 2:
+ *             raise ValueError(
+ *                 f"The branching factor must be greater than 1 ({branching_factor})"             # <<<<<<<<<<<<<<
+ *             )
+ * 
+*/
+    __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_branching_factor); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_12[0] = __pyx_mstate_global->__pyx_kp_u_The_branching_factor_must_be_gre;
+    __pyx_t_12[1] = __pyx_t_8;
+    __pyx_t_12[2] = __pyx_mstate_global->__pyx_kp_u__4;
+    __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_12, 3, 45 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_8) + 1, 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8));
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_11 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_5};
+      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+__pyx_t_11, (2-__pyx_t_11) | (__pyx_t_11*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __PYX_ERR(0, 27, __pyx_L1_error)
+
+    /* "src/dway_heap.pyx":26
+ *             )
+ * 
+ *         if branching_factor < 2:             # <<<<<<<<<<<<<<
+ *             raise ValueError(
+ *                 f"The branching factor must be greater than 1 ({branching_factor})"
+*/
+  }
+
+  /* "src/dway_heap.pyx":31
+ *             )
  * 
  *         cdef list _pairs = []  # list of tuples             # <<<<<<<<<<<<<<
  *         self._pairs = _pairs
  *         self.branching_factor = branching_factor
 */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v__pairs = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "src/dway_heap.pyx":27
+  /* "src/dway_heap.pyx":32
  * 
  *         cdef list _pairs = []  # list of tuples
  *         self._pairs = _pairs             # <<<<<<<<<<<<<<
@@ -5260,7 +5380,7 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
   __Pyx_DECREF(__pyx_v_self->_pairs);
   __pyx_v_self->_pairs = __pyx_v__pairs;
 
-  /* "src/dway_heap.pyx":28
+  /* "src/dway_heap.pyx":33
  *         cdef list _pairs = []  # list of tuples
  *         self._pairs = _pairs
  *         self.branching_factor = branching_factor             # <<<<<<<<<<<<<<
@@ -5269,7 +5389,7 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
 */
   __pyx_v_self->branching_factor = __pyx_v_branching_factor;
 
-  /* "src/dway_heap.pyx":30
+  /* "src/dway_heap.pyx":35
  *         self.branching_factor = branching_factor
  * 
  *         if len(elements) > 0:             # <<<<<<<<<<<<<<
@@ -5278,22 +5398,22 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
 */
   if (unlikely(__pyx_v_elements == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 30, __pyx_L1_error)
+    __PYX_ERR(0, 35, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_elements); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_elements); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 35, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_2 > 0);
   if (__pyx_t_3) {
 
-    /* "src/dway_heap.pyx":31
+    /* "src/dway_heap.pyx":36
  * 
  *         if len(elements) > 0:
  *             self._heapify(elements, priorities)             # <<<<<<<<<<<<<<
  * 
  *     def __sizeof__(self) -> intp_t:
 */
-    ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_heapify(__pyx_v_self, __pyx_v_elements, __pyx_v_priorities); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_heapify(__pyx_v_self, __pyx_v_elements, __pyx_v_priorities); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 36, __pyx_L1_error)
 
-    /* "src/dway_heap.pyx":30
+    /* "src/dway_heap.pyx":35
  *         self.branching_factor = branching_factor
  * 
  *         if len(elements) > 0:             # <<<<<<<<<<<<<<
@@ -5317,6 +5437,9 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_10);
   __Pyx_AddTraceback("src.dway_heap.DWayHeap.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
@@ -5325,7 +5448,7 @@ static int __pyx_pf_3src_9dway_heap_8DWayHeap___init__(struct __pyx_obj_3src_9dw
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":33
+/* "src/dway_heap.pyx":38
  *             self._heapify(elements, priorities)
  * 
  *     def __sizeof__(self) -> intp_t:             # <<<<<<<<<<<<<<
@@ -5385,7 +5508,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_2__sizeof__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__sizeof__", 0);
 
-  /* "src/dway_heap.pyx":34
+  /* "src/dway_heap.pyx":39
  * 
  *     def __sizeof__(self) -> intp_t:
  *         return len(self)             # <<<<<<<<<<<<<<
@@ -5393,14 +5516,14 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_2__sizeof__(struct __pyx_obj
  *     def __len__(self) -> intp_t:
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 34, __pyx_L1_error)
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":33
+  /* "src/dway_heap.pyx":38
  *             self._heapify(elements, priorities)
  * 
  *     def __sizeof__(self) -> intp_t:             # <<<<<<<<<<<<<<
@@ -5419,7 +5542,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_2__sizeof__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":36
+/* "src/dway_heap.pyx":41
  *         return len(self)
  * 
  *     def __len__(self) -> intp_t:             # <<<<<<<<<<<<<<
@@ -5452,7 +5575,7 @@ static Py_ssize_t __pyx_pf_3src_9dway_heap_8DWayHeap_4__len__(struct __pyx_obj_3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "src/dway_heap.pyx":37
+  /* "src/dway_heap.pyx":42
  * 
  *     def __len__(self) -> intp_t:
  *         return len(self._pairs)             # <<<<<<<<<<<<<<
@@ -5463,14 +5586,14 @@ static Py_ssize_t __pyx_pf_3src_9dway_heap_8DWayHeap_4__len__(struct __pyx_obj_3
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 37, __pyx_L1_error)
+    __PYX_ERR(0, 42, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":36
+  /* "src/dway_heap.pyx":41
  *         return len(self)
  * 
  *     def __len__(self) -> intp_t:             # <<<<<<<<<<<<<<
@@ -5488,7 +5611,7 @@ static Py_ssize_t __pyx_pf_3src_9dway_heap_8DWayHeap_4__len__(struct __pyx_obj_3
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":39
+/* "src/dway_heap.pyx":44
  *         return len(self._pairs)
  * 
  *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -5533,7 +5656,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap_is_empty(struct __pyx_obj_3src_9dwa
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_is_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_is_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9dway_heap_8DWayHeap_7is_empty)) {
         __pyx_t_3 = NULL;
@@ -5556,10 +5679,10 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap_is_empty(struct __pyx_obj_3src_9dwa
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5578,18 +5701,18 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap_is_empty(struct __pyx_obj_3src_9dwa
     #endif
   }
 
-  /* "src/dway_heap.pyx":40
+  /* "src/dway_heap.pyx":45
  * 
  *     cpdef bint is_empty(self):
  *         return len(self) == 0             # <<<<<<<<<<<<<<
  * 
  *     cpdef object top(self):
 */
-  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 45, __pyx_L1_error)
   __pyx_r = (__pyx_t_7 == 0);
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":39
+  /* "src/dway_heap.pyx":44
  *         return len(self._pairs)
  * 
  *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -5662,8 +5785,8 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_6is_empty(struct __pyx_obj_3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_empty", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_is_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 39, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_is_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -5680,7 +5803,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_6is_empty(struct __pyx_obj_3
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":42
+/* "src/dway_heap.pyx":47
  *         return len(self) == 0
  * 
  *     cpdef object top(self):             # <<<<<<<<<<<<<<
@@ -5726,7 +5849,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_top); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_top); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9dway_heap_8DWayHeap_9top)) {
         __Pyx_XDECREF(__pyx_r);
@@ -5750,7 +5873,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __pyx_r = __pyx_t_2;
@@ -5771,17 +5894,17 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
     #endif
   }
 
-  /* "src/dway_heap.pyx":43
+  /* "src/dway_heap.pyx":48
  * 
  *     cpdef object top(self):
  *         if self.is_empty():             # <<<<<<<<<<<<<<
  *             raise RuntimeError("...")
  *         if len(self) == 1:
 */
-  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->is_empty(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->is_empty(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
   if (unlikely(__pyx_t_6)) {
 
-    /* "src/dway_heap.pyx":44
+    /* "src/dway_heap.pyx":49
  *     cpdef object top(self):
  *         if self.is_empty():
  *             raise RuntimeError("...")             # <<<<<<<<<<<<<<
@@ -5793,18 +5916,18 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
     __pyx_t_4 = __pyx_builtin_RuntimeError; 
     __pyx_t_5 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u__3};
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u__5};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 44, __pyx_L1_error)
+    __PYX_ERR(0, 49, __pyx_L1_error)
 
-    /* "src/dway_heap.pyx":43
+    /* "src/dway_heap.pyx":48
  * 
  *     cpdef object top(self):
  *         if self.is_empty():             # <<<<<<<<<<<<<<
@@ -5813,18 +5936,18 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
 */
   }
 
-  /* "src/dway_heap.pyx":45
+  /* "src/dway_heap.pyx":50
  *         if self.is_empty():
  *             raise RuntimeError("...")
  *         if len(self) == 1:             # <<<<<<<<<<<<<<
  *             return self._pairs.pop()[1]
  *         else:
 */
-  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 == 1);
   if (__pyx_t_6) {
 
-    /* "src/dway_heap.pyx":46
+    /* "src/dway_heap.pyx":51
  *             raise RuntimeError("...")
  *         if len(self) == 1:
  *             return self._pairs.pop()[1]             # <<<<<<<<<<<<<<
@@ -5834,18 +5957,18 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
     __Pyx_XDECREF(__pyx_r);
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "pop");
-      __PYX_ERR(0, 46, __pyx_L1_error)
+      __PYX_ERR(0, 51, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyList_Pop(__pyx_v_self->_pairs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyList_Pop(__pyx_v_self->_pairs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_4;
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "src/dway_heap.pyx":45
+    /* "src/dway_heap.pyx":50
  *         if self.is_empty():
  *             raise RuntimeError("...")
  *         if len(self) == 1:             # <<<<<<<<<<<<<<
@@ -5854,7 +5977,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
 */
   }
 
-  /* "src/dway_heap.pyx":48
+  /* "src/dway_heap.pyx":53
  *             return self._pairs.pop()[1]
  *         else:
  *             element = self._pairs[0][1]             # <<<<<<<<<<<<<<
@@ -5864,17 +5987,17 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
   /*else*/ {
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 48, __pyx_L1_error)
+      __PYX_ERR(0, 53, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_element = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "src/dway_heap.pyx":49
+    /* "src/dway_heap.pyx":54
  *         else:
  *             element = self._pairs[0][1]
  *             self._pairs[0] = self._pairs.pop()             # <<<<<<<<<<<<<<
@@ -5883,27 +6006,27 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
 */
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "pop");
-      __PYX_ERR(0, 49, __pyx_L1_error)
+      __PYX_ERR(0, 54, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyList_Pop(__pyx_v_self->_pairs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyList_Pop(__pyx_v_self->_pairs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 49, __pyx_L1_error)
+      __PYX_ERR(0, 54, __pyx_L1_error)
     }
-    if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, 0, __pyx_t_1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1) < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, 0, __pyx_t_1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1) < 0))) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "src/dway_heap.pyx":50
+    /* "src/dway_heap.pyx":55
  *             element = self._pairs[0][1]
  *             self._pairs[0] = self._pairs.pop()
  *             self._push_down(0)             # <<<<<<<<<<<<<<
  *             return element
  * 
 */
-    ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_push_down(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_push_down(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 55, __pyx_L1_error)
 
-    /* "src/dway_heap.pyx":51
+    /* "src/dway_heap.pyx":56
  *             self._pairs[0] = self._pairs.pop()
  *             self._push_down(0)
  *             return element             # <<<<<<<<<<<<<<
@@ -5916,7 +6039,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_top(struct __pyx_obj_3src_9dw
     goto __pyx_L0;
   }
 
-  /* "src/dway_heap.pyx":42
+  /* "src/dway_heap.pyx":47
  *         return len(self) == 0
  * 
  *     cpdef object top(self):             # <<<<<<<<<<<<<<
@@ -5990,7 +6113,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_8top(struct __pyx_obj_3src_9
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("top", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_top(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_top(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6007,7 +6130,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_8top(struct __pyx_obj_3src_9
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":53
+/* "src/dway_heap.pyx":58
  *             return element
  * 
  *     cpdef object peek(self):             # <<<<<<<<<<<<<<
@@ -6051,7 +6174,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_peek(struct __pyx_obj_3src_9d
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_peek); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_peek); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9dway_heap_8DWayHeap_11peek)) {
         __Pyx_XDECREF(__pyx_r);
@@ -6075,7 +6198,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_peek(struct __pyx_obj_3src_9d
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __pyx_r = __pyx_t_2;
@@ -6096,17 +6219,17 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_peek(struct __pyx_obj_3src_9d
     #endif
   }
 
-  /* "src/dway_heap.pyx":54
+  /* "src/dway_heap.pyx":59
  * 
  *     cpdef object peek(self):
  *         if self.is_empty():             # <<<<<<<<<<<<<<
  *             raise RuntimeError("...")
  *         return self._pairs[0][1]
 */
-  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->is_empty(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->is_empty(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L1_error)
   if (unlikely(__pyx_t_6)) {
 
-    /* "src/dway_heap.pyx":55
+    /* "src/dway_heap.pyx":60
  *     cpdef object peek(self):
  *         if self.is_empty():
  *             raise RuntimeError("...")             # <<<<<<<<<<<<<<
@@ -6118,18 +6241,18 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_peek(struct __pyx_obj_3src_9d
     __pyx_t_4 = __pyx_builtin_RuntimeError; 
     __pyx_t_5 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u__3};
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u__5};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 55, __pyx_L1_error)
+    __PYX_ERR(0, 60, __pyx_L1_error)
 
-    /* "src/dway_heap.pyx":54
+    /* "src/dway_heap.pyx":59
  * 
  *     cpdef object peek(self):
  *         if self.is_empty():             # <<<<<<<<<<<<<<
@@ -6138,7 +6261,7 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_peek(struct __pyx_obj_3src_9d
 */
   }
 
-  /* "src/dway_heap.pyx":56
+  /* "src/dway_heap.pyx":61
  *         if self.is_empty():
  *             raise RuntimeError("...")
  *         return self._pairs[0][1]             # <<<<<<<<<<<<<<
@@ -6148,18 +6271,18 @@ static PyObject *__pyx_f_3src_9dway_heap_8DWayHeap_peek(struct __pyx_obj_3src_9d
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_self->_pairs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 56, __pyx_L1_error)
+    __PYX_ERR(0, 61, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":53
+  /* "src/dway_heap.pyx":58
  *             return element
  * 
  *     cpdef object peek(self):             # <<<<<<<<<<<<<<
@@ -6232,7 +6355,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_10peek(struct __pyx_obj_3src
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("peek", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_peek(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_peek(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6249,7 +6372,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_10peek(struct __pyx_obj_3src
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":58
+/* "src/dway_heap.pyx":63
  *         return self._pairs[0][1]
  * 
  *     cpdef void insert(self, object element, float priority):             # <<<<<<<<<<<<<<
@@ -6294,13 +6417,13 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap_insert(struct __pyx_obj_3src_9dway
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_insert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_insert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9dway_heap_8DWayHeap_13insert)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_priority); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_priority); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -6320,7 +6443,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap_insert(struct __pyx_obj_3src_9dway
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6340,7 +6463,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap_insert(struct __pyx_obj_3src_9dway
     #endif
   }
 
-  /* "src/dway_heap.pyx":59
+  /* "src/dway_heap.pyx":64
  * 
  *     cpdef void insert(self, object element, float priority):
  *         self._pairs.append((priority, element))             # <<<<<<<<<<<<<<
@@ -6349,22 +6472,22 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap_insert(struct __pyx_obj_3src_9dway
 */
   if (unlikely(__pyx_v_self->_pairs == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 59, __pyx_L1_error)
+    __PYX_ERR(0, 64, __pyx_L1_error)
   }
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_priority); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_priority); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 59, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 64, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_element);
   __Pyx_GIVEREF(__pyx_v_element);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_element) != (0)) __PYX_ERR(0, 59, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_element) != (0)) __PYX_ERR(0, 64, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_self->_pairs, __pyx_t_2); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_self->_pairs, __pyx_t_2); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/dway_heap.pyx":60
+  /* "src/dway_heap.pyx":65
  *     cpdef void insert(self, object element, float priority):
  *         self._pairs.append((priority, element))
  *         self._bubble_up(len(self._pairs) - 1)             # <<<<<<<<<<<<<<
@@ -6375,13 +6498,13 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap_insert(struct __pyx_obj_3src_9dway
   __Pyx_INCREF(__pyx_t_2);
   if (unlikely(__pyx_t_2 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 60, __pyx_L1_error)
+    __PYX_ERR(0, 65, __pyx_L1_error)
   }
-  __pyx_t_8 = __Pyx_PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_bubble_up(__pyx_v_self, (__pyx_t_8 - 1)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_bubble_up(__pyx_v_self, (__pyx_t_8 - 1)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L1_error)
 
-  /* "src/dway_heap.pyx":58
+  /* "src/dway_heap.pyx":63
  *         return self._pairs[0][1]
  * 
  *     cpdef void insert(self, object element, float priority):             # <<<<<<<<<<<<<<
@@ -6442,39 +6565,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_element,&__pyx_mstate_global->__pyx_n_u_priority,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 58, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 63, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 58, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 63, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 58, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 63, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insert", 0) < 0) __PYX_ERR(0, 58, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insert", 0) < 0) __PYX_ERR(0, 63, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, i); __PYX_ERR(0, 58, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, i); __PYX_ERR(0, 63, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 58, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 63, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 58, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 63, __pyx_L3_error)
     }
     __pyx_v_element = values[0];
-    __pyx_v_priority = __Pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_priority == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L3_error)
+    __pyx_v_priority = __Pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_priority == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 58, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 63, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6504,8 +6627,8 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_12insert(struct __pyx_obj_3s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_3src_9dway_heap_8DWayHeap_insert(__pyx_v_self, __pyx_v_element, __pyx_v_priority, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_f_3src_9dway_heap_8DWayHeap_insert(__pyx_v_self, __pyx_v_element, __pyx_v_priority, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6522,7 +6645,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_12insert(struct __pyx_obj_3s
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":62
+/* "src/dway_heap.pyx":67
  *         self._bubble_up(len(self._pairs) - 1)
  * 
  *     cpdef intp_t first_leaf_index(self):             # <<<<<<<<<<<<<<
@@ -6569,7 +6692,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_first_leaf_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_first_leaf_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9dway_heap_8DWayHeap_15first_leaf_index)) {
         __pyx_t_3 = NULL;
@@ -6592,10 +6715,10 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6614,17 +6737,17 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
     #endif
   }
 
-  /* "src/dway_heap.pyx":63
+  /* "src/dway_heap.pyx":68
  * 
  *     cpdef intp_t first_leaf_index(self):
  *         cdef intp_t size = len(self)             # <<<<<<<<<<<<<<
  *         cdef intp_t result
  * 
 */
-  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 68, __pyx_L1_error)
   __pyx_v_size = __pyx_t_7;
 
-  /* "src/dway_heap.pyx":66
+  /* "src/dway_heap.pyx":71
  *         cdef intp_t result
  * 
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6638,7 +6761,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "src/dway_heap.pyx":67
+        /* "src/dway_heap.pyx":72
  * 
  *         with nogil:
  *             result = (size - 2) // self.branching_factor + 1             # <<<<<<<<<<<<<<
@@ -6650,18 +6773,18 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
           PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
           PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
-          __PYX_ERR(0, 67, __pyx_L4_error)
+          __PYX_ERR(0, 72, __pyx_L4_error)
         }
         else if (sizeof(__pyx_t_3src_9dway_heap_intp_t) == sizeof(long) && (!(((__pyx_t_3src_9dway_heap_intp_t)-1) > 0)) && unlikely(__pyx_v_self->branching_factor == (__pyx_t_3src_9dway_heap_intp_t)-1)  && unlikely(__Pyx_UNARY_NEG_WOULD_OVERFLOW(__pyx_t_6))) {
           PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
           PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
-          __PYX_ERR(0, 67, __pyx_L4_error)
+          __PYX_ERR(0, 72, __pyx_L4_error)
         }
         __pyx_v_result = (__Pyx_div___pyx_t_3src_9dway_heap_intp_t(__pyx_t_6, __pyx_v_self->branching_factor, 0) + 1);
       }
 
-      /* "src/dway_heap.pyx":66
+      /* "src/dway_heap.pyx":71
  *         cdef intp_t result
  * 
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6683,7 +6806,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
       }
   }
 
-  /* "src/dway_heap.pyx":68
+  /* "src/dway_heap.pyx":73
  *         with nogil:
  *             result = (size - 2) // self.branching_factor + 1
  *         return result             # <<<<<<<<<<<<<<
@@ -6693,7 +6816,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap_first_le
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":62
+  /* "src/dway_heap.pyx":67
  *         self._bubble_up(len(self._pairs) - 1)
  * 
  *     cpdef intp_t first_leaf_index(self):             # <<<<<<<<<<<<<<
@@ -6766,8 +6889,8 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_14first_leaf_index(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("first_leaf_index", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_first_leaf_index(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap_first_leaf_index(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -6784,7 +6907,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_14first_leaf_index(struct __
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":70
+/* "src/dway_heap.pyx":75
  *         return result
  * 
  *     cdef intp_t _first_child_index(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -6795,7 +6918,7 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_14first_leaf_index(struct __
 static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__first_child_index(struct __pyx_obj_3src_9dway_heap_DWayHeap *__pyx_v_self, __pyx_t_3src_9dway_heap_intp_t __pyx_v_index) {
   __pyx_t_3src_9dway_heap_intp_t __pyx_r;
 
-  /* "src/dway_heap.pyx":71
+  /* "src/dway_heap.pyx":76
  * 
  *     cdef intp_t _first_child_index(self, intp_t index):
  *         return index * self.branching_factor + 1             # <<<<<<<<<<<<<<
@@ -6805,7 +6928,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__first_c
   __pyx_r = ((__pyx_v_index * __pyx_v_self->branching_factor) + 1);
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":70
+  /* "src/dway_heap.pyx":75
  *         return result
  * 
  *     cdef intp_t _first_child_index(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -6818,7 +6941,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__first_c
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":73
+/* "src/dway_heap.pyx":78
  *         return index * self.branching_factor + 1
  * 
  *     cdef intp_t _parent_index(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -6833,7 +6956,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__parent_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/dway_heap.pyx":74
+  /* "src/dway_heap.pyx":79
  * 
  *     cdef intp_t _parent_index(self, intp_t index):
  *         return (index - 1) // self.branching_factor             # <<<<<<<<<<<<<<
@@ -6843,16 +6966,16 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__parent_
   __pyx_t_1 = (__pyx_v_index - 1);
   if (unlikely(__pyx_v_self->branching_factor == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 74, __pyx_L1_error)
+    __PYX_ERR(0, 79, __pyx_L1_error)
   }
   else if (sizeof(__pyx_t_3src_9dway_heap_intp_t) == sizeof(long) && (!(((__pyx_t_3src_9dway_heap_intp_t)-1) > 0)) && unlikely(__pyx_v_self->branching_factor == (__pyx_t_3src_9dway_heap_intp_t)-1)  && unlikely(__Pyx_UNARY_NEG_WOULD_OVERFLOW(__pyx_t_1))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 74, __pyx_L1_error)
+    __PYX_ERR(0, 79, __pyx_L1_error)
   }
   __pyx_r = __Pyx_div___pyx_t_3src_9dway_heap_intp_t(__pyx_t_1, __pyx_v_self->branching_factor, 0);
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":73
+  /* "src/dway_heap.pyx":78
  *         return index * self.branching_factor + 1
  * 
  *     cdef intp_t _parent_index(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -6868,7 +6991,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__parent_
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":76
+/* "src/dway_heap.pyx":81
  *         return (index - 1) // self.branching_factor
  * 
  *     cdef intp_t _highest_priority_child_index(             # <<<<<<<<<<<<<<
@@ -6899,7 +7022,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_highest_priority_child_index", 0);
 
-  /* "src/dway_heap.pyx":81
+  /* "src/dway_heap.pyx":86
  *         cdef intp_t first_index, size, last_index
  *         cdef intp_t i
  *         cdef double highest_priority = -INFINITY             # <<<<<<<<<<<<<<
@@ -6908,7 +7031,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
   __pyx_v_highest_priority = (-INFINITY);
 
-  /* "src/dway_heap.pyx":86
+  /* "src/dway_heap.pyx":91
  * 
  *         # Calculate indices (can use nogil for arithmetic)
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6922,7 +7045,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "src/dway_heap.pyx":87
+        /* "src/dway_heap.pyx":92
  *         # Calculate indices (can use nogil for arithmetic)
  *         with nogil:
  *             first_index = index * self.branching_factor + 1             # <<<<<<<<<<<<<<
@@ -6932,7 +7055,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
         __pyx_v_first_index = ((__pyx_v_index * __pyx_v_self->branching_factor) + 1);
       }
 
-      /* "src/dway_heap.pyx":86
+      /* "src/dway_heap.pyx":91
  * 
  *         # Calculate indices (can use nogil for arithmetic)
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6949,17 +7072,17 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
       }
   }
 
-  /* "src/dway_heap.pyx":89
+  /* "src/dway_heap.pyx":94
  *             first_index = index * self.branching_factor + 1
  * 
  *         size = len(self)             # <<<<<<<<<<<<<<
  * 
  *         with nogil:
 */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 94, __pyx_L1_error)
   __pyx_v_size = __pyx_t_1;
 
-  /* "src/dway_heap.pyx":91
+  /* "src/dway_heap.pyx":96
  *         size = len(self)
  * 
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6973,7 +7096,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "src/dway_heap.pyx":92
+        /* "src/dway_heap.pyx":97
  * 
  *         with nogil:
  *             last_index = first_index + self.branching_factor             # <<<<<<<<<<<<<<
@@ -6982,7 +7105,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
         __pyx_v_last_index = (__pyx_v_first_index + __pyx_v_self->branching_factor);
 
-        /* "src/dway_heap.pyx":93
+        /* "src/dway_heap.pyx":98
  *         with nogil:
  *             last_index = first_index + self.branching_factor
  *             if last_index > size:             # <<<<<<<<<<<<<<
@@ -6992,7 +7115,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
         __pyx_t_2 = (__pyx_v_last_index > __pyx_v_size);
         if (__pyx_t_2) {
 
-          /* "src/dway_heap.pyx":94
+          /* "src/dway_heap.pyx":99
  *             last_index = first_index + self.branching_factor
  *             if last_index > size:
  *                 last_index = size             # <<<<<<<<<<<<<<
@@ -7001,7 +7124,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
           __pyx_v_last_index = __pyx_v_size;
 
-          /* "src/dway_heap.pyx":93
+          /* "src/dway_heap.pyx":98
  *         with nogil:
  *             last_index = first_index + self.branching_factor
  *             if last_index > size:             # <<<<<<<<<<<<<<
@@ -7011,7 +7134,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
         }
       }
 
-      /* "src/dway_heap.pyx":91
+      /* "src/dway_heap.pyx":96
  *         size = len(self)
  * 
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -7028,7 +7151,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
       }
   }
 
-  /* "src/dway_heap.pyx":96
+  /* "src/dway_heap.pyx":101
  *                 last_index = size
  * 
  *         if first_index >= size:             # <<<<<<<<<<<<<<
@@ -7038,7 +7161,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
   __pyx_t_2 = (__pyx_v_first_index >= __pyx_v_size);
   if (__pyx_t_2) {
 
-    /* "src/dway_heap.pyx":97
+    /* "src/dway_heap.pyx":102
  * 
  *         if first_index >= size:
  *             return INT_NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -7048,7 +7171,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
     __pyx_r = -999L;
     goto __pyx_L0;
 
-    /* "src/dway_heap.pyx":96
+    /* "src/dway_heap.pyx":101
  *                 last_index = size
  * 
  *         if first_index >= size:             # <<<<<<<<<<<<<<
@@ -7057,7 +7180,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
   }
 
-  /* "src/dway_heap.pyx":99
+  /* "src/dway_heap.pyx":104
  *             return INT_NONE_SENTINEL
  * 
  *         best_index = first_index             # <<<<<<<<<<<<<<
@@ -7066,7 +7189,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
   __pyx_v_best_index = __pyx_v_first_index;
 
-  /* "src/dway_heap.pyx":101
+  /* "src/dway_heap.pyx":106
  *         best_index = first_index
  * 
  *         for i in range(first_index, last_index):             # <<<<<<<<<<<<<<
@@ -7078,7 +7201,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
   for (__pyx_t_5 = __pyx_v_first_index; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "src/dway_heap.pyx":102
+    /* "src/dway_heap.pyx":107
  * 
  *         for i in range(first_index, last_index):
  *             current_priority = self._pairs[i][0]             # <<<<<<<<<<<<<<
@@ -7087,18 +7210,18 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 102, __pyx_L1_error)
+      __PYX_ERR(0, 107, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_i, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_i, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_6, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_6, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_v_current_priority = __pyx_t_8;
 
-    /* "src/dway_heap.pyx":103
+    /* "src/dway_heap.pyx":108
  *         for i in range(first_index, last_index):
  *             current_priority = self._pairs[i][0]
  *             if current_priority > highest_priority:             # <<<<<<<<<<<<<<
@@ -7108,7 +7231,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
     __pyx_t_2 = (__pyx_v_current_priority > __pyx_v_highest_priority);
     if (__pyx_t_2) {
 
-      /* "src/dway_heap.pyx":104
+      /* "src/dway_heap.pyx":109
  *             current_priority = self._pairs[i][0]
  *             if current_priority > highest_priority:
  *                 highest_priority = current_priority             # <<<<<<<<<<<<<<
@@ -7117,7 +7240,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
       __pyx_v_highest_priority = __pyx_v_current_priority;
 
-      /* "src/dway_heap.pyx":105
+      /* "src/dway_heap.pyx":110
  *             if current_priority > highest_priority:
  *                 highest_priority = current_priority
  *                 best_index = i             # <<<<<<<<<<<<<<
@@ -7126,7 +7249,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
 */
       __pyx_v_best_index = __pyx_v_i;
 
-      /* "src/dway_heap.pyx":103
+      /* "src/dway_heap.pyx":108
  *         for i in range(first_index, last_index):
  *             current_priority = self._pairs[i][0]
  *             if current_priority > highest_priority:             # <<<<<<<<<<<<<<
@@ -7136,7 +7259,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
     }
   }
 
-  /* "src/dway_heap.pyx":107
+  /* "src/dway_heap.pyx":112
  *                 best_index = i
  * 
  *         return best_index             # <<<<<<<<<<<<<<
@@ -7146,7 +7269,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
   __pyx_r = __pyx_v_best_index;
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":76
+  /* "src/dway_heap.pyx":81
  *         return (index - 1) // self.branching_factor
  * 
  *     cdef intp_t _highest_priority_child_index(             # <<<<<<<<<<<<<<
@@ -7165,7 +7288,7 @@ static __pyx_t_3src_9dway_heap_intp_t __pyx_f_3src_9dway_heap_8DWayHeap__highest
   return __pyx_r;
 }
 
-/* "src/dway_heap.pyx":109
+/* "src/dway_heap.pyx":114
  *         return best_index
  * 
  *     cdef void _push_down(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -7192,7 +7315,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_push_down", 0);
 
-  /* "src/dway_heap.pyx":110
+  /* "src/dway_heap.pyx":115
  * 
  *     cdef void _push_down(self, intp_t index):
  *         assert (0 <= index < len(self._pairs))             # <<<<<<<<<<<<<<
@@ -7207,22 +7330,22 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
       __Pyx_INCREF(__pyx_t_2);
       if (unlikely(__pyx_t_2 == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-        __PYX_ERR(0, 110, __pyx_L1_error)
+        __PYX_ERR(0, 115, __pyx_L1_error)
       }
-      __pyx_t_3 = __Pyx_PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_1 = (__pyx_v_index < __pyx_t_3);
     }
     if (unlikely(!__pyx_t_1)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 110, __pyx_L1_error)
+      __PYX_ERR(0, 115, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 110, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 115, __pyx_L1_error)
   #endif
 
-  /* "src/dway_heap.pyx":111
+  /* "src/dway_heap.pyx":116
  *     cdef void _push_down(self, intp_t index):
  *         assert (0 <= index < len(self._pairs))
  *         cdef tuple input_pair = self._pairs[index]             # <<<<<<<<<<<<<<
@@ -7231,15 +7354,15 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
   if (unlikely(__pyx_v_self->_pairs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 111, __pyx_L1_error)
+    __PYX_ERR(0, 116, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 116, __pyx_L1_error)
   __pyx_v_input_pair = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/dway_heap.pyx":112
+  /* "src/dway_heap.pyx":117
  *         assert (0 <= index < len(self._pairs))
  *         cdef tuple input_pair = self._pairs[index]
  *         cdef double input_priority = input_pair[0]             # <<<<<<<<<<<<<<
@@ -7248,15 +7371,15 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
   if (unlikely(__pyx_v_input_pair == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 112, __pyx_L1_error)
+    __PYX_ERR(0, 117, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_input_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_input_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_input_priority = __pyx_t_4;
 
-  /* "src/dway_heap.pyx":113
+  /* "src/dway_heap.pyx":118
  *         cdef tuple input_pair = self._pairs[index]
  *         cdef double input_priority = input_pair[0]
  *         cdef intp_t current_index = index             # <<<<<<<<<<<<<<
@@ -7265,17 +7388,17 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
   __pyx_v_current_index = __pyx_v_index;
 
-  /* "src/dway_heap.pyx":114
+  /* "src/dway_heap.pyx":119
  *         cdef double input_priority = input_pair[0]
  *         cdef intp_t current_index = index
  *         cdef intp_t first_leaf = self.first_leaf_index()             # <<<<<<<<<<<<<<
  *         cdef intp_t child_index
  *         cdef double child_priority
 */
-  __pyx_t_5 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->first_leaf_index(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_5 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->first_leaf_index(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
   __pyx_v_first_leaf = __pyx_t_5;
 
-  /* "src/dway_heap.pyx":118
+  /* "src/dway_heap.pyx":123
  *         cdef double child_priority
  * 
  *         while current_index < first_leaf:             # <<<<<<<<<<<<<<
@@ -7286,17 +7409,17 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
     __pyx_t_1 = (__pyx_v_current_index < __pyx_v_first_leaf);
     if (!__pyx_t_1) break;
 
-    /* "src/dway_heap.pyx":119
+    /* "src/dway_heap.pyx":124
  * 
  *         while current_index < first_leaf:
  *             child_index = self._highest_priority_child_index(current_index)             # <<<<<<<<<<<<<<
  *             assert child_index != INT_NONE_SENTINEL
  * 
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_highest_priority_child_index(__pyx_v_self, __pyx_v_current_index); if (unlikely(__pyx_t_5 == ((__pyx_t_3src_9dway_heap_intp_t)-999))) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_highest_priority_child_index(__pyx_v_self, __pyx_v_current_index); if (unlikely(__pyx_t_5 == ((__pyx_t_3src_9dway_heap_intp_t)-999))) __PYX_ERR(0, 124, __pyx_L1_error)
     __pyx_v_child_index = __pyx_t_5;
 
-    /* "src/dway_heap.pyx":120
+    /* "src/dway_heap.pyx":125
  *         while current_index < first_leaf:
  *             child_index = self._highest_priority_child_index(current_index)
  *             assert child_index != INT_NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -7308,14 +7431,14 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
       __pyx_t_1 = (__pyx_v_child_index != -999L);
       if (unlikely(!__pyx_t_1)) {
         __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-        __PYX_ERR(0, 120, __pyx_L1_error)
+        __PYX_ERR(0, 125, __pyx_L1_error)
       }
     }
     #else
-    if ((1)); else __PYX_ERR(0, 120, __pyx_L1_error)
+    if ((1)); else __PYX_ERR(0, 125, __pyx_L1_error)
     #endif
 
-    /* "src/dway_heap.pyx":122
+    /* "src/dway_heap.pyx":127
  *             assert child_index != INT_NONE_SENTINEL
  * 
  *             child_priority = self._pairs[child_index][0]             # <<<<<<<<<<<<<<
@@ -7324,18 +7447,18 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 122, __pyx_L1_error)
+      __PYX_ERR(0, 127, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_child_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_child_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_v_child_priority = __pyx_t_4;
 
-    /* "src/dway_heap.pyx":123
+    /* "src/dway_heap.pyx":128
  * 
  *             child_priority = self._pairs[child_index][0]
  *             if child_priority > input_priority:             # <<<<<<<<<<<<<<
@@ -7345,7 +7468,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
     __pyx_t_1 = (__pyx_v_child_priority > __pyx_v_input_priority);
     if (__pyx_t_1) {
 
-      /* "src/dway_heap.pyx":124
+      /* "src/dway_heap.pyx":129
  *             child_priority = self._pairs[child_index][0]
  *             if child_priority > input_priority:
  *                 self._pairs[current_index] = self._pairs[child_index]             # <<<<<<<<<<<<<<
@@ -7354,18 +7477,18 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
       if (unlikely(__pyx_v_self->_pairs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 124, __pyx_L1_error)
+        __PYX_ERR(0, 129, __pyx_L1_error)
       }
-      __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_child_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_child_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       if (unlikely(__pyx_v_self->_pairs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 124, __pyx_L1_error)
+        __PYX_ERR(0, 129, __pyx_L1_error)
       }
-      if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_current_index, __pyx_t_6, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
+      if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_current_index, __pyx_t_6, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "src/dway_heap.pyx":125
+      /* "src/dway_heap.pyx":130
  *             if child_priority > input_priority:
  *                 self._pairs[current_index] = self._pairs[child_index]
  *                 current_index = child_index             # <<<<<<<<<<<<<<
@@ -7374,7 +7497,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
       __pyx_v_current_index = __pyx_v_child_index;
 
-      /* "src/dway_heap.pyx":123
+      /* "src/dway_heap.pyx":128
  * 
  *             child_priority = self._pairs[child_index][0]
  *             if child_priority > input_priority:             # <<<<<<<<<<<<<<
@@ -7384,7 +7507,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
       goto __pyx_L5;
     }
 
-    /* "src/dway_heap.pyx":127
+    /* "src/dway_heap.pyx":132
  *                 current_index = child_index
  *             else:
  *                 break             # <<<<<<<<<<<<<<
@@ -7398,7 +7521,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
   }
   __pyx_L4_break:;
 
-  /* "src/dway_heap.pyx":129
+  /* "src/dway_heap.pyx":134
  *                 break
  * 
  *         self._pairs[current_index] = input_pair             # <<<<<<<<<<<<<<
@@ -7407,11 +7530,11 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
 */
   if (unlikely(__pyx_v_self->_pairs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 129, __pyx_L1_error)
+    __PYX_ERR(0, 134, __pyx_L1_error)
   }
-  if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_current_index, __pyx_v_input_pair, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 129, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_current_index, __pyx_v_input_pair, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 134, __pyx_L1_error)
 
-  /* "src/dway_heap.pyx":109
+  /* "src/dway_heap.pyx":114
  *         return best_index
  * 
  *     cdef void _push_down(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -7430,7 +7553,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__push_down(struct __pyx_obj_3src_9
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/dway_heap.pyx":131
+/* "src/dway_heap.pyx":136
  *         self._pairs[current_index] = input_pair
  * 
  *     cdef void _bubble_up(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -7456,7 +7579,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_bubble_up", 0);
 
-  /* "src/dway_heap.pyx":132
+  /* "src/dway_heap.pyx":137
  * 
  *     cdef void _bubble_up(self, intp_t index):
  *         assert (0 <= index < len(self._pairs))             # <<<<<<<<<<<<<<
@@ -7471,22 +7594,22 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
       __Pyx_INCREF(__pyx_t_2);
       if (unlikely(__pyx_t_2 == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-        __PYX_ERR(0, 132, __pyx_L1_error)
+        __PYX_ERR(0, 137, __pyx_L1_error)
       }
-      __pyx_t_3 = __Pyx_PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_1 = (__pyx_v_index < __pyx_t_3);
     }
     if (unlikely(!__pyx_t_1)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 132, __pyx_L1_error)
+      __PYX_ERR(0, 137, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 132, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 137, __pyx_L1_error)
   #endif
 
-  /* "src/dway_heap.pyx":133
+  /* "src/dway_heap.pyx":138
  *     cdef void _bubble_up(self, intp_t index):
  *         assert (0 <= index < len(self._pairs))
  *         cdef tuple input_pair = self._pairs[index]             # <<<<<<<<<<<<<<
@@ -7495,15 +7618,15 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
 */
   if (unlikely(__pyx_v_self->_pairs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 133, __pyx_L1_error)
+    __PYX_ERR(0, 138, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 138, __pyx_L1_error)
   __pyx_v_input_pair = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/dway_heap.pyx":134
+  /* "src/dway_heap.pyx":139
  *         assert (0 <= index < len(self._pairs))
  *         cdef tuple input_pair = self._pairs[index]
  *         cdef double input_priority = input_pair[0]             # <<<<<<<<<<<<<<
@@ -7512,15 +7635,15 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
 */
   if (unlikely(__pyx_v_input_pair == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 134, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_input_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_input_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_input_priority = __pyx_t_4;
 
-  /* "src/dway_heap.pyx":138
+  /* "src/dway_heap.pyx":143
  *         cdef tuple parent
  * 
  *         while index > 0:             # <<<<<<<<<<<<<<
@@ -7531,17 +7654,17 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
     __pyx_t_1 = (__pyx_v_index > 0);
     if (!__pyx_t_1) break;
 
-    /* "src/dway_heap.pyx":139
+    /* "src/dway_heap.pyx":144
  * 
  *         while index > 0:
  *             parent_index = self._parent_index(index)             # <<<<<<<<<<<<<<
  *             parent = self._pairs[parent_index]
  * 
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_parent_index(__pyx_v_self, __pyx_v_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_parent_index(__pyx_v_self, __pyx_v_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 144, __pyx_L1_error)
     __pyx_v_parent_index = __pyx_t_5;
 
-    /* "src/dway_heap.pyx":140
+    /* "src/dway_heap.pyx":145
  *         while index > 0:
  *             parent_index = self._parent_index(index)
  *             parent = self._pairs[parent_index]             # <<<<<<<<<<<<<<
@@ -7550,37 +7673,37 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
 */
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 140, __pyx_L1_error)
+      __PYX_ERR(0, 145, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_parent_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_parent_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 140, __pyx_L1_error)
+    if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_parent, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "src/dway_heap.pyx":142
+    /* "src/dway_heap.pyx":147
  *             parent = self._pairs[parent_index]
  * 
  *             if input_priority > parent[0]:             # <<<<<<<<<<<<<<
  *                 self._pairs[index] = parent
  *                 index = parent_index
 */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_input_priority); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_input_priority); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (unlikely(__pyx_v_parent == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 142, __pyx_L1_error)
+      __PYX_ERR(0, 147, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_v_parent, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_v_parent, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_2, __pyx_t_6, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_2, __pyx_t_6, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_1) {
 
-      /* "src/dway_heap.pyx":143
+      /* "src/dway_heap.pyx":148
  * 
  *             if input_priority > parent[0]:
  *                 self._pairs[index] = parent             # <<<<<<<<<<<<<<
@@ -7589,11 +7712,11 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
 */
       if (unlikely(__pyx_v_self->_pairs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 143, __pyx_L1_error)
+        __PYX_ERR(0, 148, __pyx_L1_error)
       }
-      if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_index, __pyx_v_parent, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 143, __pyx_L1_error)
+      if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_index, __pyx_v_parent, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 148, __pyx_L1_error)
 
-      /* "src/dway_heap.pyx":144
+      /* "src/dway_heap.pyx":149
  *             if input_priority > parent[0]:
  *                 self._pairs[index] = parent
  *                 index = parent_index             # <<<<<<<<<<<<<<
@@ -7602,7 +7725,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
 */
       __pyx_v_index = __pyx_v_parent_index;
 
-      /* "src/dway_heap.pyx":142
+      /* "src/dway_heap.pyx":147
  *             parent = self._pairs[parent_index]
  * 
  *             if input_priority > parent[0]:             # <<<<<<<<<<<<<<
@@ -7612,12 +7735,12 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
       goto __pyx_L5;
     }
 
-    /* "src/dway_heap.pyx":146
+    /* "src/dway_heap.pyx":151
  *                 index = parent_index
  *             else:
  *                 break             # <<<<<<<<<<<<<<
+ *         self._pairs[index] = input_pair
  * 
- *     cdef void _heapify(self, list elements, list priorities):
 */
     /*else*/ {
       goto __pyx_L4_break;
@@ -7626,7 +7749,20 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
   }
   __pyx_L4_break:;
 
-  /* "src/dway_heap.pyx":131
+  /* "src/dway_heap.pyx":152
+ *             else:
+ *                 break
+ *         self._pairs[index] = input_pair             # <<<<<<<<<<<<<<
+ * 
+ *     cdef void _heapify(self, list elements, list priorities):
+*/
+  if (unlikely(__pyx_v_self->_pairs == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 152, __pyx_L1_error)
+  }
+  if (unlikely((__Pyx_SetItemInt(__pyx_v_self->_pairs, __pyx_v_index, __pyx_v_input_pair, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1) < 0))) __PYX_ERR(0, 152, __pyx_L1_error)
+
+  /* "src/dway_heap.pyx":136
  *         self._pairs[current_index] = input_pair
  * 
  *     cdef void _bubble_up(self, intp_t index):             # <<<<<<<<<<<<<<
@@ -7647,8 +7783,8 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__bubble_up(struct __pyx_obj_3src_9
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/dway_heap.pyx":148
- *                 break
+/* "src/dway_heap.pyx":154
+ *         self._pairs[index] = input_pair
  * 
  *     cdef void _heapify(self, list elements, list priorities):             # <<<<<<<<<<<<<<
  *         assert (len(elements) == len(priorities))
@@ -7672,7 +7808,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__heapify(struct __pyx_obj_3src_9dw
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_heapify", 0);
 
-  /* "src/dway_heap.pyx":149
+  /* "src/dway_heap.pyx":155
  * 
  *     cdef void _heapify(self, list elements, list priorities):
  *         assert (len(elements) == len(priorities))             # <<<<<<<<<<<<<<
@@ -7683,25 +7819,25 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__heapify(struct __pyx_obj_3src_9dw
   if (unlikely(__pyx_assertions_enabled())) {
     if (unlikely(__pyx_v_elements == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 149, __pyx_L1_error)
+      __PYX_ERR(0, 155, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_elements); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_elements); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 155, __pyx_L1_error)
     if (unlikely(__pyx_v_priorities == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 149, __pyx_L1_error)
+      __PYX_ERR(0, 155, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_priorities); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_priorities); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 155, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_1 == __pyx_t_2);
     if (unlikely(!__pyx_t_3)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 149, __pyx_L1_error)
+      __PYX_ERR(0, 155, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 149, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 155, __pyx_L1_error)
   #endif
 
-  /* "src/dway_heap.pyx":150
+  /* "src/dway_heap.pyx":156
  *     cdef void _heapify(self, list elements, list priorities):
  *         assert (len(elements) == len(priorities))
  *         self._pairs = list(zip(priorities, elements))             # <<<<<<<<<<<<<<
@@ -7717,10 +7853,10 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__heapify(struct __pyx_obj_3src_9dw
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+__pyx_t_7, (3-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_6 = __Pyx_PySequence_ListKeepNew(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PySequence_ListKeepNew(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_GIVEREF(__pyx_t_6);
@@ -7729,17 +7865,17 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__heapify(struct __pyx_obj_3src_9dw
   __pyx_v_self->_pairs = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "src/dway_heap.pyx":153
+  /* "src/dway_heap.pyx":159
  * 
  *         cdef intp_t last_inner_node_index, index
  *         last_inner_node_index = self.first_leaf_index() - 1             # <<<<<<<<<<<<<<
  *         for index in range(last_inner_node_index, -1, -1):
  *             self._push_down(index)
 */
-  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->first_leaf_index(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->first_leaf_index(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
   __pyx_v_last_inner_node_index = (__pyx_t_8 - 1);
 
-  /* "src/dway_heap.pyx":154
+  /* "src/dway_heap.pyx":160
  *         cdef intp_t last_inner_node_index, index
  *         last_inner_node_index = self.first_leaf_index() - 1
  *         for index in range(last_inner_node_index, -1, -1):             # <<<<<<<<<<<<<<
@@ -7749,18 +7885,18 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__heapify(struct __pyx_obj_3src_9dw
   for (__pyx_t_8 = __pyx_v_last_inner_node_index; __pyx_t_8 > -1L; __pyx_t_8-=1) {
     __pyx_v_index = __pyx_t_8;
 
-    /* "src/dway_heap.pyx":155
+    /* "src/dway_heap.pyx":161
  *         last_inner_node_index = self.first_leaf_index() - 1
  *         for index in range(last_inner_node_index, -1, -1):
  *             self._push_down(index)             # <<<<<<<<<<<<<<
  * 
  *     cpdef bint _validate(self):
 */
-    ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_push_down(__pyx_v_self, __pyx_v_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_push_down(__pyx_v_self, __pyx_v_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
   }
 
-  /* "src/dway_heap.pyx":148
- *                 break
+  /* "src/dway_heap.pyx":154
+ *         self._pairs[index] = input_pair
  * 
  *     cdef void _heapify(self, list elements, list priorities):             # <<<<<<<<<<<<<<
  *         assert (len(elements) == len(priorities))
@@ -7778,7 +7914,7 @@ static void __pyx_f_3src_9dway_heap_8DWayHeap__heapify(struct __pyx_obj_3src_9dw
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/dway_heap.pyx":157
+/* "src/dway_heap.pyx":163
  *             self._push_down(index)
  * 
  *     cpdef bint _validate(self):             # <<<<<<<<<<<<<<
@@ -7834,7 +7970,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_validate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_validate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9dway_heap_8DWayHeap_17_validate)) {
         __pyx_t_3 = NULL;
@@ -7857,10 +7993,10 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7879,7 +8015,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
     #endif
   }
 
-  /* "src/dway_heap.pyx":158
+  /* "src/dway_heap.pyx":164
  * 
  *     cpdef bint _validate(self):
  *         cdef intp_t current_index = 0             # <<<<<<<<<<<<<<
@@ -7888,17 +8024,17 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
 */
   __pyx_v_current_index = 0;
 
-  /* "src/dway_heap.pyx":159
+  /* "src/dway_heap.pyx":165
  *     cpdef bint _validate(self):
  *         cdef intp_t current_index = 0
  *         cdef intp_t first_leaf = self.first_leaf_index()             # <<<<<<<<<<<<<<
  *         cdef float current_priority
  *         cdef intp_t first_child, last_child_guard
 */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->first_leaf_index(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->first_leaf_index(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L1_error)
   __pyx_v_first_leaf = __pyx_t_7;
 
-  /* "src/dway_heap.pyx":163
+  /* "src/dway_heap.pyx":169
  *         cdef intp_t first_child, last_child_guard
  * 
  *         while current_index < first_leaf:             # <<<<<<<<<<<<<<
@@ -7909,7 +8045,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
     __pyx_t_6 = (__pyx_v_current_index < __pyx_v_first_leaf);
     if (!__pyx_t_6) break;
 
-    /* "src/dway_heap.pyx":164
+    /* "src/dway_heap.pyx":170
  * 
  *         while current_index < first_leaf:
  *             current_priority = self._pairs[current_index][0]             # <<<<<<<<<<<<<<
@@ -7918,35 +8054,35 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
 */
     if (unlikely(__pyx_v_self->_pairs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 164, __pyx_L1_error)
+      __PYX_ERR(0, 170, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_current_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_current_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 170, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_current_priority = __pyx_t_8;
 
-    /* "src/dway_heap.pyx":165
+    /* "src/dway_heap.pyx":171
  *         while current_index < first_leaf:
  *             current_priority = self._pairs[current_index][0]
  *             first_child = self._first_child_index(current_index)             # <<<<<<<<<<<<<<
  *             last_child_guard = min(first_child + self.branching_factor, len(self))
  *             for child_index in range(first_child, last_child_guard):
 */
-    __pyx_t_7 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_first_child_index(__pyx_v_self, __pyx_v_current_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_7 = ((struct __pyx_vtabstruct_3src_9dway_heap_DWayHeap *)__pyx_v_self->__pyx_vtab)->_first_child_index(__pyx_v_self, __pyx_v_current_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L1_error)
     __pyx_v_first_child = __pyx_t_7;
 
-    /* "src/dway_heap.pyx":166
+    /* "src/dway_heap.pyx":172
  *             current_priority = self._pairs[current_index][0]
  *             first_child = self._first_child_index(current_index)
  *             last_child_guard = min(first_child + self.branching_factor, len(self))             # <<<<<<<<<<<<<<
  *             for child_index in range(first_child, last_child_guard):
  *                 if current_priority < self._pairs[child_index][0]:
 */
-    __pyx_t_9 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_9 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 172, __pyx_L1_error)
     __pyx_t_7 = (__pyx_v_first_child + __pyx_v_self->branching_factor);
     __pyx_t_6 = (__pyx_t_9 < __pyx_t_7);
     if (__pyx_t_6) {
@@ -7956,7 +8092,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
     }
     __pyx_v_last_child_guard = __pyx_t_10;
 
-    /* "src/dway_heap.pyx":167
+    /* "src/dway_heap.pyx":173
  *             first_child = self._first_child_index(current_index)
  *             last_child_guard = min(first_child + self.branching_factor, len(self))
  *             for child_index in range(first_child, last_child_guard):             # <<<<<<<<<<<<<<
@@ -7968,32 +8104,32 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
     for (__pyx_t_12 = __pyx_v_first_child; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_child_index = __pyx_t_12;
 
-      /* "src/dway_heap.pyx":168
+      /* "src/dway_heap.pyx":174
  *             last_child_guard = min(first_child + self.branching_factor, len(self))
  *             for child_index in range(first_child, last_child_guard):
  *                 if current_priority < self._pairs[child_index][0]:             # <<<<<<<<<<<<<<
  *                     return 0
  *             current_index += 1
 */
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_current_priority); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_current_priority); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__pyx_v_self->_pairs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 168, __pyx_L1_error)
+        __PYX_ERR(0, 174, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_child_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->_pairs, __pyx_v_child_index, __pyx_t_3src_9dway_heap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_6) {
 
-        /* "src/dway_heap.pyx":169
+        /* "src/dway_heap.pyx":175
  *             for child_index in range(first_child, last_child_guard):
  *                 if current_priority < self._pairs[child_index][0]:
  *                     return 0             # <<<<<<<<<<<<<<
@@ -8003,7 +8139,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
         __pyx_r = 0;
         goto __pyx_L0;
 
-        /* "src/dway_heap.pyx":168
+        /* "src/dway_heap.pyx":174
  *             last_child_guard = min(first_child + self.branching_factor, len(self))
  *             for child_index in range(first_child, last_child_guard):
  *                 if current_priority < self._pairs[child_index][0]:             # <<<<<<<<<<<<<<
@@ -8013,7 +8149,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
       }
     }
 
-    /* "src/dway_heap.pyx":170
+    /* "src/dway_heap.pyx":176
  *                 if current_priority < self._pairs[child_index][0]:
  *                     return 0
  *             current_index += 1             # <<<<<<<<<<<<<<
@@ -8023,7 +8159,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
     __pyx_v_current_index = (__pyx_v_current_index + 1);
   }
 
-  /* "src/dway_heap.pyx":171
+  /* "src/dway_heap.pyx":177
  *                     return 0
  *             current_index += 1
  *         return 1             # <<<<<<<<<<<<<<
@@ -8032,7 +8168,7 @@ static int __pyx_f_3src_9dway_heap_8DWayHeap__validate(struct __pyx_obj_3src_9dw
   __pyx_r = 1;
   goto __pyx_L0;
 
-  /* "src/dway_heap.pyx":157
+  /* "src/dway_heap.pyx":163
  *             self._push_down(index)
  * 
  *     cpdef bint _validate(self):             # <<<<<<<<<<<<<<
@@ -8105,8 +8241,8 @@ static PyObject *__pyx_pf_3src_9dway_heap_8DWayHeap_16_validate(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_validate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap__validate(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9dway_heap_8DWayHeap__validate(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -9936,93 +10072,93 @@ __Pyx_RefNannySetupContext("PyInit_dway_heap", 0);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/dway_heap.pyx":33
+  /* "src/dway_heap.pyx":38
  *             self._heapify(elements, priorities)
  * 
  *     def __sizeof__(self) -> intp_t:             # <<<<<<<<<<<<<<
  *         return len(self)
  * 
 */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_intp_t) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_3__sizeof__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap___sizeof, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_intp_t) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_3__sizeof__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap___sizeof, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_sizeof, __pyx_t_3) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_sizeof, __pyx_t_3) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/dway_heap.pyx":39
+  /* "src/dway_heap.pyx":44
  *         return len(self._pairs)
  * 
  *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
  *         return len(self) == 0
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_7is_empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_is_empty, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_7is_empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_is_empty, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_is_empty, __pyx_t_3) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_is_empty, __pyx_t_3) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/dway_heap.pyx":42
+  /* "src/dway_heap.pyx":47
  *         return len(self) == 0
  * 
  *     cpdef object top(self):             # <<<<<<<<<<<<<<
  *         if self.is_empty():
  *             raise RuntimeError("...")
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_9top, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_top, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_9top, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_top, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_top, __pyx_t_3) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_top, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/dway_heap.pyx":53
+  /* "src/dway_heap.pyx":58
  *             return element
  * 
  *     cpdef object peek(self):             # <<<<<<<<<<<<<<
  *         if self.is_empty():
  *             raise RuntimeError("...")
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_11peek, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_peek, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_11peek, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_peek, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_peek, __pyx_t_3) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_peek, __pyx_t_3) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/dway_heap.pyx":58
+  /* "src/dway_heap.pyx":63
  *         return self._pairs[0][1]
  * 
  *     cpdef void insert(self, object element, float priority):             # <<<<<<<<<<<<<<
  *         self._pairs.append((priority, element))
  *         self._bubble_up(len(self._pairs) - 1)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_13insert, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_insert, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_13insert, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_insert, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_insert, __pyx_t_3) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_insert, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/dway_heap.pyx":62
+  /* "src/dway_heap.pyx":67
  *         self._bubble_up(len(self._pairs) - 1)
  * 
  *     cpdef intp_t first_leaf_index(self):             # <<<<<<<<<<<<<<
  *         cdef intp_t size = len(self)
  *         cdef intp_t result
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_15first_leaf_index, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_first_leaf_index, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_15first_leaf_index, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap_first_leaf_index, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_first_leaf_index, __pyx_t_3) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_first_leaf_index, __pyx_t_3) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/dway_heap.pyx":157
+  /* "src/dway_heap.pyx":163
  *             self._push_down(index)
  * 
  *     cpdef bint _validate(self):             # <<<<<<<<<<<<<<
  *         cdef intp_t current_index = 0
  *         cdef intp_t first_leaf = self.first_leaf_index()
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_17_validate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap__validate, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9dway_heap_8DWayHeap_17_validate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DWayHeap__validate, NULL, __pyx_mstate_global->__pyx_n_u_src_dway_heap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_validate, __pyx_t_3) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9dway_heap_DWayHeap, __pyx_mstate_global->__pyx_n_u_validate, __pyx_t_3) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "(tree fragment)":1
@@ -10141,10 +10277,14 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_Note_that_Cython_is_deliberately, sizeof(__pyx_k_Note_that_Cython_is_deliberately), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Note_that_Cython_is_deliberately */
   {__pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_PickleError */
   {__pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RuntimeError */
+  {__pyx_k_The_branching_factor_must_be_gre, sizeof(__pyx_k_The_branching_factor_must_be_gre), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_The_branching_factor_must_be_gre */
+  {__pyx_k_The_length_of_the_elements, sizeof(__pyx_k_The_length_of_the_elements), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_The_length_of_the_elements */
   {__pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ValueError */
   {__pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0}, /* PyObject cname: __pyx_kp_u__3 */
   {__pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0}, /* PyObject cname: __pyx_kp_u__4 */
   {__pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0}, /* PyObject cname: __pyx_kp_u__5 */
+  {__pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0}, /* PyObject cname: __pyx_kp_u__6 */
+  {__pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0}, /* PyObject cname: __pyx_kp_u__7 */
   {__pyx_k_add_note, sizeof(__pyx_k_add_note), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_add_note */
   {__pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 1, 1}, /* PyObject cname: __pyx_n_u_asyncio_coroutines */
   {__pyx_k_branching_factor, sizeof(__pyx_k_branching_factor), 0, 1, 1}, /* PyObject cname: __pyx_n_u_branching_factor */
@@ -10167,6 +10307,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_isenabled */
   {__pyx_k_main, sizeof(__pyx_k_main), 0, 1, 1}, /* PyObject cname: __pyx_n_u_main */
   {__pyx_k_module, sizeof(__pyx_k_module), 0, 1, 1}, /* PyObject cname: __pyx_n_u_module */
+  {__pyx_k_must_match_the_length_of_the_pr, sizeof(__pyx_k_must_match_the_length_of_the_pr), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_must_match_the_length_of_the_pr */
   {__pyx_k_name, sizeof(__pyx_k_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_name */
   {__pyx_k_new, sizeof(__pyx_k_new), 0, 1, 1}, /* PyObject cname: __pyx_n_u_new */
   {__pyx_k_np, sizeof(__pyx_k_np), 0, 1, 1}, /* PyObject cname: __pyx_n_u_np */
@@ -10217,10 +10358,10 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 21, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 44, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(0, 101, __pyx_L1_error)
-  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 110, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 156, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1010, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -10291,37 +10432,37 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 33, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 38, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_sizeof, __pyx_k_A_s_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 39, 15};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 44, 15};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_is_empty, __pyx_k_A_s_6_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 42, 94};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 47, 94};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_top, __pyx_k_A_4y_aq_3avS_4wd_AQ_d_AQ_q_T_A_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 53, 35};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 58, 35};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_peek, __pyx_k_A_4y_aq_t7_2Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 58, 34};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 63, 34};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_element, __pyx_mstate->__pyx_n_u_priority};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_insert, __pyx_k_A_G7_Ja_Kq_1D_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 62, 41};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 67, 41};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_first_leaf_index, __pyx_k_A_3aq_e2S_4_9_1_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 157, 123};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 163, 123};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_dway_heap_pyx, __pyx_mstate->__pyx_n_u_validate, __pyx_k_A_A_6a_nBa_t7_1_r_5H_1A_uA_Bd_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
@@ -11952,6 +12093,318 @@ static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *nam
     return 0;
 }
 
+/* CIntToDigits */
+static const char DIGIT_PAIRS_10[2*10*10+1] = {
+    "00010203040506070809"
+    "10111213141516171819"
+    "20212223242526272829"
+    "30313233343536373839"
+    "40414243444546474849"
+    "50515253545556575859"
+    "60616263646566676869"
+    "70717273747576777879"
+    "80818283848586878889"
+    "90919293949596979899"
+};
+static const char DIGIT_PAIRS_8[2*8*8+1] = {
+    "0001020304050607"
+    "1011121314151617"
+    "2021222324252627"
+    "3031323334353637"
+    "4041424344454647"
+    "5051525354555657"
+    "6061626364656667"
+    "7071727374757677"
+};
+static const char DIGITS_HEX[2*16+1] = {
+    "0123456789abcdef"
+    "0123456789ABCDEF"
+};
+
+/* BuildPyUnicode */
+static PyObject* __Pyx_PyUnicode_BuildFromAscii(Py_ssize_t ulength, const char* chars, int clength,
+                                                int prepend_sign, char padding_char) {
+    PyObject *uval;
+    Py_ssize_t uoffset = ulength - clength;
+#if CYTHON_USE_UNICODE_INTERNALS
+    Py_ssize_t i;
+    void *udata;
+    uval = PyUnicode_New(ulength, 127);
+    if (unlikely(!uval)) return NULL;
+    udata = PyUnicode_DATA(uval);
+    if (uoffset > 0) {
+        i = 0;
+        if (prepend_sign) {
+            __Pyx_PyUnicode_WRITE(PyUnicode_1BYTE_KIND, udata, 0, '-');
+            i++;
+        }
+        for (; i < uoffset; i++) {
+            __Pyx_PyUnicode_WRITE(PyUnicode_1BYTE_KIND, udata, i, padding_char);
+        }
+    }
+    for (i=0; i < clength; i++) {
+        __Pyx_PyUnicode_WRITE(PyUnicode_1BYTE_KIND, udata, uoffset+i, chars[i]);
+    }
+#else
+    {
+        PyObject *sign = NULL, *padding = NULL;
+        uval = NULL;
+        if (uoffset > 0) {
+            prepend_sign = !!prepend_sign;
+            if (uoffset > prepend_sign) {
+                padding = PyUnicode_FromOrdinal(padding_char);
+                if (likely(padding) && uoffset > prepend_sign + 1) {
+                    PyObject *tmp = PySequence_Repeat(padding, uoffset - prepend_sign);
+                    Py_DECREF(padding);
+                    padding = tmp;
+                }
+                if (unlikely(!padding)) goto done_or_error;
+            }
+            if (prepend_sign) {
+                sign = PyUnicode_FromOrdinal('-');
+                if (unlikely(!sign)) goto done_or_error;
+            }
+        }
+        uval = PyUnicode_DecodeASCII(chars, clength, NULL);
+        if (likely(uval) && padding) {
+            PyObject *tmp = PyUnicode_Concat(padding, uval);
+            Py_DECREF(uval);
+            uval = tmp;
+        }
+        if (likely(uval) && sign) {
+            PyObject *tmp = PyUnicode_Concat(sign, uval);
+            Py_DECREF(uval);
+            uval = tmp;
+        }
+done_or_error:
+        Py_XDECREF(padding);
+        Py_XDECREF(sign);
+    }
+#endif
+    return uval;
+}
+
+/* COrdinalToPyUnicode */
+static CYTHON_INLINE int __Pyx_CheckUnicodeValue(int value) {
+    return value <= 1114111;
+}
+static PyObject* __Pyx_PyUnicode_FromOrdinal_Padded(int value, Py_ssize_t ulength, char padding_char) {
+    if (likely(ulength <= 250)) {
+        char chars[256];
+        if (value <= 255) {
+            memset(chars, padding_char, (size_t) (ulength - 1));
+            chars[ulength-1] = (char) value;
+            return PyUnicode_DecodeLatin1(chars, ulength, NULL);
+        }
+        char *cpos = chars + sizeof(chars);
+        if (value < 0x800) {
+            *--cpos = (char) (0x80 | (value & 0x3f));
+            value >>= 6;
+            *--cpos = (char) (0xc0 | (value & 0x1f));
+        } else if (value < 0x10000) {
+            *--cpos = (char) (0x80 | (value & 0x3f));
+            value >>= 6;
+            *--cpos = (char) (0x80 | (value & 0x3f));
+            value >>= 6;
+            *--cpos = (char) (0xe0 | (value & 0x0f));
+        } else {
+            *--cpos = (char) (0x80 | (value & 0x3f));
+            value >>= 6;
+            *--cpos = (char) (0x80 | (value & 0x3f));
+            value >>= 6;
+            *--cpos = (char) (0x80 | (value & 0x3f));
+            value >>= 6;
+            *--cpos = (char) (0xf0 | (value & 0x07));
+        }
+        cpos -= ulength;
+        memset(cpos, padding_char, (size_t) (ulength - 1));
+        return PyUnicode_DecodeUTF8(cpos, chars + sizeof(chars) - cpos, NULL);
+    }
+    if (value <= 127 && CYTHON_USE_UNICODE_INTERNALS) {
+        const char chars[1] = {(char) value};
+        return __Pyx_PyUnicode_BuildFromAscii(ulength, chars, 1, 0, padding_char);
+    }
+    {
+        PyObject *uchar, *padding_uchar, *padding, *result;
+        padding_uchar = PyUnicode_FromOrdinal(padding_char);
+        if (unlikely(!padding_uchar)) return NULL;
+        padding = PySequence_Repeat(padding_uchar, ulength - 1);
+        Py_DECREF(padding_uchar);
+        if (unlikely(!padding)) return NULL;
+        uchar = PyUnicode_FromOrdinal(value);
+        if (unlikely(!uchar)) {
+            Py_DECREF(padding);
+            return NULL;
+        }
+        result = PyUnicode_Concat(padding, uchar);
+        Py_DECREF(padding);
+        Py_DECREF(uchar);
+        return result;
+    }
+}
+
+/* CIntToPyUnicode */
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char) {
+    char digits[sizeof(Py_ssize_t)*3+2];
+    char *dpos, *end = digits + sizeof(Py_ssize_t)*3+2;
+    const char *hex_digits = DIGITS_HEX;
+    Py_ssize_t length, ulength;
+    int prepend_sign, last_one_off;
+    Py_ssize_t remaining;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const Py_ssize_t neg_one = (Py_ssize_t) -1, const_zero = (Py_ssize_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (format_char == 'c') {
+        if (unlikely(!(is_unsigned || value == 0 || value > 0) ||
+                     !(sizeof(value) <= 2 || value & ~ (Py_ssize_t) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
+            PyErr_SetString(PyExc_OverflowError, "%c arg not in range(0x110000)");
+            return NULL;
+        }
+        if (width <= 1) {
+            return PyUnicode_FromOrdinal((int) value);
+        }
+        return __Pyx_PyUnicode_FromOrdinal_Padded((int) value, width, padding_char);
+    }
+    if (format_char == 'X') {
+        hex_digits += 16;
+        format_char = 'x';
+    }
+    remaining = value;
+    last_one_off = 0;
+    dpos = end;
+    do {
+        int digit_pos;
+        switch (format_char) {
+        case 'o':
+            digit_pos = abs((int)(remaining % (8*8)));
+            remaining = (Py_ssize_t) (remaining / (8*8));
+            dpos -= 2;
+            memcpy(dpos, DIGIT_PAIRS_8 + digit_pos * 2, 2);
+            last_one_off = (digit_pos < 8);
+            break;
+        case 'd':
+            digit_pos = abs((int)(remaining % (10*10)));
+            remaining = (Py_ssize_t) (remaining / (10*10));
+            dpos -= 2;
+            memcpy(dpos, DIGIT_PAIRS_10 + digit_pos * 2, 2);
+            last_one_off = (digit_pos < 10);
+            break;
+        case 'x':
+            *(--dpos) = hex_digits[abs((int)(remaining % 16))];
+            remaining = (Py_ssize_t) (remaining / 16);
+            break;
+        default:
+            assert(0);
+            break;
+        }
+    } while (unlikely(remaining != 0));
+    assert(!last_one_off || *dpos == '0');
+    dpos += last_one_off;
+    length = end - dpos;
+    ulength = length;
+    prepend_sign = 0;
+    if (!is_unsigned && value <= neg_one) {
+        if (padding_char == ' ' || width <= length + 1) {
+            *(--dpos) = '-';
+            ++length;
+        } else {
+            prepend_sign = 1;
+        }
+        ++ulength;
+    }
+    if (width > ulength) {
+        ulength = width;
+    }
+    if (ulength == 1) {
+        return PyUnicode_FromOrdinal(*dpos);
+    }
+    return __Pyx_PyUnicode_BuildFromAscii(ulength, dpos, (int) length, prepend_sign, padding_char);
+}
+
+/* JoinPyUnicode */
+static PyObject* __Pyx_PyUnicode_Join(PyObject** values, Py_ssize_t value_count, Py_ssize_t result_ulength,
+                                      Py_UCS4 max_char) {
+#if CYTHON_USE_UNICODE_INTERNALS && CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    PyObject *result_uval;
+    int result_ukind, kind_shift;
+    Py_ssize_t i, char_pos;
+    void *result_udata;
+    if (max_char > 1114111) max_char = 1114111;
+    result_uval = PyUnicode_New(result_ulength, max_char);
+    if (unlikely(!result_uval)) return NULL;
+    result_ukind = (max_char <= 255) ? PyUnicode_1BYTE_KIND : (max_char <= 65535) ? PyUnicode_2BYTE_KIND : PyUnicode_4BYTE_KIND;
+    kind_shift = (result_ukind == PyUnicode_4BYTE_KIND) ? 2 : result_ukind - 1;
+    result_udata = PyUnicode_DATA(result_uval);
+    assert(kind_shift == 2 || kind_shift == 1 || kind_shift == 0);
+    if (unlikely((PY_SSIZE_T_MAX >> kind_shift) - result_ulength < 0))
+        goto overflow;
+    char_pos = 0;
+    for (i=0; i < value_count; i++) {
+        int ukind;
+        Py_ssize_t ulength;
+        void *udata;
+        PyObject *uval = values[i];
+        #if !CYTHON_COMPILING_IN_LIMITED_API
+        if (__Pyx_PyUnicode_READY(uval) == (-1))
+            goto bad;
+        #endif
+        ulength = __Pyx_PyUnicode_GET_LENGTH(uval);
+        #if !CYTHON_ASSUME_SAFE_SIZE
+        if (unlikely(ulength < 0)) goto bad;
+        #endif
+        if (unlikely(!ulength))
+            continue;
+        if (unlikely((PY_SSIZE_T_MAX >> kind_shift) - ulength < char_pos))
+            goto overflow;
+        ukind = __Pyx_PyUnicode_KIND(uval);
+        udata = __Pyx_PyUnicode_DATA(uval);
+        if (ukind == result_ukind) {
+            memcpy((char *)result_udata + (char_pos << kind_shift), udata, (size_t) (ulength << kind_shift));
+        } else {
+            #if PY_VERSION_HEX >= 0x030d0000
+            if (unlikely(PyUnicode_CopyCharacters(result_uval, char_pos, uval, 0, ulength) < 0)) goto bad;
+            #elif CYTHON_COMPILING_IN_CPYTHON || defined(_PyUnicode_FastCopyCharacters)
+            _PyUnicode_FastCopyCharacters(result_uval, char_pos, uval, 0, ulength);
+            #else
+            Py_ssize_t j;
+            for (j=0; j < ulength; j++) {
+                Py_UCS4 uchar = __Pyx_PyUnicode_READ(ukind, udata, j);
+                __Pyx_PyUnicode_WRITE(result_ukind, result_udata, char_pos+j, uchar);
+            }
+            #endif
+        }
+        char_pos += ulength;
+    }
+    return result_uval;
+overflow:
+    PyErr_SetString(PyExc_OverflowError, "join() result is too long for a Python string");
+bad:
+    Py_DECREF(result_uval);
+    return NULL;
+#else
+    Py_ssize_t i;
+    PyObject *result = NULL;
+    PyObject *value_tuple = PyTuple_New(value_count);
+    if (unlikely(!value_tuple)) return NULL;
+    CYTHON_UNUSED_VAR(max_char);
+    CYTHON_UNUSED_VAR(result_ulength);
+    for (i=0; i<value_count; i++) {
+        if (__Pyx_PyTuple_SET_ITEM(value_tuple, i, values[i]) != (0)) goto bad;
+        Py_INCREF(values[i]);
+    }
+    result = PyUnicode_Join(__pyx_mstate_global->__pyx_empty_unicode, value_tuple);
+bad:
+    Py_DECREF(value_tuple);
+    return result;
+#endif
+}
+
 /* RejectKeywords */
 static void __Pyx_RejectKeywords(const char* function_name, PyObject *kwds) {
     PyObject *key = NULL;
@@ -12468,7 +12921,7 @@ static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
         if (unlikely(!module_name_str)) { goto modbad; }
         module_name = PyUnicode_FromString(module_name_str);
         if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_mstate_global->__pyx_kp_u__4);
+        module_dot = PyUnicode_Concat(module_name, __pyx_mstate_global->__pyx_kp_u__6);
         if (unlikely(!module_dot)) { goto modbad; }
         full_name = PyUnicode_Concat(module_dot, name);
         if (unlikely(!full_name)) { goto modbad; }
@@ -15806,7 +16259,7 @@ __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp)
         result = name;
         name = NULL;
     } else {
-        result = __Pyx_NewRef(__pyx_mstate_global->__pyx_kp_u__5);
+        result = __Pyx_NewRef(__pyx_mstate_global->__pyx_kp_u__7);
     }
     goto done;
 }

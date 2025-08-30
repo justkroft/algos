@@ -18,10 +18,15 @@ cdef class DWayHeap:
         const intp_t branching_factor = 2
     ):
         if len(elements) != len(priorities):
-            raise ValueError("...")
+            raise ValueError(
+                f"The length of the elements ({len(elements)}) must match the"
+                f" length of the priorities ({len(priorities)})."
+            )
 
         if branching_factor < 2:
-            raise ValueError("...")
+            raise ValueError(
+                f"The branching factor must be greater than 1 ({branching_factor})"
+            )
 
         cdef list _pairs = []  # list of tuples
         self._pairs = _pairs
@@ -144,6 +149,7 @@ cdef class DWayHeap:
                 index = parent_index
             else:
                 break
+        self._pairs[index] = input_pair
 
     cdef void _heapify(self, list elements, list priorities):
         assert (len(elements) == len(priorities))
