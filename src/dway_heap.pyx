@@ -50,6 +50,15 @@ cdef class DWayHeap:
             self._push_down(0)
             return element
 
+    cpdef object peek(self):
+        if self.is_empty:
+            raise RuntimeError("...")
+        return self._pairs[0][1]
+
+    cpdef void insert(self, object element, float priority):
+        self._pairs.append((priority, element))
+        self._bubble_up(len(self._pairs) - 1)
+
     cpdef intp_t first_leaf_index(self):
         cdef intp_t size = len(self)
         cdef intp_t result
