@@ -153,3 +153,20 @@ cdef class DWayHeap:
         last_inner_node_index = self.first_leaf_index() - 1
         for index in range(last_inner_node_index, -1, -1):
             self._push_down(index)
+
+    cpdef bint _validate(self):
+        cdef intp_t current_index = 0
+        cdef intp_t first_leaf = self.first_leaf_index()
+        cdef float current_priority
+        cdef intp_t first_child, last_child_guard
+
+        while current_index < first_leaf:
+            current_priority = self._pairs[current_index][0]
+            first_child = self._first_child_index(current_index)
+            last_child_guard = min(first_child + self.branching_factor, len(self))
+            for child_index in range(first_child, last_child_guard):
+                if current_priority < self._pairs[child_index][0]:
+                    return 0
+            current_index += 1
+        return 1
+        
