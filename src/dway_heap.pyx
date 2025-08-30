@@ -39,6 +39,17 @@ cdef class DWayHeap:
     cpdef bint is_empty(self):
         return len(self) == 0
 
+    cpdef object top(self):
+        if self.is_empty:
+            raise RuntimeError("...")
+        if len(self) == 1:
+            return self._pairs.pop()[1]
+        else:
+            element = self._pairs[0][1]
+            self._pairs[0] = self._pairs.pop()
+            self._push_down(0)
+            return element
+
     cpdef intp_t first_leaf_index(self):
         cdef intp_t size = len(self)
         cdef intp_t result
@@ -78,9 +89,8 @@ cdef class DWayHeap:
 
         best_index = first_index
         
-        # Must access tuples with GIL, but minimize the critical section
         for i in range(first_index, last_index):
-            current_priority = self._pairs[i][0]  # Tuple access needs GIL
+            current_priority = self._pairs[i][0]
             if current_priority > highest_priority:
                 highest_priority = current_priority
                 best_index = i
@@ -100,7 +110,7 @@ cdef class DWayHeap:
             child_index = self._highest_priority_child_index(current_index)
             assert child_index != INT_NONE_SENTINEL 
             
-            child_priority = self._pairs[child_index][0]  # Extract priority once
+            child_priority = self._pairs[child_index][0]
             if child_priority > input_priority:
                 self._pairs[current_index] = self._pairs[child_index]
                 current_index = child_index
@@ -108,6 +118,23 @@ cdef class DWayHeap:
                 break
                 
         self._pairs[current_index] = input_pair
+
+    cdef void _bubble_up(self, intp_t index):
+        assert (0 <= index < len(self._pairs))
+        cdef tuple input_pair = self._pairs[index]
+        cdef double input_priority = input_pair[0]
+        cdef intp_t parent_index
+        cdef tuple parent
+        
+        while index > 0:
+            parent_index = self._parent_index(index)
+            parent = self._pairs[parent_index]
+
+            if input_priority > parent[0]:
+                self._pairs[index] = parent
+                index = parent_index
+            else:
+                break
 
     cdef void _heapify(self, list elements, list priorities):
         assert (len(elements) == len(priorities))
