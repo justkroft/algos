@@ -10,8 +10,12 @@ dependencies = [
     "setuptools>=80.9.0",
 ]
 
+[project.optional-dependencies]
+test = ["pytest"]
+
 [dependency-groups]
 dev = [
+    "pytest>=8.4.1",
     "ruff>=0.12.10",
 ]
 
@@ -37,6 +41,7 @@ ignore = [
     "TRY003",  # Avoid long messages outside of exception class
     #"TRY004", # Use TypeError instead of ValueError
     "TRY301",  # Abstract raise garbage
+    "PT011"
 ]
 select = [
     "A",     # flake8-builtins
@@ -51,7 +56,7 @@ select = [
     "F",     # pyflakes
     "FLY",   # flynt
     "G",     # flake8-logging-format
-    #"I",    # isort
+    "I",    # isort
     "ICN",   # https://github.com/joaopalmeiro/flake8-import-conventions
     "ISC",   # https://pypi.org/project/flake8-implicit-str-concat/
     "LOG",   # flake8-logging
@@ -64,7 +69,7 @@ select = [
     "PTH",   # flake8 use pathlib
     "RET",   # https://pypi.org/project/flake8-return/
     "RUF",   # Ruff rules
-    "S",     # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+    #"S",     # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
     "SIM",   # https://pypi.org/project/flake8-simplify/
     "T",     # flake8-debugger
     "TRY",   # tryceratops
@@ -80,3 +85,9 @@ select = [
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v"
