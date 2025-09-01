@@ -1,12 +1,12 @@
-from setuptools import setup, Extension
+import numpy as np
 from Cython.Build import cythonize
-import numpy
+from setuptools import Extension, setup
 
 extensions = [
     Extension(
-        "src.dway_heap",  # Package.module format
-        ["src/dway_heap.pyx"],
-        include_dirs=[numpy.get_include()],
+        "src.dway_heap.dway_heap",  # Package.module format
+        ["src/dway_heap/dway_heap.pyx"],
+        include_dirs=[np.get_include()],
     )
 ]
 

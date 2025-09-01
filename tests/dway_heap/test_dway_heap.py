@@ -1,6 +1,6 @@
 import pytest
 
-from src.dway_heap import DWayHeap
+from src.dway_heap.dway_heap import DWayHeap
 
 
 class TestDWayHeap:

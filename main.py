@@ -1,5 +1,4 @@
-from src.dway_heap import DWayHeap
-
+from src import DWayHeap
 
 priorities = [10.5, 3.2, 15.0, 7.8, 20.1, 1.5]
 elements = ["low", "very_low", "medium", "low_med", "high", "lowest"]
