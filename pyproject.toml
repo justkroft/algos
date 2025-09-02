@@ -22,10 +22,10 @@ dev = [
 [tool.ruff]
 # Set the maximum line length to 79.
 line-length = 79
-# Allow unused variables when underscore-prefixed
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.lint]
+# Allow unused variables when underscore-prefixed
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 ignore = [
     "B006",    # Learn Python yo!
     "C408",    # Unnecessary dict/list call
