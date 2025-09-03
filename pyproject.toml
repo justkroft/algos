@@ -26,62 +26,32 @@ line-length = 79
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-ignore = [
-    "B006",    # Learn Python yo!
-    "C408",    # Unnecessary dict/list call
-    "COM819",  # Trailing commas is da bomb
-    "E731",    # Do not assign to lambda
-    "ERA001", "T201", # comment code, prints are lax during development
-    "G004",    # Logging format string should not use f-string
-    "RET503",  # No explicit return None (all the other rules are about removing unnecessary things like this)
-    "RUF012",  # Mutable class attributes should be annotated with typing.ClassVar
-    "S311",    # Standard pseudo-random generators are not suitable for security/cryptographic purposes
-    "SIM108",  # don't like ternary operator
-    "SIM300",  # Yoda is wiser than you!
-    "TRY003",  # Avoid long messages outside of exception class
-    #"TRY004", # Use TypeError instead of ValueError
-    "TRY301",  # Abstract raise garbage
-    "PT011"
-]
 select = [
-    "A",     # flake8-builtins
-    "ASYNC", # https://docs.astral.sh/ruff/rules/#flake8-async-async
-    "B",     # flake8-bugbear
-    "BLE",   # flake8-blind-except
-    "C4",    # unnecessary comprehensions, map()
-    "DTZ",   # flake8-datetimez
-    "E",     # pycodestyle
-    "ERA",   # No commented out code
-    "EXE",   # flake8-executable
-    "F",     # pyflakes
-    "FLY",   # flynt
-    "G",     # flake8-logging-format
-    "I",    # isort
-    "ICN",   # https://github.com/joaopalmeiro/flake8-import-conventions
-    "ISC",   # https://pypi.org/project/flake8-implicit-str-concat/
-    "LOG",   # flake8-logging
-    "PERF",  # perflint
-    "PIE",   # https://pypi.org/project/flake8-pie/
-    "PLC",   # Pylint conventions
-    "PLE",   # Pylint error
-    "PLW",   # Pylint warnings
-    "PT",    # https://pypi.org/project/flake8-pytest-style/
-    "PTH",   # flake8 use pathlib
-    "RET",   # https://pypi.org/project/flake8-return/
-    "RUF",   # Ruff rules
-    #"S",     # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
-    "SIM",   # https://pypi.org/project/flake8-simplify/
-    "T",     # flake8-debugger
-    "TRY",   # tryceratops
-    "UP",    # pyupgrade
-    "W",     # pycodestyle
-    "ARG",   # flake8 unused arguments (not really helpful, unused func args are common and ok)
-    #"D",    # pydocstyle (too much)
+    "A",   # flake8-builtins
+    "ANN", # flake8-annotations
+    "ARG", # flake8-unused arguments
+    "BLE", # blind-except
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # sort imports
+    "RET", # flake8-return
+    "UP",  # pyupgrade
+    "W",   # pycodestyle warnings
+]
+ignore = [
+    "E731",   # Do not assign a lambda expression, use a def
+    # "W502",   # Line break occured before binary operator (ignore anti pattern)
+    "ANN002", # Missing type annotation for *args
+    "ANN003", # Missing type annotation for **kwargs
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
 ]
 
 [tool.ruff.lint.per-file-ignores]
 # Allow unused imports in __init__.py files.
 "__init__.py" = ["F401", "W292"]
+
+# Do not require typehinting for unit-tests, allow unused arguments
+"tests/*.py" = ["ANN", "ARG"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
