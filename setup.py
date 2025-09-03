@@ -7,6 +7,11 @@ extensions = [
         "src.dway_heap.dway_heap",  # Package.module format
         ["src/dway_heap/dway_heap.pyx"],
         include_dirs=[np.get_include()],
+    ),
+    Extension(
+        "src.treap.randomized_treap",
+        ["src/treap/randomized_treap.pyx"],
+        include_dirs=[np.get_include()]
     )
 ]
 
