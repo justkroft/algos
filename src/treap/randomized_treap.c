@@ -1761,14 +1761,23 @@ typedef npy_double __pyx_t_5numpy_double_t;
 */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "src/treap/randomized_treap.pyx":15
+/* "src/treap/randomized_treap.pyx":18
  * DEF GROWTH_FACTOR = 2
  * 
  * ctypedef Py_ssize_t intp_t             # <<<<<<<<<<<<<<
- * 
+ * ctypedef double float64_t
  * 
 */
 typedef Py_ssize_t __pyx_t_3src_5treap_16randomized_treap_intp_t;
+
+/* "src/treap/randomized_treap.pyx":19
+ * 
+ * ctypedef Py_ssize_t intp_t
+ * ctypedef double float64_t             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+typedef double __pyx_t_3src_5treap_16randomized_treap_float64_t;
 /* #### Code section: complex_type_declarations ### */
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX && (1) && (!0 || __cplusplus)
@@ -1809,39 +1818,39 @@ static CYTHON_INLINE __pyx_t_long_double_complex __pyx_t_long_double_complex_fro
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap;
 struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
-struct __pyx_t_3src_5treap_16randomized_treap_ArrayNode;
-typedef struct __pyx_t_3src_5treap_16randomized_treap_ArrayNode __pyx_t_3src_5treap_16randomized_treap_ArrayNode;
+struct __pyx_t_3src_5treap_16randomized_treap_ArrayNode_t;
+typedef struct __pyx_t_3src_5treap_16randomized_treap_ArrayNode_t __pyx_t_3src_5treap_16randomized_treap_ArrayNode_t;
 
-/* "src/treap/randomized_treap.pyx":19
+/* "src/treap/randomized_treap.pyx":22
  * 
- * # Array-based node structure - fixed to avoid Python object pointers
- * ctypedef struct ArrayNode:             # <<<<<<<<<<<<<<
- *     intp_t left_child      # Index of left child (-1 if None)
- *     intp_t right_child     # Index of right child (-1 if None)
+ * 
+ * ctypedef struct ArrayNode_t:             # <<<<<<<<<<<<<<
+ *     intp_t left_child
+ *     intp_t right_child
 */
-struct __pyx_t_3src_5treap_16randomized_treap_ArrayNode {
+struct __pyx_t_3src_5treap_16randomized_treap_ArrayNode_t {
   __pyx_t_3src_5treap_16randomized_treap_intp_t left_child;
   __pyx_t_3src_5treap_16randomized_treap_intp_t right_child;
-  double priority;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t priority;
   __pyx_t_3src_5treap_16randomized_treap_intp_t size;
 };
 
-/* "src/treap/randomized_treap.pyx":26
+/* "src/treap/randomized_treap.pyx":29
  * 
  * 
- * cdef class ArrayRandomizedTreap:             # <<<<<<<<<<<<<<
+ * cdef class RandomizedTreap:             # <<<<<<<<<<<<<<
  *     """
- *     Specialized version for numeric keys using numpy arrays.
+ *     Cython implementation of a Randomized Treap (RT).
 */
-struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap {
+struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap {
   PyObject_HEAD
-  struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_vtab;
-  __pyx_t_3src_5treap_16randomized_treap_ArrayNode *nodes;
+  struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_vtab;
+  __pyx_t_3src_5treap_16randomized_treap_ArrayNode_t *nodes;
   __Pyx_memviewslice keys;
   __Pyx_memviewslice _keys_array;
   PyObject *values;
@@ -1929,26 +1938,36 @@ struct __pyx_memoryviewslice_obj {
 
 
 
-/* "src/treap/randomized_treap.pyx":26
+/* "src/treap/randomized_treap.pyx":29
  * 
  * 
- * cdef class ArrayRandomizedTreap:             # <<<<<<<<<<<<<<
+ * cdef class RandomizedTreap:             # <<<<<<<<<<<<<<
  *     """
- *     Specialized version for numeric keys using numpy arrays.
+ *     Cython implementation of a Randomized Treap (RT).
 */
 
-struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap {
-  void (*_resize_arrays)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *);
-  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_create_numeric_node)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, double, PyObject *);
-  void (*insert_numeric)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, double, PyObject *, int __pyx_skip_dispatch);
-  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_insert_numeric_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, double, PyObject *);
-  PyObject *(*search_numeric)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, double, int __pyx_skip_dispatch);
-  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_search_numeric_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, double);
-  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_rotate_right)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
-  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_rotate_left)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
-  void (*_update_size)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
+struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap {
+  int (*is_empty)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, int __pyx_skip_dispatch);
+  PyObject *(*top)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_float64_t (*peek)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*rank)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_rank_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t);
+  void (*remove)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_remove_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_remove_node)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_create_node)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, PyObject *);
+  PyObject *(*select)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_select_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_intp_t);
+  void (*insert)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, PyObject *, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_insert_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t, PyObject *);
+  PyObject *(*search)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, int __pyx_skip_dispatch);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_search_helper)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_rotate_right)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
+  __pyx_t_3src_5treap_16randomized_treap_intp_t (*_rotate_left)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
+  void (*_resize_arrays)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *);
+  void (*_update_size)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t);
 };
-static struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_vtabptr_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+static struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_vtabptr_3src_5treap_16randomized_treap_RandomizedTreap;
 
 
 /* "View.MemoryView":110
@@ -2653,20 +2672,6 @@ static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, P
 #define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
 #endif
 
-/* SliceObject.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
-        PyObject* obj, Py_ssize_t cstart, Py_ssize_t cstop,
-        PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
-        int has_cstart, int has_cstop, int wraparound);
-
-/* SliceObject.proto */
-#define __Pyx_PyObject_DelSlice(obj, cstart, cstop, py_start, py_stop, py_slice, has_cstart, has_cstop, wraparound)\
-    __Pyx_PyObject_SetSlice(obj, (PyObject*)NULL, cstart, cstop, py_start, py_stop, py_slice, has_cstart, has_cstop, wraparound)
-static CYTHON_INLINE int __Pyx_PyObject_SetSlice(
-        PyObject* obj, PyObject* value, Py_ssize_t cstart, Py_ssize_t cstop,
-        PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
-        int has_cstart, int has_cstop, int wraparound);
-
 /* BufferIndexError.proto */
 static void __Pyx_RaiseBufferIndexError(int axis);
 
@@ -2690,6 +2695,20 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #else
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
+
+/* SliceObject.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
+        PyObject* obj, Py_ssize_t cstart, Py_ssize_t cstop,
+        PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
+        int has_cstart, int has_cstop, int wraparound);
+
+/* SliceObject.proto */
+#define __Pyx_PyObject_DelSlice(obj, cstart, cstop, py_start, py_stop, py_slice, has_cstart, has_cstop, wraparound)\
+    __Pyx_PyObject_SetSlice(obj, (PyObject*)NULL, cstart, cstop, py_start, py_stop, py_slice, has_cstart, has_cstop, wraparound)
+static CYTHON_INLINE int __Pyx_PyObject_SetSlice(
+        PyObject* obj, PyObject* value, Py_ssize_t cstart, Py_ssize_t cstop,
+        PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
+        int has_cstart, int has_cstop, int wraparound);
 
 /* CallTypeTraverse.proto */
 #if !CYTHON_USE_TYPE_SPECS || (!CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x03090000)
@@ -2958,11 +2977,11 @@ static int __Pyx_ValidateAndInit_memviewslice(
                 PyObject *original_obj);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_double(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(PyObject *, int writable_flag);
 
 /* MemviewDtypeToObject.proto */
-static CYTHON_INLINE PyObject *__pyx_memview_get_double(const char *itemp);
-static CYTHON_INLINE int __pyx_memview_set_double(const char *itemp, PyObject *obj);
+static CYTHON_INLINE PyObject *__pyx_memview_get_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(const char *itemp);
+static CYTHON_INLINE int __pyx_memview_set_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(const char *itemp, PyObject *obj);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -3249,15 +3268,25 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayObject *__pyx_v_self); /* proto*/
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *__pyx_v_self); /* proto*/
 static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__pyx_v_self); /* proto*/
-static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resize_arrays(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self); /* proto*/
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__create_numeric_node(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, PyObject *__pyx_v_value); /* proto*/
-static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_insert_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, PyObject *__pyx_v_value, int __pyx_skip_dispatch); /* proto*/
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__insert_numeric_helper(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, double __pyx_v_key, PyObject *__pyx_v_value); /* proto*/
-static PyObject *__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_search_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__search_numeric_helper(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, double __pyx_v_key); /* proto*/
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__rotate_right(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__rotate_left(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
-static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__update_size(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
+static int __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_is_empty(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_top(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_peek(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_rank(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rank_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key); /* proto*/
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_remove(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__remove_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__remove_node(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__create_node(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value); /* proto*/
+static PyObject *__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_select(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_rank, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__select_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_target_rank); /* proto*/
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_insert(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__insert_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value); /* proto*/
+static PyObject *__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_search(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__search_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rotate_right(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rotate_left(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__resize_arrays(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto*/
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__update_size(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx); /* proto*/
 
 /* Module declarations from "cython.view" */
 
@@ -3331,7 +3360,7 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 /* #### Code section: typeinfo ### */
-static const __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
+static const __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_3src_5treap_16randomized_treap_float64_t = { "float64_t", NULL, sizeof(__pyx_t_3src_5treap_16randomized_treap_float64_t), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "src.treap.randomized_treap"
 extern int __pyx_module_is_main_src__treap__randomized_treap;
@@ -3340,6 +3369,9 @@ int __pyx_module_is_main_src__treap__randomized_treap = 0;
 /* Implementation of "src.treap.randomized_treap" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_MemoryError;
+static PyObject *__pyx_builtin_RuntimeError;
+static PyObject *__pyx_builtin_KeyError;
+static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin___import__;
@@ -3348,7 +3380,6 @@ static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_AssertionError;
 static PyObject *__pyx_builtin_Ellipsis;
 static PyObject *__pyx_builtin_id;
-static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_ImportError;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_[] = ": ";
@@ -3364,6 +3395,8 @@ static const char __pyx_k__6[] = "?";
 static const char __pyx_k_gc[] = "gc";
 static const char __pyx_k_id[] = "id";
 static const char __pyx_k_np[] = "np";
+static const char __pyx_k_A_t[] = "\200A\330\010\017\210t\220=\240\001\240\024\240[\260\001";
+static const char __pyx_k_Key[] = "Key: ";
 static const char __pyx_k_abc[] = "abc";
 static const char __pyx_k_and[] = " and ";
 static const char __pyx_k_got[] = " (got ";
@@ -3371,6 +3404,8 @@ static const char __pyx_k_key[] = "key";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_pop[] = "pop";
+static const char __pyx_k_top[] = "top";
+static const char __pyx_k_Rank[] = "Rank ";
 static const char __pyx_k_base[] = "base";
 static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_func[] = "__func__";
@@ -3379,6 +3414,8 @@ static const char __pyx_k_mode[] = "mode";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_ndim[] = "ndim";
 static const char __pyx_k_pack[] = "pack";
+static const char __pyx_k_peek[] = "peek";
+static const char __pyx_k_rank[] = "rank";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_spec[] = "__spec__";
@@ -3399,15 +3436,20 @@ static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
 static const char __pyx_k_value[] = "value";
+static const char __pyx_k_A_t7_Q[] = "\200A\330\010\017\210t\2207\230#\230Q";
 static const char __pyx_k_enable[] = "enable";
 static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_insert[] = "insert";
 static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_name_2[] = "__name__";
 static const char __pyx_k_object[] = " object>";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reduce[] = "__reduce__";
+static const char __pyx_k_remove[] = "remove";
+static const char __pyx_k_search[] = "search";
+static const char __pyx_k_select[] = "select";
 static const char __pyx_k_struct[] = "struct";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
@@ -3417,9 +3459,11 @@ static const char __pyx_k_float64[] = "float64";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
+static const char __pyx_k_KeyError[] = "KeyError";
 static const char __pyx_k_Sequence[] = "Sequence";
 static const char __pyx_k_add_note[] = "add_note";
 static const char __pyx_k_getstate[] = "__getstate__";
+static const char __pyx_k_is_empty[] = "is_empty";
 static const char __pyx_k_itemsize[] = "itemsize";
 static const char __pyx_k_pyx_type[] = "__pyx_type";
 static const char __pyx_k_qualname[] = "__qualname__";
@@ -3429,6 +3473,7 @@ static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_isenabled[] = "isenabled";
+static const char __pyx_k_not_found[] = " not found";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_IndexError[] = "IndexError";
@@ -3437,7 +3482,8 @@ static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_PickleError[] = "PickleError";
-static const char __pyx_k_A_L_31D_5_Ja[] = "\200A\340\010\014\210L\230\004\320\0343\2601\260D\270\013\3005\310\001\330\010\014\210J\220a";
+static const char __pyx_k_A_L_O1D_5_Ja[] = "\200A\340\010\014\210L\230\004\230O\2501\250D\260\013\2705\300\001\330\010\014\210J\220a";
+static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
@@ -3446,51 +3492,61 @@ static const char __pyx_k_MemoryView_of[] = "<MemoryView of ";
 static const char __pyx_k_class_getitem[] = "__class_getitem__";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_AssertionError[] = "AssertionError";
-static const char __pyx_k_insert_numeric[] = "insert_numeric";
-static const char __pyx_k_search_numeric[] = "search_numeric";
+static const char __pyx_k_RandomizedTreap[] = "RandomizedTreap";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_collections_abc[] = "collections.abc";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_A_t_4_9Cq_1_t7_1[] = "\200A\340\010\037\230t\320#:\270!\2704\270{\310!\330\010\013\2109\220C\220q\330\014\023\2201\330\010\017\210t\2207\230!\2301";
+static const char __pyx_k_A_t_4_9Cq_1_t7_1[] = "\200A\340\010\037\230t\240?\260!\2604\260{\300!\330\010\013\2109\220C\220q\330\014\023\2201\330\010\017\210t\2207\230!\2301";
 static const char __pyx_k_initial_capacity[] = "initial_capacity";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
+static const char __pyx_k_The_treap_is_empty[] = "The treap is empty!";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
-static const char __pyx_k_ArrayRandomizedTreap[] = "ArrayRandomizedTreap";
+static const char __pyx_k_A_4y_aq_U_G1A_G1A_q[] = "\200A\340\010\013\2104\210y\230\001\330\014\022\220,\230a\230q\360\006\000\t\"\240\024\240U\250!\330\010 \240\004\240G\2501\250A\330\010\014\210G\2201\220A\340\010\017\210q";
+static const char __pyx_k_RandomizedTreap_top[] = "RandomizedTreap.top";
+static const char __pyx_k_A_t1_L_O1D_1_4wc_2Ya[] = "\200A\330\010\037\230t\2401\330\010\014\210L\230\004\230O\2501\250D\260\013\2701\330\010\013\2104\210w\220c\230\021\330\014\022\220(\230!\2302\230Y\240a";
+static const char __pyx_k_RandomizedTreap_peek[] = "RandomizedTreap.peek";
+static const char __pyx_k_RandomizedTreap_rank[] = "RandomizedTreap.rank";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_Invalid_shape_in_axis[] = "Invalid shape in axis ";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
+static const char __pyx_k_A_4y_aq_t1_d_c_t6_1_t5[] = "\200A\330\010\013\2104\210y\230\001\330\014\022\220,\230a\230q\330\010\037\230t\2401\360\006\000\t\017\210d\220&\230\001\230\031\240,\250c\260\021\330\014\027\220t\2306\240\021\240)\2501\340\010\017\210t\2205\230\001\230\021";
 static const char __pyx_k_Cannot_index_with_type[] = "Cannot index with type '";
+static const char __pyx_k_RandomizedTreap_insert[] = "RandomizedTreap.insert";
+static const char __pyx_k_RandomizedTreap_remove[] = "RandomizedTreap.remove";
+static const char __pyx_k_RandomizedTreap_search[] = "RandomizedTreap.search";
+static const char __pyx_k_RandomizedTreap_select[] = "RandomizedTreap.select";
+static const char __pyx_k_Failed_to_resize_arrays[] = "Failed to resize arrays";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
+static const char __pyx_k_RandomizedTreap_is_empty[] = "RandomizedTreap.is_empty";
 static const char __pyx_k_Dimension_d_is_not_direct[] = "Dimension %d is not direct";
+static const char __pyx_k_Failed_to_allocate_arrays[] = "Failed to allocate arrays";
 static const char __pyx_k_Index_out_of_bounds_axis_d[] = "Index out of bounds (axis %d)";
 static const char __pyx_k_src_treap_randomized_treap[] = "src.treap.randomized_treap";
+static const char __pyx_k_A_5_CuCt1_ARy_OtST_t_4_t7_1[] = "\200A\340\010\013\2105\220\002\220\"\220C\220u\230C\230t\2401\330\014\022\220*\230A\230R\230y\320(O\310t\320ST\340\010\037\230t\240?\260!\2604\260{\300!\330\010\017\210t\2207\230!\2301";
 static const char __pyx_k_Step_may_not_be_zero_axis_d[] = "Step may not be zero (axis %d)";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
 static const char __pyx_k_src_treap_randomized_treap_pyx[] = "src/treap/randomized_treap.pyx";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
-static const char __pyx_k_ArrayRandomizedTreap___setstate[] = "ArrayRandomizedTreap.__setstate_cython__";
+static const char __pyx_k_RandomizedTreap___reduce_cython[] = "RandomizedTreap.__reduce_cython__";
+static const char __pyx_k_out_of_bounds_for_treap_of_size[] = " out of bounds for treap of size ";
 static const char __pyx_k_All_dimensions_preceding_dimensi[] = "All dimensions preceding dimension %d must be indexed and not sliced";
-static const char __pyx_k_ArrayRandomizedTreap___reduce_cy[] = "ArrayRandomizedTreap.__reduce_cython__";
-static const char __pyx_k_ArrayRandomizedTreap_insert_nume[] = "ArrayRandomizedTreap.insert_numeric";
-static const char __pyx_k_ArrayRandomizedTreap_search_nume[] = "ArrayRandomizedTreap.search_numeric";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
 static const char __pyx_k_Cannot_assign_to_read_only_memor[] = "Cannot assign to read-only memoryview";
 static const char __pyx_k_Cannot_create_writable_memory_vi[] = "Cannot create writable memory view from read-only memoryview";
 static const char __pyx_k_Cannot_transpose_memoryview_with[] = "Cannot transpose memoryview with indirect dimensions";
 static const char __pyx_k_Empty_shape_tuple_for_cython_arr[] = "Empty shape tuple for cython.array";
-static const char __pyx_k_Failed_to_allocate_numeric_treap[] = "Failed to allocate numeric treap arrays";
-static const char __pyx_k_Failed_to_resize_numeric_treap_a[] = "Failed to resize numeric treap arrays";
 static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0x82a3537, 0x6ae9995, 0xb068931) = (name))";
 static const char __pyx_k_Indirect_dimensions_not_supporte[] = "Indirect dimensions not supported";
 static const char __pyx_k_Invalid_mode_expected_c_or_fortr[] = "Invalid mode, expected 'c' or 'fortran', got ";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
 static const char __pyx_k_Out_of_bounds_on_buffer_access_a[] = "Out of bounds on buffer access (axis ";
+static const char __pyx_k_RandomizedTreap___setstate_cytho[] = "RandomizedTreap.__setstate_cython__";
 static const char __pyx_k_Unable_to_convert_item_to_object[] = "Unable to convert item to object";
 static const char __pyx_k_got_differing_extents_in_dimensi[] = "got differing extents in dimension ";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
@@ -3539,14 +3595,20 @@ static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewsl
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cinit__(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_initial_capacity); /* proto */
-static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_2__len__(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self); /* proto */
-static void __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_4__dealloc__(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_6insert_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_8search_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key); /* proto */
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_3src_5treap_16randomized_treap_ArrayRandomizedTreap(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap___cinit__(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_initial_capacity); /* proto */
+static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto */
+static void __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_4__dealloc__(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_6is_empty(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_8top(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_10peek(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_12rank(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_14remove(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_16select(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_rank); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_18insert(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_20search(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_22__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_24__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_3src_5treap_16randomized_treap_RandomizedTreap(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3605,12 +3667,12 @@ typedef struct {
   PyTypeObject *__pyx_ptype_5numpy_flexible;
   PyTypeObject *__pyx_ptype_5numpy_character;
   PyTypeObject *__pyx_ptype_5numpy_ufunc;
-  PyObject *__pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+  PyObject *__pyx_type_3src_5treap_16randomized_treap_RandomizedTreap;
   PyObject *__pyx_type___pyx_array;
   PyObject *__pyx_type___pyx_MemviewEnum;
   PyObject *__pyx_type___pyx_memoryview;
   PyObject *__pyx_type___pyx_memoryviewslice;
-  PyTypeObject *__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+  PyTypeObject *__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap;
   PyTypeObject *__pyx_array_type;
   PyTypeObject *__pyx_MemviewEnum_type;
   PyTypeObject *__pyx_memoryview_type;
@@ -3618,8 +3680,8 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[2];
-  PyObject *__pyx_codeobj_tab[4];
-  PyObject *__pyx_string_tab[143];
+  PyObject *__pyx_codeobj_tab[10];
+  PyObject *__pyx_string_tab[162];
   PyObject *__pyx_int_0;
   PyObject *__pyx_int_1;
   PyObject *__pyx_int_112105877;
@@ -3666,146 +3728,165 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_ __pyx_string_tab[0]
 #define __pyx_n_u_ASCII __pyx_string_tab[1]
 #define __pyx_kp_u_All_dimensions_preceding_dimensi __pyx_string_tab[2]
-#define __pyx_n_u_ArrayRandomizedTreap __pyx_string_tab[3]
-#define __pyx_n_u_ArrayRandomizedTreap___reduce_cy __pyx_string_tab[4]
-#define __pyx_n_u_ArrayRandomizedTreap___setstate __pyx_string_tab[5]
-#define __pyx_n_u_ArrayRandomizedTreap_insert_nume __pyx_string_tab[6]
-#define __pyx_n_u_ArrayRandomizedTreap_search_nume __pyx_string_tab[7]
-#define __pyx_n_u_AssertionError __pyx_string_tab[8]
-#define __pyx_kp_u_Buffer_view_does_not_expose_stri __pyx_string_tab[9]
-#define __pyx_kp_u_Can_only_create_a_buffer_that_is __pyx_string_tab[10]
-#define __pyx_kp_u_Cannot_assign_to_read_only_memor __pyx_string_tab[11]
-#define __pyx_kp_u_Cannot_create_writable_memory_vi __pyx_string_tab[12]
-#define __pyx_kp_u_Cannot_index_with_type __pyx_string_tab[13]
-#define __pyx_kp_u_Cannot_transpose_memoryview_with __pyx_string_tab[14]
-#define __pyx_kp_u_Dimension_d_is_not_direct __pyx_string_tab[15]
-#define __pyx_n_u_Ellipsis __pyx_string_tab[16]
-#define __pyx_kp_u_Empty_shape_tuple_for_cython_arr __pyx_string_tab[17]
-#define __pyx_kp_u_Failed_to_allocate_numeric_treap __pyx_string_tab[18]
-#define __pyx_kp_u_Failed_to_resize_numeric_treap_a __pyx_string_tab[19]
-#define __pyx_n_u_ImportError __pyx_string_tab[20]
-#define __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 __pyx_string_tab[21]
-#define __pyx_n_u_IndexError __pyx_string_tab[22]
-#define __pyx_kp_u_Index_out_of_bounds_axis_d __pyx_string_tab[23]
-#define __pyx_kp_u_Indirect_dimensions_not_supporte __pyx_string_tab[24]
-#define __pyx_kp_u_Invalid_mode_expected_c_or_fortr __pyx_string_tab[25]
-#define __pyx_kp_u_Invalid_shape_in_axis __pyx_string_tab[26]
-#define __pyx_n_u_MemoryError __pyx_string_tab[27]
-#define __pyx_kp_u_MemoryView_of __pyx_string_tab[28]
-#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[29]
-#define __pyx_n_b_O __pyx_string_tab[30]
-#define __pyx_kp_u_Out_of_bounds_on_buffer_access_a __pyx_string_tab[31]
-#define __pyx_n_u_PickleError __pyx_string_tab[32]
-#define __pyx_n_u_Sequence __pyx_string_tab[33]
-#define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[34]
-#define __pyx_n_u_TypeError __pyx_string_tab[35]
-#define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[36]
-#define __pyx_n_u_ValueError __pyx_string_tab[37]
-#define __pyx_n_u_View_MemoryView __pyx_string_tab[38]
-#define __pyx_kp_u__2 __pyx_string_tab[39]
-#define __pyx_kp_u__3 __pyx_string_tab[40]
-#define __pyx_kp_u__4 __pyx_string_tab[41]
-#define __pyx_kp_u__5 __pyx_string_tab[42]
-#define __pyx_kp_u__6 __pyx_string_tab[43]
-#define __pyx_n_u_abc __pyx_string_tab[44]
-#define __pyx_kp_u_add_note __pyx_string_tab[45]
-#define __pyx_n_u_allocate_buffer __pyx_string_tab[46]
-#define __pyx_kp_u_and __pyx_string_tab[47]
-#define __pyx_n_u_asarray __pyx_string_tab[48]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[49]
-#define __pyx_kp_u_at_0x __pyx_string_tab[50]
-#define __pyx_n_u_base __pyx_string_tab[51]
-#define __pyx_n_u_c __pyx_string_tab[52]
-#define __pyx_n_u_class __pyx_string_tab[53]
-#define __pyx_n_u_class_getitem __pyx_string_tab[54]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[55]
-#define __pyx_kp_u_collections_abc __pyx_string_tab[56]
-#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[57]
-#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[58]
-#define __pyx_n_u_count __pyx_string_tab[59]
-#define __pyx_n_u_dict __pyx_string_tab[60]
-#define __pyx_kp_u_disable __pyx_string_tab[61]
-#define __pyx_n_u_dtype __pyx_string_tab[62]
-#define __pyx_n_u_dtype_is_object __pyx_string_tab[63]
-#define __pyx_n_u_empty __pyx_string_tab[64]
-#define __pyx_kp_u_enable __pyx_string_tab[65]
-#define __pyx_n_u_encode __pyx_string_tab[66]
-#define __pyx_n_u_enumerate __pyx_string_tab[67]
-#define __pyx_n_u_error __pyx_string_tab[68]
-#define __pyx_n_u_flags __pyx_string_tab[69]
-#define __pyx_n_u_float64 __pyx_string_tab[70]
-#define __pyx_n_u_format __pyx_string_tab[71]
-#define __pyx_n_u_fortran __pyx_string_tab[72]
-#define __pyx_n_u_func __pyx_string_tab[73]
-#define __pyx_kp_u_gc __pyx_string_tab[74]
-#define __pyx_n_u_getstate __pyx_string_tab[75]
-#define __pyx_kp_u_got __pyx_string_tab[76]
-#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[77]
-#define __pyx_n_u_id __pyx_string_tab[78]
-#define __pyx_n_u_import __pyx_string_tab[79]
-#define __pyx_n_u_index __pyx_string_tab[80]
-#define __pyx_n_u_initial_capacity __pyx_string_tab[81]
-#define __pyx_n_u_initializing __pyx_string_tab[82]
-#define __pyx_n_u_insert_numeric __pyx_string_tab[83]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[84]
-#define __pyx_kp_u_isenabled __pyx_string_tab[85]
-#define __pyx_n_u_itemsize __pyx_string_tab[86]
-#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[87]
-#define __pyx_n_u_key __pyx_string_tab[88]
-#define __pyx_n_u_main __pyx_string_tab[89]
-#define __pyx_n_u_memview __pyx_string_tab[90]
-#define __pyx_n_u_mode __pyx_string_tab[91]
-#define __pyx_n_u_module __pyx_string_tab[92]
-#define __pyx_n_u_name __pyx_string_tab[93]
-#define __pyx_n_u_name_2 __pyx_string_tab[94]
-#define __pyx_n_u_ndim __pyx_string_tab[95]
-#define __pyx_n_u_new __pyx_string_tab[96]
-#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[97]
-#define __pyx_n_u_np __pyx_string_tab[98]
-#define __pyx_n_u_numpy __pyx_string_tab[99]
-#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[100]
-#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[101]
-#define __pyx_n_u_obj __pyx_string_tab[102]
-#define __pyx_kp_u_object __pyx_string_tab[103]
-#define __pyx_n_u_pack __pyx_string_tab[104]
-#define __pyx_n_u_pickle __pyx_string_tab[105]
-#define __pyx_n_u_pop __pyx_string_tab[106]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[107]
-#define __pyx_n_u_pyx_state __pyx_string_tab[108]
-#define __pyx_n_u_pyx_type __pyx_string_tab[109]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[110]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[111]
-#define __pyx_n_u_qualname __pyx_string_tab[112]
-#define __pyx_n_u_range __pyx_string_tab[113]
-#define __pyx_n_u_reduce __pyx_string_tab[114]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[115]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[116]
-#define __pyx_n_u_register __pyx_string_tab[117]
-#define __pyx_n_u_search_numeric __pyx_string_tab[118]
-#define __pyx_n_u_self __pyx_string_tab[119]
-#define __pyx_n_u_set_name __pyx_string_tab[120]
-#define __pyx_n_u_setstate __pyx_string_tab[121]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[122]
-#define __pyx_n_u_shape __pyx_string_tab[123]
-#define __pyx_n_u_size __pyx_string_tab[124]
-#define __pyx_n_u_spec __pyx_string_tab[125]
-#define __pyx_n_u_src_treap_randomized_treap __pyx_string_tab[126]
-#define __pyx_kp_u_src_treap_randomized_treap_pyx __pyx_string_tab[127]
-#define __pyx_n_u_start __pyx_string_tab[128]
-#define __pyx_n_u_step __pyx_string_tab[129]
-#define __pyx_n_u_stop __pyx_string_tab[130]
-#define __pyx_kp_u_strided_and_direct __pyx_string_tab[131]
-#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[132]
-#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[133]
-#define __pyx_kp_u_stringsource __pyx_string_tab[134]
-#define __pyx_n_u_struct __pyx_string_tab[135]
-#define __pyx_n_u_test __pyx_string_tab[136]
-#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[137]
-#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[138]
-#define __pyx_n_u_unpack __pyx_string_tab[139]
-#define __pyx_n_u_update __pyx_string_tab[140]
-#define __pyx_n_u_value __pyx_string_tab[141]
-#define __pyx_n_u_x __pyx_string_tab[142]
+#define __pyx_n_u_AssertionError __pyx_string_tab[3]
+#define __pyx_kp_u_Buffer_view_does_not_expose_stri __pyx_string_tab[4]
+#define __pyx_kp_u_Can_only_create_a_buffer_that_is __pyx_string_tab[5]
+#define __pyx_kp_u_Cannot_assign_to_read_only_memor __pyx_string_tab[6]
+#define __pyx_kp_u_Cannot_create_writable_memory_vi __pyx_string_tab[7]
+#define __pyx_kp_u_Cannot_index_with_type __pyx_string_tab[8]
+#define __pyx_kp_u_Cannot_transpose_memoryview_with __pyx_string_tab[9]
+#define __pyx_kp_u_Dimension_d_is_not_direct __pyx_string_tab[10]
+#define __pyx_n_u_Ellipsis __pyx_string_tab[11]
+#define __pyx_kp_u_Empty_shape_tuple_for_cython_arr __pyx_string_tab[12]
+#define __pyx_kp_u_Failed_to_allocate_arrays __pyx_string_tab[13]
+#define __pyx_kp_u_Failed_to_resize_arrays __pyx_string_tab[14]
+#define __pyx_n_u_ImportError __pyx_string_tab[15]
+#define __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 __pyx_string_tab[16]
+#define __pyx_n_u_IndexError __pyx_string_tab[17]
+#define __pyx_kp_u_Index_out_of_bounds_axis_d __pyx_string_tab[18]
+#define __pyx_kp_u_Indirect_dimensions_not_supporte __pyx_string_tab[19]
+#define __pyx_kp_u_Invalid_mode_expected_c_or_fortr __pyx_string_tab[20]
+#define __pyx_kp_u_Invalid_shape_in_axis __pyx_string_tab[21]
+#define __pyx_kp_u_Key __pyx_string_tab[22]
+#define __pyx_n_u_KeyError __pyx_string_tab[23]
+#define __pyx_n_u_MemoryError __pyx_string_tab[24]
+#define __pyx_kp_u_MemoryView_of __pyx_string_tab[25]
+#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[26]
+#define __pyx_n_b_O __pyx_string_tab[27]
+#define __pyx_kp_u_Out_of_bounds_on_buffer_access_a __pyx_string_tab[28]
+#define __pyx_n_u_PickleError __pyx_string_tab[29]
+#define __pyx_n_u_RandomizedTreap __pyx_string_tab[30]
+#define __pyx_n_u_RandomizedTreap___reduce_cython __pyx_string_tab[31]
+#define __pyx_n_u_RandomizedTreap___setstate_cytho __pyx_string_tab[32]
+#define __pyx_n_u_RandomizedTreap_insert __pyx_string_tab[33]
+#define __pyx_n_u_RandomizedTreap_is_empty __pyx_string_tab[34]
+#define __pyx_n_u_RandomizedTreap_peek __pyx_string_tab[35]
+#define __pyx_n_u_RandomizedTreap_rank __pyx_string_tab[36]
+#define __pyx_n_u_RandomizedTreap_remove __pyx_string_tab[37]
+#define __pyx_n_u_RandomizedTreap_search __pyx_string_tab[38]
+#define __pyx_n_u_RandomizedTreap_select __pyx_string_tab[39]
+#define __pyx_n_u_RandomizedTreap_top __pyx_string_tab[40]
+#define __pyx_kp_u_Rank __pyx_string_tab[41]
+#define __pyx_n_u_RuntimeError __pyx_string_tab[42]
+#define __pyx_n_u_Sequence __pyx_string_tab[43]
+#define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[44]
+#define __pyx_kp_u_The_treap_is_empty __pyx_string_tab[45]
+#define __pyx_n_u_TypeError __pyx_string_tab[46]
+#define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[47]
+#define __pyx_n_u_ValueError __pyx_string_tab[48]
+#define __pyx_n_u_View_MemoryView __pyx_string_tab[49]
+#define __pyx_kp_u__2 __pyx_string_tab[50]
+#define __pyx_kp_u__3 __pyx_string_tab[51]
+#define __pyx_kp_u__4 __pyx_string_tab[52]
+#define __pyx_kp_u__5 __pyx_string_tab[53]
+#define __pyx_kp_u__6 __pyx_string_tab[54]
+#define __pyx_n_u_abc __pyx_string_tab[55]
+#define __pyx_kp_u_add_note __pyx_string_tab[56]
+#define __pyx_n_u_allocate_buffer __pyx_string_tab[57]
+#define __pyx_kp_u_and __pyx_string_tab[58]
+#define __pyx_n_u_asarray __pyx_string_tab[59]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[60]
+#define __pyx_kp_u_at_0x __pyx_string_tab[61]
+#define __pyx_n_u_base __pyx_string_tab[62]
+#define __pyx_n_u_c __pyx_string_tab[63]
+#define __pyx_n_u_class __pyx_string_tab[64]
+#define __pyx_n_u_class_getitem __pyx_string_tab[65]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[66]
+#define __pyx_kp_u_collections_abc __pyx_string_tab[67]
+#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[68]
+#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[69]
+#define __pyx_n_u_count __pyx_string_tab[70]
+#define __pyx_n_u_dict __pyx_string_tab[71]
+#define __pyx_kp_u_disable __pyx_string_tab[72]
+#define __pyx_n_u_dtype __pyx_string_tab[73]
+#define __pyx_n_u_dtype_is_object __pyx_string_tab[74]
+#define __pyx_n_u_empty __pyx_string_tab[75]
+#define __pyx_kp_u_enable __pyx_string_tab[76]
+#define __pyx_n_u_encode __pyx_string_tab[77]
+#define __pyx_n_u_enumerate __pyx_string_tab[78]
+#define __pyx_n_u_error __pyx_string_tab[79]
+#define __pyx_n_u_flags __pyx_string_tab[80]
+#define __pyx_n_u_float64 __pyx_string_tab[81]
+#define __pyx_n_u_format __pyx_string_tab[82]
+#define __pyx_n_u_fortran __pyx_string_tab[83]
+#define __pyx_n_u_func __pyx_string_tab[84]
+#define __pyx_kp_u_gc __pyx_string_tab[85]
+#define __pyx_n_u_getstate __pyx_string_tab[86]
+#define __pyx_kp_u_got __pyx_string_tab[87]
+#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[88]
+#define __pyx_n_u_id __pyx_string_tab[89]
+#define __pyx_n_u_import __pyx_string_tab[90]
+#define __pyx_n_u_index __pyx_string_tab[91]
+#define __pyx_n_u_initial_capacity __pyx_string_tab[92]
+#define __pyx_n_u_initializing __pyx_string_tab[93]
+#define __pyx_n_u_insert __pyx_string_tab[94]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[95]
+#define __pyx_n_u_is_empty __pyx_string_tab[96]
+#define __pyx_kp_u_isenabled __pyx_string_tab[97]
+#define __pyx_n_u_itemsize __pyx_string_tab[98]
+#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[99]
+#define __pyx_n_u_key __pyx_string_tab[100]
+#define __pyx_n_u_main __pyx_string_tab[101]
+#define __pyx_n_u_memview __pyx_string_tab[102]
+#define __pyx_n_u_mode __pyx_string_tab[103]
+#define __pyx_n_u_module __pyx_string_tab[104]
+#define __pyx_n_u_name __pyx_string_tab[105]
+#define __pyx_n_u_name_2 __pyx_string_tab[106]
+#define __pyx_n_u_ndim __pyx_string_tab[107]
+#define __pyx_n_u_new __pyx_string_tab[108]
+#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[109]
+#define __pyx_kp_u_not_found __pyx_string_tab[110]
+#define __pyx_n_u_np __pyx_string_tab[111]
+#define __pyx_n_u_numpy __pyx_string_tab[112]
+#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[113]
+#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[114]
+#define __pyx_n_u_obj __pyx_string_tab[115]
+#define __pyx_kp_u_object __pyx_string_tab[116]
+#define __pyx_kp_u_out_of_bounds_for_treap_of_size __pyx_string_tab[117]
+#define __pyx_n_u_pack __pyx_string_tab[118]
+#define __pyx_n_u_peek __pyx_string_tab[119]
+#define __pyx_n_u_pickle __pyx_string_tab[120]
+#define __pyx_n_u_pop __pyx_string_tab[121]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[122]
+#define __pyx_n_u_pyx_state __pyx_string_tab[123]
+#define __pyx_n_u_pyx_type __pyx_string_tab[124]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[125]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[126]
+#define __pyx_n_u_qualname __pyx_string_tab[127]
+#define __pyx_n_u_range __pyx_string_tab[128]
+#define __pyx_n_u_rank __pyx_string_tab[129]
+#define __pyx_n_u_reduce __pyx_string_tab[130]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[131]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[132]
+#define __pyx_n_u_register __pyx_string_tab[133]
+#define __pyx_n_u_remove __pyx_string_tab[134]
+#define __pyx_n_u_search __pyx_string_tab[135]
+#define __pyx_n_u_select __pyx_string_tab[136]
+#define __pyx_n_u_self __pyx_string_tab[137]
+#define __pyx_n_u_set_name __pyx_string_tab[138]
+#define __pyx_n_u_setstate __pyx_string_tab[139]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[140]
+#define __pyx_n_u_shape __pyx_string_tab[141]
+#define __pyx_n_u_size __pyx_string_tab[142]
+#define __pyx_n_u_spec __pyx_string_tab[143]
+#define __pyx_n_u_src_treap_randomized_treap __pyx_string_tab[144]
+#define __pyx_kp_u_src_treap_randomized_treap_pyx __pyx_string_tab[145]
+#define __pyx_n_u_start __pyx_string_tab[146]
+#define __pyx_n_u_step __pyx_string_tab[147]
+#define __pyx_n_u_stop __pyx_string_tab[148]
+#define __pyx_kp_u_strided_and_direct __pyx_string_tab[149]
+#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[150]
+#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[151]
+#define __pyx_kp_u_stringsource __pyx_string_tab[152]
+#define __pyx_n_u_struct __pyx_string_tab[153]
+#define __pyx_n_u_test __pyx_string_tab[154]
+#define __pyx_n_u_top __pyx_string_tab[155]
+#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[156]
+#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[157]
+#define __pyx_n_u_unpack __pyx_string_tab[158]
+#define __pyx_n_u_update __pyx_string_tab[159]
+#define __pyx_n_u_value __pyx_string_tab[160]
+#define __pyx_n_u_x __pyx_string_tab[161]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -3842,8 +3923,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_ptype_5numpy_flexible);
   Py_CLEAR(clear_module_state->__pyx_ptype_5numpy_character);
   Py_CLEAR(clear_module_state->__pyx_ptype_5numpy_ufunc);
-  Py_CLEAR(clear_module_state->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap);
-  Py_CLEAR(clear_module_state->__pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap);
+  Py_CLEAR(clear_module_state->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap);
+  Py_CLEAR(clear_module_state->__pyx_type_3src_5treap_16randomized_treap_RandomizedTreap);
   Py_CLEAR(clear_module_state->__pyx_array_type);
   Py_CLEAR(clear_module_state->__pyx_type___pyx_array);
   Py_CLEAR(clear_module_state->__pyx_MemviewEnum_type);
@@ -3854,8 +3935,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<4; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<143; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<10; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<162; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_int_0);
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_int_112105877);
@@ -3898,8 +3979,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_ptype_5numpy_flexible);
   Py_VISIT(traverse_module_state->__pyx_ptype_5numpy_character);
   Py_VISIT(traverse_module_state->__pyx_ptype_5numpy_ufunc);
-  Py_VISIT(traverse_module_state->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap);
-  Py_VISIT(traverse_module_state->__pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap);
+  Py_VISIT(traverse_module_state->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap);
+  Py_VISIT(traverse_module_state->__pyx_type_3src_5treap_16randomized_treap_RandomizedTreap);
   Py_VISIT(traverse_module_state->__pyx_array_type);
   Py_VISIT(traverse_module_state->__pyx_type___pyx_array);
   Py_VISIT(traverse_module_state->__pyx_MemviewEnum_type);
@@ -3910,8 +3991,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<4; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<143; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<10; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<162; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_1);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_112105877);
@@ -19020,17 +19101,17 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-/* "src/treap/randomized_treap.pyx":41
+/* "src/treap/randomized_treap.pyx":64
  *     cdef intp_t _size
  * 
  *     def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):             # <<<<<<<<<<<<<<
  *         self.capacity = initial_capacity
- *         self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))
+ *         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
 */
 
 /* Python wrapper */
-static int __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_initial_capacity;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -19050,48 +19131,48 @@ static int __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_1__cin
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_initial_capacity,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 41, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 64, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 41, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 64, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__cinit__", 0) < 0) __PYX_ERR(0, 41, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__cinit__", 0) < 0) __PYX_ERR(0, 64, __pyx_L3_error)
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 41, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 64, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     if (values[0]) {
-      __pyx_v_initial_capacity = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_initial_capacity == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
+      __pyx_v_initial_capacity = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_initial_capacity == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 64, __pyx_L3_error)
     } else {
       __pyx_v_initial_capacity = ((__pyx_t_3src_5treap_16randomized_treap_intp_t)64);
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 41, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 64, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cinit__(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self), __pyx_v_initial_capacity);
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap___cinit__(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v_initial_capacity);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -19101,7 +19182,7 @@ static int __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_1__cin
   return __pyx_r;
 }
 
-static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cinit__(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_initial_capacity) {
+static int __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap___cinit__(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_initial_capacity) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -19118,84 +19199,84 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "src/treap/randomized_treap.pyx":42
+  /* "src/treap/randomized_treap.pyx":65
  * 
  *     def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
  *         self.capacity = initial_capacity             # <<<<<<<<<<<<<<
- *         self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))
+ *         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
  * 
 */
   __pyx_v_self->capacity = __pyx_v_initial_capacity;
 
-  /* "src/treap/randomized_treap.pyx":43
+  /* "src/treap/randomized_treap.pyx":66
  *     def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
  *         self.capacity = initial_capacity
- *         self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))             # <<<<<<<<<<<<<<
+ *         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))             # <<<<<<<<<<<<<<
  * 
  *         if not self.nodes:
 */
-  __pyx_v_self->nodes = ((__pyx_t_3src_5treap_16randomized_treap_ArrayNode *)malloc((__pyx_v_self->capacity * (sizeof(__pyx_t_3src_5treap_16randomized_treap_ArrayNode)))));
+  __pyx_v_self->nodes = ((__pyx_t_3src_5treap_16randomized_treap_ArrayNode_t *)malloc((__pyx_v_self->capacity * (sizeof(__pyx_t_3src_5treap_16randomized_treap_ArrayNode_t)))));
 
-  /* "src/treap/randomized_treap.pyx":45
- *         self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))
+  /* "src/treap/randomized_treap.pyx":68
+ *         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
  * 
  *         if not self.nodes:             # <<<<<<<<<<<<<<
- *             raise MemoryError("Failed to allocate numeric treap arrays")
+ *             raise MemoryError("Failed to allocate arrays")
  * 
 */
   __pyx_t_1 = (!(__pyx_v_self->nodes != 0));
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/treap/randomized_treap.pyx":46
+    /* "src/treap/randomized_treap.pyx":69
  * 
  *         if not self.nodes:
- *             raise MemoryError("Failed to allocate numeric treap arrays")             # <<<<<<<<<<<<<<
+ *             raise MemoryError("Failed to allocate arrays")             # <<<<<<<<<<<<<<
  * 
- *         # Use numpy array for numeric keys - much faster than Python list
+ *         # Use numpy array for keys
 */
     __pyx_t_3 = NULL;
     __Pyx_INCREF(__pyx_builtin_MemoryError);
     __pyx_t_4 = __pyx_builtin_MemoryError; 
     __pyx_t_5 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Failed_to_allocate_numeric_treap};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Failed_to_allocate_arrays};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 46, __pyx_L1_error)
+    __PYX_ERR(0, 69, __pyx_L1_error)
 
-    /* "src/treap/randomized_treap.pyx":45
- *         self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))
+    /* "src/treap/randomized_treap.pyx":68
+ *         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
  * 
  *         if not self.nodes:             # <<<<<<<<<<<<<<
- *             raise MemoryError("Failed to allocate numeric treap arrays")
+ *             raise MemoryError("Failed to allocate arrays")
  * 
 */
   }
 
-  /* "src/treap/randomized_treap.pyx":49
+  /* "src/treap/randomized_treap.pyx":72
  * 
- *         # Use numpy array for numeric keys - much faster than Python list
+ *         # Use numpy array for keys
  *         self._keys_array = np.empty(initial_capacity, dtype=np.float64)             # <<<<<<<<<<<<<<
  *         self.keys = self._keys_array
  *         self.values = []
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_initial_capacity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_initial_capacity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_5 = 1;
@@ -19212,33 +19293,33 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_4, __pyx_t_3};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
     __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_6, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_self->_keys_array, 0);
   __pyx_v_self->_keys_array = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/treap/randomized_treap.pyx":50
- *         # Use numpy array for numeric keys - much faster than Python list
+  /* "src/treap/randomized_treap.pyx":73
+ *         # Use numpy array for keys
  *         self._keys_array = np.empty(initial_capacity, dtype=np.float64)
  *         self.keys = self._keys_array             # <<<<<<<<<<<<<<
  *         self.values = []
  * 
 */
-  if (unlikely(!__pyx_v_self->_keys_array.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 50, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->_keys_array.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 73, __pyx_L1_error)}
   __pyx_t_9 = __pyx_v_self->_keys_array;
   __PYX_INC_MEMVIEW(&__pyx_t_9, 1);
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_self->keys, 0);
@@ -19246,14 +19327,14 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/treap/randomized_treap.pyx":51
+  /* "src/treap/randomized_treap.pyx":74
  *         self._keys_array = np.empty(initial_capacity, dtype=np.float64)
  *         self.keys = self._keys_array
  *         self.values = []             # <<<<<<<<<<<<<<
  * 
  *         self.node_count = 0
 */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->values);
@@ -19261,7 +19342,7 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
   __pyx_v_self->values = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/treap/randomized_treap.pyx":53
+  /* "src/treap/randomized_treap.pyx":76
  *         self.values = []
  * 
  *         self.node_count = 0             # <<<<<<<<<<<<<<
@@ -19270,7 +19351,7 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
 */
   __pyx_v_self->node_count = 0;
 
-  /* "src/treap/randomized_treap.pyx":54
+  /* "src/treap/randomized_treap.pyx":77
  * 
  *         self.node_count = 0
  *         self.root_idx = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -19279,7 +19360,7 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
 */
   __pyx_v_self->root_idx = -1L;
 
-  /* "src/treap/randomized_treap.pyx":55
+  /* "src/treap/randomized_treap.pyx":78
  *         self.node_count = 0
  *         self.root_idx = NONE_SENTINEL
  *         self._size = 0             # <<<<<<<<<<<<<<
@@ -19288,12 +19369,12 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
 */
   __pyx_v_self->_size = 0;
 
-  /* "src/treap/randomized_treap.pyx":41
+  /* "src/treap/randomized_treap.pyx":64
  *     cdef intp_t _size
  * 
  *     def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):             # <<<<<<<<<<<<<<
  *         self.capacity = initial_capacity
- *         self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))
+ *         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
 */
 
   /* function exit code */
@@ -19307,42 +19388,46 @@ static int __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap___cini
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_9, 1);
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "src/treap/randomized_treap.pyx":57
+/* "src/treap/randomized_treap.pyx":80
  *         self._size = 0
  * 
  *     def __len__(self) -> intp_t:             # <<<<<<<<<<<<<<
+ *         """Return the size of the randomized treap."""
  *         return self._size
- * 
 */
 
 /* Python wrapper */
-static Py_ssize_t __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_3__len__(PyObject *__pyx_v_self); /*proto*/
-static Py_ssize_t __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_3__len__(PyObject *__pyx_v_self) {
+static Py_ssize_t __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_3__len__(PyObject *__pyx_v_self); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__, "Return the size of the randomized treap.");
+#if CYTHON_UPDATE_DESCRIPTOR_DOC
+struct wrapperbase __pyx_wrapperbase_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__;
+#endif
+static Py_ssize_t __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_3__len__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_2__len__(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_2__len__(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self) {
+static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
   Py_ssize_t __pyx_r;
 
-  /* "src/treap/randomized_treap.pyx":58
- * 
+  /* "src/treap/randomized_treap.pyx":82
  *     def __len__(self) -> intp_t:
+ *         """Return the size of the randomized treap."""
  *         return self._size             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
@@ -19350,12 +19435,12 @@ static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap
   __pyx_r = __pyx_v_self->_size;
   goto __pyx_L0;
 
-  /* "src/treap/randomized_treap.pyx":57
+  /* "src/treap/randomized_treap.pyx":80
  *         self._size = 0
  * 
  *     def __len__(self) -> intp_t:             # <<<<<<<<<<<<<<
+ *         """Return the size of the randomized treap."""
  *         return self._size
- * 
 */
 
   /* function exit code */
@@ -19363,7 +19448,7 @@ static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap
   return __pyx_r;
 }
 
-/* "src/treap/randomized_treap.pyx":60
+/* "src/treap/randomized_treap.pyx":84
  *         return self._size
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -19372,22 +19457,22 @@ static Py_ssize_t __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap
 */
 
 /* Python wrapper */
-static void __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_5__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_5__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_5__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_5__dealloc__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_4__dealloc__(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self));
+  __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_4__dealloc__(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_4__dealloc__(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self) {
+static void __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_4__dealloc__(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "src/treap/randomized_treap.pyx":61
+  /* "src/treap/randomized_treap.pyx":85
  * 
  *     def __dealloc__(self):
  *         if self.nodes:             # <<<<<<<<<<<<<<
@@ -19397,16 +19482,16 @@ static void __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_4__de
   __pyx_t_1 = (__pyx_v_self->nodes != 0);
   if (__pyx_t_1) {
 
-    /* "src/treap/randomized_treap.pyx":62
+    /* "src/treap/randomized_treap.pyx":86
  *     def __dealloc__(self):
  *         if self.nodes:
  *             free(self.nodes)             # <<<<<<<<<<<<<<
  * 
- *     cdef void _resize_arrays(self):
+ *     cpdef bint is_empty(self):
 */
     free(__pyx_v_self->nodes);
 
-    /* "src/treap/randomized_treap.pyx":61
+    /* "src/treap/randomized_treap.pyx":85
  * 
  *     def __dealloc__(self):
  *         if self.nodes:             # <<<<<<<<<<<<<<
@@ -19415,7 +19500,7 @@ static void __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_4__de
 */
   }
 
-  /* "src/treap/randomized_treap.pyx":60
+  /* "src/treap/randomized_treap.pyx":84
  *         return self._size
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -19426,17 +19511,3951 @@ static void __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_4__de
   /* function exit code */
 }
 
-/* "src/treap/randomized_treap.pyx":64
+/* "src/treap/randomized_treap.pyx":88
  *             free(self.nodes)
  * 
+ *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
+ *         return self._size == 0
+ * 
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static int __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_is_empty(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, int __pyx_skip_dispatch) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("is_empty", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_is_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_6;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":89
+ * 
+ *     cpdef bint is_empty(self):
+ *         return self._size == 0             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef object top(self):
+*/
+  __pyx_r = (__pyx_v_self->_size == 0);
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":88
+ *             free(self.nodes)
+ * 
+ *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
+ *         return self._size == 0
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.is_empty", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty = {"is_empty", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("is_empty (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("is_empty", 1, 0, 0, __pyx_nargs); return NULL; }
+  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+  if (unlikely(__pyx_kwds_len < 0)) return NULL;
+  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("is_empty", __pyx_kwds); return NULL;}
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_6is_empty(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_6is_empty(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("is_empty", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_is_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.is_empty", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":91
+ *         return self._size == 0
+ * 
+ *     cpdef object top(self):             # <<<<<<<<<<<<<<
+ *         """Remove and return the value with the smallest key"""
+ *         if self.is_empty():
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_9top(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_top(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, int __pyx_skip_dispatch) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_min_key;
+  PyObject *__pyx_v_min_value = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  int __pyx_t_6;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_t_7;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("top", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_top); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_9top)) {
+        __Pyx_XDECREF(__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_r = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":93
+ *     cpdef object top(self):
+ *         """Remove and return the value with the smallest key"""
+ *         if self.is_empty():             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("The treap is empty!")
+ * 
+*/
+  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->is_empty(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (unlikely(__pyx_t_6)) {
+
+    /* "src/treap/randomized_treap.pyx":94
+ *         """Remove and return the value with the smallest key"""
+ *         if self.is_empty():
+ *             raise RuntimeError("The treap is empty!")             # <<<<<<<<<<<<<<
+ * 
+ *         # Find the minimum key and remove
+*/
+    __pyx_t_2 = NULL;
+    __Pyx_INCREF(__pyx_builtin_RuntimeError);
+    __pyx_t_4 = __pyx_builtin_RuntimeError; 
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_The_treap_is_empty};
+      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(0, 94, __pyx_L1_error)
+
+    /* "src/treap/randomized_treap.pyx":93
+ *     cpdef object top(self):
+ *         """Remove and return the value with the smallest key"""
+ *         if self.is_empty():             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("The treap is empty!")
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":97
+ * 
+ *         # Find the minimum key and remove
+ *         cdef float64_t min_key = self.peek()             # <<<<<<<<<<<<<<
+ *         cdef object min_value = self.search(min_key)
+ *         self.remove(min_key)
+*/
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->peek(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_v_min_key = __pyx_t_7;
+
+  /* "src/treap/randomized_treap.pyx":98
+ *         # Find the minimum key and remove
+ *         cdef float64_t min_key = self.peek()
+ *         cdef object min_value = self.search(min_key)             # <<<<<<<<<<<<<<
+ *         self.remove(min_key)
+ * 
+*/
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->search(__pyx_v_self, __pyx_v_min_key, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_min_value = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "src/treap/randomized_treap.pyx":99
+ *         cdef float64_t min_key = self.peek()
+ *         cdef object min_value = self.search(min_key)
+ *         self.remove(min_key)             # <<<<<<<<<<<<<<
+ * 
+ *         return min_value
+*/
+  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->remove(__pyx_v_self, __pyx_v_min_key, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 99, __pyx_L1_error)
+
+  /* "src/treap/randomized_treap.pyx":101
+ *         self.remove(min_key)
+ * 
+ *         return min_value             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef float64_t peek(self):
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_min_value);
+  __pyx_r = __pyx_v_min_value;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":91
+ *         return self._size == 0
+ * 
+ *     cpdef object top(self):             # <<<<<<<<<<<<<<
+ *         """Remove and return the value with the smallest key"""
+ *         if self.is_empty():
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.top", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_min_value);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_9top(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_8top, "Remove and return the value with the smallest key");
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_9top = {"top", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_9top, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_8top};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_9top(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("top (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("top", 1, 0, 0, __pyx_nargs); return NULL; }
+  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+  if (unlikely(__pyx_kwds_len < 0)) return NULL;
+  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("top", __pyx_kwds); return NULL;}
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_8top(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_8top(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("top", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_top(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.top", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":103
+ *         return min_value
+ * 
+ *     cpdef float64_t peek(self):             # <<<<<<<<<<<<<<
+ *         if self.is_empty():
+ *             raise RuntimeError("The treap is empty!")
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_11peek(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_peek(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, int __pyx_skip_dispatch) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_t_6;
+  int __pyx_t_7;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_8;
+  int __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("peek", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_peek); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_11peek)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_6;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":104
+ * 
+ *     cpdef float64_t peek(self):
+ *         if self.is_empty():             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("The treap is empty!")
+ *         cdef intp_t node_idx = self.root_idx
+*/
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->is_empty(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
+  if (unlikely(__pyx_t_7)) {
+
+    /* "src/treap/randomized_treap.pyx":105
+ *     cpdef float64_t peek(self):
+ *         if self.is_empty():
+ *             raise RuntimeError("The treap is empty!")             # <<<<<<<<<<<<<<
+ *         cdef intp_t node_idx = self.root_idx
+ * 
+*/
+    __pyx_t_2 = NULL;
+    __Pyx_INCREF(__pyx_builtin_RuntimeError);
+    __pyx_t_4 = __pyx_builtin_RuntimeError; 
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_The_treap_is_empty};
+      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(0, 105, __pyx_L1_error)
+
+    /* "src/treap/randomized_treap.pyx":104
+ * 
+ *     cpdef float64_t peek(self):
+ *         if self.is_empty():             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("The treap is empty!")
+ *         cdef intp_t node_idx = self.root_idx
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":106
+ *         if self.is_empty():
+ *             raise RuntimeError("The treap is empty!")
+ *         cdef intp_t node_idx = self.root_idx             # <<<<<<<<<<<<<<
+ * 
+ *         # Find leftmost node (minimum key)
+*/
+  __pyx_t_8 = __pyx_v_self->root_idx;
+  __pyx_v_node_idx = __pyx_t_8;
+
+  /* "src/treap/randomized_treap.pyx":109
+ * 
+ *         # Find leftmost node (minimum key)
+ *         while self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             node_idx = self.nodes[node_idx].left_child
+ * 
+*/
+  while (1) {
+    __pyx_t_7 = ((__pyx_v_self->nodes[__pyx_v_node_idx]).left_child != -1L);
+    if (!__pyx_t_7) break;
+
+    /* "src/treap/randomized_treap.pyx":110
+ *         # Find leftmost node (minimum key)
+ *         while self.nodes[node_idx].left_child != NONE_SENTINEL:
+ *             node_idx = self.nodes[node_idx].left_child             # <<<<<<<<<<<<<<
+ * 
+ *         return self.keys[node_idx]
+*/
+    __pyx_t_8 = (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child;
+    __pyx_v_node_idx = __pyx_t_8;
+  }
+
+  /* "src/treap/randomized_treap.pyx":112
+ *             node_idx = self.nodes[node_idx].left_child
+ * 
+ *         return self.keys[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef intp_t rank(self, float64_t key):
+*/
+  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 112, __pyx_L1_error)}
+  __pyx_t_8 = __pyx_v_node_idx;
+  __pyx_t_9 = -1;
+  if (__pyx_t_8 < 0) {
+    __pyx_t_8 += __pyx_v_self->keys.shape[0];
+    if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
+  } else if (unlikely(__pyx_t_8 >= __pyx_v_self->keys.shape[0])) __pyx_t_9 = 0;
+  if (unlikely(__pyx_t_9 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_9);
+    __PYX_ERR(0, 112, __pyx_L1_error)
+  }
+  __pyx_r = (*((__pyx_t_3src_5treap_16randomized_treap_float64_t *) ( /* dim=0 */ ((char *) (((__pyx_t_3src_5treap_16randomized_treap_float64_t *) __pyx_v_self->keys.data) + __pyx_t_8)) )));
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":103
+ *         return min_value
+ * 
+ *     cpdef float64_t peek(self):             # <<<<<<<<<<<<<<
+ *         if self.is_empty():
+ *             raise RuntimeError("The treap is empty!")
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.peek", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_11peek(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_11peek = {"peek", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_11peek, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_11peek(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("peek (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("peek", 1, 0, 0, __pyx_nargs); return NULL; }
+  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+  if (unlikely(__pyx_kwds_len < 0)) return NULL;
+  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("peek", __pyx_kwds); return NULL;}
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_10peek(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_10peek(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("peek", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_peek(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.peek", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":114
+ *         return self.keys[node_idx]
+ * 
+ *     cpdef intp_t rank(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         return self._rank_helper(self.root_idx, key)
+ * 
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_13rank(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_rank(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, int __pyx_skip_dispatch) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_7;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("rank", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_rank); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_13rank)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_6 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_7;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":115
+ * 
+ *     cpdef intp_t rank(self, float64_t key):
+ *         return self._rank_helper(self.root_idx, key)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):
+*/
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rank_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_r = __pyx_t_7;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":114
+ *         return self.keys[node_idx]
+ * 
+ *     cpdef intp_t rank(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         return self._rank_helper(self.root_idx, key)
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.rank", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_13rank(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_13rank = {"rank", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_13rank, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_13rank(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("rank (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 114, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 114, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "rank", 0) < 0) __PYX_ERR(0, 114, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("rank", 1, 1, 1, i); __PYX_ERR(0, 114, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 114, __pyx_L3_error)
+    }
+    __pyx_v_key = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_key == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("rank", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 114, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.rank", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_12rank(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v_key);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_12rank(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("rank", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_rank(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.rank", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":117
+ *         return self._rank_helper(self.root_idx, key)
+ * 
+ *     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rank_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_node_key;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_left_size;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_right_rank;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":118
+ * 
+ *     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return NONE_SENTINEL
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":119
+ *     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):
+ *         if node_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL             # <<<<<<<<<<<<<<
+ * 
+ *         cdef float64_t node_key = self.keys[node_idx]
+*/
+    __pyx_r = -1L;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":118
+ * 
+ *     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return NONE_SENTINEL
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":121
+ *             return NONE_SENTINEL
+ * 
+ *         cdef float64_t node_key = self.keys[node_idx]             # <<<<<<<<<<<<<<
+ *         cdef intp_t left_size = 0
+ *         cdef intp_t right_rank
+*/
+  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 121, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_v_node_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_self->keys.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 121, __pyx_L1_error)
+  }
+  __pyx_v_node_key = (*((__pyx_t_3src_5treap_16randomized_treap_float64_t *) ( /* dim=0 */ ((char *) (((__pyx_t_3src_5treap_16randomized_treap_float64_t *) __pyx_v_self->keys.data) + __pyx_t_2)) )));
+
+  /* "src/treap/randomized_treap.pyx":122
+ * 
+ *         cdef float64_t node_key = self.keys[node_idx]
+ *         cdef intp_t left_size = 0             # <<<<<<<<<<<<<<
+ *         cdef intp_t right_rank
+ * 
+*/
+  __pyx_v_left_size = 0;
+
+  /* "src/treap/randomized_treap.pyx":125
+ *         cdef intp_t right_rank
+ * 
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+*/
+  __pyx_t_1 = ((__pyx_v_self->nodes[__pyx_v_node_idx]).left_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":126
+ * 
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size             # <<<<<<<<<<<<<<
+ * 
+ *         if key == node_key:
+*/
+    __pyx_t_2 = (__pyx_v_self->nodes[(__pyx_v_self->nodes[__pyx_v_node_idx]).left_child]).size;
+    __pyx_v_left_size = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":125
+ *         cdef intp_t right_rank
+ * 
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":128
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+ *         if key == node_key:             # <<<<<<<<<<<<<<
+ *             return left_size
+ *         elif key < node_key:
+*/
+  __pyx_t_1 = (__pyx_v_key == __pyx_v_node_key);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":129
+ * 
+ *         if key == node_key:
+ *             return left_size             # <<<<<<<<<<<<<<
+ *         elif key < node_key:
+ *             return self._rank_helper(self.nodes[node_idx].left_child, key)
+*/
+    __pyx_r = __pyx_v_left_size;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":128
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+ *         if key == node_key:             # <<<<<<<<<<<<<<
+ *             return left_size
+ *         elif key < node_key:
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":130
+ *         if key == node_key:
+ *             return left_size
+ *         elif key < node_key:             # <<<<<<<<<<<<<<
+ *             return self._rank_helper(self.nodes[node_idx].left_child, key)
+ *         else:
+*/
+  __pyx_t_1 = (__pyx_v_key < __pyx_v_node_key);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":131
+ *             return left_size
+ *         elif key < node_key:
+ *             return self._rank_helper(self.nodes[node_idx].left_child, key)             # <<<<<<<<<<<<<<
+ *         else:
+ *             right_rank = self._rank_helper(self.nodes[node_idx].right_child, key)
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rank_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_r = __pyx_t_2;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":130
+ *         if key == node_key:
+ *             return left_size
+ *         elif key < node_key:             # <<<<<<<<<<<<<<
+ *             return self._rank_helper(self.nodes[node_idx].left_child, key)
+ *         else:
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":133
+ *             return self._rank_helper(self.nodes[node_idx].left_child, key)
+ *         else:
+ *             right_rank = self._rank_helper(self.nodes[node_idx].right_child, key)             # <<<<<<<<<<<<<<
+ *             if right_rank == -1:
+ *                 return NONE_SENTINEL
+*/
+  /*else*/ {
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rank_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_v_right_rank = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":134
+ *         else:
+ *             right_rank = self._rank_helper(self.nodes[node_idx].right_child, key)
+ *             if right_rank == -1:             # <<<<<<<<<<<<<<
+ *                 return NONE_SENTINEL
+ *             return left_size + 1 + right_rank
+*/
+    __pyx_t_1 = (__pyx_v_right_rank == -1L);
+    if (__pyx_t_1) {
+
+      /* "src/treap/randomized_treap.pyx":135
+ *             right_rank = self._rank_helper(self.nodes[node_idx].right_child, key)
+ *             if right_rank == -1:
+ *                 return NONE_SENTINEL             # <<<<<<<<<<<<<<
+ *             return left_size + 1 + right_rank
+ * 
+*/
+      __pyx_r = -1L;
+      goto __pyx_L0;
+
+      /* "src/treap/randomized_treap.pyx":134
+ *         else:
+ *             right_rank = self._rank_helper(self.nodes[node_idx].right_child, key)
+ *             if right_rank == -1:             # <<<<<<<<<<<<<<
+ *                 return NONE_SENTINEL
+ *             return left_size + 1 + right_rank
+*/
+    }
+
+    /* "src/treap/randomized_treap.pyx":136
+ *             if right_rank == -1:
+ *                 return NONE_SENTINEL
+ *             return left_size + 1 + right_rank             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef void remove(self, float64_t key):
+*/
+    __pyx_r = ((__pyx_v_left_size + 1) + __pyx_v_right_rank);
+    goto __pyx_L0;
+  }
+
+  /* "src/treap/randomized_treap.pyx":117
+ *         return self._rank_helper(self.root_idx, key)
+ * 
+ *     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._rank_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":138
+ *             return left_size + 1 + right_rank
+ * 
+ *     cpdef void remove(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         cdef intp_t old_size = self._size
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_15remove(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_remove(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, int __pyx_skip_dispatch) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_old_size;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_7;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9[3];
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("remove", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_remove); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_15remove)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_6 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":139
+ * 
+ *     cpdef void remove(self, float64_t key):
+ *         cdef intp_t old_size = self._size             # <<<<<<<<<<<<<<
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+ *         if self._size == old_size:
+*/
+  __pyx_t_7 = __pyx_v_self->_size;
+  __pyx_v_old_size = __pyx_t_7;
+
+  /* "src/treap/randomized_treap.pyx":140
+ *     cpdef void remove(self, float64_t key):
+ *         cdef intp_t old_size = self._size
+ *         self.root_idx = self._remove_helper(self.root_idx, key)             # <<<<<<<<<<<<<<
+ *         if self._size == old_size:
+ *             raise KeyError(f"Key: {key} not found")
+*/
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_remove_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_v_self->root_idx = __pyx_t_7;
+
+  /* "src/treap/randomized_treap.pyx":141
+ *         cdef intp_t old_size = self._size
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+ *         if self._size == old_size:             # <<<<<<<<<<<<<<
+ *             raise KeyError(f"Key: {key} not found")
+ * 
+*/
+  __pyx_t_8 = (__pyx_v_self->_size == __pyx_v_old_size);
+  if (unlikely(__pyx_t_8)) {
+
+    /* "src/treap/randomized_treap.pyx":142
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+ *         if self._size == old_size:
+ *             raise KeyError(f"Key: {key} not found")             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):
+*/
+    __pyx_t_2 = NULL;
+    __Pyx_INCREF(__pyx_builtin_KeyError);
+    __pyx_t_4 = __pyx_builtin_KeyError; 
+    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_Key;
+    __pyx_t_9[1] = __pyx_t_3;
+    __pyx_t_9[2] = __pyx_mstate_global->__pyx_kp_u_not_found;
+    __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_9, 3, 5 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3) + 10, 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3));
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_6 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_t_5};
+      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(0, 142, __pyx_L1_error)
+
+    /* "src/treap/randomized_treap.pyx":141
+ *         cdef intp_t old_size = self._size
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+ *         if self._size == old_size:             # <<<<<<<<<<<<<<
+ *             raise KeyError(f"Key: {key} not found")
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":138
+ *             return left_size + 1 + right_rank
+ * 
+ *     cpdef void remove(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         cdef intp_t old_size = self._size
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+*/
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.remove", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_15remove(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_15remove = {"remove", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_15remove, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_15remove(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("remove (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 138, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "remove", 0) < 0) __PYX_ERR(0, 138, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("remove", 1, 1, 1, i); __PYX_ERR(0, 138, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
+    }
+    __pyx_v_key = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_key == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("remove", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 138, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.remove", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_14remove(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v_key);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_14remove(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("remove", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_remove(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.remove", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":144
+ *             raise KeyError(f"Key: {key} not found")
+ * 
+ *     cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__remove_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_node_key;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":145
+ * 
+ *     cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return NONE_SENTINEL
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":146
+ *     cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):
+ *         if node_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL             # <<<<<<<<<<<<<<
+ * 
+ *         cdef float64_t node_key = self.keys[node_idx]
+*/
+    __pyx_r = -1L;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":145
+ * 
+ *     cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return NONE_SENTINEL
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":148
+ *             return NONE_SENTINEL
+ * 
+ *         cdef float64_t node_key = self.keys[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *         if key < node_key:
+*/
+  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 148, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_v_node_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_self->keys.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 148, __pyx_L1_error)
+  }
+  __pyx_v_node_key = (*((__pyx_t_3src_5treap_16randomized_treap_float64_t *) ( /* dim=0 */ ((char *) (((__pyx_t_3src_5treap_16randomized_treap_float64_t *) __pyx_v_self->keys.data) + __pyx_t_2)) )));
+
+  /* "src/treap/randomized_treap.pyx":150
+ *         cdef float64_t node_key = self.keys[node_idx]
+ * 
+ *         if key < node_key:             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].left_child = self._remove_helper(
+ *                 self.nodes[node_idx].left_child,
+*/
+  __pyx_t_1 = (__pyx_v_key < __pyx_v_node_key);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":151
+ * 
+ *         if key < node_key:
+ *             self.nodes[node_idx].left_child = self._remove_helper(             # <<<<<<<<<<<<<<
+ *                 self.nodes[node_idx].left_child,
+ *                 key
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_remove_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
+    (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":150
+ *         cdef float64_t node_key = self.keys[node_idx]
+ * 
+ *         if key < node_key:             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].left_child = self._remove_helper(
+ *                 self.nodes[node_idx].left_child,
+*/
+    goto __pyx_L4;
+  }
+
+  /* "src/treap/randomized_treap.pyx":155
+ *                 key
+ *             )
+ *         elif key > node_key:             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].right_child = self._remove_helper(
+ *                 self.nodes[node_idx].right_child,
+*/
+  __pyx_t_1 = (__pyx_v_key > __pyx_v_node_key);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":156
+ *             )
+ *         elif key > node_key:
+ *             self.nodes[node_idx].right_child = self._remove_helper(             # <<<<<<<<<<<<<<
+ *                 self.nodes[node_idx].right_child,
+ *                 key
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_remove_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
+    (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":155
+ *                 key
+ *             )
+ *         elif key > node_key:             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].right_child = self._remove_helper(
+ *                 self.nodes[node_idx].right_child,
+*/
+    goto __pyx_L4;
+  }
+
+  /* "src/treap/randomized_treap.pyx":161
+ *             )
+ *         else:
+ *             self._size -= 1             # <<<<<<<<<<<<<<
+ *             return self._remove_node(node_idx)
+ * 
+*/
+  /*else*/ {
+    __pyx_v_self->_size = (__pyx_v_self->_size - 1);
+
+    /* "src/treap/randomized_treap.pyx":162
+ *         else:
+ *             self._size -= 1
+ *             return self._remove_node(node_idx)             # <<<<<<<<<<<<<<
+ * 
+ *         with nogil:
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_remove_node(__pyx_v_self, __pyx_v_node_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_r = __pyx_t_2;
+    goto __pyx_L0;
+  }
+  __pyx_L4:;
+
+  /* "src/treap/randomized_treap.pyx":164
+ *             return self._remove_node(node_idx)
+ * 
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             self._update_size(node_idx)
+ *         return node_idx
+*/
+  {
+      PyThreadState *_save;
+      _save = NULL;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/treap/randomized_treap.pyx":165
+ * 
+ *         with nogil:
+ *             self._update_size(node_idx)             # <<<<<<<<<<<<<<
+ *         return node_idx
+ * 
+*/
+        ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
+      }
+
+      /* "src/treap/randomized_treap.pyx":164
+ *             return self._remove_node(node_idx)
+ * 
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             self._update_size(node_idx)
+ *         return node_idx
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          goto __pyx_L7;
+        }
+        __pyx_L7:;
+      }
+  }
+
+  /* "src/treap/randomized_treap.pyx":166
+ *         with nogil:
+ *             self._update_size(node_idx)
+ *         return node_idx             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _remove_node(self, intp_t node_idx):
+*/
+  __pyx_r = __pyx_v_node_idx;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":144
+ *             raise KeyError(f"Key: {key} not found")
+ * 
+ *     cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._remove_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":168
+ *         return node_idx
+ * 
+ *     cdef intp_t _remove_node(self, intp_t node_idx):             # <<<<<<<<<<<<<<
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__remove_node(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_left_idx;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_right_idx;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_left_priority;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_right_priority;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":169
+ * 
+ *     cdef intp_t _remove_node(self, intp_t node_idx):
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child             # <<<<<<<<<<<<<<
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child;
+  __pyx_v_left_idx = __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":170
+ *     cdef intp_t _remove_node(self, intp_t node_idx):
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child             # <<<<<<<<<<<<<<
+ * 
+ *         # Case 1: No children
+*/
+  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child;
+  __pyx_v_right_idx = __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":173
+ * 
+ *         # Case 1: No children
+ *         if left_idx == NONE_SENTINEL and right_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return NONE_SENTINEL
+ * 
+*/
+  __pyx_t_3 = (__pyx_v_left_idx == -1L);
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_3 = (__pyx_v_right_idx == -1L);
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_2) {
+
+    /* "src/treap/randomized_treap.pyx":174
+ *         # Case 1: No children
+ *         if left_idx == NONE_SENTINEL and right_idx == NONE_SENTINEL:
+ *             return NONE_SENTINEL             # <<<<<<<<<<<<<<
+ * 
+ *         # Case 2: Only one child
+*/
+    __pyx_r = -1L;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":173
+ * 
+ *         # Case 1: No children
+ *         if left_idx == NONE_SENTINEL and right_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return NONE_SENTINEL
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":177
+ * 
+ *         # Case 2: Only one child
+ *         if left_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return right_idx
+ *         if right_idx == NONE_SENTINEL:
+*/
+  __pyx_t_2 = (__pyx_v_left_idx == -1L);
+  if (__pyx_t_2) {
+
+    /* "src/treap/randomized_treap.pyx":178
+ *         # Case 2: Only one child
+ *         if left_idx == NONE_SENTINEL:
+ *             return right_idx             # <<<<<<<<<<<<<<
+ *         if right_idx == NONE_SENTINEL:
+ *             return left_idx
+*/
+    __pyx_r = __pyx_v_right_idx;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":177
+ * 
+ *         # Case 2: Only one child
+ *         if left_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return right_idx
+ *         if right_idx == NONE_SENTINEL:
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":179
+ *         if left_idx == NONE_SENTINEL:
+ *             return right_idx
+ *         if right_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return left_idx
+ * 
+*/
+  __pyx_t_2 = (__pyx_v_right_idx == -1L);
+  if (__pyx_t_2) {
+
+    /* "src/treap/randomized_treap.pyx":180
+ *             return right_idx
+ *         if right_idx == NONE_SENTINEL:
+ *             return left_idx             # <<<<<<<<<<<<<<
+ * 
+ *         # Case 3: Two children - rotate to maintain heap property, then recurse
+*/
+    __pyx_r = __pyx_v_left_idx;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":179
+ *         if left_idx == NONE_SENTINEL:
+ *             return right_idx
+ *         if right_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return left_idx
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":183
+ * 
+ *         # Case 3: Two children - rotate to maintain heap property, then recurse
+ *         cdef float64_t left_priority = self.nodes[left_idx].priority             # <<<<<<<<<<<<<<
+ *         cdef float64_t right_priority = self.nodes[right_idx].priority
+ * 
+*/
+  __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_left_idx]).priority;
+  __pyx_v_left_priority = __pyx_t_4;
+
+  /* "src/treap/randomized_treap.pyx":184
+ *         # Case 3: Two children - rotate to maintain heap property, then recurse
+ *         cdef float64_t left_priority = self.nodes[left_idx].priority
+ *         cdef float64_t right_priority = self.nodes[right_idx].priority             # <<<<<<<<<<<<<<
+ * 
+ *         if left_priority > right_priority:
+*/
+  __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_right_idx]).priority;
+  __pyx_v_right_priority = __pyx_t_4;
+
+  /* "src/treap/randomized_treap.pyx":186
+ *         cdef float64_t right_priority = self.nodes[right_idx].priority
+ * 
+ *         if left_priority > right_priority:             # <<<<<<<<<<<<<<
+ *             with nogil:
+ *                 node_idx = self._rotate_right(node_idx)
+*/
+  __pyx_t_2 = (__pyx_v_left_priority > __pyx_v_right_priority);
+  if (__pyx_t_2) {
+
+    /* "src/treap/randomized_treap.pyx":187
+ * 
+ *         if left_priority > right_priority:
+ *             with nogil:             # <<<<<<<<<<<<<<
+ *                 node_idx = self._rotate_right(node_idx)
+ *             self.nodes[node_idx].right_child = self._remove_node(
+*/
+    {
+        PyThreadState *_save;
+        _save = NULL;
+        Py_UNBLOCK_THREADS
+        __Pyx_FastGIL_Remember();
+        /*try:*/ {
+
+          /* "src/treap/randomized_treap.pyx":188
+ *         if left_priority > right_priority:
+ *             with nogil:
+ *                 node_idx = self._rotate_right(node_idx)             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].right_child = self._remove_node(
+ *                 self.nodes[node_idx].right_child
+*/
+          __pyx_v_node_idx = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rotate_right(__pyx_v_self, __pyx_v_node_idx);
+        }
+
+        /* "src/treap/randomized_treap.pyx":187
+ * 
+ *         if left_priority > right_priority:
+ *             with nogil:             # <<<<<<<<<<<<<<
+ *                 node_idx = self._rotate_right(node_idx)
+ *             self.nodes[node_idx].right_child = self._remove_node(
+*/
+        /*finally:*/ {
+          /*normal exit:*/{
+            __Pyx_FastGIL_Forget();
+            Py_BLOCK_THREADS
+            goto __pyx_L11;
+          }
+          __pyx_L11:;
+        }
+    }
+
+    /* "src/treap/randomized_treap.pyx":189
+ *             with nogil:
+ *                 node_idx = self._rotate_right(node_idx)
+ *             self.nodes[node_idx].right_child = self._remove_node(             # <<<<<<<<<<<<<<
+ *                 self.nodes[node_idx].right_child
+ *             )
+*/
+    __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_remove_node(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 189, __pyx_L1_error)
+    (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child = __pyx_t_1;
+
+    /* "src/treap/randomized_treap.pyx":186
+ *         cdef float64_t right_priority = self.nodes[right_idx].priority
+ * 
+ *         if left_priority > right_priority:             # <<<<<<<<<<<<<<
+ *             with nogil:
+ *                 node_idx = self._rotate_right(node_idx)
+*/
+    goto __pyx_L8;
+  }
+
+  /* "src/treap/randomized_treap.pyx":193
+ *             )
+ *         else:
+ *             with nogil:             # <<<<<<<<<<<<<<
+ *                 node_idx = self._rotate_left(node_idx)
+ *             self.nodes[node_idx].left_child = self._remove_node(
+*/
+  /*else*/ {
+    {
+        PyThreadState *_save;
+        _save = NULL;
+        Py_UNBLOCK_THREADS
+        __Pyx_FastGIL_Remember();
+        /*try:*/ {
+
+          /* "src/treap/randomized_treap.pyx":194
+ *         else:
+ *             with nogil:
+ *                 node_idx = self._rotate_left(node_idx)             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].left_child = self._remove_node(
+ *                 self.nodes[node_idx].left_child
+*/
+          __pyx_v_node_idx = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rotate_left(__pyx_v_self, __pyx_v_node_idx);
+        }
+
+        /* "src/treap/randomized_treap.pyx":193
+ *             )
+ *         else:
+ *             with nogil:             # <<<<<<<<<<<<<<
+ *                 node_idx = self._rotate_left(node_idx)
+ *             self.nodes[node_idx].left_child = self._remove_node(
+*/
+        /*finally:*/ {
+          /*normal exit:*/{
+            __Pyx_FastGIL_Forget();
+            Py_BLOCK_THREADS
+            goto __pyx_L14;
+          }
+          __pyx_L14:;
+        }
+    }
+
+    /* "src/treap/randomized_treap.pyx":195
+ *             with nogil:
+ *                 node_idx = self._rotate_left(node_idx)
+ *             self.nodes[node_idx].left_child = self._remove_node(             # <<<<<<<<<<<<<<
+ *                 self.nodes[node_idx].left_child
+ *             )
+*/
+    __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_remove_node(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
+    (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child = __pyx_t_1;
+  }
+  __pyx_L8:;
+
+  /* "src/treap/randomized_treap.pyx":199
+ *             )
+ * 
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             self._update_size(node_idx)
+ *         return node_idx
+*/
+  {
+      PyThreadState *_save;
+      _save = NULL;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/treap/randomized_treap.pyx":200
+ * 
+ *         with nogil:
+ *             self._update_size(node_idx)             # <<<<<<<<<<<<<<
+ *         return node_idx
+ * 
+*/
+        ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
+      }
+
+      /* "src/treap/randomized_treap.pyx":199
+ *             )
+ * 
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             self._update_size(node_idx)
+ *         return node_idx
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          goto __pyx_L17;
+        }
+        __pyx_L17:;
+      }
+  }
+
+  /* "src/treap/randomized_treap.pyx":201
+ *         with nogil:
+ *             self._update_size(node_idx)
+ *         return node_idx             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _create_node(self, float64_t key, object value):
+*/
+  __pyx_r = __pyx_v_node_idx;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":168
+ *         return node_idx
+ * 
+ *     cdef intp_t _remove_node(self, intp_t node_idx):             # <<<<<<<<<<<<<<
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._remove_node", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":203
+ *         return node_idx
+ * 
+ *     cdef intp_t _create_node(self, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         """Create node with key-value pair"""
+ *         if self.node_count >= self.capacity:
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__create_node(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_idx;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":205
+ *     cdef intp_t _create_node(self, float64_t key, object value):
+ *         """Create node with key-value pair"""
+ *         if self.node_count >= self.capacity:             # <<<<<<<<<<<<<<
+ *             self._resize_arrays()
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_self->node_count >= __pyx_v_self->capacity);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":206
+ *         """Create node with key-value pair"""
+ *         if self.node_count >= self.capacity:
+ *             self._resize_arrays()             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t idx = self.node_count
+*/
+    ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_resize_arrays(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
+
+    /* "src/treap/randomized_treap.pyx":205
+ *     cdef intp_t _create_node(self, float64_t key, object value):
+ *         """Create node with key-value pair"""
+ *         if self.node_count >= self.capacity:             # <<<<<<<<<<<<<<
+ *             self._resize_arrays()
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":208
+ *             self._resize_arrays()
+ * 
+ *         cdef intp_t idx = self.node_count             # <<<<<<<<<<<<<<
+ *         self.node_count += 1
+ * 
+*/
+  __pyx_t_2 = __pyx_v_self->node_count;
+  __pyx_v_idx = __pyx_t_2;
+
+  /* "src/treap/randomized_treap.pyx":209
+ * 
+ *         cdef intp_t idx = self.node_count
+ *         self.node_count += 1             # <<<<<<<<<<<<<<
+ * 
+ *         # Initialize C struct
+*/
+  __pyx_v_self->node_count = (__pyx_v_self->node_count + 1);
+
+  /* "src/treap/randomized_treap.pyx":212
+ * 
+ *         # Initialize C struct
+ *         self.nodes[idx].left_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
+ *         self.nodes[idx].right_child = NONE_SENTINEL
+ *         self.nodes[idx].priority = drand48()
+*/
+  (__pyx_v_self->nodes[__pyx_v_idx]).left_child = -1L;
+
+  /* "src/treap/randomized_treap.pyx":213
+ *         # Initialize C struct
+ *         self.nodes[idx].left_child = NONE_SENTINEL
+ *         self.nodes[idx].right_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
+ *         self.nodes[idx].priority = drand48()
+ *         self.nodes[idx].size = 1
+*/
+  (__pyx_v_self->nodes[__pyx_v_idx]).right_child = -1L;
+
+  /* "src/treap/randomized_treap.pyx":214
+ *         self.nodes[idx].left_child = NONE_SENTINEL
+ *         self.nodes[idx].right_child = NONE_SENTINEL
+ *         self.nodes[idx].priority = drand48()             # <<<<<<<<<<<<<<
+ *         self.nodes[idx].size = 1
+ * 
+*/
+  (__pyx_v_self->nodes[__pyx_v_idx]).priority = drand48();
+
+  /* "src/treap/randomized_treap.pyx":215
+ *         self.nodes[idx].right_child = NONE_SENTINEL
+ *         self.nodes[idx].priority = drand48()
+ *         self.nodes[idx].size = 1             # <<<<<<<<<<<<<<
+ * 
+ *         self.keys[idx] = key
+*/
+  (__pyx_v_self->nodes[__pyx_v_idx]).size = 1;
+
+  /* "src/treap/randomized_treap.pyx":217
+ *         self.nodes[idx].size = 1
+ * 
+ *         self.keys[idx] = key             # <<<<<<<<<<<<<<
+ *         self.values.append(value)
+ * 
+*/
+  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 217, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_v_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_self->keys.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 217, __pyx_L1_error)
+  }
+  *((__pyx_t_3src_5treap_16randomized_treap_float64_t *) ( /* dim=0 */ ((char *) (((__pyx_t_3src_5treap_16randomized_treap_float64_t *) __pyx_v_self->keys.data) + __pyx_t_2)) )) = __pyx_v_key;
+
+  /* "src/treap/randomized_treap.pyx":218
+ * 
+ *         self.keys[idx] = key
+ *         self.values.append(value)             # <<<<<<<<<<<<<<
+ * 
+ *         return idx
+*/
+  if (unlikely(__pyx_v_self->values == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
+    __PYX_ERR(0, 218, __pyx_L1_error)
+  }
+  __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_self->values, __pyx_v_value); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 218, __pyx_L1_error)
+
+  /* "src/treap/randomized_treap.pyx":220
+ *         self.values.append(value)
+ * 
+ *         return idx             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef object select(self, intp_t rank):
+*/
+  __pyx_r = __pyx_v_idx;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":203
+ *         return node_idx
+ * 
+ *     cdef intp_t _create_node(self, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         """Create node with key-value pair"""
+ *         if self.node_count >= self.capacity:
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._create_node", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":222
+ *         return idx
+ * 
+ *     cpdef object select(self, intp_t rank):             # <<<<<<<<<<<<<<
+ *         """Return the value at the given rank (0-based index)"""
+ *         if rank < 0 or rank >= self._size:
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_17select(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_select(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_rank, int __pyx_skip_dispatch) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10[4];
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_11;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("select", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_select); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_17select)) {
+        __Pyx_XDECREF(__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_rank); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_6 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_r = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":224
+ *     cpdef object select(self, intp_t rank):
+ *         """Return the value at the given rank (0-based index)"""
+ *         if rank < 0 or rank >= self._size:             # <<<<<<<<<<<<<<
+ *             raise IndexError(f"Rank {rank} out of bounds for treap of size {self._size}")
+ * 
+*/
+  __pyx_t_8 = (__pyx_v_rank < 0);
+  if (!__pyx_t_8) {
+  } else {
+    __pyx_t_7 = __pyx_t_8;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_8 = (__pyx_v_rank >= __pyx_v_self->_size);
+  __pyx_t_7 = __pyx_t_8;
+  __pyx_L4_bool_binop_done:;
+  if (unlikely(__pyx_t_7)) {
+
+    /* "src/treap/randomized_treap.pyx":225
+ *         """Return the value at the given rank (0-based index)"""
+ *         if rank < 0 or rank >= self._size:
+ *             raise IndexError(f"Rank {rank} out of bounds for treap of size {self._size}")             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t node_idx = self._select_helper(self.root_idx, rank)
+*/
+    __pyx_t_2 = NULL;
+    __Pyx_INCREF(__pyx_builtin_IndexError);
+    __pyx_t_4 = __pyx_builtin_IndexError; 
+    __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_rank); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_10[0] = __pyx_mstate_global->__pyx_kp_u_Rank;
+    __pyx_t_10[1] = __pyx_t_3;
+    __pyx_t_10[2] = __pyx_mstate_global->__pyx_kp_u_out_of_bounds_for_treap_of_size;
+    __pyx_t_10[3] = __pyx_t_9;
+    __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_10, 4, 5 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3) + 33 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9), 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9));
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_6 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_t_5};
+      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(0, 225, __pyx_L1_error)
+
+    /* "src/treap/randomized_treap.pyx":224
+ *     cpdef object select(self, intp_t rank):
+ *         """Return the value at the given rank (0-based index)"""
+ *         if rank < 0 or rank >= self._size:             # <<<<<<<<<<<<<<
+ *             raise IndexError(f"Rank {rank} out of bounds for treap of size {self._size}")
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":227
+ *             raise IndexError(f"Rank {rank} out of bounds for treap of size {self._size}")
+ * 
+ *         cdef intp_t node_idx = self._select_helper(self.root_idx, rank)             # <<<<<<<<<<<<<<
+ *         return self.values[node_idx]
+ * 
+*/
+  __pyx_t_11 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_select_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_rank); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_v_node_idx = __pyx_t_11;
+
+  /* "src/treap/randomized_treap.pyx":228
+ * 
+ *         cdef intp_t node_idx = self._select_helper(self.root_idx, rank)
+ *         return self.values[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _select_helper(self, intp_t node_idx, intp_t target_rank):
+*/
+  __Pyx_XDECREF(__pyx_r);
+  if (unlikely(__pyx_v_self->values == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 228, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":222
+ *         return idx
+ * 
+ *     cpdef object select(self, intp_t rank):             # <<<<<<<<<<<<<<
+ *         """Return the value at the given rank (0-based index)"""
+ *         if rank < 0 or rank >= self._size:
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.select", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_17select(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_16select, "Return the value at the given rank (0-based index)");
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_17select = {"select", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_17select, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_16select};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_17select(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_rank;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("select (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_rank,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 222, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 222, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "select", 0) < 0) __PYX_ERR(0, 222, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("select", 1, 1, 1, i); __PYX_ERR(0, 222, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 222, __pyx_L3_error)
+    }
+    __pyx_v_rank = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_rank == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("select", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 222, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.select", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_16select(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v_rank);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_16select(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_rank) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("select", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_select(__pyx_v_self, __pyx_v_rank, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.select", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":230
+ *         return self.values[node_idx]
+ * 
+ *     cdef intp_t _select_helper(self, intp_t node_idx, intp_t target_rank):             # <<<<<<<<<<<<<<
+ *         """Find the node at the given rank"""
+ *         cdef intp_t left_size = 0
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__select_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_target_rank) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_left_size;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":232
+ *     cdef intp_t _select_helper(self, intp_t node_idx, intp_t target_rank):
+ *         """Find the node at the given rank"""
+ *         cdef intp_t left_size = 0             # <<<<<<<<<<<<<<
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+*/
+  __pyx_v_left_size = 0;
+
+  /* "src/treap/randomized_treap.pyx":233
+ *         """Find the node at the given rank"""
+ *         cdef intp_t left_size = 0
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+*/
+  __pyx_t_1 = ((__pyx_v_self->nodes[__pyx_v_node_idx]).left_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":234
+ *         cdef intp_t left_size = 0
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size             # <<<<<<<<<<<<<<
+ * 
+ *         if target_rank == left_size:
+*/
+    __pyx_t_2 = (__pyx_v_self->nodes[(__pyx_v_self->nodes[__pyx_v_node_idx]).left_child]).size;
+    __pyx_v_left_size = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":233
+ *         """Find the node at the given rank"""
+ *         cdef intp_t left_size = 0
+ *         if self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":236
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+ *         if target_rank == left_size:             # <<<<<<<<<<<<<<
+ *             return node_idx
+ *         elif target_rank < left_size:
+*/
+  __pyx_t_1 = (__pyx_v_target_rank == __pyx_v_left_size);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":237
+ * 
+ *         if target_rank == left_size:
+ *             return node_idx             # <<<<<<<<<<<<<<
+ *         elif target_rank < left_size:
+ *             return self._select_helper(self.nodes[node_idx].left_child, target_rank)
+*/
+    __pyx_r = __pyx_v_node_idx;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":236
+ *             left_size = self.nodes[self.nodes[node_idx].left_child].size
+ * 
+ *         if target_rank == left_size:             # <<<<<<<<<<<<<<
+ *             return node_idx
+ *         elif target_rank < left_size:
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":238
+ *         if target_rank == left_size:
+ *             return node_idx
+ *         elif target_rank < left_size:             # <<<<<<<<<<<<<<
+ *             return self._select_helper(self.nodes[node_idx].left_child, target_rank)
+ *         else:
+*/
+  __pyx_t_1 = (__pyx_v_target_rank < __pyx_v_left_size);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":239
+ *             return node_idx
+ *         elif target_rank < left_size:
+ *             return self._select_helper(self.nodes[node_idx].left_child, target_rank)             # <<<<<<<<<<<<<<
+ *         else:
+ *             return self._select_helper(
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_select_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child, __pyx_v_target_rank); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_r = __pyx_t_2;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":238
+ *         if target_rank == left_size:
+ *             return node_idx
+ *         elif target_rank < left_size:             # <<<<<<<<<<<<<<
+ *             return self._select_helper(self.nodes[node_idx].left_child, target_rank)
+ *         else:
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":241
+ *             return self._select_helper(self.nodes[node_idx].left_child, target_rank)
+ *         else:
+ *             return self._select_helper(             # <<<<<<<<<<<<<<
+ *                 self.nodes[node_idx].right_child,
+ *                 target_rank - left_size - 1
+*/
+  /*else*/ {
+
+    /* "src/treap/randomized_treap.pyx":243
+ *             return self._select_helper(
+ *                 self.nodes[node_idx].right_child,
+ *                 target_rank - left_size - 1             # <<<<<<<<<<<<<<
+ *             )
+ * 
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_select_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child, ((__pyx_v_target_rank - __pyx_v_left_size) - 1)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_r = __pyx_t_2;
+    goto __pyx_L0;
+  }
+
+  /* "src/treap/randomized_treap.pyx":230
+ *         return self.values[node_idx]
+ * 
+ *     cdef intp_t _select_helper(self, intp_t node_idx, intp_t target_rank):             # <<<<<<<<<<<<<<
+ *         """Find the node at the given rank"""
+ *         cdef intp_t left_size = 0
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._select_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":246
+ *             )
+ * 
+ *     cpdef void insert(self, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         """Insert with key"""
+ *         self.root_idx = self._insert_helper(self.root_idx, key, value)
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_19insert(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_insert(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value, int __pyx_skip_dispatch) {
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_7;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("insert", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_insert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_19insert)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_6 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_value};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (3-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":248
+ *     cpdef void insert(self, float64_t key, object value):
+ *         """Insert with key"""
+ *         self.root_idx = self._insert_helper(self.root_idx, key, value)             # <<<<<<<<<<<<<<
+ *         self._size += 1
+ * 
+*/
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_insert_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_v_self->root_idx = __pyx_t_7;
+
+  /* "src/treap/randomized_treap.pyx":249
+ *         """Insert with key"""
+ *         self.root_idx = self._insert_helper(self.root_idx, key, value)
+ *         self._size += 1             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):
+*/
+  __pyx_v_self->_size = (__pyx_v_self->_size + 1);
+
+  /* "src/treap/randomized_treap.pyx":246
+ *             )
+ * 
+ *     cpdef void insert(self, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         """Insert with key"""
+ *         self.root_idx = self._insert_helper(self.root_idx, key, value)
+*/
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_19insert(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_18insert, "Insert with key");
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_19insert = {"insert", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_19insert, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_18insert};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_19insert(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key;
+  PyObject *__pyx_v_value = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("insert (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,&__pyx_mstate_global->__pyx_n_u_value,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 246, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 246, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 246, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insert", 0) < 0) __PYX_ERR(0, 246, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, i); __PYX_ERR(0, 246, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 2)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 246, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 246, __pyx_L3_error)
+    }
+    __pyx_v_key = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_key == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 246, __pyx_L3_error)
+    __pyx_v_value = values[1];
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 246, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_18insert(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v_key, __pyx_v_value);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_18insert(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("insert", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_insert(__pyx_v_self, __pyx_v_key, __pyx_v_value, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":251
+ *         self._size += 1
+ * 
+ *     cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return self._create_node(key, value)
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__insert_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, PyObject *__pyx_v_value) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_new_child_idx;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_child_priority;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_node_priority;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_node_key;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
+  int __pyx_t_3;
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":252
+ * 
+ *     cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return self._create_node(key, value)
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":253
+ *     cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):
+ *         if node_idx == NONE_SENTINEL:
+ *             return self._create_node(key, value)             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t new_child_idx
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_create_node(__pyx_v_self, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 253, __pyx_L1_error)
+    __pyx_r = __pyx_t_2;
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":252
+ * 
+ *     cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return self._create_node(key, value)
+ * 
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":258
+ *         cdef float64_t child_priority, node_priority, node_key
+ * 
+ *         node_key = self.keys[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *         if key <= node_key:
+*/
+  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 258, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_v_node_idx;
+  __pyx_t_3 = -1;
+  if (__pyx_t_2 < 0) {
+    __pyx_t_2 += __pyx_v_self->keys.shape[0];
+    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 258, __pyx_L1_error)
+  }
+  __pyx_v_node_key = (*((__pyx_t_3src_5treap_16randomized_treap_float64_t *) ( /* dim=0 */ ((char *) (((__pyx_t_3src_5treap_16randomized_treap_float64_t *) __pyx_v_self->keys.data) + __pyx_t_2)) )));
+
+  /* "src/treap/randomized_treap.pyx":260
+ *         node_key = self.keys[node_idx]
+ * 
+ *         if key <= node_key:             # <<<<<<<<<<<<<<
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].left_child, key, value)
+ *             self.nodes[node_idx].left_child = new_child_idx
+*/
+  __pyx_t_1 = (__pyx_v_key <= __pyx_v_node_key);
+  if (__pyx_t_1) {
+
+    /* "src/treap/randomized_treap.pyx":261
+ * 
+ *         if key <= node_key:
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].left_child, key, value)             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].left_child = new_child_idx
+ * 
+*/
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_insert_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_v_new_child_idx = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":262
+ *         if key <= node_key:
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].left_child, key, value)
+ *             self.nodes[node_idx].left_child = new_child_idx             # <<<<<<<<<<<<<<
+ * 
+ *             child_priority = self.nodes[new_child_idx].priority
+*/
+    (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child = __pyx_v_new_child_idx;
+
+    /* "src/treap/randomized_treap.pyx":264
+ *             self.nodes[node_idx].left_child = new_child_idx
+ * 
+ *             child_priority = self.nodes[new_child_idx].priority             # <<<<<<<<<<<<<<
+ *             node_priority = self.nodes[node_idx].priority
+ * 
+*/
+    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_new_child_idx]).priority;
+    __pyx_v_child_priority = __pyx_t_4;
+
+    /* "src/treap/randomized_treap.pyx":265
+ * 
+ *             child_priority = self.nodes[new_child_idx].priority
+ *             node_priority = self.nodes[node_idx].priority             # <<<<<<<<<<<<<<
+ * 
+ *             if child_priority > node_priority:
+*/
+    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_node_idx]).priority;
+    __pyx_v_node_priority = __pyx_t_4;
+
+    /* "src/treap/randomized_treap.pyx":267
+ *             node_priority = self.nodes[node_idx].priority
+ * 
+ *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
+ *                 with nogil:
+ *                     node_idx = self._rotate_right(node_idx)
+*/
+    __pyx_t_1 = (__pyx_v_child_priority > __pyx_v_node_priority);
+    if (__pyx_t_1) {
+
+      /* "src/treap/randomized_treap.pyx":268
+ * 
+ *             if child_priority > node_priority:
+ *                 with nogil:             # <<<<<<<<<<<<<<
+ *                     node_idx = self._rotate_right(node_idx)
+ *         else:
+*/
+      {
+          PyThreadState *_save;
+          _save = NULL;
+          Py_UNBLOCK_THREADS
+          __Pyx_FastGIL_Remember();
+          /*try:*/ {
+
+            /* "src/treap/randomized_treap.pyx":269
+ *             if child_priority > node_priority:
+ *                 with nogil:
+ *                     node_idx = self._rotate_right(node_idx)             # <<<<<<<<<<<<<<
+ *         else:
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].right_child, key, value)
+*/
+            __pyx_v_node_idx = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rotate_right(__pyx_v_self, __pyx_v_node_idx);
+          }
+
+          /* "src/treap/randomized_treap.pyx":268
+ * 
+ *             if child_priority > node_priority:
+ *                 with nogil:             # <<<<<<<<<<<<<<
+ *                     node_idx = self._rotate_right(node_idx)
+ *         else:
+*/
+          /*finally:*/ {
+            /*normal exit:*/{
+              __Pyx_FastGIL_Forget();
+              Py_BLOCK_THREADS
+              goto __pyx_L8;
+            }
+            __pyx_L8:;
+          }
+      }
+
+      /* "src/treap/randomized_treap.pyx":267
+ *             node_priority = self.nodes[node_idx].priority
+ * 
+ *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
+ *                 with nogil:
+ *                     node_idx = self._rotate_right(node_idx)
+*/
+    }
+
+    /* "src/treap/randomized_treap.pyx":260
+ *         node_key = self.keys[node_idx]
+ * 
+ *         if key <= node_key:             # <<<<<<<<<<<<<<
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].left_child, key, value)
+ *             self.nodes[node_idx].left_child = new_child_idx
+*/
+    goto __pyx_L4;
+  }
+
+  /* "src/treap/randomized_treap.pyx":271
+ *                     node_idx = self._rotate_right(node_idx)
+ *         else:
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].right_child, key, value)             # <<<<<<<<<<<<<<
+ *             self.nodes[node_idx].right_child = new_child_idx
+ * 
+*/
+  /*else*/ {
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_insert_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_v_new_child_idx = __pyx_t_2;
+
+    /* "src/treap/randomized_treap.pyx":272
+ *         else:
+ *             new_child_idx = self._insert_helper(self.nodes[node_idx].right_child, key, value)
+ *             self.nodes[node_idx].right_child = new_child_idx             # <<<<<<<<<<<<<<
+ * 
+ *             child_priority = self.nodes[new_child_idx].priority
+*/
+    (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child = __pyx_v_new_child_idx;
+
+    /* "src/treap/randomized_treap.pyx":274
+ *             self.nodes[node_idx].right_child = new_child_idx
+ * 
+ *             child_priority = self.nodes[new_child_idx].priority             # <<<<<<<<<<<<<<
+ *             node_priority = self.nodes[node_idx].priority
+ * 
+*/
+    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_new_child_idx]).priority;
+    __pyx_v_child_priority = __pyx_t_4;
+
+    /* "src/treap/randomized_treap.pyx":275
+ * 
+ *             child_priority = self.nodes[new_child_idx].priority
+ *             node_priority = self.nodes[node_idx].priority             # <<<<<<<<<<<<<<
+ * 
+ *             if child_priority > node_priority:
+*/
+    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_node_idx]).priority;
+    __pyx_v_node_priority = __pyx_t_4;
+
+    /* "src/treap/randomized_treap.pyx":277
+ *             node_priority = self.nodes[node_idx].priority
+ * 
+ *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
+ *                 with nogil:
+ *                     node_idx = self._rotate_left(node_idx)
+*/
+    __pyx_t_1 = (__pyx_v_child_priority > __pyx_v_node_priority);
+    if (__pyx_t_1) {
+
+      /* "src/treap/randomized_treap.pyx":278
+ * 
+ *             if child_priority > node_priority:
+ *                 with nogil:             # <<<<<<<<<<<<<<
+ *                     node_idx = self._rotate_left(node_idx)
+ * 
+*/
+      {
+          PyThreadState *_save;
+          _save = NULL;
+          Py_UNBLOCK_THREADS
+          __Pyx_FastGIL_Remember();
+          /*try:*/ {
+
+            /* "src/treap/randomized_treap.pyx":279
+ *             if child_priority > node_priority:
+ *                 with nogil:
+ *                     node_idx = self._rotate_left(node_idx)             # <<<<<<<<<<<<<<
+ * 
+ *         with nogil:
+*/
+            __pyx_v_node_idx = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rotate_left(__pyx_v_self, __pyx_v_node_idx);
+          }
+
+          /* "src/treap/randomized_treap.pyx":278
+ * 
+ *             if child_priority > node_priority:
+ *                 with nogil:             # <<<<<<<<<<<<<<
+ *                     node_idx = self._rotate_left(node_idx)
+ * 
+*/
+          /*finally:*/ {
+            /*normal exit:*/{
+              __Pyx_FastGIL_Forget();
+              Py_BLOCK_THREADS
+              goto __pyx_L12;
+            }
+            __pyx_L12:;
+          }
+      }
+
+      /* "src/treap/randomized_treap.pyx":277
+ *             node_priority = self.nodes[node_idx].priority
+ * 
+ *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
+ *                 with nogil:
+ *                     node_idx = self._rotate_left(node_idx)
+*/
+    }
+  }
+  __pyx_L4:;
+
+  /* "src/treap/randomized_treap.pyx":281
+ *                     node_idx = self._rotate_left(node_idx)
+ * 
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             self._update_size(node_idx)
+ *         return node_idx
+*/
+  {
+      PyThreadState *_save;
+      _save = NULL;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/treap/randomized_treap.pyx":282
+ * 
+ *         with nogil:
+ *             self._update_size(node_idx)             # <<<<<<<<<<<<<<
+ *         return node_idx
+ * 
+*/
+        ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
+      }
+
+      /* "src/treap/randomized_treap.pyx":281
+ *                     node_idx = self._rotate_left(node_idx)
+ * 
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             self._update_size(node_idx)
+ *         return node_idx
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          goto __pyx_L15;
+        }
+        __pyx_L15:;
+      }
+  }
+
+  /* "src/treap/randomized_treap.pyx":283
+ *         with nogil:
+ *             self._update_size(node_idx)
+ *         return node_idx             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef object search(self, float64_t key):
+*/
+  __pyx_r = __pyx_v_node_idx;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":251
+ *         self._size += 1
+ * 
+ *     cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return self._create_node(key, value)
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._insert_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":285
+ *         return node_idx
+ * 
+ *     cpdef object search(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         """Search for key"""
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
+*/
+
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_21search(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_search(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key, int __pyx_skip_dispatch) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_7;
+  int __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("search", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_search); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_21search)) {
+        __Pyx_XDECREF(__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 285, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_6 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_r = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/treap/randomized_treap.pyx":287
+ *     cpdef object search(self, float64_t key):
+ *         """Search for key"""
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)             # <<<<<<<<<<<<<<
+ *         if node_idx == NONE_SENTINEL:
+ *             return None
+*/
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_search_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_v_node_idx = __pyx_t_7;
+
+  /* "src/treap/randomized_treap.pyx":288
+ *         """Search for key"""
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return None
+ *         return self.values[node_idx]
+*/
+  __pyx_t_8 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_8) {
+
+    /* "src/treap/randomized_treap.pyx":289
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
+ *         if node_idx == NONE_SENTINEL:
+ *             return None             # <<<<<<<<<<<<<<
+ *         return self.values[node_idx]
+ * 
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+    goto __pyx_L0;
+
+    /* "src/treap/randomized_treap.pyx":288
+ *         """Search for key"""
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return None
+ *         return self.values[node_idx]
+*/
+  }
+
+  /* "src/treap/randomized_treap.pyx":290
+ *         if node_idx == NONE_SENTINEL:
+ *             return None
+ *         return self.values[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _search_helper(self, intp_t node_idx, float64_t key):
+*/
+  __Pyx_XDECREF(__pyx_r);
+  if (unlikely(__pyx_v_self->values == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 290, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":285
+ *         return node_idx
+ * 
+ *     cpdef object search(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         """Search for key"""
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.search", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_21search(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_20search, "Search for key");
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_21search = {"search", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_21search, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_20search};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_21search(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("search (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 285, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 285, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "search", 0) < 0) __PYX_ERR(0, 285, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("search", 1, 1, 1, i); __PYX_ERR(0, 285, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 285, __pyx_L3_error)
+    }
+    __pyx_v_key = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_key == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 285, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("search", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 285, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.search", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_20search(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v_key);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_20search(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("search", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_search(__pyx_v_self, __pyx_v_key, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.search", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":292
+ *         return self.values[node_idx]
+ * 
+ *     cdef intp_t _search_helper(self, intp_t node_idx, float64_t key):             # <<<<<<<<<<<<<<
+ *         cdef float64_t node_key
+ * 
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__search_helper(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_key) {
+  __pyx_t_3src_5treap_16randomized_treap_float64_t __pyx_v_node_key;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/treap/randomized_treap.pyx":295
+ *         cdef float64_t node_key
+ * 
+ *         while node_idx != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             node_key = self.keys[node_idx]
+ * 
+*/
+  while (1) {
+    __pyx_t_1 = (__pyx_v_node_idx != -1L);
+    if (!__pyx_t_1) break;
+
+    /* "src/treap/randomized_treap.pyx":296
+ * 
+ *         while node_idx != NONE_SENTINEL:
+ *             node_key = self.keys[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *             if key == node_key:
+*/
+    if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 296, __pyx_L1_error)}
+    __pyx_t_2 = __pyx_v_node_idx;
+    __pyx_t_3 = -1;
+    if (__pyx_t_2 < 0) {
+      __pyx_t_2 += __pyx_v_self->keys.shape[0];
+      if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
+    } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
+    if (unlikely(__pyx_t_3 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_3);
+      __PYX_ERR(0, 296, __pyx_L1_error)
+    }
+    __pyx_v_node_key = (*((__pyx_t_3src_5treap_16randomized_treap_float64_t *) ( /* dim=0 */ ((char *) (((__pyx_t_3src_5treap_16randomized_treap_float64_t *) __pyx_v_self->keys.data) + __pyx_t_2)) )));
+
+    /* "src/treap/randomized_treap.pyx":298
+ *             node_key = self.keys[node_idx]
+ * 
+ *             if key == node_key:             # <<<<<<<<<<<<<<
+ *                 return node_idx
+ *             elif key < node_key:
+*/
+    __pyx_t_1 = (__pyx_v_key == __pyx_v_node_key);
+    if (__pyx_t_1) {
+
+      /* "src/treap/randomized_treap.pyx":299
+ * 
+ *             if key == node_key:
+ *                 return node_idx             # <<<<<<<<<<<<<<
+ *             elif key < node_key:
+ *                 node_idx = self.nodes[node_idx].left_child
+*/
+      __pyx_r = __pyx_v_node_idx;
+      goto __pyx_L0;
+
+      /* "src/treap/randomized_treap.pyx":298
+ *             node_key = self.keys[node_idx]
+ * 
+ *             if key == node_key:             # <<<<<<<<<<<<<<
+ *                 return node_idx
+ *             elif key < node_key:
+*/
+    }
+
+    /* "src/treap/randomized_treap.pyx":300
+ *             if key == node_key:
+ *                 return node_idx
+ *             elif key < node_key:             # <<<<<<<<<<<<<<
+ *                 node_idx = self.nodes[node_idx].left_child
+ *             else:
+*/
+    __pyx_t_1 = (__pyx_v_key < __pyx_v_node_key);
+    if (__pyx_t_1) {
+
+      /* "src/treap/randomized_treap.pyx":301
+ *                 return node_idx
+ *             elif key < node_key:
+ *                 node_idx = self.nodes[node_idx].left_child             # <<<<<<<<<<<<<<
+ *             else:
+ *                 node_idx = self.nodes[node_idx].right_child
+*/
+      __pyx_t_2 = (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child;
+      __pyx_v_node_idx = __pyx_t_2;
+
+      /* "src/treap/randomized_treap.pyx":300
+ *             if key == node_key:
+ *                 return node_idx
+ *             elif key < node_key:             # <<<<<<<<<<<<<<
+ *                 node_idx = self.nodes[node_idx].left_child
+ *             else:
+*/
+      goto __pyx_L5;
+    }
+
+    /* "src/treap/randomized_treap.pyx":303
+ *                 node_idx = self.nodes[node_idx].left_child
+ *             else:
+ *                 node_idx = self.nodes[node_idx].right_child             # <<<<<<<<<<<<<<
+ * 
+ *         return NONE_SENTINEL
+*/
+    /*else*/ {
+      __pyx_t_2 = (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child;
+      __pyx_v_node_idx = __pyx_t_2;
+    }
+    __pyx_L5:;
+  }
+
+  /* "src/treap/randomized_treap.pyx":305
+ *                 node_idx = self.nodes[node_idx].right_child
+ * 
+ *         return NONE_SENTINEL             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
+*/
+  __pyx_r = -1L;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":292
+ *         return self.values[node_idx]
+ * 
+ *     cdef intp_t _search_helper(self, intp_t node_idx, float64_t key):             # <<<<<<<<<<<<<<
+ *         cdef float64_t node_key
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._search_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":307
+ *         return NONE_SENTINEL
+ * 
+ *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rotate_right(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_left_idx;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":308
+ * 
+ *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child             # <<<<<<<<<<<<<<
+ *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
+ *         self.nodes[left_idx].right_child = node_idx
+*/
+  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child;
+  __pyx_v_left_idx = __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":309
+ *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child             # <<<<<<<<<<<<<<
+ *         self.nodes[left_idx].right_child = node_idx
+ *         self._update_size(node_idx)
+*/
+  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_left_idx]).right_child;
+  (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child = __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":310
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
+ *         self.nodes[left_idx].right_child = node_idx             # <<<<<<<<<<<<<<
+ *         self._update_size(node_idx)
+ *         self._update_size(left_idx)
+*/
+  (__pyx_v_self->nodes[__pyx_v_left_idx]).right_child = __pyx_v_node_idx;
+
+  /* "src/treap/randomized_treap.pyx":311
+ *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
+ *         self.nodes[left_idx].right_child = node_idx
+ *         self._update_size(node_idx)             # <<<<<<<<<<<<<<
+ *         self._update_size(left_idx)
+ *         return left_idx
+*/
+  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
+
+  /* "src/treap/randomized_treap.pyx":312
+ *         self.nodes[left_idx].right_child = node_idx
+ *         self._update_size(node_idx)
+ *         self._update_size(left_idx)             # <<<<<<<<<<<<<<
+ *         return left_idx
+ * 
+*/
+  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_left_idx);
+
+  /* "src/treap/randomized_treap.pyx":313
+ *         self._update_size(node_idx)
+ *         self._update_size(left_idx)
+ *         return left_idx             # <<<<<<<<<<<<<<
+ * 
+ *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
+*/
+  __pyx_r = __pyx_v_left_idx;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":307
+ *         return NONE_SENTINEL
+ * 
+ *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
+ *         cdef intp_t left_idx = self.nodes[node_idx].left_child
+ *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":315
+ *         return left_idx
+ * 
+ *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+ *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
+*/
+
+static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rotate_left(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_right_idx;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
+  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":316
+ * 
+ *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child             # <<<<<<<<<<<<<<
+ *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
+ *         self.nodes[right_idx].left_child = node_idx
+*/
+  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child;
+  __pyx_v_right_idx = __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":317
+ *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+ *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child             # <<<<<<<<<<<<<<
+ *         self.nodes[right_idx].left_child = node_idx
+ *         self._update_size(node_idx)
+*/
+  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_right_idx]).left_child;
+  (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child = __pyx_t_1;
+
+  /* "src/treap/randomized_treap.pyx":318
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+ *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
+ *         self.nodes[right_idx].left_child = node_idx             # <<<<<<<<<<<<<<
+ *         self._update_size(node_idx)
+ *         self._update_size(right_idx)
+*/
+  (__pyx_v_self->nodes[__pyx_v_right_idx]).left_child = __pyx_v_node_idx;
+
+  /* "src/treap/randomized_treap.pyx":319
+ *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
+ *         self.nodes[right_idx].left_child = node_idx
+ *         self._update_size(node_idx)             # <<<<<<<<<<<<<<
+ *         self._update_size(right_idx)
+ *         return right_idx
+*/
+  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
+
+  /* "src/treap/randomized_treap.pyx":320
+ *         self.nodes[right_idx].left_child = node_idx
+ *         self._update_size(node_idx)
+ *         self._update_size(right_idx)             # <<<<<<<<<<<<<<
+ *         return right_idx
+ * 
+*/
+  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_right_idx);
+
+  /* "src/treap/randomized_treap.pyx":321
+ *         self._update_size(node_idx)
+ *         self._update_size(right_idx)
+ *         return right_idx             # <<<<<<<<<<<<<<
+ * 
+ *     cdef void _resize_arrays(self):
+*/
+  __pyx_r = __pyx_v_right_idx;
+  goto __pyx_L0;
+
+  /* "src/treap/randomized_treap.pyx":315
+ *         return left_idx
+ * 
+ *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
+ *         cdef intp_t right_idx = self.nodes[node_idx].right_child
+ *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/treap/randomized_treap.pyx":323
+ *         return right_idx
+ * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
- *         """Resize arrays for numeric version"""
+ *         """Resize arrays"""
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
 */
 
-static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resize_arrays(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self) {
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__resize_arrays(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
   __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_new_capacity;
-  __pyx_t_3src_5treap_16randomized_treap_ArrayNode *__pyx_v_new_nodes;
+  __pyx_t_3src_5treap_16randomized_treap_ArrayNode_t *__pyx_v_new_nodes;
   __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_i;
   PyObject *__pyx_v_old_keys_array = NULL;
   PyObject *__pyx_v_new_keys_array = NULL;
@@ -19458,38 +23477,38 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_resize_arrays", 0);
 
-  /* "src/treap/randomized_treap.pyx":66
+  /* "src/treap/randomized_treap.pyx":325
  *     cdef void _resize_arrays(self):
- *         """Resize arrays for numeric version"""
+ *         """Resize arrays"""
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR             # <<<<<<<<<<<<<<
  * 
- *         # Resize node array (C structs)
+ *         cdef ArrayNode_t* new_nodes = <ArrayNode_t*>malloc(new_capacity * sizeof(ArrayNode_t))
 */
   __pyx_v_new_capacity = (__pyx_v_self->capacity * 2);
 
-  /* "src/treap/randomized_treap.pyx":69
+  /* "src/treap/randomized_treap.pyx":327
+ *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
  * 
- *         # Resize node array (C structs)
- *         cdef ArrayNode* new_nodes = <ArrayNode*>malloc(new_capacity * sizeof(ArrayNode))             # <<<<<<<<<<<<<<
+ *         cdef ArrayNode_t* new_nodes = <ArrayNode_t*>malloc(new_capacity * sizeof(ArrayNode_t))             # <<<<<<<<<<<<<<
  *         if not new_nodes:
- *             raise MemoryError("Failed to resize numeric treap arrays")
+ *             raise MemoryError("Failed to resize arrays")
 */
-  __pyx_v_new_nodes = ((__pyx_t_3src_5treap_16randomized_treap_ArrayNode *)malloc((__pyx_v_new_capacity * (sizeof(__pyx_t_3src_5treap_16randomized_treap_ArrayNode)))));
+  __pyx_v_new_nodes = ((__pyx_t_3src_5treap_16randomized_treap_ArrayNode_t *)malloc((__pyx_v_new_capacity * (sizeof(__pyx_t_3src_5treap_16randomized_treap_ArrayNode_t)))));
 
-  /* "src/treap/randomized_treap.pyx":70
- *         # Resize node array (C structs)
- *         cdef ArrayNode* new_nodes = <ArrayNode*>malloc(new_capacity * sizeof(ArrayNode))
+  /* "src/treap/randomized_treap.pyx":328
+ * 
+ *         cdef ArrayNode_t* new_nodes = <ArrayNode_t*>malloc(new_capacity * sizeof(ArrayNode_t))
  *         if not new_nodes:             # <<<<<<<<<<<<<<
- *             raise MemoryError("Failed to resize numeric treap arrays")
+ *             raise MemoryError("Failed to resize arrays")
  * 
 */
   __pyx_t_1 = (!(__pyx_v_new_nodes != 0));
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/treap/randomized_treap.pyx":71
- *         cdef ArrayNode* new_nodes = <ArrayNode*>malloc(new_capacity * sizeof(ArrayNode))
+    /* "src/treap/randomized_treap.pyx":329
+ *         cdef ArrayNode_t* new_nodes = <ArrayNode_t*>malloc(new_capacity * sizeof(ArrayNode_t))
  *         if not new_nodes:
- *             raise MemoryError("Failed to resize numeric treap arrays")             # <<<<<<<<<<<<<<
+ *             raise MemoryError("Failed to resize arrays")             # <<<<<<<<<<<<<<
  * 
  *         # Copy node data
 */
@@ -19498,27 +23517,27 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
     __pyx_t_4 = __pyx_builtin_MemoryError; 
     __pyx_t_5 = 1;
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Failed_to_resize_numeric_treap_a};
+      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Failed_to_resize_arrays};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 71, __pyx_L1_error)
+    __PYX_ERR(0, 329, __pyx_L1_error)
 
-    /* "src/treap/randomized_treap.pyx":70
- *         # Resize node array (C structs)
- *         cdef ArrayNode* new_nodes = <ArrayNode*>malloc(new_capacity * sizeof(ArrayNode))
+    /* "src/treap/randomized_treap.pyx":328
+ * 
+ *         cdef ArrayNode_t* new_nodes = <ArrayNode_t*>malloc(new_capacity * sizeof(ArrayNode_t))
  *         if not new_nodes:             # <<<<<<<<<<<<<<
- *             raise MemoryError("Failed to resize numeric treap arrays")
+ *             raise MemoryError("Failed to resize arrays")
  * 
 */
   }
 
-  /* "src/treap/randomized_treap.pyx":75
+  /* "src/treap/randomized_treap.pyx":333
  *         # Copy node data
  *         cdef intp_t i
  *         for i in range(self.node_count):             # <<<<<<<<<<<<<<
@@ -19530,7 +23549,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "src/treap/randomized_treap.pyx":76
+    /* "src/treap/randomized_treap.pyx":334
  *         cdef intp_t i
  *         for i in range(self.node_count):
  *             new_nodes[i] = self.nodes[i]             # <<<<<<<<<<<<<<
@@ -19540,7 +23559,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
     (__pyx_v_new_nodes[__pyx_v_i]) = (__pyx_v_self->nodes[__pyx_v_i]);
   }
 
-  /* "src/treap/randomized_treap.pyx":79
+  /* "src/treap/randomized_treap.pyx":337
  * 
  *         # Resize numpy array for keys
  *         old_keys_array = np.asarray(self.keys)             # <<<<<<<<<<<<<<
@@ -19548,13 +23567,13 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
  *         new_keys_array[:self.node_count] = old_keys_array[:self.node_count]
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 79, __pyx_L1_error)}
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_self->keys, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 337, __pyx_L1_error)}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_self->keys, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_5treap_16randomized_treap_float64_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_5treap_16randomized_treap_float64_t, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -19574,13 +23593,13 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_old_keys_array = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "src/treap/randomized_treap.pyx":80
+  /* "src/treap/randomized_treap.pyx":338
  *         # Resize numpy array for keys
  *         old_keys_array = np.asarray(self.keys)
  *         new_keys_array = np.empty(new_capacity, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -19588,16 +23607,16 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
  * 
 */
   __pyx_t_9 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_new_capacity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_new_capacity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_t_5 = 1;
@@ -19614,34 +23633,34 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_9, __pyx_t_3};
-    __pyx_t_10 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_11, __pyx_t_10, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_11, __pyx_t_10, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 338, __pyx_L1_error)
     __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_10);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_new_keys_array = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "src/treap/randomized_treap.pyx":81
+  /* "src/treap/randomized_treap.pyx":339
  *         old_keys_array = np.asarray(self.keys)
  *         new_keys_array = np.empty(new_capacity, dtype=np.float64)
  *         new_keys_array[:self.node_count] = old_keys_array[:self.node_count]             # <<<<<<<<<<<<<<
  * 
  *         free(self.nodes)
 */
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_old_keys_array, 0, __pyx_v_self->node_count, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_old_keys_array, 0, __pyx_v_self->node_count, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_PyObject_SetSlice(__pyx_v_new_keys_array, __pyx_t_2, 0, __pyx_v_self->node_count, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(__pyx_v_new_keys_array, __pyx_t_2, 0, __pyx_v_self->node_count, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/treap/randomized_treap.pyx":83
+  /* "src/treap/randomized_treap.pyx":341
  *         new_keys_array[:self.node_count] = old_keys_array[:self.node_count]
  * 
  *         free(self.nodes)             # <<<<<<<<<<<<<<
@@ -19650,7 +23669,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
 */
   free(__pyx_v_self->nodes);
 
-  /* "src/treap/randomized_treap.pyx":84
+  /* "src/treap/randomized_treap.pyx":342
  * 
  *         free(self.nodes)
  *         self.nodes = new_nodes             # <<<<<<<<<<<<<<
@@ -19659,27 +23678,27 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
 */
   __pyx_v_self->nodes = __pyx_v_new_nodes;
 
-  /* "src/treap/randomized_treap.pyx":85
+  /* "src/treap/randomized_treap.pyx":343
  *         free(self.nodes)
  *         self.nodes = new_nodes
  *         self._keys_array = new_keys_array             # <<<<<<<<<<<<<<
  *         self.keys = self._keys_array
  *         self.capacity = new_capacity
 */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_new_keys_array, PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(__pyx_v_new_keys_array, PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 343, __pyx_L1_error)
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_self->_keys_array, 0);
   __pyx_v_self->_keys_array = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "src/treap/randomized_treap.pyx":86
+  /* "src/treap/randomized_treap.pyx":344
  *         self.nodes = new_nodes
  *         self._keys_array = new_keys_array
  *         self.keys = self._keys_array             # <<<<<<<<<<<<<<
  *         self.capacity = new_capacity
  * 
 */
-  if (unlikely(!__pyx_v_self->_keys_array.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 86, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->_keys_array.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 344, __pyx_L1_error)}
   __pyx_t_12 = __pyx_v_self->_keys_array;
   __PYX_INC_MEMVIEW(&__pyx_t_12, 1);
   __PYX_XCLEAR_MEMVIEW(&__pyx_v_self->keys, 0);
@@ -19687,20 +23706,20 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "src/treap/randomized_treap.pyx":87
+  /* "src/treap/randomized_treap.pyx":345
  *         self._keys_array = new_keys_array
  *         self.keys = self._keys_array
  *         self.capacity = new_capacity             # <<<<<<<<<<<<<<
  * 
- *     cdef intp_t _create_numeric_node(self, double key, object value):
+ *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
 */
   __pyx_v_self->capacity = __pyx_v_new_capacity;
 
-  /* "src/treap/randomized_treap.pyx":64
- *             free(self.nodes)
+  /* "src/treap/randomized_treap.pyx":323
+ *         return right_idx
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
- *         """Resize arrays for numeric version"""
+ *         """Resize arrays"""
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
 */
 
@@ -19714,1402 +23733,28 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resiz
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap._resize_arrays", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap._resize_arrays", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_old_keys_array);
   __Pyx_XDECREF(__pyx_v_new_keys_array);
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/treap/randomized_treap.pyx":89
+/* "src/treap/randomized_treap.pyx":347
  *         self.capacity = new_capacity
- * 
- *     cdef intp_t _create_numeric_node(self, double key, object value):             # <<<<<<<<<<<<<<
- *         """Create node with numeric key"""
- *         if self.node_count >= self.capacity:
-*/
-
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__create_numeric_node(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, PyObject *__pyx_v_value) {
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_idx;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
-  int __pyx_t_1;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
-  int __pyx_t_3;
-  int __pyx_t_4;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "src/treap/randomized_treap.pyx":91
- *     cdef intp_t _create_numeric_node(self, double key, object value):
- *         """Create node with numeric key"""
- *         if self.node_count >= self.capacity:             # <<<<<<<<<<<<<<
- *             self._resize_arrays()
- * 
-*/
-  __pyx_t_1 = (__pyx_v_self->node_count >= __pyx_v_self->capacity);
-  if (__pyx_t_1) {
-
-    /* "src/treap/randomized_treap.pyx":92
- *         """Create node with numeric key"""
- *         if self.node_count >= self.capacity:
- *             self._resize_arrays()             # <<<<<<<<<<<<<<
- * 
- *         cdef intp_t idx = self.node_count
-*/
-    ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_resize_arrays(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
-
-    /* "src/treap/randomized_treap.pyx":91
- *     cdef intp_t _create_numeric_node(self, double key, object value):
- *         """Create node with numeric key"""
- *         if self.node_count >= self.capacity:             # <<<<<<<<<<<<<<
- *             self._resize_arrays()
- * 
-*/
-  }
-
-  /* "src/treap/randomized_treap.pyx":94
- *             self._resize_arrays()
- * 
- *         cdef intp_t idx = self.node_count             # <<<<<<<<<<<<<<
- *         self.node_count += 1
- * 
-*/
-  __pyx_t_2 = __pyx_v_self->node_count;
-  __pyx_v_idx = __pyx_t_2;
-
-  /* "src/treap/randomized_treap.pyx":95
- * 
- *         cdef intp_t idx = self.node_count
- *         self.node_count += 1             # <<<<<<<<<<<<<<
- * 
- *         # Initialize C struct
-*/
-  __pyx_v_self->node_count = (__pyx_v_self->node_count + 1);
-
-  /* "src/treap/randomized_treap.pyx":98
- * 
- *         # Initialize C struct
- *         self.nodes[idx].left_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
- *         self.nodes[idx].right_child = NONE_SENTINEL
- *         self.nodes[idx].priority = drand48()
-*/
-  (__pyx_v_self->nodes[__pyx_v_idx]).left_child = -1L;
-
-  /* "src/treap/randomized_treap.pyx":99
- *         # Initialize C struct
- *         self.nodes[idx].left_child = NONE_SENTINEL
- *         self.nodes[idx].right_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
- *         self.nodes[idx].priority = drand48()
- *         self.nodes[idx].size = 1
-*/
-  (__pyx_v_self->nodes[__pyx_v_idx]).right_child = -1L;
-
-  /* "src/treap/randomized_treap.pyx":100
- *         self.nodes[idx].left_child = NONE_SENTINEL
- *         self.nodes[idx].right_child = NONE_SENTINEL
- *         self.nodes[idx].priority = drand48()             # <<<<<<<<<<<<<<
- *         self.nodes[idx].size = 1
- * 
-*/
-  (__pyx_v_self->nodes[__pyx_v_idx]).priority = drand48();
-
-  /* "src/treap/randomized_treap.pyx":101
- *         self.nodes[idx].right_child = NONE_SENTINEL
- *         self.nodes[idx].priority = drand48()
- *         self.nodes[idx].size = 1             # <<<<<<<<<<<<<<
- * 
- *         # Store key and value
-*/
-  (__pyx_v_self->nodes[__pyx_v_idx]).size = 1;
-
-  /* "src/treap/randomized_treap.pyx":104
- * 
- *         # Store key and value
- *         self.keys[idx] = key             # <<<<<<<<<<<<<<
- *         self.values.append(value)
- * 
-*/
-  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 104, __pyx_L1_error)}
-  __pyx_t_2 = __pyx_v_idx;
-  __pyx_t_3 = -1;
-  if (__pyx_t_2 < 0) {
-    __pyx_t_2 += __pyx_v_self->keys.shape[0];
-    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
-  } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
-  if (unlikely(__pyx_t_3 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_3);
-    __PYX_ERR(0, 104, __pyx_L1_error)
-  }
-  *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->keys.data) + __pyx_t_2)) )) = __pyx_v_key;
-
-  /* "src/treap/randomized_treap.pyx":105
- *         # Store key and value
- *         self.keys[idx] = key
- *         self.values.append(value)             # <<<<<<<<<<<<<<
- * 
- *         return idx
-*/
-  if (unlikely(__pyx_v_self->values == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 105, __pyx_L1_error)
-  }
-  __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_self->values, __pyx_v_value); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 105, __pyx_L1_error)
-
-  /* "src/treap/randomized_treap.pyx":107
- *         self.values.append(value)
- * 
- *         return idx             # <<<<<<<<<<<<<<
- * 
- *     cpdef void insert_numeric(self, double key, object value):
-*/
-  __pyx_r = __pyx_v_idx;
-  goto __pyx_L0;
-
-  /* "src/treap/randomized_treap.pyx":89
- *         self.capacity = new_capacity
- * 
- *     cdef intp_t _create_numeric_node(self, double key, object value):             # <<<<<<<<<<<<<<
- *         """Create node with numeric key"""
- *         if self.node_count >= self.capacity:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap._create_numeric_node", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":109
- *         return idx
- * 
- *     cpdef void insert_numeric(self, double key, object value):             # <<<<<<<<<<<<<<
- *         """Insert with numeric key"""
- *         self.root_idx = self._insert_numeric_helper(self.root_idx, key, value)
-*/
-
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_insert_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, PyObject *__pyx_v_value, int __pyx_skip_dispatch) {
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_7;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("insert_numeric", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (
-  #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap &&
-  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
-  #else
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
-  #endif
-  ) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_insert_numeric); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric)) {
-        __pyx_t_3 = NULL;
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = 1;
-        #if CYTHON_UNPACK_METHODS
-        if (unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-          assert(__pyx_t_3);
-          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-          __Pyx_INCREF(__pyx_t_3);
-          __Pyx_INCREF(__pyx__function);
-          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-          __pyx_t_6 = 0;
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_value};
-          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (3-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-        }
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "src/treap/randomized_treap.pyx":111
- *     cpdef void insert_numeric(self, double key, object value):
- *         """Insert with numeric key"""
- *         self.root_idx = self._insert_numeric_helper(self.root_idx, key, value)             # <<<<<<<<<<<<<<
- *         self._size += 1
- * 
-*/
-  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_insert_numeric_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 111, __pyx_L1_error)
-  __pyx_v_self->root_idx = __pyx_t_7;
-
-  /* "src/treap/randomized_treap.pyx":112
- *         """Insert with numeric key"""
- *         self.root_idx = self._insert_numeric_helper(self.root_idx, key, value)
- *         self._size += 1             # <<<<<<<<<<<<<<
- * 
- *     cdef intp_t _insert_numeric_helper(self, intp_t node_idx, double key, object value):
-*/
-  __pyx_v_self->_size = (__pyx_v_self->_size + 1);
-
-  /* "src/treap/randomized_treap.pyx":109
- *         return idx
- * 
- *     cpdef void insert_numeric(self, double key, object value):             # <<<<<<<<<<<<<<
- *         """Insert with numeric key"""
- *         self.root_idx = self._insert_numeric_helper(self.root_idx, key, value)
-*/
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.insert_numeric", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_6insert_numeric, "Insert with numeric key");
-static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric = {"insert_numeric", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_6insert_numeric};
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  double __pyx_v_key;
-  PyObject *__pyx_v_value = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("insert_numeric (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,&__pyx_mstate_global->__pyx_n_u_value,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 109, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 109, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 109, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insert_numeric", 0) < 0) __PYX_ERR(0, 109, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insert_numeric", 1, 2, 2, i); __PYX_ERR(0, 109, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 2)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 109, __pyx_L3_error)
-      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 109, __pyx_L3_error)
-    }
-    __pyx_v_key = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_key == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L3_error)
-    __pyx_v_value = values[1];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insert_numeric", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 109, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.insert_numeric", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_6insert_numeric(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self), __pyx_v_key, __pyx_v_value);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_6insert_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, PyObject *__pyx_v_value) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("insert_numeric", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_insert_numeric(__pyx_v_self, __pyx_v_key, __pyx_v_value, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.insert_numeric", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":114
- *         self._size += 1
- * 
- *     cdef intp_t _insert_numeric_helper(self, intp_t node_idx, double key, object value):             # <<<<<<<<<<<<<<
- *         """Numeric insertion helper"""
- *         if node_idx == NONE_SENTINEL:
-*/
-
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__insert_numeric_helper(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, double __pyx_v_key, PyObject *__pyx_v_value) {
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_new_child_idx;
-  double __pyx_v_child_priority;
-  double __pyx_v_node_priority;
-  double __pyx_v_node_key;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
-  int __pyx_t_1;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
-  int __pyx_t_3;
-  double __pyx_t_4;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "src/treap/randomized_treap.pyx":116
- *     cdef intp_t _insert_numeric_helper(self, intp_t node_idx, double key, object value):
- *         """Numeric insertion helper"""
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return self._create_numeric_node(key, value)
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node_idx == -1L);
-  if (__pyx_t_1) {
-
-    /* "src/treap/randomized_treap.pyx":117
- *         """Numeric insertion helper"""
- *         if node_idx == NONE_SENTINEL:
- *             return self._create_numeric_node(key, value)             # <<<<<<<<<<<<<<
- * 
- *         cdef intp_t new_child_idx
-*/
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_create_numeric_node(__pyx_v_self, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
-    __pyx_r = __pyx_t_2;
-    goto __pyx_L0;
-
-    /* "src/treap/randomized_treap.pyx":116
- *     cdef intp_t _insert_numeric_helper(self, intp_t node_idx, double key, object value):
- *         """Numeric insertion helper"""
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return self._create_numeric_node(key, value)
- * 
-*/
-  }
-
-  /* "src/treap/randomized_treap.pyx":123
- * 
- *         # Numeric comparison - can be fast
- *         node_key = self.keys[node_idx]             # <<<<<<<<<<<<<<
- * 
- *         if key <= node_key:
-*/
-  if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 123, __pyx_L1_error)}
-  __pyx_t_2 = __pyx_v_node_idx;
-  __pyx_t_3 = -1;
-  if (__pyx_t_2 < 0) {
-    __pyx_t_2 += __pyx_v_self->keys.shape[0];
-    if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
-  } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
-  if (unlikely(__pyx_t_3 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_3);
-    __PYX_ERR(0, 123, __pyx_L1_error)
-  }
-  __pyx_v_node_key = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->keys.data) + __pyx_t_2)) )));
-
-  /* "src/treap/randomized_treap.pyx":125
- *         node_key = self.keys[node_idx]
- * 
- *         if key <= node_key:             # <<<<<<<<<<<<<<
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].left_child, key, value)
- *             self.nodes[node_idx].left_child = new_child_idx
-*/
-  __pyx_t_1 = (__pyx_v_key <= __pyx_v_node_key);
-  if (__pyx_t_1) {
-
-    /* "src/treap/randomized_treap.pyx":126
- * 
- *         if key <= node_key:
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].left_child, key, value)             # <<<<<<<<<<<<<<
- *             self.nodes[node_idx].left_child = new_child_idx
- * 
-*/
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_insert_numeric_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 126, __pyx_L1_error)
-    __pyx_v_new_child_idx = __pyx_t_2;
-
-    /* "src/treap/randomized_treap.pyx":127
- *         if key <= node_key:
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].left_child, key, value)
- *             self.nodes[node_idx].left_child = new_child_idx             # <<<<<<<<<<<<<<
- * 
- *             child_priority = self.nodes[new_child_idx].priority
-*/
-    (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child = __pyx_v_new_child_idx;
-
-    /* "src/treap/randomized_treap.pyx":129
- *             self.nodes[node_idx].left_child = new_child_idx
- * 
- *             child_priority = self.nodes[new_child_idx].priority             # <<<<<<<<<<<<<<
- *             node_priority = self.nodes[node_idx].priority
- * 
-*/
-    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_new_child_idx]).priority;
-    __pyx_v_child_priority = __pyx_t_4;
-
-    /* "src/treap/randomized_treap.pyx":130
- * 
- *             child_priority = self.nodes[new_child_idx].priority
- *             node_priority = self.nodes[node_idx].priority             # <<<<<<<<<<<<<<
- * 
- *             if child_priority > node_priority:
-*/
-    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_node_idx]).priority;
-    __pyx_v_node_priority = __pyx_t_4;
-
-    /* "src/treap/randomized_treap.pyx":132
- *             node_priority = self.nodes[node_idx].priority
- * 
- *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
- *                 with nogil:
- *                     node_idx = self._rotate_right(node_idx)
-*/
-    __pyx_t_1 = (__pyx_v_child_priority > __pyx_v_node_priority);
-    if (__pyx_t_1) {
-
-      /* "src/treap/randomized_treap.pyx":133
- * 
- *             if child_priority > node_priority:
- *                 with nogil:             # <<<<<<<<<<<<<<
- *                     node_idx = self._rotate_right(node_idx)
- *         else:
-*/
-      {
-          PyThreadState *_save;
-          _save = NULL;
-          Py_UNBLOCK_THREADS
-          __Pyx_FastGIL_Remember();
-          /*try:*/ {
-
-            /* "src/treap/randomized_treap.pyx":134
- *             if child_priority > node_priority:
- *                 with nogil:
- *                     node_idx = self._rotate_right(node_idx)             # <<<<<<<<<<<<<<
- *         else:
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].right_child, key, value)
-*/
-            __pyx_v_node_idx = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rotate_right(__pyx_v_self, __pyx_v_node_idx);
-          }
-
-          /* "src/treap/randomized_treap.pyx":133
- * 
- *             if child_priority > node_priority:
- *                 with nogil:             # <<<<<<<<<<<<<<
- *                     node_idx = self._rotate_right(node_idx)
- *         else:
-*/
-          /*finally:*/ {
-            /*normal exit:*/{
-              __Pyx_FastGIL_Forget();
-              Py_BLOCK_THREADS
-              goto __pyx_L8;
-            }
-            __pyx_L8:;
-          }
-      }
-
-      /* "src/treap/randomized_treap.pyx":132
- *             node_priority = self.nodes[node_idx].priority
- * 
- *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
- *                 with nogil:
- *                     node_idx = self._rotate_right(node_idx)
-*/
-    }
-
-    /* "src/treap/randomized_treap.pyx":125
- *         node_key = self.keys[node_idx]
- * 
- *         if key <= node_key:             # <<<<<<<<<<<<<<
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].left_child, key, value)
- *             self.nodes[node_idx].left_child = new_child_idx
-*/
-    goto __pyx_L4;
-  }
-
-  /* "src/treap/randomized_treap.pyx":136
- *                     node_idx = self._rotate_right(node_idx)
- *         else:
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].right_child, key, value)             # <<<<<<<<<<<<<<
- *             self.nodes[node_idx].right_child = new_child_idx
- * 
-*/
-  /*else*/ {
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_insert_numeric_helper(__pyx_v_self, (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
-    __pyx_v_new_child_idx = __pyx_t_2;
-
-    /* "src/treap/randomized_treap.pyx":137
- *         else:
- *             new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].right_child, key, value)
- *             self.nodes[node_idx].right_child = new_child_idx             # <<<<<<<<<<<<<<
- * 
- *             child_priority = self.nodes[new_child_idx].priority
-*/
-    (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child = __pyx_v_new_child_idx;
-
-    /* "src/treap/randomized_treap.pyx":139
- *             self.nodes[node_idx].right_child = new_child_idx
- * 
- *             child_priority = self.nodes[new_child_idx].priority             # <<<<<<<<<<<<<<
- *             node_priority = self.nodes[node_idx].priority
- * 
-*/
-    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_new_child_idx]).priority;
-    __pyx_v_child_priority = __pyx_t_4;
-
-    /* "src/treap/randomized_treap.pyx":140
- * 
- *             child_priority = self.nodes[new_child_idx].priority
- *             node_priority = self.nodes[node_idx].priority             # <<<<<<<<<<<<<<
- * 
- *             if child_priority > node_priority:
-*/
-    __pyx_t_4 = (__pyx_v_self->nodes[__pyx_v_node_idx]).priority;
-    __pyx_v_node_priority = __pyx_t_4;
-
-    /* "src/treap/randomized_treap.pyx":142
- *             node_priority = self.nodes[node_idx].priority
- * 
- *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
- *                 with nogil:
- *                     node_idx = self._rotate_left(node_idx)
-*/
-    __pyx_t_1 = (__pyx_v_child_priority > __pyx_v_node_priority);
-    if (__pyx_t_1) {
-
-      /* "src/treap/randomized_treap.pyx":143
- * 
- *             if child_priority > node_priority:
- *                 with nogil:             # <<<<<<<<<<<<<<
- *                     node_idx = self._rotate_left(node_idx)
- * 
-*/
-      {
-          PyThreadState *_save;
-          _save = NULL;
-          Py_UNBLOCK_THREADS
-          __Pyx_FastGIL_Remember();
-          /*try:*/ {
-
-            /* "src/treap/randomized_treap.pyx":144
- *             if child_priority > node_priority:
- *                 with nogil:
- *                     node_idx = self._rotate_left(node_idx)             # <<<<<<<<<<<<<<
- * 
- *         with nogil:
-*/
-            __pyx_v_node_idx = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_rotate_left(__pyx_v_self, __pyx_v_node_idx);
-          }
-
-          /* "src/treap/randomized_treap.pyx":143
- * 
- *             if child_priority > node_priority:
- *                 with nogil:             # <<<<<<<<<<<<<<
- *                     node_idx = self._rotate_left(node_idx)
- * 
-*/
-          /*finally:*/ {
-            /*normal exit:*/{
-              __Pyx_FastGIL_Forget();
-              Py_BLOCK_THREADS
-              goto __pyx_L12;
-            }
-            __pyx_L12:;
-          }
-      }
-
-      /* "src/treap/randomized_treap.pyx":142
- *             node_priority = self.nodes[node_idx].priority
- * 
- *             if child_priority > node_priority:             # <<<<<<<<<<<<<<
- *                 with nogil:
- *                     node_idx = self._rotate_left(node_idx)
-*/
-    }
-  }
-  __pyx_L4:;
-
-  /* "src/treap/randomized_treap.pyx":146
- *                     node_idx = self._rotate_left(node_idx)
- * 
- *         with nogil:             # <<<<<<<<<<<<<<
- *             self._update_size(node_idx)
- *         return node_idx
-*/
-  {
-      PyThreadState *_save;
-      _save = NULL;
-      Py_UNBLOCK_THREADS
-      __Pyx_FastGIL_Remember();
-      /*try:*/ {
-
-        /* "src/treap/randomized_treap.pyx":147
- * 
- *         with nogil:
- *             self._update_size(node_idx)             # <<<<<<<<<<<<<<
- *         return node_idx
- * 
-*/
-        ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
-      }
-
-      /* "src/treap/randomized_treap.pyx":146
- *                     node_idx = self._rotate_left(node_idx)
- * 
- *         with nogil:             # <<<<<<<<<<<<<<
- *             self._update_size(node_idx)
- *         return node_idx
-*/
-      /*finally:*/ {
-        /*normal exit:*/{
-          __Pyx_FastGIL_Forget();
-          Py_BLOCK_THREADS
-          goto __pyx_L15;
-        }
-        __pyx_L15:;
-      }
-  }
-
-  /* "src/treap/randomized_treap.pyx":148
- *         with nogil:
- *             self._update_size(node_idx)
- *         return node_idx             # <<<<<<<<<<<<<<
- * 
- *     cpdef object search_numeric(self, double key):
-*/
-  __pyx_r = __pyx_v_node_idx;
-  goto __pyx_L0;
-
-  /* "src/treap/randomized_treap.pyx":114
- *         self._size += 1
- * 
- *     cdef intp_t _insert_numeric_helper(self, intp_t node_idx, double key, object value):             # <<<<<<<<<<<<<<
- *         """Numeric insertion helper"""
- *         if node_idx == NONE_SENTINEL:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap._insert_numeric_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":150
- *         return node_idx
- * 
- *     cpdef object search_numeric(self, double key):             # <<<<<<<<<<<<<<
- *         """Search for numeric key"""
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
-*/
-
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyObject *__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_search_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key, int __pyx_skip_dispatch) {
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_7;
-  int __pyx_t_8;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("search_numeric", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (
-  #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap &&
-  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
-  #else
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
-  #endif
-  ) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_search_numeric); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric)) {
-        __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = NULL;
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 150, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = 1;
-        #if CYTHON_UNPACK_METHODS
-        if (unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-          assert(__pyx_t_3);
-          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-          __Pyx_INCREF(__pyx_t_3);
-          __Pyx_INCREF(__pyx__function);
-          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-          __pyx_t_6 = 0;
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
-          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-        }
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "src/treap/randomized_treap.pyx":152
- *     cpdef object search_numeric(self, double key):
- *         """Search for numeric key"""
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)             # <<<<<<<<<<<<<<
- *         if node_idx == NONE_SENTINEL:
- *             return None
-*/
-  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_search_numeric_helper(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
-  __pyx_v_node_idx = __pyx_t_7;
-
-  /* "src/treap/randomized_treap.pyx":153
- *         """Search for numeric key"""
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return None
- *         return self.values[node_idx]
-*/
-  __pyx_t_8 = (__pyx_v_node_idx == -1L);
-  if (__pyx_t_8) {
-
-    /* "src/treap/randomized_treap.pyx":154
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
- *         if node_idx == NONE_SENTINEL:
- *             return None             # <<<<<<<<<<<<<<
- *         return self.values[node_idx]
- * 
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-    goto __pyx_L0;
-
-    /* "src/treap/randomized_treap.pyx":153
- *         """Search for numeric key"""
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return None
- *         return self.values[node_idx]
-*/
-  }
-
-  /* "src/treap/randomized_treap.pyx":155
- *         if node_idx == NONE_SENTINEL:
- *             return None
- *         return self.values[node_idx]             # <<<<<<<<<<<<<<
- * 
- *     cdef intp_t _search_numeric_helper(self, intp_t node_idx, double key):
-*/
-  __Pyx_XDECREF(__pyx_r);
-  if (unlikely(__pyx_v_self->values == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 155, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_node_idx, __pyx_t_3src_5treap_16randomized_treap_intp_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "src/treap/randomized_treap.pyx":150
- *         return node_idx
- * 
- *     cpdef object search_numeric(self, double key):             # <<<<<<<<<<<<<<
- *         """Search for numeric key"""
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.search_numeric", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_8search_numeric, "Search for numeric key");
-static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric = {"search_numeric", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_8search_numeric};
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  double __pyx_v_key;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[1] = {0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("search_numeric (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 150, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 150, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "search_numeric", 0) < 0) __PYX_ERR(0, 150, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("search_numeric", 1, 1, 1, i); __PYX_ERR(0, 150, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 150, __pyx_L3_error)
-    }
-    __pyx_v_key = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_key == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 150, __pyx_L3_error)
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("search_numeric", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 150, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.search_numeric", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_8search_numeric(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self), __pyx_v_key);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_8search_numeric(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, double __pyx_v_key) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("search_numeric", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_search_numeric(__pyx_v_self, __pyx_v_key, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.search_numeric", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":157
- *         return self.values[node_idx]
- * 
- *     cdef intp_t _search_numeric_helper(self, intp_t node_idx, double key):             # <<<<<<<<<<<<<<
- *         """Numeric search - much faster than Python object comparison"""
- *         cdef double node_key
-*/
-
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__search_numeric_helper(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx, double __pyx_v_key) {
-  double __pyx_v_node_key;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
-  int __pyx_t_1;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
-  int __pyx_t_3;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "src/treap/randomized_treap.pyx":161
- *         cdef double node_key
- * 
- *         while node_idx != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             node_key = self.keys[node_idx]
- * 
-*/
-  while (1) {
-    __pyx_t_1 = (__pyx_v_node_idx != -1L);
-    if (!__pyx_t_1) break;
-
-    /* "src/treap/randomized_treap.pyx":162
- * 
- *         while node_idx != NONE_SENTINEL:
- *             node_key = self.keys[node_idx]             # <<<<<<<<<<<<<<
- * 
- *             if key == node_key:
-*/
-    if (unlikely(!__pyx_v_self->keys.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 162, __pyx_L1_error)}
-    __pyx_t_2 = __pyx_v_node_idx;
-    __pyx_t_3 = -1;
-    if (__pyx_t_2 < 0) {
-      __pyx_t_2 += __pyx_v_self->keys.shape[0];
-      if (unlikely(__pyx_t_2 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_2 >= __pyx_v_self->keys.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 162, __pyx_L1_error)
-    }
-    __pyx_v_node_key = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->keys.data) + __pyx_t_2)) )));
-
-    /* "src/treap/randomized_treap.pyx":164
- *             node_key = self.keys[node_idx]
- * 
- *             if key == node_key:             # <<<<<<<<<<<<<<
- *                 return node_idx
- *             elif key < node_key:
-*/
-    __pyx_t_1 = (__pyx_v_key == __pyx_v_node_key);
-    if (__pyx_t_1) {
-
-      /* "src/treap/randomized_treap.pyx":165
- * 
- *             if key == node_key:
- *                 return node_idx             # <<<<<<<<<<<<<<
- *             elif key < node_key:
- *                 node_idx = self.nodes[node_idx].left_child
-*/
-      __pyx_r = __pyx_v_node_idx;
-      goto __pyx_L0;
-
-      /* "src/treap/randomized_treap.pyx":164
- *             node_key = self.keys[node_idx]
- * 
- *             if key == node_key:             # <<<<<<<<<<<<<<
- *                 return node_idx
- *             elif key < node_key:
-*/
-    }
-
-    /* "src/treap/randomized_treap.pyx":166
- *             if key == node_key:
- *                 return node_idx
- *             elif key < node_key:             # <<<<<<<<<<<<<<
- *                 node_idx = self.nodes[node_idx].left_child
- *             else:
-*/
-    __pyx_t_1 = (__pyx_v_key < __pyx_v_node_key);
-    if (__pyx_t_1) {
-
-      /* "src/treap/randomized_treap.pyx":167
- *                 return node_idx
- *             elif key < node_key:
- *                 node_idx = self.nodes[node_idx].left_child             # <<<<<<<<<<<<<<
- *             else:
- *                 node_idx = self.nodes[node_idx].right_child
-*/
-      __pyx_t_2 = (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child;
-      __pyx_v_node_idx = __pyx_t_2;
-
-      /* "src/treap/randomized_treap.pyx":166
- *             if key == node_key:
- *                 return node_idx
- *             elif key < node_key:             # <<<<<<<<<<<<<<
- *                 node_idx = self.nodes[node_idx].left_child
- *             else:
-*/
-      goto __pyx_L5;
-    }
-
-    /* "src/treap/randomized_treap.pyx":169
- *                 node_idx = self.nodes[node_idx].left_child
- *             else:
- *                 node_idx = self.nodes[node_idx].right_child             # <<<<<<<<<<<<<<
- * 
- *         return NONE_SENTINEL
-*/
-    /*else*/ {
-      __pyx_t_2 = (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child;
-      __pyx_v_node_idx = __pyx_t_2;
-    }
-    __pyx_L5:;
-  }
-
-  /* "src/treap/randomized_treap.pyx":171
- *                 node_idx = self.nodes[node_idx].right_child
- * 
- *         return NONE_SENTINEL             # <<<<<<<<<<<<<<
- * 
- *     # Rotation and size update methods (same as ArrayBasedTreap)
-*/
-  __pyx_r = -1L;
-  goto __pyx_L0;
-
-  /* "src/treap/randomized_treap.pyx":157
- *         return self.values[node_idx]
- * 
- *     cdef intp_t _search_numeric_helper(self, intp_t node_idx, double key):             # <<<<<<<<<<<<<<
- *         """Numeric search - much faster than Python object comparison"""
- *         cdef double node_key
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap._search_numeric_helper", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":174
- * 
- *     # Rotation and size update methods (same as ArrayBasedTreap)
- *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
- *         cdef intp_t left_idx = self.nodes[node_idx].left_child
- *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
-*/
-
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__rotate_right(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_left_idx;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_1;
-
-  /* "src/treap/randomized_treap.pyx":175
- *     # Rotation and size update methods (same as ArrayBasedTreap)
- *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
- *         cdef intp_t left_idx = self.nodes[node_idx].left_child             # <<<<<<<<<<<<<<
- *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
- *         self.nodes[left_idx].right_child = node_idx
-*/
-  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child;
-  __pyx_v_left_idx = __pyx_t_1;
-
-  /* "src/treap/randomized_treap.pyx":176
- *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
- *         cdef intp_t left_idx = self.nodes[node_idx].left_child
- *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child             # <<<<<<<<<<<<<<
- *         self.nodes[left_idx].right_child = node_idx
- *         self._update_size(node_idx)
-*/
-  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_left_idx]).right_child;
-  (__pyx_v_self->nodes[__pyx_v_node_idx]).left_child = __pyx_t_1;
-
-  /* "src/treap/randomized_treap.pyx":177
- *         cdef intp_t left_idx = self.nodes[node_idx].left_child
- *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
- *         self.nodes[left_idx].right_child = node_idx             # <<<<<<<<<<<<<<
- *         self._update_size(node_idx)
- *         self._update_size(left_idx)
-*/
-  (__pyx_v_self->nodes[__pyx_v_left_idx]).right_child = __pyx_v_node_idx;
-
-  /* "src/treap/randomized_treap.pyx":178
- *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
- *         self.nodes[left_idx].right_child = node_idx
- *         self._update_size(node_idx)             # <<<<<<<<<<<<<<
- *         self._update_size(left_idx)
- *         return left_idx
-*/
-  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
-
-  /* "src/treap/randomized_treap.pyx":179
- *         self.nodes[left_idx].right_child = node_idx
- *         self._update_size(node_idx)
- *         self._update_size(left_idx)             # <<<<<<<<<<<<<<
- *         return left_idx
- * 
-*/
-  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_left_idx);
-
-  /* "src/treap/randomized_treap.pyx":180
- *         self._update_size(node_idx)
- *         self._update_size(left_idx)
- *         return left_idx             # <<<<<<<<<<<<<<
- * 
- *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
-*/
-  __pyx_r = __pyx_v_left_idx;
-  goto __pyx_L0;
-
-  /* "src/treap/randomized_treap.pyx":174
- * 
- *     # Rotation and size update methods (same as ArrayBasedTreap)
- *     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
- *         cdef intp_t left_idx = self.nodes[node_idx].left_child
- *         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
-*/
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":182
- *         return left_idx
- * 
- *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
- *         cdef intp_t right_idx = self.nodes[node_idx].right_child
- *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
-*/
-
-static __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__rotate_left(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_right_idx;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_r;
-  __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_1;
-
-  /* "src/treap/randomized_treap.pyx":183
- * 
- *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
- *         cdef intp_t right_idx = self.nodes[node_idx].right_child             # <<<<<<<<<<<<<<
- *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
- *         self.nodes[right_idx].left_child = node_idx
-*/
-  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child;
-  __pyx_v_right_idx = __pyx_t_1;
-
-  /* "src/treap/randomized_treap.pyx":184
- *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
- *         cdef intp_t right_idx = self.nodes[node_idx].right_child
- *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child             # <<<<<<<<<<<<<<
- *         self.nodes[right_idx].left_child = node_idx
- *         self._update_size(node_idx)
-*/
-  __pyx_t_1 = (__pyx_v_self->nodes[__pyx_v_right_idx]).left_child;
-  (__pyx_v_self->nodes[__pyx_v_node_idx]).right_child = __pyx_t_1;
-
-  /* "src/treap/randomized_treap.pyx":185
- *         cdef intp_t right_idx = self.nodes[node_idx].right_child
- *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
- *         self.nodes[right_idx].left_child = node_idx             # <<<<<<<<<<<<<<
- *         self._update_size(node_idx)
- *         self._update_size(right_idx)
-*/
-  (__pyx_v_self->nodes[__pyx_v_right_idx]).left_child = __pyx_v_node_idx;
-
-  /* "src/treap/randomized_treap.pyx":186
- *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
- *         self.nodes[right_idx].left_child = node_idx
- *         self._update_size(node_idx)             # <<<<<<<<<<<<<<
- *         self._update_size(right_idx)
- *         return right_idx
-*/
-  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_node_idx);
-
-  /* "src/treap/randomized_treap.pyx":187
- *         self.nodes[right_idx].left_child = node_idx
- *         self._update_size(node_idx)
- *         self._update_size(right_idx)             # <<<<<<<<<<<<<<
- *         return right_idx
- * 
-*/
-  ((struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self->__pyx_vtab)->_update_size(__pyx_v_self, __pyx_v_right_idx);
-
-  /* "src/treap/randomized_treap.pyx":188
- *         self._update_size(node_idx)
- *         self._update_size(right_idx)
- *         return right_idx             # <<<<<<<<<<<<<<
- * 
- *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
-*/
-  __pyx_r = __pyx_v_right_idx;
-  goto __pyx_L0;
-
-  /* "src/treap/randomized_treap.pyx":182
- *         return left_idx
- * 
- *     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
- *         cdef intp_t right_idx = self.nodes[node_idx].right_child
- *         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
-*/
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "src/treap/randomized_treap.pyx":190
- *         return right_idx
  * 
  *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
  *         if node_idx == NONE_SENTINEL:
  *             return
 */
 
-static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__update_size(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
+static void __pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__update_size(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_node_idx) {
   __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_left_size;
   __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_v_right_size;
   int __pyx_t_1;
   __pyx_t_3src_5treap_16randomized_treap_intp_t __pyx_t_2;
 
-  /* "src/treap/randomized_treap.pyx":191
+  /* "src/treap/randomized_treap.pyx":348
  * 
  *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21119,7 +23764,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
   __pyx_t_1 = (__pyx_v_node_idx == -1L);
   if (__pyx_t_1) {
 
-    /* "src/treap/randomized_treap.pyx":192
+    /* "src/treap/randomized_treap.pyx":349
  *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
  *         if node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
@@ -21128,7 +23773,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
 */
     goto __pyx_L0;
 
-    /* "src/treap/randomized_treap.pyx":191
+    /* "src/treap/randomized_treap.pyx":348
  * 
  *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21137,7 +23782,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
 */
   }
 
-  /* "src/treap/randomized_treap.pyx":193
+  /* "src/treap/randomized_treap.pyx":350
  *         if node_idx == NONE_SENTINEL:
  *             return
  *         cdef intp_t left_size = 0, right_size = 0             # <<<<<<<<<<<<<<
@@ -21147,7 +23792,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
   __pyx_v_left_size = 0;
   __pyx_v_right_size = 0;
 
-  /* "src/treap/randomized_treap.pyx":194
+  /* "src/treap/randomized_treap.pyx":351
  *             return
  *         cdef intp_t left_size = 0, right_size = 0
  *         if self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21157,7 +23802,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
   __pyx_t_1 = ((__pyx_v_self->nodes[__pyx_v_node_idx]).left_child != -1L);
   if (__pyx_t_1) {
 
-    /* "src/treap/randomized_treap.pyx":195
+    /* "src/treap/randomized_treap.pyx":352
  *         cdef intp_t left_size = 0, right_size = 0
  *         if self.nodes[node_idx].left_child != NONE_SENTINEL:
  *             left_size = self.nodes[self.nodes[node_idx].left_child].size             # <<<<<<<<<<<<<<
@@ -21167,7 +23812,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
     __pyx_t_2 = (__pyx_v_self->nodes[(__pyx_v_self->nodes[__pyx_v_node_idx]).left_child]).size;
     __pyx_v_left_size = __pyx_t_2;
 
-    /* "src/treap/randomized_treap.pyx":194
+    /* "src/treap/randomized_treap.pyx":351
  *             return
  *         cdef intp_t left_size = 0, right_size = 0
  *         if self.nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21176,7 +23821,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
 */
   }
 
-  /* "src/treap/randomized_treap.pyx":196
+  /* "src/treap/randomized_treap.pyx":353
  *         if self.nodes[node_idx].left_child != NONE_SENTINEL:
  *             left_size = self.nodes[self.nodes[node_idx].left_child].size
  *         if self.nodes[node_idx].right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21186,7 +23831,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
   __pyx_t_1 = ((__pyx_v_self->nodes[__pyx_v_node_idx]).right_child != -1L);
   if (__pyx_t_1) {
 
-    /* "src/treap/randomized_treap.pyx":197
+    /* "src/treap/randomized_treap.pyx":354
  *             left_size = self.nodes[self.nodes[node_idx].left_child].size
  *         if self.nodes[node_idx].right_child != NONE_SENTINEL:
  *             right_size = self.nodes[self.nodes[node_idx].right_child].size             # <<<<<<<<<<<<<<
@@ -21195,7 +23840,7 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
     __pyx_t_2 = (__pyx_v_self->nodes[(__pyx_v_self->nodes[__pyx_v_node_idx]).right_child]).size;
     __pyx_v_right_size = __pyx_t_2;
 
-    /* "src/treap/randomized_treap.pyx":196
+    /* "src/treap/randomized_treap.pyx":353
  *         if self.nodes[node_idx].left_child != NONE_SENTINEL:
  *             left_size = self.nodes[self.nodes[node_idx].left_child].size
  *         if self.nodes[node_idx].right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21204,15 +23849,15 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
 */
   }
 
-  /* "src/treap/randomized_treap.pyx":198
+  /* "src/treap/randomized_treap.pyx":355
  *         if self.nodes[node_idx].right_child != NONE_SENTINEL:
  *             right_size = self.nodes[self.nodes[node_idx].right_child].size
  *         self.nodes[node_idx].size = 1 + left_size + right_size             # <<<<<<<<<<<<<<
 */
   (__pyx_v_self->nodes[__pyx_v_node_idx]).size = ((1 + __pyx_v_left_size) + __pyx_v_right_size);
 
-  /* "src/treap/randomized_treap.pyx":190
- *         return right_idx
+  /* "src/treap/randomized_treap.pyx":347
+ *         self.capacity = new_capacity
  * 
  *     cdef void _update_size(self, intp_t node_idx) noexcept nogil:             # <<<<<<<<<<<<<<
  *         if node_idx == NONE_SENTINEL:
@@ -21230,15 +23875,15 @@ static void __pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__updat
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_11__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_23__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_11__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_11__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_23__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_23__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_23__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21264,14 +23909,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_10__reduce_cython__(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_22__reduce_cython__(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_22__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -21296,7 +23941,7 @@ static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -21311,15 +23956,15 @@ static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_13__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_25__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_13__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_13__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_25__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_25__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_25__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21381,11 +24026,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_12__setstate_cython__(((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_24__setstate_cython__(((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -21395,7 +24040,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_3src_5treap_16randomized_treap_15RandomizedTreap_24__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -21420,17 +24065,17 @@ static PyObject *__pyx_pf_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("src.treap.randomized_treap.ArrayRandomizedTreap.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.treap.randomized_treap.RandomizedTreap.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 /* #### Code section: module_exttypes ### */
-static struct __pyx_vtabstruct_3src_5treap_16randomized_treap_ArrayRandomizedTreap __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+static struct __pyx_vtabstruct_3src_5treap_16randomized_treap_RandomizedTreap __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap;
 
-static PyObject *__pyx_tp_new_3src_5treap_16randomized_treap_ArrayRandomizedTreap(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *p;
+static PyObject *__pyx_tp_new_3src_5treap_16randomized_treap_RandomizedTreap(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *p;
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
@@ -21443,25 +24088,25 @@ static PyObject *__pyx_tp_new_3src_5treap_16randomized_treap_ArrayRandomizedTrea
   }
   if (unlikely(!o)) return 0;
   #endif
-  p = ((struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)o);
-  p->__pyx_vtab = __pyx_vtabptr_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+  p = ((struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)o);
+  p->__pyx_vtab = __pyx_vtabptr_3src_5treap_16randomized_treap_RandomizedTreap;
   p->values = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->keys.data = NULL;
   p->keys.memview = NULL;
   p->_keys_array.data = NULL;
   p->_keys_array.memview = NULL;
-  if (unlikely(__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_3src_5treap_16randomized_treap_ArrayRandomizedTreap(PyObject *o) {
-  struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *p = (struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)o;
+static void __pyx_tp_dealloc_3src_5treap_16randomized_treap_RandomizedTreap(PyObject *o) {
+  struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *p = (struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3src_5treap_16randomized_treap_ArrayRandomizedTreap) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3src_5treap_16randomized_treap_RandomizedTreap) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -21471,7 +24116,7 @@ static void __pyx_tp_dealloc_3src_5treap_16randomized_treap_ArrayRandomizedTreap
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_5__dealloc__(o);
+    __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_5__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
@@ -21490,9 +24135,9 @@ static void __pyx_tp_dealloc_3src_5treap_16randomized_treap_ArrayRandomizedTreap
   #endif
 }
 
-static int __pyx_tp_traverse_3src_5treap_16randomized_treap_ArrayRandomizedTreap(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_3src_5treap_16randomized_treap_RandomizedTreap(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *p = (struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)o;
+  struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *p = (struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -21503,43 +24148,43 @@ static int __pyx_tp_traverse_3src_5treap_16randomized_treap_ArrayRandomizedTreap
   return 0;
 }
 
-static int __pyx_tp_clear_3src_5treap_16randomized_treap_ArrayRandomizedTreap(PyObject *o) {
+static int __pyx_tp_clear_3src_5treap_16randomized_treap_RandomizedTreap(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *p = (struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *)o;
+  struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *p = (struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *)o;
   tmp = ((PyObject*)p->values);
   p->values = ((PyObject*)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyMethodDef __pyx_methods_3src_5treap_16randomized_treap_ArrayRandomizedTreap[] = {
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_3src_5treap_16randomized_treap_RandomizedTreap[] = {
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_23__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_25__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3src_5treap_16randomized_treap_ArrayRandomizedTreap},
-  {Py_sq_length, (void *)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_3__len__},
-  {Py_mp_length, (void *)__pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_3__len__},
-  {Py_tp_doc, (void *)PyDoc_STR("\n    Specialized version for numeric keys using numpy arrays.\n    Can perform many operations without GIL since key comparisons are numeric.\n    ")},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_3src_5treap_16randomized_treap_ArrayRandomizedTreap},
-  {Py_tp_clear, (void *)__pyx_tp_clear_3src_5treap_16randomized_treap_ArrayRandomizedTreap},
-  {Py_tp_methods, (void *)__pyx_methods_3src_5treap_16randomized_treap_ArrayRandomizedTreap},
-  {Py_tp_new, (void *)__pyx_tp_new_3src_5treap_16randomized_treap_ArrayRandomizedTreap},
+static PyType_Slot __pyx_type_3src_5treap_16randomized_treap_RandomizedTreap_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3src_5treap_16randomized_treap_RandomizedTreap},
+  {Py_sq_length, (void *)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_3__len__},
+  {Py_mp_length, (void *)__pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_3__len__},
+  {Py_tp_doc, (void *)PyDoc_STR("\n    Cython implementation of a Randomized Treap (RT). \n    \n    An RT is a combination of a Binary Search Tree (BST) and a heap that uses\n    randomization to maintain balance.\n    BST property:\n        * Left children have keys <= parent\n        * right children have keys > parent\n    Heap property:\n        * Each node's priority > it's children's priority\n\n    Due to the randomization maintaining balance with a high probability, the\n    major operations have an expected time of O(log n).\n\n\n    Parameters\n    ----------\n    nodes : ArrayNode_t*\n        An array of node structures\n    keys : array of float64_t, shape [initial_capacity]\n        The keys in the treap. NumPy array for fast speed.\n    values : list\n        Python list storing the associated values of the keys.\n    ")},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_3src_5treap_16randomized_treap_RandomizedTreap},
+  {Py_tp_clear, (void *)__pyx_tp_clear_3src_5treap_16randomized_treap_RandomizedTreap},
+  {Py_tp_methods, (void *)__pyx_methods_3src_5treap_16randomized_treap_RandomizedTreap},
+  {Py_tp_new, (void *)__pyx_tp_new_3src_5treap_16randomized_treap_RandomizedTreap},
   {0, 0},
 };
-static PyType_Spec __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap_spec = {
-  "src.treap.randomized_treap.ArrayRandomizedTreap",
-  sizeof(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap),
+static PyType_Spec __pyx_type_3src_5treap_16randomized_treap_RandomizedTreap_spec = {
+  "src.treap.randomized_treap.RandomizedTreap",
+  sizeof(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap_slots,
+  __pyx_type_3src_5treap_16randomized_treap_RandomizedTreap_slots,
 };
 #else
 
-static PySequenceMethods __pyx_tp_as_sequence_ArrayRandomizedTreap = {
-  __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_3__len__, /*sq_length*/
+static PySequenceMethods __pyx_tp_as_sequence_RandomizedTreap = {
+  __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_3__len__, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
   0, /*sq_item*/
@@ -21551,18 +24196,18 @@ static PySequenceMethods __pyx_tp_as_sequence_ArrayRandomizedTreap = {
   0, /*sq_inplace_repeat*/
 };
 
-static PyMappingMethods __pyx_tp_as_mapping_ArrayRandomizedTreap = {
-  __pyx_pw_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_3__len__, /*mp_length*/
+static PyMappingMethods __pyx_tp_as_mapping_RandomizedTreap = {
+  __pyx_pw_3src_5treap_16randomized_treap_15RandomizedTreap_3__len__, /*mp_length*/
   0, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap = {
+static PyTypeObject __pyx_type_3src_5treap_16randomized_treap_RandomizedTreap = {
   PyVarObject_HEAD_INIT(0, 0)
-  "src.treap.randomized_treap.""ArrayRandomizedTreap", /*tp_name*/
-  sizeof(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap), /*tp_basicsize*/
+  "src.treap.randomized_treap.""RandomizedTreap", /*tp_name*/
+  sizeof(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_3src_5treap_16randomized_treap_ArrayRandomizedTreap, /*tp_dealloc*/
+  __pyx_tp_dealloc_3src_5treap_16randomized_treap_RandomizedTreap, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -21574,8 +24219,8 @@ static PyTypeObject __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTre
   0, /*tp_as_async*/
   0, /*tp_repr*/
   0, /*tp_as_number*/
-  &__pyx_tp_as_sequence_ArrayRandomizedTreap, /*tp_as_sequence*/
-  &__pyx_tp_as_mapping_ArrayRandomizedTreap, /*tp_as_mapping*/
+  &__pyx_tp_as_sequence_RandomizedTreap, /*tp_as_sequence*/
+  &__pyx_tp_as_mapping_RandomizedTreap, /*tp_as_mapping*/
   0, /*tp_hash*/
   0, /*tp_call*/
   0, /*tp_str*/
@@ -21583,14 +24228,14 @@ static PyTypeObject __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTre
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  PyDoc_STR("\n    Specialized version for numeric keys using numpy arrays.\n    Can perform many operations without GIL since key comparisons are numeric.\n    "), /*tp_doc*/
-  __pyx_tp_traverse_3src_5treap_16randomized_treap_ArrayRandomizedTreap, /*tp_traverse*/
-  __pyx_tp_clear_3src_5treap_16randomized_treap_ArrayRandomizedTreap, /*tp_clear*/
+  PyDoc_STR("\n    Cython implementation of a Randomized Treap (RT). \n    \n    An RT is a combination of a Binary Search Tree (BST) and a heap that uses\n    randomization to maintain balance.\n    BST property:\n        * Left children have keys <= parent\n        * right children have keys > parent\n    Heap property:\n        * Each node's priority > it's children's priority\n\n    Due to the randomization maintaining balance with a high probability, the\n    major operations have an expected time of O(log n).\n\n\n    Parameters\n    ----------\n    nodes : ArrayNode_t*\n        An array of node structures\n    keys : array of float64_t, shape [initial_capacity]\n        The keys in the treap. NumPy array for fast speed.\n    values : list\n        Python list storing the associated values of the keys.\n    "), /*tp_doc*/
+  __pyx_tp_traverse_3src_5treap_16randomized_treap_RandomizedTreap, /*tp_traverse*/
+  __pyx_tp_clear_3src_5treap_16randomized_treap_RandomizedTreap, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_3src_5treap_16randomized_treap_ArrayRandomizedTreap, /*tp_methods*/
+  __pyx_methods_3src_5treap_16randomized_treap_RandomizedTreap, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -21602,7 +24247,7 @@ static PyTypeObject __pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTre
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_3src_5treap_16randomized_treap_ArrayRandomizedTreap, /*tp_new*/
+  __pyx_tp_new_3src_5treap_16randomized_treap_RandomizedTreap, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -22585,36 +25230,56 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_3src_5treap_16randomized_treap_ArrayRandomizedTreap = &__pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._resize_arrays = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__resize_arrays;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._create_numeric_node = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, double, PyObject *))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__create_numeric_node;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap.insert_numeric = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, double, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_insert_numeric;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._insert_numeric_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, double, PyObject *))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__insert_numeric_helper;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap.search_numeric = (PyObject *(*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, double, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_search_numeric;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._search_numeric_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, double))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__search_numeric_helper;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._rotate_right = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__rotate_right;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._rotate_left = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__rotate_left;
-  __pyx_vtable_3src_5treap_16randomized_treap_ArrayRandomizedTreap._update_size = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_ArrayRandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_20ArrayRandomizedTreap__update_size;
+  __pyx_vtabptr_3src_5treap_16randomized_treap_RandomizedTreap = &__pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.is_empty = (int (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_is_empty;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.top = (PyObject *(*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_top;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.peek = (__pyx_t_3src_5treap_16randomized_treap_float64_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_peek;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.rank = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_rank;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._rank_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rank_helper;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.remove = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_remove;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._remove_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__remove_helper;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._remove_node = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__remove_node;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._create_node = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, PyObject *))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__create_node;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.select = (PyObject *(*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_select;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._select_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__select_helper;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.insert = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_insert;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._insert_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t, PyObject *))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__insert_helper;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap.search = (PyObject *(*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_float64_t, int __pyx_skip_dispatch))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap_search;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._search_helper = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t, __pyx_t_3src_5treap_16randomized_treap_float64_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__search_helper;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._rotate_right = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rotate_right;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._rotate_left = (__pyx_t_3src_5treap_16randomized_treap_intp_t (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__rotate_left;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._resize_arrays = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__resize_arrays;
+  __pyx_vtable_3src_5treap_16randomized_treap_RandomizedTreap._update_size = (void (*)(struct __pyx_obj_3src_5treap_16randomized_treap_RandomizedTreap *, __pyx_t_3src_5treap_16randomized_treap_intp_t))__pyx_f_3src_5treap_16randomized_treap_15RandomizedTreap__update_size;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap)) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap_spec, __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3src_5treap_16randomized_treap_RandomizedTreap_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap)) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3src_5treap_16randomized_treap_RandomizedTreap_spec, __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap = &__pyx_type_3src_5treap_16randomized_treap_ArrayRandomizedTreap;
+  __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap = &__pyx_type_3src_5treap_16randomized_treap_RandomizedTreap;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap->tp_dictoffset && __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap->tp_dictoffset && __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap, __pyx_vtabptr_3src_5treap_16randomized_treap_ArrayRandomizedTreap) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_ArrayRandomizedTreap, (PyObject *) __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  #if CYTHON_UPDATE_DESCRIPTOR_DOC
+  {
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, "__len__"); if (unlikely(!wrapper)) __PYX_ERR(0, 29, __pyx_L1_error)
+    if (__Pyx_IS_TYPE(wrapper, &PyWrapperDescr_Type)) {
+      __pyx_wrapperbase_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__ = *((PyWrapperDescrObject *)wrapper)->d_base;
+      __pyx_wrapperbase_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__.doc = __pyx_doc_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__;
+      ((PyWrapperDescrObject *)wrapper)->d_base = &__pyx_wrapperbase_3src_5treap_16randomized_treap_15RandomizedTreap_2__len__;
+    }
+  }
+  #endif
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_vtabptr_3src_5treap_16randomized_treap_RandomizedTreap) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_RandomizedTreap, (PyObject *) __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __pyx_vtabptr_array = &__pyx_vtable_array;
   __pyx_vtable_array.get_memview = (PyObject *(*)(struct __pyx_array_obj *))__pyx_array_get_memview;
   #if CYTHON_USE_TYPE_SPECS
@@ -23755,28 +26420,100 @@ __Pyx_RefNannySetupContext("PyInit_randomized_treap", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_5) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/treap/randomized_treap.pyx":109
- *         return idx
+  /* "src/treap/randomized_treap.pyx":88
+ *             free(self.nodes)
  * 
- *     cpdef void insert_numeric(self, double key, object value):             # <<<<<<<<<<<<<<
- *         """Insert with numeric key"""
- *         self.root_idx = self._insert_numeric_helper(self.root_idx, key, value)
+ *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
+ *         return self._size == 0
+ * 
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_7insert_numeric, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ArrayRandomizedTreap_insert_nume, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_7is_empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_is_empty, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap, __pyx_mstate_global->__pyx_n_u_insert_numeric, __pyx_t_5) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_is_empty, __pyx_t_5) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/treap/randomized_treap.pyx":150
+  /* "src/treap/randomized_treap.pyx":91
+ *         return self._size == 0
+ * 
+ *     cpdef object top(self):             # <<<<<<<<<<<<<<
+ *         """Remove and return the value with the smallest key"""
+ *         if self.is_empty():
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_9top, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_top, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_top, __pyx_t_5) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/treap/randomized_treap.pyx":103
+ *         return min_value
+ * 
+ *     cpdef float64_t peek(self):             # <<<<<<<<<<<<<<
+ *         if self.is_empty():
+ *             raise RuntimeError("The treap is empty!")
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_11peek, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_peek, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_peek, __pyx_t_5) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/treap/randomized_treap.pyx":114
+ *         return self.keys[node_idx]
+ * 
+ *     cpdef intp_t rank(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         return self._rank_helper(self.root_idx, key)
+ * 
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_13rank, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_rank, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_rank, __pyx_t_5) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/treap/randomized_treap.pyx":138
+ *             return left_size + 1 + right_rank
+ * 
+ *     cpdef void remove(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         cdef intp_t old_size = self._size
+ *         self.root_idx = self._remove_helper(self.root_idx, key)
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_15remove, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_remove, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_remove, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/treap/randomized_treap.pyx":222
+ *         return idx
+ * 
+ *     cpdef object select(self, intp_t rank):             # <<<<<<<<<<<<<<
+ *         """Return the value at the given rank (0-based index)"""
+ *         if rank < 0 or rank >= self._size:
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_17select, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_select, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_select, __pyx_t_5) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/treap/randomized_treap.pyx":246
+ *             )
+ * 
+ *     cpdef void insert(self, float64_t key, object value):             # <<<<<<<<<<<<<<
+ *         """Insert with key"""
+ *         self.root_idx = self._insert_helper(self.root_idx, key, value)
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_19insert, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_insert, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_insert, __pyx_t_5) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/treap/randomized_treap.pyx":285
  *         return node_idx
  * 
- *     cpdef object search_numeric(self, double key):             # <<<<<<<<<<<<<<
- *         """Search for numeric key"""
- *         cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
+ *     cpdef object search(self, float64_t key):             # <<<<<<<<<<<<<<
+ *         """Search for key"""
+ *         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_9search_numeric, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ArrayRandomizedTreap_search_nume, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_21search, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap_search, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_ArrayRandomizedTreap, __pyx_mstate_global->__pyx_n_u_search_numeric, __pyx_t_5) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5treap_16randomized_treap_RandomizedTreap, __pyx_mstate_global->__pyx_n_u_search, __pyx_t_5) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "(tree fragment)":1
@@ -23784,7 +26521,7 @@ __Pyx_RefNannySetupContext("PyInit_randomized_treap", 0);
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_11__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ArrayRandomizedTreap___reduce_cy, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_23__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_5) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -23795,7 +26532,7 @@ __Pyx_RefNannySetupContext("PyInit_randomized_treap", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_20ArrayRandomizedTreap_13__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ArrayRandomizedTreap___setstate, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5treap_16randomized_treap_15RandomizedTreap_25__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RandomizedTreap___setstate_cytho, NULL, __pyx_mstate_global->__pyx_n_u_src_treap_randomized_treap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_5) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -23873,11 +26610,6 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_, sizeof(__pyx_k_), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_ */
   {__pyx_k_ASCII, sizeof(__pyx_k_ASCII), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ASCII */
   {__pyx_k_All_dimensions_preceding_dimensi, sizeof(__pyx_k_All_dimensions_preceding_dimensi), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_All_dimensions_preceding_dimensi */
-  {__pyx_k_ArrayRandomizedTreap, sizeof(__pyx_k_ArrayRandomizedTreap), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ArrayRandomizedTreap */
-  {__pyx_k_ArrayRandomizedTreap___reduce_cy, sizeof(__pyx_k_ArrayRandomizedTreap___reduce_cy), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ArrayRandomizedTreap___reduce_cy */
-  {__pyx_k_ArrayRandomizedTreap___setstate, sizeof(__pyx_k_ArrayRandomizedTreap___setstate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ArrayRandomizedTreap___setstate */
-  {__pyx_k_ArrayRandomizedTreap_insert_nume, sizeof(__pyx_k_ArrayRandomizedTreap_insert_nume), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ArrayRandomizedTreap_insert_nume */
-  {__pyx_k_ArrayRandomizedTreap_search_nume, sizeof(__pyx_k_ArrayRandomizedTreap_search_nume), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ArrayRandomizedTreap_search_nume */
   {__pyx_k_AssertionError, sizeof(__pyx_k_AssertionError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_AssertionError */
   {__pyx_k_Buffer_view_does_not_expose_stri, sizeof(__pyx_k_Buffer_view_does_not_expose_stri), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Buffer_view_does_not_expose_stri */
   {__pyx_k_Can_only_create_a_buffer_that_is, sizeof(__pyx_k_Can_only_create_a_buffer_that_is), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Can_only_create_a_buffer_that_is */
@@ -23888,8 +26620,8 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_Dimension_d_is_not_direct, sizeof(__pyx_k_Dimension_d_is_not_direct), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Dimension_d_is_not_direct */
   {__pyx_k_Ellipsis, sizeof(__pyx_k_Ellipsis), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Ellipsis */
   {__pyx_k_Empty_shape_tuple_for_cython_arr, sizeof(__pyx_k_Empty_shape_tuple_for_cython_arr), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Empty_shape_tuple_for_cython_arr */
-  {__pyx_k_Failed_to_allocate_numeric_treap, sizeof(__pyx_k_Failed_to_allocate_numeric_treap), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Failed_to_allocate_numeric_treap */
-  {__pyx_k_Failed_to_resize_numeric_treap_a, sizeof(__pyx_k_Failed_to_resize_numeric_treap_a), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Failed_to_resize_numeric_treap_a */
+  {__pyx_k_Failed_to_allocate_arrays, sizeof(__pyx_k_Failed_to_allocate_arrays), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Failed_to_allocate_arrays */
+  {__pyx_k_Failed_to_resize_arrays, sizeof(__pyx_k_Failed_to_resize_arrays), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Failed_to_resize_arrays */
   {__pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ImportError */
   {__pyx_k_Incompatible_checksums_0x_x_vs_0, sizeof(__pyx_k_Incompatible_checksums_0x_x_vs_0), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 */
   {__pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_IndexError */
@@ -23897,14 +26629,30 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_Indirect_dimensions_not_supporte, sizeof(__pyx_k_Indirect_dimensions_not_supporte), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Indirect_dimensions_not_supporte */
   {__pyx_k_Invalid_mode_expected_c_or_fortr, sizeof(__pyx_k_Invalid_mode_expected_c_or_fortr), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Invalid_mode_expected_c_or_fortr */
   {__pyx_k_Invalid_shape_in_axis, sizeof(__pyx_k_Invalid_shape_in_axis), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Invalid_shape_in_axis */
+  {__pyx_k_Key, sizeof(__pyx_k_Key), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Key */
+  {__pyx_k_KeyError, sizeof(__pyx_k_KeyError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_KeyError */
   {__pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_MemoryError */
   {__pyx_k_MemoryView_of, sizeof(__pyx_k_MemoryView_of), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_MemoryView_of */
   {__pyx_k_Note_that_Cython_is_deliberately, sizeof(__pyx_k_Note_that_Cython_is_deliberately), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Note_that_Cython_is_deliberately */
   {__pyx_k_O, sizeof(__pyx_k_O), 0, 0, 1}, /* PyObject cname: __pyx_n_b_O */
   {__pyx_k_Out_of_bounds_on_buffer_access_a, sizeof(__pyx_k_Out_of_bounds_on_buffer_access_a), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Out_of_bounds_on_buffer_access_a */
   {__pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_PickleError */
+  {__pyx_k_RandomizedTreap, sizeof(__pyx_k_RandomizedTreap), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap */
+  {__pyx_k_RandomizedTreap___reduce_cython, sizeof(__pyx_k_RandomizedTreap___reduce_cython), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap___reduce_cython */
+  {__pyx_k_RandomizedTreap___setstate_cytho, sizeof(__pyx_k_RandomizedTreap___setstate_cytho), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap___setstate_cytho */
+  {__pyx_k_RandomizedTreap_insert, sizeof(__pyx_k_RandomizedTreap_insert), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_insert */
+  {__pyx_k_RandomizedTreap_is_empty, sizeof(__pyx_k_RandomizedTreap_is_empty), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_is_empty */
+  {__pyx_k_RandomizedTreap_peek, sizeof(__pyx_k_RandomizedTreap_peek), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_peek */
+  {__pyx_k_RandomizedTreap_rank, sizeof(__pyx_k_RandomizedTreap_rank), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_rank */
+  {__pyx_k_RandomizedTreap_remove, sizeof(__pyx_k_RandomizedTreap_remove), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_remove */
+  {__pyx_k_RandomizedTreap_search, sizeof(__pyx_k_RandomizedTreap_search), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_search */
+  {__pyx_k_RandomizedTreap_select, sizeof(__pyx_k_RandomizedTreap_select), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_select */
+  {__pyx_k_RandomizedTreap_top, sizeof(__pyx_k_RandomizedTreap_top), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RandomizedTreap_top */
+  {__pyx_k_Rank, sizeof(__pyx_k_Rank), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Rank */
+  {__pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RuntimeError */
   {__pyx_k_Sequence, sizeof(__pyx_k_Sequence), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Sequence */
   {__pyx_k_Step_may_not_be_zero_axis_d, sizeof(__pyx_k_Step_may_not_be_zero_axis_d), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Step_may_not_be_zero_axis_d */
+  {__pyx_k_The_treap_is_empty, sizeof(__pyx_k_The_treap_is_empty), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_The_treap_is_empty */
   {__pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TypeError */
   {__pyx_k_Unable_to_convert_item_to_object, sizeof(__pyx_k_Unable_to_convert_item_to_object), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Unable_to_convert_item_to_object */
   {__pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ValueError */
@@ -23953,8 +26701,9 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_index, sizeof(__pyx_k_index), 0, 1, 1}, /* PyObject cname: __pyx_n_u_index */
   {__pyx_k_initial_capacity, sizeof(__pyx_k_initial_capacity), 0, 1, 1}, /* PyObject cname: __pyx_n_u_initial_capacity */
   {__pyx_k_initializing, sizeof(__pyx_k_initializing), 0, 1, 1}, /* PyObject cname: __pyx_n_u_initializing */
-  {__pyx_k_insert_numeric, sizeof(__pyx_k_insert_numeric), 0, 1, 1}, /* PyObject cname: __pyx_n_u_insert_numeric */
+  {__pyx_k_insert, sizeof(__pyx_k_insert), 0, 1, 1}, /* PyObject cname: __pyx_n_u_insert */
   {__pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 1, 1}, /* PyObject cname: __pyx_n_u_is_coroutine */
+  {__pyx_k_is_empty, sizeof(__pyx_k_is_empty), 0, 1, 1}, /* PyObject cname: __pyx_n_u_is_empty */
   {__pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_isenabled */
   {__pyx_k_itemsize, sizeof(__pyx_k_itemsize), 0, 1, 1}, /* PyObject cname: __pyx_n_u_itemsize */
   {__pyx_k_itemsize_0_for_cython_array, sizeof(__pyx_k_itemsize_0_for_cython_array), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_itemsize_0_for_cython_array */
@@ -23968,13 +26717,16 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_ndim, sizeof(__pyx_k_ndim), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ndim */
   {__pyx_k_new, sizeof(__pyx_k_new), 0, 1, 1}, /* PyObject cname: __pyx_n_u_new */
   {__pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_no_default___reduce___due_to_non */
+  {__pyx_k_not_found, sizeof(__pyx_k_not_found), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_not_found */
   {__pyx_k_np, sizeof(__pyx_k_np), 0, 1, 1}, /* PyObject cname: __pyx_n_u_np */
   {__pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 1, 1}, /* PyObject cname: __pyx_n_u_numpy */
   {__pyx_k_numpy__core_multiarray_failed_to, sizeof(__pyx_k_numpy__core_multiarray_failed_to), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_numpy__core_multiarray_failed_to */
   {__pyx_k_numpy__core_umath_failed_to_impo, sizeof(__pyx_k_numpy__core_umath_failed_to_impo), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_numpy__core_umath_failed_to_impo */
   {__pyx_k_obj, sizeof(__pyx_k_obj), 0, 1, 1}, /* PyObject cname: __pyx_n_u_obj */
   {__pyx_k_object, sizeof(__pyx_k_object), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_object */
+  {__pyx_k_out_of_bounds_for_treap_of_size, sizeof(__pyx_k_out_of_bounds_for_treap_of_size), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_out_of_bounds_for_treap_of_size */
   {__pyx_k_pack, sizeof(__pyx_k_pack), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pack */
+  {__pyx_k_peek, sizeof(__pyx_k_peek), 0, 1, 1}, /* PyObject cname: __pyx_n_u_peek */
   {__pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pickle */
   {__pyx_k_pop, sizeof(__pyx_k_pop), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pop */
   {__pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pyx_checksum */
@@ -23984,11 +26736,14 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pyx_vtable */
   {__pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 1, 1}, /* PyObject cname: __pyx_n_u_qualname */
   {__pyx_k_range, sizeof(__pyx_k_range), 0, 1, 1}, /* PyObject cname: __pyx_n_u_range */
+  {__pyx_k_rank, sizeof(__pyx_k_rank), 0, 1, 1}, /* PyObject cname: __pyx_n_u_rank */
   {__pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 1, 1}, /* PyObject cname: __pyx_n_u_reduce */
   {__pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 1, 1}, /* PyObject cname: __pyx_n_u_reduce_cython */
   {__pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 1, 1}, /* PyObject cname: __pyx_n_u_reduce_ex */
   {__pyx_k_register, sizeof(__pyx_k_register), 0, 1, 1}, /* PyObject cname: __pyx_n_u_register */
-  {__pyx_k_search_numeric, sizeof(__pyx_k_search_numeric), 0, 1, 1}, /* PyObject cname: __pyx_n_u_search_numeric */
+  {__pyx_k_remove, sizeof(__pyx_k_remove), 0, 1, 1}, /* PyObject cname: __pyx_n_u_remove */
+  {__pyx_k_search, sizeof(__pyx_k_search), 0, 1, 1}, /* PyObject cname: __pyx_n_u_search */
+  {__pyx_k_select, sizeof(__pyx_k_select), 0, 1, 1}, /* PyObject cname: __pyx_n_u_select */
   {__pyx_k_self, sizeof(__pyx_k_self), 0, 1, 1}, /* PyObject cname: __pyx_n_u_self */
   {__pyx_k_set_name, sizeof(__pyx_k_set_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_set_name */
   {__pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_setstate */
@@ -24007,6 +26762,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_stringsource */
   {__pyx_k_struct, sizeof(__pyx_k_struct), 0, 1, 1}, /* PyObject cname: __pyx_n_u_struct */
   {__pyx_k_test, sizeof(__pyx_k_test), 0, 1, 1}, /* PyObject cname: __pyx_n_u_test */
+  {__pyx_k_top, sizeof(__pyx_k_top), 0, 1, 1}, /* PyObject cname: __pyx_n_u_top */
   {__pyx_k_unable_to_allocate_array_data, sizeof(__pyx_k_unable_to_allocate_array_data), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_unable_to_allocate_array_data */
   {__pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_unable_to_allocate_shape_and_str */
   {__pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 1, 1}, /* PyObject cname: __pyx_n_u_unpack */
@@ -24022,8 +26778,11 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_KeyError); if (!__pyx_builtin_KeyError) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(0, 333, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   __pyx_builtin___import__ = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_import); if (!__pyx_builtin___import__) __PYX_ERR(1, 101, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 139, __pyx_L1_error)
@@ -24031,7 +26790,6 @@ static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(1, 373, __pyx_L1_error)
   __pyx_builtin_Ellipsis = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_Ellipsis); if (!__pyx_builtin_Ellipsis) __PYX_ERR(1, 408, __pyx_L1_error)
   __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_id); if (!__pyx_builtin_id) __PYX_ERR(1, 618, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(1, 914, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 1010, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -24110,8 +26868,8 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
             unsigned int num_kwonly_args : 1;
             unsigned int nlocals : 2;
             unsigned int flags : 10;
-            unsigned int first_line : 8;
-            unsigned int line_table_length : 10;
+            unsigned int first_line : 9;
+            unsigned int line_table_length : 11;
         } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -24128,24 +26886,54 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 109, 29};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_value};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_insert_numeric, __pyx_k_A_L_31D_5_Ja, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 88, 13};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_is_empty, __pyx_k_A_t7_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 150, 43};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 91, 56};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_top, __pyx_k_A_4y_aq_U_G1A_G1A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 103, 70};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_peek, __pyx_k_A_4y_aq_t1_d_c_t6_1_t5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 114, 17};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_search_numeric, __pyx_k_A_t_4_9Cq_1_t7_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_rank, __pyx_k_A_t, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 138, 50};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key};
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_remove, __pyx_k_A_t1_L_O1D_1_4wc_2Ya, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 222, 66};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_rank};
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_select, __pyx_k_A_5_CuCt1_ARy_OtST_t_4_t7_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 246, 28};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_value};
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_insert, __pyx_k_A_L_O1D_5_Ja, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 285, 42};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key};
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_treap_randomized_treap_pyx, __pyx_mstate->__pyx_n_u_search, __pyx_k_A_t_4_9Cq_1_t7_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -27014,6 +29802,12 @@ CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyO
 }
 #endif
 
+/* BufferIndexError */
+static void __Pyx_RaiseBufferIndexError(int axis) {
+  PyErr_Format(PyExc_IndexError,
+     "Out of bounds on buffer access (axis %d)", axis);
+}
+
 /* SliceObject */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(PyObject* obj,
         Py_ssize_t cstart, Py_ssize_t cstop,
@@ -27137,12 +29931,6 @@ static CYTHON_INLINE int __Pyx_PyObject_SetSlice(PyObject* obj, PyObject* value,
     __Pyx_DECREF_TypeName(obj_type_name);
 bad:
     return -1;
-}
-
-/* BufferIndexError */
-static void __Pyx_RaiseBufferIndexError(int axis) {
-  PyErr_Format(PyExc_IndexError,
-     "Out of bounds on buffer access (axis %d)", axis);
 }
 
 /* CallTypeTraverse */
@@ -30360,7 +33148,7 @@ no_fail:
 }
 
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_double(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(PyObject *obj, int writable_flag) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
     int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -30371,7 +33159,7 @@ no_fail:
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                  (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                 &__Pyx_TypeInfo_double, stack,
+                                                 &__Pyx_TypeInfo_nn___pyx_t_3src_5treap_16randomized_treap_float64_t, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
         goto __pyx_fail;
@@ -30383,14 +33171,14 @@ __pyx_fail:
 }
 
 /* MemviewDtypeToObject */
-  static CYTHON_INLINE PyObject *__pyx_memview_get_double(const char *itemp) {
-    return (PyObject *) PyFloat_FromDouble(*(double *) itemp);
+  static CYTHON_INLINE PyObject *__pyx_memview_get_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(const char *itemp) {
+    return (PyObject *) PyFloat_FromDouble(*(__pyx_t_3src_5treap_16randomized_treap_float64_t *) itemp);
 }
-static CYTHON_INLINE int __pyx_memview_set_double(const char *itemp, PyObject *obj) {
-    double value = __Pyx_PyFloat_AsDouble(obj);
+static CYTHON_INLINE int __pyx_memview_set_nn___pyx_t_3src_5treap_16randomized_treap_float64_t(const char *itemp, PyObject *obj) {
+    __pyx_t_3src_5treap_16randomized_treap_float64_t value = __Pyx_PyFloat_AsDouble(obj);
     if (unlikely((value == (double)-1) && PyErr_Occurred()))
         return 0;
-    *(double *) itemp = value;
+    *(__pyx_t_3src_5treap_16randomized_treap_float64_t *) itemp = value;
     return 1;
 }
 

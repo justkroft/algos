@@ -9,30 +9,53 @@ import numpy as np
 cimport numpy as np
 
 DEF NONE_SENTINEL = -1
+# memory management
+# We have an initial capacity of 64,
+# if this capacity is exceeded, the capacity is double through the growth factor
 DEF INITIAL_CAPACITY = 64
 DEF GROWTH_FACTOR = 2
 
 ctypedef Py_ssize_t intp_t
+ctypedef double float64_t
 
 
-# Array-based node structure - fixed to avoid Python object pointers
-ctypedef struct ArrayNode:
-    intp_t left_child      # Index of left child (-1 if None)
-    intp_t right_child     # Index of right child (-1 if None) 
-    double priority        # Random priority for heap property
-    intp_t size            # Subtree size for rank operations
+ctypedef struct ArrayNode_t:
+    intp_t left_child
+    intp_t right_child
+    float64_t priority
+    intp_t size
 
 
-cdef class ArrayRandomizedTreap:
+cdef class RandomizedTreap:
     """
-    Specialized version for numeric keys using numpy arrays.
-    Can perform many operations without GIL since key comparisons are numeric.
+    Cython implementation of a Randomized Treap (RT). 
+    
+    An RT is a combination of a Binary Search Tree (BST) and a heap that uses
+    randomization to maintain balance.
+    BST property:
+        * Left children have keys <= parent
+        * right children have keys > parent
+    Heap property:
+        * Each node's priority > it's children's priority
+
+    Due to the randomization maintaining balance with a high probability, the
+    major operations have an expected time of O(log n).
+
+
+    Parameters
+    ----------
+    nodes : ArrayNode_t*
+        An array of node structures
+    keys : array of float64_t, shape [initial_capacity]
+        The keys in the treap. NumPy array for fast speed.
+    values : list
+        Python list storing the associated values of the keys.
     """
     
-    cdef ArrayNode* nodes
-    cdef double[::1] keys              # Typed memoryview for fast access
-    cdef double[::1] _keys_array
-    cdef list values                   # Python list for values (arbitrary objects)
+    cdef ArrayNode_t* nodes
+    cdef float64_t[::1] keys
+    cdef float64_t[::1] _keys_array
+    cdef list values
     cdef intp_t capacity
     cdef intp_t node_count
     cdef intp_t root_idx
@@ -40,12 +63,12 @@ cdef class ArrayRandomizedTreap:
     
     def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
         self.capacity = initial_capacity
-        self.nodes = <ArrayNode*>malloc(self.capacity * sizeof(ArrayNode))
+        self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
         
         if not self.nodes:
-            raise MemoryError("Failed to allocate numeric treap arrays")
+            raise MemoryError("Failed to allocate arrays")
         
-        # Use numpy array for numeric keys - much faster than Python list
+        # Use numpy array for keys
         self._keys_array = np.empty(initial_capacity, dtype=np.float64)
         self.keys = self._keys_array
         self.values = []
@@ -55,20 +78,255 @@ cdef class ArrayRandomizedTreap:
         self._size = 0
 
     def __len__(self) -> intp_t:
+        """Return the size of the randomized treap."""
         return self._size
     
     def __dealloc__(self):
         if self.nodes:
             free(self.nodes)
+
+    cpdef bint is_empty(self):
+        return self._size == 0
+
+    cpdef object top(self):
+        """Remove and return the value with the smallest key"""
+        if self.is_empty():
+            raise RuntimeError("The treap is empty!")
+
+        # Find the minimum key and remove
+        cdef float64_t min_key = self.peek()
+        cdef object min_value = self.search(min_key)
+        self.remove(min_key)
+
+        return min_value
+
+    cpdef float64_t peek(self):
+        if self.is_empty():
+            raise RuntimeError("The treap is empty!")
+        cdef intp_t node_idx = self.root_idx
+
+        # Find leftmost node (minimum key)
+        while self.nodes[node_idx].left_child != NONE_SENTINEL:
+            node_idx = self.nodes[node_idx].left_child
+        
+        return self.keys[node_idx]
+
+    cpdef intp_t rank(self, float64_t key):
+        return self._rank_helper(self.root_idx, key)
     
+    cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):
+        if node_idx == NONE_SENTINEL:
+            return NONE_SENTINEL
+        
+        cdef float64_t node_key = self.keys[node_idx]
+        cdef intp_t left_size = 0
+        cdef intp_t right_rank
+
+        if self.nodes[node_idx].left_child != NONE_SENTINEL:
+            left_size = self.nodes[self.nodes[node_idx].left_child].size
+        
+        if key == node_key:
+            return left_size
+        elif key < node_key:
+            return self._rank_helper(self.nodes[node_idx].left_child, key)
+        else:
+            right_rank = self._rank_helper(self.nodes[node_idx].right_child, key)
+            if right_rank == -1:
+                return NONE_SENTINEL
+            return left_size + 1 + right_rank
+
+    cpdef void remove(self, float64_t key):
+        cdef intp_t old_size = self._size
+        self.root_idx = self._remove_helper(self.root_idx, key)
+        if self._size == old_size:
+            raise KeyError(f"Key: {key} not found")
+
+    cdef intp_t _remove_helper(self, intp_t node_idx, float64_t key):
+        if node_idx == NONE_SENTINEL:
+            return NONE_SENTINEL
+        
+        cdef float64_t node_key = self.keys[node_idx]
+
+        if key < node_key:
+            self.nodes[node_idx].left_child = self._remove_helper(
+                self.nodes[node_idx].left_child,
+                key
+            )
+        elif key > node_key:
+            self.nodes[node_idx].right_child = self._remove_helper(
+                self.nodes[node_idx].right_child,
+                key
+            )
+        else:
+            self._size -= 1
+            return self._remove_node(node_idx)
+        
+        with nogil:
+            self._update_size(node_idx)
+        return node_idx
+
+    cdef intp_t _remove_node(self, intp_t node_idx):
+        cdef intp_t left_idx = self.nodes[node_idx].left_child
+        cdef intp_t right_idx = self.nodes[node_idx].right_child
+        
+        # Case 1: No children
+        if left_idx == NONE_SENTINEL and right_idx == NONE_SENTINEL:
+            return NONE_SENTINEL
+        
+        # Case 2: Only one child
+        if left_idx == NONE_SENTINEL:
+            return right_idx
+        if right_idx == NONE_SENTINEL:
+            return left_idx
+        
+        # Case 3: Two children - rotate to maintain heap property, then recurse
+        cdef float64_t left_priority = self.nodes[left_idx].priority
+        cdef float64_t right_priority = self.nodes[right_idx].priority
+        
+        if left_priority > right_priority:
+            with nogil:
+                node_idx = self._rotate_right(node_idx)
+            self.nodes[node_idx].right_child = self._remove_node(
+                self.nodes[node_idx].right_child
+            )
+        else:
+            with nogil:
+                node_idx = self._rotate_left(node_idx)
+            self.nodes[node_idx].left_child = self._remove_node(
+                self.nodes[node_idx].left_child
+            )
+        
+        with nogil:
+            self._update_size(node_idx)
+        return node_idx
+    
+    cdef intp_t _create_node(self, float64_t key, object value):
+        """Create node with key-value pair"""
+        if self.node_count >= self.capacity:
+            self._resize_arrays()
+            
+        cdef intp_t idx = self.node_count
+        self.node_count += 1
+        
+        # Initialize C struct
+        self.nodes[idx].left_child = NONE_SENTINEL
+        self.nodes[idx].right_child = NONE_SENTINEL  
+        self.nodes[idx].priority = drand48()
+        self.nodes[idx].size = 1
+        
+        self.keys[idx] = key
+        self.values.append(value)
+        
+        return idx
+
+    cpdef object select(self, intp_t rank):
+        """Return the value at the given rank (0-based index)"""
+        if rank < 0 or rank >= self._size:
+            raise IndexError(f"Rank {rank} out of bounds for treap of size {self._size}")
+        
+        cdef intp_t node_idx = self._select_helper(self.root_idx, rank)
+        return self.values[node_idx]
+    
+    cdef intp_t _select_helper(self, intp_t node_idx, intp_t target_rank):
+        """Find the node at the given rank"""
+        cdef intp_t left_size = 0
+        if self.nodes[node_idx].left_child != NONE_SENTINEL:
+            left_size = self.nodes[self.nodes[node_idx].left_child].size
+        
+        if target_rank == left_size:
+            return node_idx
+        elif target_rank < left_size:
+            return self._select_helper(self.nodes[node_idx].left_child, target_rank)
+        else:
+            return self._select_helper(
+                self.nodes[node_idx].right_child, 
+                target_rank - left_size - 1
+            )
+    
+    cpdef void insert(self, float64_t key, object value):
+        """Insert with key"""
+        self.root_idx = self._insert_helper(self.root_idx, key, value)
+        self._size += 1
+    
+    cdef intp_t _insert_helper(self, intp_t node_idx, float64_t key, object value):
+        if node_idx == NONE_SENTINEL:
+            return self._create_node(key, value)
+        
+        cdef intp_t new_child_idx
+        cdef float64_t child_priority, node_priority, node_key
+        
+        node_key = self.keys[node_idx]
+        
+        if key <= node_key:
+            new_child_idx = self._insert_helper(self.nodes[node_idx].left_child, key, value)
+            self.nodes[node_idx].left_child = new_child_idx
+            
+            child_priority = self.nodes[new_child_idx].priority
+            node_priority = self.nodes[node_idx].priority
+            
+            if child_priority > node_priority:
+                with nogil:
+                    node_idx = self._rotate_right(node_idx)
+        else:
+            new_child_idx = self._insert_helper(self.nodes[node_idx].right_child, key, value)
+            self.nodes[node_idx].right_child = new_child_idx
+            
+            child_priority = self.nodes[new_child_idx].priority  
+            node_priority = self.nodes[node_idx].priority
+            
+            if child_priority > node_priority:
+                with nogil:
+                    node_idx = self._rotate_left(node_idx)
+        
+        with nogil:
+            self._update_size(node_idx)
+        return node_idx
+    
+    cpdef object search(self, float64_t key):
+        """Search for key"""
+        cdef intp_t node_idx = self._search_helper(self.root_idx, key)
+        if node_idx == NONE_SENTINEL:
+            return None
+        return self.values[node_idx]
+    
+    cdef intp_t _search_helper(self, intp_t node_idx, float64_t key):
+        cdef float64_t node_key
+        
+        while node_idx != NONE_SENTINEL:
+            node_key = self.keys[node_idx]
+            
+            if key == node_key:
+                return node_idx
+            elif key < node_key:
+                node_idx = self.nodes[node_idx].left_child
+            else:
+                node_idx = self.nodes[node_idx].right_child
+                
+        return NONE_SENTINEL
+
+    cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
+        cdef intp_t left_idx = self.nodes[node_idx].left_child
+        self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
+        self.nodes[left_idx].right_child = node_idx
+        self._update_size(node_idx)
+        self._update_size(left_idx)
+        return left_idx
+    
+    cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
+        cdef intp_t right_idx = self.nodes[node_idx].right_child
+        self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
+        self.nodes[right_idx].left_child = node_idx
+        self._update_size(node_idx)
+        self._update_size(right_idx)
+        return right_idx
+
     cdef void _resize_arrays(self):
-        """Resize arrays for numeric version"""
+        """Resize arrays"""
         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
         
-        # Resize node array (C structs)
-        cdef ArrayNode* new_nodes = <ArrayNode*>malloc(new_capacity * sizeof(ArrayNode))
+        cdef ArrayNode_t* new_nodes = <ArrayNode_t*>malloc(new_capacity * sizeof(ArrayNode_t))
         if not new_nodes:
-            raise MemoryError("Failed to resize numeric treap arrays")
+            raise MemoryError("Failed to resize arrays")
         
         # Copy node data
         cdef intp_t i
@@ -85,107 +343,6 @@ cdef class ArrayRandomizedTreap:
         self._keys_array = new_keys_array
         self.keys = self._keys_array
         self.capacity = new_capacity
-    
-    cdef intp_t _create_numeric_node(self, double key, object value):
-        """Create node with numeric key"""
-        if self.node_count >= self.capacity:
-            self._resize_arrays()
-            
-        cdef intp_t idx = self.node_count
-        self.node_count += 1
-        
-        # Initialize C struct
-        self.nodes[idx].left_child = NONE_SENTINEL
-        self.nodes[idx].right_child = NONE_SENTINEL  
-        self.nodes[idx].priority = drand48()
-        self.nodes[idx].size = 1
-        
-        # Store key and value
-        self.keys[idx] = key
-        self.values.append(value)
-        
-        return idx
-    
-    cpdef void insert_numeric(self, double key, object value):
-        """Insert with numeric key"""
-        self.root_idx = self._insert_numeric_helper(self.root_idx, key, value)
-        self._size += 1
-    
-    cdef intp_t _insert_numeric_helper(self, intp_t node_idx, double key, object value):
-        """Numeric insertion helper"""
-        if node_idx == NONE_SENTINEL:
-            return self._create_numeric_node(key, value)
-        
-        cdef intp_t new_child_idx
-        cdef double child_priority, node_priority, node_key
-        
-        # Numeric comparison - can be fast
-        node_key = self.keys[node_idx]
-        
-        if key <= node_key:
-            new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].left_child, key, value)
-            self.nodes[node_idx].left_child = new_child_idx
-            
-            child_priority = self.nodes[new_child_idx].priority
-            node_priority = self.nodes[node_idx].priority
-            
-            if child_priority > node_priority:
-                with nogil:
-                    node_idx = self._rotate_right(node_idx)
-        else:
-            new_child_idx = self._insert_numeric_helper(self.nodes[node_idx].right_child, key, value)
-            self.nodes[node_idx].right_child = new_child_idx
-            
-            child_priority = self.nodes[new_child_idx].priority  
-            node_priority = self.nodes[node_idx].priority
-            
-            if child_priority > node_priority:
-                with nogil:
-                    node_idx = self._rotate_left(node_idx)
-        
-        with nogil:
-            self._update_size(node_idx)
-        return node_idx
-    
-    cpdef object search_numeric(self, double key):
-        """Search for numeric key"""
-        cdef intp_t node_idx = self._search_numeric_helper(self.root_idx, key)
-        if node_idx == NONE_SENTINEL:
-            return None
-        return self.values[node_idx]
-    
-    cdef intp_t _search_numeric_helper(self, intp_t node_idx, double key):
-        """Numeric search - much faster than Python object comparison"""
-        cdef double node_key
-        
-        while node_idx != NONE_SENTINEL:
-            node_key = self.keys[node_idx]
-            
-            if key == node_key:
-                return node_idx
-            elif key < node_key:
-                node_idx = self.nodes[node_idx].left_child
-            else:
-                node_idx = self.nodes[node_idx].right_child
-                
-        return NONE_SENTINEL
-    
-    # Rotation and size update methods (same as ArrayBasedTreap)
-    cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
-        cdef intp_t left_idx = self.nodes[node_idx].left_child
-        self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
-        self.nodes[left_idx].right_child = node_idx
-        self._update_size(node_idx)
-        self._update_size(left_idx)
-        return left_idx
-    
-    cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
-        cdef intp_t right_idx = self.nodes[node_idx].right_child
-        self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
-        self.nodes[right_idx].left_child = node_idx
-        self._update_size(node_idx)
-        self._update_size(right_idx)
-        return right_idx
     
     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
         if node_idx == NONE_SENTINEL:
