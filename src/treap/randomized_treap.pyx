@@ -11,7 +11,7 @@ cimport numpy as np
 DEF NONE_SENTINEL = -1
 # memory management
 # We have an initial capacity of 64,
-# if this capacity is exceeded, the capacity is double through the growth factor
+# if this capacity is exceeded, the capacity is doubled through the growth factor
 DEF INITIAL_CAPACITY = 64
 DEF GROWTH_FACTOR = 2
 
@@ -20,15 +20,16 @@ ctypedef double float64_t
 
 
 ctypedef struct ArrayNode_t:
-    intp_t left_child
-    intp_t right_child
-    float64_t priority
-    intp_t size
+    # Base struct for nodes in RandomizedTreap object
+    intp_t left_child   # index of the left child of the node (-1 if None)
+    intp_t right_child  # index of the right child of the node (-1 if None)
+    float64_t priority  # randomly assigned priority for heap property
+    intp_t size         # subtree size for rank operations
 
 
 cdef class RandomizedTreap:
     """
-    Cython implementation of a Randomized Treap (RT). 
+    Array-based Cython representation of a Randomized Treap (RT). 
     
     An RT is a combination of a Binary Search Tree (BST) and a heap that uses
     randomization to maintain balance.
@@ -37,19 +38,37 @@ cdef class RandomizedTreap:
         * right children have keys > parent
     Heap property:
         * Each node's priority > it's children's priority
-
     Due to the randomization maintaining balance with a high probability, the
     major operations have an expected time of O(log n).
 
+    The RT is represented as an array of nodes. The i-th element in the array
+    holds information about node 'i'; the element at node 0 is the root of
+    the RT.
+    
+    Visualization for understanding:
+             ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐
+    nodes -> │ Node 0  │ │ Node 1  │ │ Node 2  │ │ Node 3  │
+             │left: 2  │ │left: -1 │ │left: 1  │ │left: -1 │
+             │right: 3 │ │right:-1 │ │right: 3 │ │right:-1 │
+             │prio: 0.7│ │prio: 0.3│ │prio: 0.5│ │prio: 0.2│
+             │size: 4  │ │size: 1  │ │size: 2  │ │size: 1  │
+             └─────────┘ └─────────┘ └─────────┘ └─────────┘
 
     Parameters
     ----------
     nodes : ArrayNode_t*
-        An array of node structures
+        A pointer to an array (first element of an array) of node structures
     keys : array of float64_t, shape [initial_capacity]
         The keys in the treap. NumPy array for fast speed.
     values : list
         Python list storing the associated values of the keys.
+
+    Notes
+    -----
+    * In-order traversal gives keys in sorted order (BST).
+    * The tree maintains balance probabilistically through random priorities (heap).
+    * The random priorities make treap self-balancing with high probability, giving
+        expected O(log n) time complexity for search, insert, and remove.
     """
     
     cdef ArrayNode_t* nodes
@@ -63,6 +82,7 @@ cdef class RandomizedTreap:
     
     def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
         self.capacity = initial_capacity
+        # Declare pointer to first element of an array of node structs
         self.nodes = <ArrayNode_t*>malloc(self.capacity * sizeof(ArrayNode_t))
         
         if not self.nodes:
@@ -86,10 +106,18 @@ cdef class RandomizedTreap:
             free(self.nodes)
 
     cpdef bint is_empty(self):
+        """Check whether the treap is empty."""
         return self._size == 0
 
     cpdef object top(self):
-        """Remove and return the value with the smallest key"""
+        """
+        Remove and return the value with the smallest key
+        
+        Raises
+        ------
+        RuntimeError
+            Error if the treap is empty.
+        """
         if self.is_empty():
             raise RuntimeError("The treap is empty!")
 
@@ -101,6 +129,14 @@ cdef class RandomizedTreap:
         return min_value
 
     cpdef float64_t peek(self):
+        """
+        Return the smallest key without removing it
+        
+        Raises
+        ------
+        RuntimeError
+            Error if the treap is empty.
+        """
         if self.is_empty():
             raise RuntimeError("The treap is empty!")
         cdef intp_t node_idx = self.root_idx
@@ -112,6 +148,18 @@ cdef class RandomizedTreap:
         return self.keys[node_idx]
 
     cpdef intp_t rank(self, float64_t key):
+        """
+        Returns the 0-based position of a key in sorted order.
+
+        Parameters
+        ----------
+        key : float64_t
+            The key in the treap to rank.
+
+        Returns
+        -------
+        intp_t : The rank of the key.
+        """
         return self._rank_helper(self.root_idx, key)
     
     cdef intp_t _rank_helper(self, intp_t node_idx, float64_t key):
@@ -136,6 +184,19 @@ cdef class RandomizedTreap:
             return left_size + 1 + right_rank
 
     cpdef void remove(self, float64_t key):
+        """
+        Removes a node while maintaining both BST and heap properties.
+
+        Parameters
+        ----------
+        key : float64_t
+            The key to remove from the treap.
+
+        Raises
+        ------
+        KeyError
+            Error if the provided key is not found in the treap
+        """
         cdef intp_t old_size = self._size
         self.root_idx = self._remove_helper(self.root_idx, key)
         if self._size == old_size:
@@ -244,7 +305,17 @@ cdef class RandomizedTreap:
             )
     
     cpdef void insert(self, float64_t key, object value):
-        """Insert with key"""
+        """
+        Insert a new key into the treao, and generate random priority.
+        Adds key-value pairs with rotations to maintain heap property.
+
+        Parameters
+        ----------
+        key : float64_t
+            The new key to add.
+        value : object
+            The associated value of the new key.
+        """
         self.root_idx = self._insert_helper(self.root_idx, key, value)
         self._size += 1
     
@@ -283,7 +354,7 @@ cdef class RandomizedTreap:
         return node_idx
     
     cpdef object search(self, float64_t key):
-        """Search for key"""
+        """Search for a given key value"""
         cdef intp_t node_idx = self._search_helper(self.root_idx, key)
         if node_idx == NONE_SENTINEL:
             return None
@@ -305,6 +376,7 @@ cdef class RandomizedTreap:
         return NONE_SENTINEL
 
     cdef intp_t _rotate_right(self, intp_t node_idx) noexcept nogil:
+        """Right rotation to maintain heap property after insertion"""
         cdef intp_t left_idx = self.nodes[node_idx].left_child
         self.nodes[node_idx].left_child = self.nodes[left_idx].right_child
         self.nodes[left_idx].right_child = node_idx
@@ -313,6 +385,7 @@ cdef class RandomizedTreap:
         return left_idx
     
     cdef intp_t _rotate_left(self, intp_t node_idx) noexcept nogil:
+        """Left rotation to maintain heap property after insertion"""
         cdef intp_t right_idx = self.nodes[node_idx].right_child
         self.nodes[node_idx].right_child = self.nodes[right_idx].left_child
         self.nodes[right_idx].left_child = node_idx
@@ -345,6 +418,7 @@ cdef class RandomizedTreap:
         self.capacity = new_capacity
     
     cdef void _update_size(self, intp_t node_idx) noexcept nogil:
+        """Keeps subtree sizes current for rank operations"""
         if node_idx == NONE_SENTINEL:
             return
         cdef intp_t left_size = 0, right_size = 0
