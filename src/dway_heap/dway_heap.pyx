@@ -1,8 +1,9 @@
 from libc.math cimport INFINITY
 from cython cimport boundscheck, wraparound
 
+from src.typedefs cimport intp_t, float64_t
+
 DEF INT_NONE_SENTINEL = -999
-ctypedef Py_ssize_t intp_t
 
 
 cdef class DWayHeap:
@@ -127,7 +128,7 @@ cdef class DWayHeap:
             raise RuntimeError("The heap is empty!")
         return self._pairs[0][1]
 
-    cpdef void insert(self, object element, double priority):
+    cpdef void insert(self, object element, float64_t priority):
         """
         Add new element-priority pair to the heap.
 
@@ -135,7 +136,7 @@ cdef class DWayHeap:
         ----------
         element : object
             The new element.
-        priority : double
+        priority : float64_t
             The associated priority of the new element.    
         """
         self._pairs.append((priority, element))
@@ -179,7 +180,7 @@ cdef class DWayHeap:
         """
         return (index - 1) // self.branching_factor
 
-    cdef inline bint _has_priority(self, double a, double b) nogil:
+    cdef inline bint _has_priority(self, float64_t a, float64_t b) nogil:
         """Returns True if 'a' has priority over 'b' based on heap type"""
         if self.is_max_heap:
             return a > b
@@ -209,7 +210,7 @@ cdef class DWayHeap:
         """
         cdef intp_t first_index, last_index
         cdef intp_t i
-        cdef double best_priority, current_priority
+        cdef float64_t best_priority, current_priority
         cdef intp_t best_index
         
         with nogil:
@@ -250,11 +251,11 @@ cdef class DWayHeap:
             The index of the root.
         """
         cdef tuple input_pair = self._pairs[index]
-        cdef double input_priority = input_pair[0]
+        cdef float64_t input_priority = input_pair[0]
         cdef intp_t current_index = index
         cdef intp_t first_leaf
         cdef intp_t child_index
-        cdef double child_priority
+        cdef float64_t child_priority
 
         first_leaf = (self._size - 2) // self.branching_factor + 1
 
@@ -288,10 +289,10 @@ cdef class DWayHeap:
             The index of the element to bubble up.
         """
         cdef tuple input_pair = self._pairs[index]
-        cdef double input_priority = input_pair[0]
+        cdef float64_t input_priority = input_pair[0]
         cdef intp_t parent_index
         cdef tuple parent_pair
-        cdef double parent_priority
+        cdef float64_t parent_priority
         
         while index > 0:
             parent_index = (index - 1) // self.branching_factor
@@ -338,7 +339,7 @@ cdef class DWayHeap:
         """Validate heap properties"""
         cdef intp_t current_index = 0
         cdef intp_t first_leaf
-        cdef double current_priority, child_priority
+        cdef float64_t current_priority, child_priority
         cdef intp_t first_child, last_child
         cdef intp_t child_index
 
