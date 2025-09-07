@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from src.treap.randomized_treap import RandomizedTreap
+from src.tree.treap.randomized_treap import RandomizedTreap
 
 
 class TestRandomizedTreap:
