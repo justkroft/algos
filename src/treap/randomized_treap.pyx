@@ -44,15 +44,6 @@ cdef class RandomizedTreap:
     The RT is represented as an array of nodes. The i-th element in the array
     holds information about node 'i'; the element at node 0 is the root of
     the RT.
-    
-    Visualization for understanding:
-             ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐
-    nodes -> │ Node 0  │ │ Node 1  │ │ Node 2  │ │ Node 3  │
-             │left: 2  │ │left: -1 │ │left: 1  │ │left: -1 │
-             │right: 3 │ │right:-1 │ │right: 3 │ │right:-1 │
-             │prio: 0.7│ │prio: 0.3│ │prio: 0.5│ │prio: 0.2│
-             │size: 4  │ │size: 1  │ │size: 2  │ │size: 1  │
-             └─────────┘ └─────────┘ └─────────┘ └─────────┘
 
     Parameters
     ----------
