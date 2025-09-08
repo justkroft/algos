@@ -115,13 +115,48 @@ cdef class BinarySearchTree:
             self._insert_node(key_view[i], val_view[i])
 
     cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):
-        pass
+        """
+        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+        for missing keys.
+        """
+        cdef intp_t n = len(keys)
+        cdef intp_t[:] result = np.empty(n, dtype=np.int64)
+        cdef intp_t i, idx
+        
+        for i in range(n):
+            idx = self._find_node(keys[i])
+            if idx == NONE_SENTINEL:
+                result[i] = NONE_SENTINEL  # Use sentinel for missing keys
+            else:
+                result[i] = self.nodes[idx].value
+        
+        return np.asarray(result)
     
-    cpdef np.ndarray contains_multiple(self):
-        pass
+    cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):
+        """
+        Check existence of multiple keys efficiently, returns boolean NumPy
+        array.
+        """
+        cdef intp_t n = len(keys)
+        cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
+        cdef intp_t i, idx
+        
+        for i in range(n):
+            idx = self._find_node(keys[i])
+            result[i] = 1 if idx != NONE_SENTINEL else 0
+        
+        return np.asarray(result, dtype=bool)
     
-    cpdef intp_t delete_multiple(self):
-        pass
+    cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
+        """Delete multiple keys and return number of successful deletions."""
+        cdef intp_t deleted_count = 0
+        cdef intp_t i, n = len(keys)
+        
+        for i in range(n):
+            if self._delete_node(keys[i]):
+                deleted_count += 1
+        
+        return deleted_count
 
     cpdef bint is_empty(self):
         """Check whether the BST is empty."""
