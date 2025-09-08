@@ -98,14 +98,38 @@ cdef class BinarySearchTree:
         if self.free_stack:
             free(self.free_stack)
 
+    def build_tree(self, keys: list | np.ndarray, values: list | np.ndarray) -> None:
+        if len(keys) != len(values):
+            raise ValueError("Keys and values must have same length")
+
+        needed_capacity = self._size + len(keys)
+        while self.capacity < needed_capacity:
+            self._resize_arrays()
+        
+        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
+        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
+        cdef intp_t n = len(keys)
+        cdef intp_t i
+
+        for i in range(n):
+            self._insert_node(key_view[i], val_view[i])
+
+    cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):
+        pass
+    
+    cpdef np.ndarray contains_multiple(self):
+        pass
+    
+    cpdef intp_t delete_multiple(self):
+        pass
+
     cpdef bint is_empty(self):
         """Check whether the BST is empty."""
         return self._size == 0
 
     cpdef intp_t get(self, intp_t key):
         cdef intp_t idx
-        with nogil:
-            idx = self._find_node(key)
+        idx = self._find_node(key)
         
         if idx == NONE_SENTINEL:
             raise KeyError(f"Key {key} not found")
@@ -114,8 +138,7 @@ cdef class BinarySearchTree:
 
     cpdef bint contains(self, intp_t key):
         cdef intp_t idx
-        with nogil:
-            idx = self._find_node(key)
+        idx = self._find_node(key)
         return idx != NONE_SENTINEL
 
     cpdef bint insert(self, intp_t key, intp_t value):
@@ -124,19 +147,17 @@ cdef class BinarySearchTree:
             self._resize_arrays()
         
         cdef intp_t success
-        with nogil:
-            success = self._insert_node(key, value)
+        success = self._insert_node(key, value)
         
         return bool(success)
     
     cpdef bint delete(self, intp_t key):
         cdef intp_t success
-        with nogil:
-            success = self._delete_node(key)
+        success = self._delete_node(key)
 
         return bool(success)
 
-    cdef inline intp_t _allocate_node(self) nogil:
+    cdef inline intp_t _allocate_node(self):
         cdef intp_t idx
         if UNLIKELY(self.free_stack_top < 0):
             return NONE_SENTINEL
@@ -146,7 +167,7 @@ cdef class BinarySearchTree:
         self.free_count -= 1
         return idx
 
-    cdef inline void _deallocate_node(self, intp_t idx) nogil:
+    cdef inline void _deallocate_node(self, intp_t idx):
         if LIKELY(self.free_stack_top < self.capacity - 1):
             self.free_stack_top += 1
             self.free_stack[self.free_stack_top] = idx
@@ -157,7 +178,7 @@ cdef class BinarySearchTree:
         cdef Node_t* new_nodes = <Node_t*>realloc(
             self.nodes, sizeof(Node_t) * new_capacity
         )
-        cdef int* new_free_stack = <intp_t*>realloc(
+        cdef intp_t* new_free_stack = <intp_t*>realloc(
             self.free_stack, sizeof(intp_t) * new_capacity
         )
         
@@ -176,7 +197,7 @@ cdef class BinarySearchTree:
         
         self.capacity = new_capacity
 
-    cdef inline intp_t _find_node(self, intp_t key) nogil:
+    cdef intp_t _find_node(self, intp_t key):
         cdef intp_t current = self.root_idx
         cdef Node_t* node
         cdef intp_t next_idx
@@ -198,7 +219,7 @@ cdef class BinarySearchTree:
 
         return NONE_SENTINEL
 
-    cdef intp_t _insert_node(self, intp_t key, intp_t value) nogil:
+    cdef intp_t _insert_node(self, intp_t key, intp_t value):
         cdef intp_t new_idx
 
         if UNLIKELY(self.root_idx == NONE_SENTINEL):
@@ -211,6 +232,7 @@ cdef class BinarySearchTree:
             self.nodes[new_idx].value = value
             self.nodes[new_idx].left_child = NONE_SENTINEL
             self.nodes[new_idx].right_child = NONE_SENTINEL
+            self.root_idx = new_idx
             self._size += 1
             return 1
         
@@ -220,7 +242,7 @@ cdef class BinarySearchTree:
         cdef bint go_left = False
 
         while LIKELY(current != NONE_SENTINEL):
-            parrent = current
+            parent = current
             node = &self.nodes[current]
 
             # prefect likely next node
@@ -258,11 +280,15 @@ cdef class BinarySearchTree:
         self._size += 1
         return 1
 
-    cdef intp_t _delete_node(self, intp_t key) nogil:
+    cdef intp_t _delete_node(self, intp_t key):
         cdef intp_t current = self.root_idx
         cdef intp_t parent = NONE_SENTINEL
         cdef bint is_left_child = False
         cdef Node_t* node
+
+        cdef intp_t child
+        cdef intp_t successor
+        cdef intp_t successor_parent
 
         # find node to delete
         while LIKELY(current != NONE_SENTINEL):
@@ -292,7 +318,7 @@ cdef class BinarySearchTree:
             and node.right_child == NONE_SENTINEL
         ):
             if UNLIKELY(parent == NONE_SENTINEL):
-                self.root_idx == NONE_SENTINEL
+                self.root_idx = NONE_SENTINEL
             elif is_left_child:
                 self.nodes[parent].left_child = NONE_SENTINEL
             else:
@@ -303,7 +329,7 @@ cdef class BinarySearchTree:
             node.left_child == NONE_SENTINEL
             or node.right_child == NONE_SENTINEL
         ):
-            cdef intp_t child = node.left_child if node.left_child != NONE_SENTINEL else node.right_child
+            child = node.left_child if node.left_child != NONE_SENTINEL else node.right_child
 
             if UNLIKELY(parent == NONE_SENTINEL):
                 self.root_idx = child
@@ -314,13 +340,13 @@ cdef class BinarySearchTree:
         
         # two children, find inorder successor
         else:
-            cdef intp_t successor = node.right_child
-            cdef intp_t successor_parent = current
+            successor = node.right_child
+            successor_parent = current
 
             # find left-most node in right subtree
             while LIKELY(self.nodes[successor].left_child != NONE_SENTINEL):
                 successor_parent = successor
-                successor = self.nodes[successor].left_idx
+                successor = self.nodes[successor].left_child
             
             node.key = self.nodes[successor].key
             node.value = self.nodes[successor].value
@@ -337,3 +363,104 @@ cdef class BinarySearchTree:
         self._size -= 1
         return 1
 
+    cpdef np.ndarray inorder(self):
+        """Return inorder traversal of keys"""
+        if self._size == 0:
+            return np.array([], dtype=np.int64)
+
+        cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
+        cdef intp_t result_idx = 0
+
+        self._inorder_traversal(self.root_idx, result, &result_idx)
+        return np.asarray(result)
+
+    cpdef np.ndarray preorder(self):
+        """Return preorder traversal of keys"""
+        if self._size == 0:
+            return np.array([], dtype=np.int64)
+
+        cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
+        cdef intp_t result_idx = 0
+
+        self._preorder_traversal(self.root_idx, result, &result_idx)
+        return np.asarray(result)
+
+    cpdef np.ndarray postorder(self):
+        """Return postorder traversal of keys"""
+        if self._size == 0:
+            return np.array([], dtype=np.int64)
+
+        cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
+        cdef intp_t result_idx = 0
+
+        self._postorder_traversal(self.root_idx, result, &result_idx)
+        return np.asarray(result)
+
+    cdef void _inorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, right, root"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+
+        self._inorder_traversal(node.left_child, result, result_idx)
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+
+        self._inorder_traversal(node.right_child, result, result_idx)
+
+    cdef void _preorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Root, left, right"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+
+        self._preorder_traversal(node.left_child, result, result_idx)
+        self._preorder_traversal(node.right_child, result, result_idx)
+
+    cdef void _postorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, right, root"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+        
+        self._postorder_traversal(node.left_child, result, result_idx)
+        self._postorder_traversal(node.right_child, result, result_idx)
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1

@@ -28,7 +28,8 @@ NUMPY_C_API = [
 
 pyx_files = [
     ("src.dway_heap.dway_heap", "src/dway_heap/dway_heap.pyx"),
-    ("src.tree.treap.randomized_treap", "src/tree/treap/randomized_treap.pyx")
+    ("src.tree.treap.randomized_treap", "src/tree/treap/randomized_treap.pyx"),
+    ("src.tree.bst.binary_search_tree", "src/tree/bst/binary_search_tree.pyx")
 ]
 
 
