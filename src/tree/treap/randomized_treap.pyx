@@ -9,7 +9,7 @@ import numpy as np
 cimport numpy as np
 
 from src.typedefs cimport intp_t, float64_t
-from src.constants import NONE_SENTINEL, INITIAL_CAPACITY, GROWTH_FACTOR
+include "src/constants.pxi"
 
 
 ctypedef struct ArrayNode_t:
