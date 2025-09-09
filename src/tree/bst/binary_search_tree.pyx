@@ -44,11 +44,7 @@ cdef extern from *:
     void PREFETCH_WRITE(void*)
 
 from src.typedefs cimport intp_t, float64_t
-
-
-DEF NONE_SENTINEL = -1
-DEF INITIAL_CAPACITY = 64
-DEF GROWTH_FACTOR = 2
+from src.constants import NONE_SENTINEL, INITIAL_CAPACITY, GROWTH_FACTOR
 
 
 ctypedef packed struct Node_t:

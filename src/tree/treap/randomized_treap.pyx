@@ -9,13 +9,7 @@ import numpy as np
 cimport numpy as np
 
 from src.typedefs cimport intp_t, float64_t
-
-DEF NONE_SENTINEL = -1
-# memory management
-# We have an initial capacity of 64,
-# if this capacity is exceeded, the capacity is doubled through the growth factor
-DEF INITIAL_CAPACITY = 64
-DEF GROWTH_FACTOR = 2
+from src.constants import NONE_SENTINEL, INITIAL_CAPACITY, GROWTH_FACTOR
 
 
 ctypedef struct ArrayNode_t:
