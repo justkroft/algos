@@ -1,3 +1,19 @@
+"""
+Author: Just van der Kroft
+
+This code utilizes some CPU-level compiler optimization hints.
+
+LIKELY/UNLIKELY are used for CPU branch prediction optimization. The CPU
+pre-loads instructions for the likely path, reducing pipeline stalls.
+
+PREFETCH_READ/_WRITE are used for memory hierarchy optimization. This brings
+data from RAM into L1/L2/L3 cache, and should reduce memory access latency.
+
+See also
+https://stackoverflow.com/questions/109710/how-do-the-likely-unlikely-macros-in-the-linux-kernel-work-and-what-is-their-ben. # noqa: E501
+http://blog.man7.org/2012/10/how-much-do-builtinexpect-likely-and.html
+"""
+
 cimport cython
 from libc.stdlib cimport malloc, realloc, free
 from libc.string cimport memset, memcpy
@@ -43,6 +59,21 @@ ctypedef packed struct Node_t:
 
 
 cdef class BinarySearchTree:
+    """
+    Array-based Cython representation of a Binary Search Tree (BST).
+
+    This implementation can be used as an associative data structure, and is
+    highly optimized for (and can only be used with) integer key-value pairs.
+    The keys are used for ordering and search, and the values is the data one
+    wants to store and retrieve.
+
+    Attributes
+    ----------
+    nodes : Node_t*
+        A pointer to an array (first element of an array) of node structures
+        Each node contains a key and a value, and a pointer (index) to its
+        left- and right-child.
+    """
     cdef Node_t* nodes
     cdef intp_t* free_stack      # Stack of free indices for O(1) allocation
     cdef intp_t capacity
@@ -73,22 +104,28 @@ cdef class BinarySearchTree:
         self.free_count = self.capacity
     
     def __len__(self) -> intp_t:
+        """len(bst), return number of elements"""
         return self._size
 
     def __contains__(self, intp_t key) -> intp_t:
+        """Key in bst, same as contains()"""
         return self.contains(key)
 
     def __getitem__(self, intp_t key) -> intp_t:
+        """bst[key], same as get()"""
         return self.get(key)
 
     def __setitem__(self, intp_t key, intp_t value) -> None:
+        """bst[key] = val, same as set()"""
         self.insert(key, value)
 
     def __delitem__(self, intp_t key) -> None:
+        """del bst[key], same as delete()"""
         if not self.delete(key):
             raise KeyError(f"Key {key} not found")
 
     def __bool__(self) -> bint:
+        """bool(bst), True of not empty"""
         return self._size > 0
 
     def __dealloc__(self):
@@ -117,6 +154,16 @@ cdef class BinarySearchTree:
         return self.inorder_items()
 
     def build_tree(self, keys: list | np.ndarray, values: list | np.ndarray) -> None:
+        """
+        Build Tree in optimized manner through an array of keys and values.
+
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of associative keys.
+        values : list | np.ndarray
+            An array of data you want to store/retrieve.
+        """
         if len(keys) != len(values):
             raise ValueError("Keys and values must have same length")
 
@@ -135,7 +182,13 @@ cdef class BinarySearchTree:
     cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):
         """
         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
-        for missing keys.
+        for missing keys. I.e., if the key does not exist, the array will
+        contain -1 as a value.
+
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of keys to retrieve.
         """
         cdef intp_t n = len(keys)
         cdef intp_t[:] result = np.empty(n, dtype=np.int64)
@@ -153,7 +206,12 @@ cdef class BinarySearchTree:
     cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):
         """
         Check existence of multiple keys efficiently, returns boolean NumPy
-        array.
+        array: 1 if the key exists in the tree, 0 if not.
+
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of keys to check for existence.
         """
         cdef intp_t n = len(keys)
         cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
@@ -166,7 +224,14 @@ cdef class BinarySearchTree:
         return np.asarray(result, dtype=bool)
     
     cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
-        """Delete multiple keys and return number of successful deletions."""
+        """
+        Delete multiple keys and return number of successful deletions.
+        
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of keys to delete.
+        """
         cdef intp_t deleted_count = 0
         cdef intp_t i, n = len(keys)
         
@@ -181,6 +246,24 @@ cdef class BinarySearchTree:
         return self._size == 0
 
     cpdef intp_t get(self, intp_t key):
+        """
+        Retrieve value for a key.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+
+        Returns
+        -------
+        intp_t
+            The value associated to the key.
+        
+        Raises
+        ------
+        KeyError
+            Error if the key is not found.
+        """
         cdef intp_t idx
         idx = self._find_node(key)
         
@@ -190,11 +273,39 @@ cdef class BinarySearchTree:
         return self.nodes[idx].value
 
     cpdef bint contains(self, intp_t key):
+        """
+        Check existence of a value for a key.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+
+        Returns
+        -------
+        bint
+            Boolean indicating whether the key exists in the tree or not.
+        """
         cdef intp_t idx
         idx = self._find_node(key)
         return idx != NONE_SENTINEL
 
     cpdef bint insert(self, intp_t key, intp_t value):
+        """
+        Insert key-value pair in the tree.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+        value : intp_t
+            The value associated to the key.
+
+        Returns
+        -------
+        bint
+            Boolean indicating whether the insertion was successfull or not.
+        """
         # resize if needed
         if UNLIKELY(self.free_count < 2):
             self._resize_arrays()
@@ -205,12 +316,26 @@ cdef class BinarySearchTree:
         return bool(success)
     
     cpdef bint delete(self, intp_t key):
+        """
+        Delete a key and it's value.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+
+        Returns
+        -------
+        intp_t
+            Boolean indicating whether the deletion was successfull or not.
+        """
         cdef intp_t success
         success = self._delete_node(key)
 
         return bool(success)
 
     cdef inline intp_t _allocate_node(self):
+        """Get free node from free stack (O(1))"""
         cdef intp_t idx
         if UNLIKELY(self.free_stack_top < 0):
             return NONE_SENTINEL
@@ -221,12 +346,14 @@ cdef class BinarySearchTree:
         return idx
 
     cdef inline void _deallocate_node(self, intp_t idx):
+        """Return node to free stack (O(1))"""
         if LIKELY(self.free_stack_top < self.capacity - 1):
             self.free_stack_top += 1
             self.free_stack[self.free_stack_top] = idx
             self.free_count += 1
     
     cdef void _resize_arrays(self):
+        """Double capacity when running low on space"""
         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
         cdef Node_t* new_nodes = <Node_t*>realloc(
             self.nodes, sizeof(Node_t) * new_capacity
@@ -251,6 +378,7 @@ cdef class BinarySearchTree:
         self.capacity = new_capacity
 
     cdef intp_t _find_node(self, intp_t key):
+        """Find node index for a key (-1 if not found)"""
         cdef intp_t current = self.root_idx
         cdef Node_t* node
         cdef intp_t next_idx
@@ -273,6 +401,7 @@ cdef class BinarySearchTree:
         return NONE_SENTINEL
 
     cdef intp_t _insert_node(self, intp_t key, intp_t value):
+        """Internal insertion logic"""
         cdef intp_t new_idx
 
         if UNLIKELY(self.root_idx == NONE_SENTINEL):
@@ -334,6 +463,7 @@ cdef class BinarySearchTree:
         return 1
 
     cdef intp_t _delete_node(self, intp_t key):
+        """Internal deletion logic"""
         cdef intp_t current = self.root_idx
         cdef intp_t parent = NONE_SENTINEL
         cdef bint is_left_child = False

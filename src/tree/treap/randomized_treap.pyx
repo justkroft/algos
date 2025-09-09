@@ -44,7 +44,7 @@ cdef class RandomizedTreap:
     holds information about node 'i'; the element at node 0 is the root of
     the RT.
 
-    Parameters
+    Attributes
     ----------
     nodes : ArrayNode_t*
         A pointer to an array (first element of an array) of node structures
