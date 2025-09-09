@@ -8,29 +8,42 @@ DEF INT_NONE_SENTINEL = -999
 
 cdef class DWayHeap:
     """
-    Cython implementation of a d-way heap.
+    Optimized Cython implementation of a d-way heap data structure.
+
+    A d-way heap is a generalization of a binary heap where each internal node
+    has at most d children instead of 2. This implementation provides efficient
+    priority queue operations with configurable branching factor.
 
     Parameters
     ----------
-    elements : list
-        The elements of your heap.
-    priorities : list
-        The priorities associated with your elements.
+    elements : list, optional
+        Initial elements to insert into the heap, by default None
+    priorities : list, optional
+        Initial priorities corresponding to elements, by default None
     branching_factor : int, optional
-        The branching factor, the maximum number of children that each internal
-        node can have, by default 2. The branching factor must be greater than
-        1. A larger branching factor implies a higher number of nodes to be
-        checked when pushing a pair on the heap.
+        Maximum number of children per internal node, by default 2
+    is_max_heap : bool, optional
+        Whether to maintain max-heap (True) or min-heap (False) property, 
+        by default True
+
+    Attributes
+    ----------
+    branching_factor : int
+        The branching factor of the heap
     is_max_heap : bool
-        Flag to indicate whether the heap is a Max heap (i.e., the elements
-        with a higher priority are at the top of the heap) or a Min heap,
-        by default True.
+        Whether this is a max heap or min heap
 
     Raises
     ------
     ValueError
-        Error if the lengths of the elements and priorities list are not equal.
-        Error if the branching factor is less than 2.
+        If elements and priorities lists have different lengths
+        If branching_factor is less than 2
+
+    Examples
+    --------
+    >>> heap = DWayHeap.max_heap([1, 2, 3], [10, 5, 15], branching_factor=3)
+    >>> heap.top()  # Returns element with highest priority (3)
+    3
     """
     cdef public list _pairs
     cdef public intp_t branching_factor
@@ -60,315 +73,397 @@ cdef class DWayHeap:
                 f"The branching factor must be greater than 1 ({branching_factor})"
             )
 
-        self._pairs = []
         self.branching_factor = branching_factor
         self.is_max_heap = is_max_heap
         self._size = 0
+        self._pairs = []
 
-        if len(elements) > 0:
+        if elements:
             self._heapify(elements, priorities)
 
     def __len__(self) -> intp_t:
-        """Return the size of the heap."""
+        """
+        Return the number of elements in the heap.
+        
+        Returns
+        -------
+        int
+            The current size of the heap
+        """
         return self._size
 
     cpdef bint is_empty(self):
-        """Check whether the heap is empty."""
+        """
+        Check whether the heap is empty.
+        
+        Returns
+        -------
+        bool
+            True if heap contains no elements, False otherwise
+        """
         return self._size == 0
 
     cpdef object top(self):
         """
-        Return and remove the top element of the heap.
+        Remove and return the top element from the heap.
 
-        This method returns the top element and simultaneously removes it
-        from the heap, thereby reducing the size by 1.
-        
-        In case of a max heap, it returns the element with the highest priority
-        In case of a min heap, it returns the element with the lowest priority
+        For max heaps, returns the element with highest priority.
+        For min heaps, returns the element with lowest priority.
+        The heap size is reduced by 1.
+
+        Returns
+        -------
+        object
+            The element with highest (max heap) or lowest (min heap) priority
 
         Raises
         ------
         RuntimeError
-            Error if the heap is empty.
+            If the heap is empty
         """
-        if self.is_empty():
+        if self._size == 0:
             raise RuntimeError("The heap is empty!")
         
-        cdef tuple result_pair
-        cdef object result
-        
         if self._size == 1:
-            result_pair = self._pairs.pop()
+            # Single element case - simple removal
             self._size = 0
-            return result_pair[1]
-        else:
-            result = self._pairs[0][1]
-            # Move last element to root and reduce size
-            self._pairs[0] = self._pairs[self._size - 1]
-            self._pairs.pop()
-            self._size -= 1
-            self._push_down(0)
-            return result
+            return self._pairs.pop()[1]
+        
+        # Multi-element case
+        cdef object result = self._pairs[0][1]
+        
+        # Move last element to root position
+        self._size -= 1  # Decrement size first
+        self._pairs[0] = self._pairs[self._size]
+        self._pairs.pop()  # Remove the now-duplicate last element
+        
+        # Restore heap property
+        self._sift_down(0)
+        
+        return result
 
     cpdef object peek(self):
         """
-        Return and remove the top element of the heap.
+        Return the top element without removing it from the heap.
 
-        This method only returns the top element and doesn't alter the heap.
-        
-        In case of a max heap, it returns the element with the highest priority
-        In case of a min heap, it returns the element with the lowest priority
+        For max heaps, returns the element with highest priority.
+        For min heaps, returns the element with lowest priority.
+        The heap remains unchanged.
+
+        Returns
+        -------
+        object
+            The element with highest (max heap) or lowest (min heap) priority
 
         Raises
         ------
         RuntimeError
-            Error if the heap is empty.
+            If the heap is empty
         """
-        if self.is_empty():
+        if self._size == 0:
             raise RuntimeError("The heap is empty!")
         return self._pairs[0][1]
 
     cpdef void insert(self, object element, float64_t priority):
         """
-        Add new element-priority pair to the heap.
+        Insert a new element with associated priority into the heap.
+
+        The element is placed at the end of the heap and then bubbled up
+        to maintain the heap property.
 
         Parameters
         ----------
         element : object
-            The new element.
+            The element to insert
         priority : float64_t
-            The associated priority of the new element.    
+            The priority value associated with the element
         """
+        # Add new element at the end
         self._pairs.append((priority, element))
         self._size += 1
-        self._bubble_up(self._size - 1)
+        
+        # Restore heap property by bubbling up
+        self._sift_up(self._size - 1)
 
     cpdef intp_t first_leaf_index(self):
-        cdef intp_t result
-
-        with nogil:
-            result = (self._size - 2) // self.branching_factor + 1
-        return result
-
-    cdef intp_t _first_child_index(self, intp_t index) nogil:
         """
-        Compute the first child index of the node.
-
-        Parameters
-        ----------
-        index : intp_t
-            The index of the current node for which we need the child's index.
-
-        Returns
-        -------
-        intp_t : The index of the left-most child of the heap node.
-        """
-        return index * self.branching_factor + 1
-
-    cdef intp_t _parent_index(self, intp_t index) nogil:
-        """
-        Compute the index of the parent of the node.
+        Calculate the index of the first leaf node in the heap.
         
+        Returns
+        -------
+        int
+            Index of the first leaf node
+        """
+        if self._size <= 1:
+            return 0
+        return (self._size - 2) // self.branching_factor + 1
+
+    cdef inline intp_t _parent_index(self, intp_t child_index) nogil:
+        """
+        Calculate the parent index for a given child index.
+
         Parameters
         ----------
-        index : intp_t
-            The index of the current node for which we need the parent's index.
+        child_index : intp_t
+            Index of the child node
 
         Returns
         -------
-        intp_t : The index of the parent of the heap node.
+        intp_t
+            Index of the parent node
         """
-        return (index - 1) // self.branching_factor
+        return (child_index - 1) // self.branching_factor
+
+    cdef inline intp_t _first_child_index(self, intp_t parent_index) nogil:
+        """
+        Calculate the index of the first child for a given parent.
+
+        Parameters
+        ----------
+        parent_index : intp_t
+            Index of the parent node
+
+        Returns
+        -------
+        intp_t
+            Index of the first child node
+        """
+        return parent_index * self.branching_factor + 1
 
     cdef inline bint _has_priority(self, float64_t a, float64_t b) nogil:
-        """Returns True if 'a' has priority over 'b' based on heap type"""
+        """
+        Compare two priorities according to heap type.
+
+        Parameters
+        ----------
+        a : float64_t
+            First priority value
+        b : float64_t
+            Second priority value
+
+        Returns
+        -------
+        bint
+            True if 'a' has higher priority than 'b' according to heap type
+        """
         if self.is_max_heap:
             return a > b
         else:
             return a < b
 
-    @boundscheck(False)
-    @wraparound(False)
-    cdef intp_t _highest_priority_child_index(
-        self, intp_t index
-    ) except INT_NONE_SENTINEL:
+    cdef intp_t _find_extreme_child(self, intp_t parent_index):
         """
-        This method fins the child with the highest priority among the children.
-
-        If there is a tie in priority between children, the left-most child is
-        returned.
+        Find the child with the most extreme priority (highest for max heap,
+        lowest for min heap) among all children of the given parent.
 
         Parameters
         ----------
-        index : intp_t
-            The index of the current node for which we need the highest
-            priority index of its child.
+        parent_index : intp_t
+            Index of the parent node
 
         Returns
         -------
-        intp_t : The index of the highest priority child.
+        intp_t
+            Index of child with extreme priority, or INT_NONE_SENTINEL if no children
         """
-        cdef intp_t first_index, last_index
-        cdef intp_t i
-        cdef float64_t best_priority, current_priority
-        cdef intp_t best_index
+        cdef intp_t first_child = self._first_child_index(parent_index)
         
-        with nogil:
-            first_index = index * self.branching_factor + 1
-            last_index = first_index + self.branching_factor
-            if last_index > self._size:
-                last_index = self._size
-
-        if first_index >= self._size:
+        # Check if parent has any children
+        if first_child >= self._size:
             return INT_NONE_SENTINEL
-
-        best_index = first_index
-        best_priority = self._pairs[first_index][0]
+            
+        cdef intp_t last_child = min(first_child + self.branching_factor, self._size)
+        cdef intp_t extreme_idx = first_child
+        cdef float64_t extreme_priority = self._pairs[first_child][0]
+        cdef intp_t i
+        cdef float64_t current_priority
         
-        # Find child with highest priority
-        for i in range(first_index + 1, last_index):
+        # Find child with most extreme priority
+        for i in range(first_child + 1, last_child):
             current_priority = self._pairs[i][0]
-            if self._has_priority(current_priority, best_priority):
-                best_priority = current_priority
-                best_index = i
+            if self._has_priority(current_priority, extreme_priority):
+                extreme_priority = current_priority
+                extreme_idx = i
                 
-        return best_index
+        return extreme_idx
 
-    @boundscheck(False)
-    @wraparound(False)
-    cdef void _push_down(self, intp_t index):
+    cdef void _sift_up(self, intp_t start_index):
         """
-        This helper method pushes down the heap's root towards its leaf such
-        that the modified heap adheres to the invariants. This method is used
-        when creating a heap, as well as when removing its 'top' element.
+        Restore heap property by moving element at start_index upward.
 
-        If an element's child has a higher priority, the element is swapped
-        with its child that has the highest priority.
+        This is used after insertion to maintain the heap invariant.
 
         Parameters
         ----------
-        index : intp_t
-            The index of the root.
+        start_index : intp_t
+            Index of element to sift up
         """
-        cdef tuple input_pair = self._pairs[index]
-        cdef float64_t input_priority = input_pair[0]
-        cdef intp_t current_index = index
-        cdef intp_t first_leaf
-        cdef intp_t child_index
-        cdef float64_t child_priority
-
-        first_leaf = (self._size - 2) // self.branching_factor + 1
-
-        while current_index < first_leaf:
-            child_index = self._highest_priority_child_index(current_index)
-            if child_index == INT_NONE_SENTINEL:
-                break
-                
-            child_priority = self._pairs[child_index][0]
-            if self._has_priority(child_priority, input_priority):
-                self._pairs[current_index] = self._pairs[child_index]
-                current_index = child_index
-            else:
-                break
-                
-        self._pairs[current_index] = input_pair
-
-    @boundscheck(False)
-    @wraparound(False)
-    cdef void _bubble_up(self, intp_t index):
-        """
-        This helper method ensures that an inserted element goes to the top if
-        necessary to adhere to the heap's invariants.
-
-        If an element has lower priority than it's parent, the current element
-        is swapped with its parent.
-
-        Parameters
-        ----------
-        index : intp_t
-            The index of the element to bubble up.
-        """
-        cdef tuple input_pair = self._pairs[index]
-        cdef float64_t input_priority = input_pair[0]
-        cdef intp_t parent_index
-        cdef tuple parent_pair
+        if start_index == 0:
+            return
+            
+        cdef tuple element = self._pairs[start_index]
+        cdef float64_t element_priority = element[0]
+        cdef intp_t current_index = start_index
+        cdef intp_t parent_idx
         cdef float64_t parent_priority
         
-        while index > 0:
-            parent_index = (index - 1) // self.branching_factor
-                
-            parent_pair = self._pairs[parent_index]
-            parent_priority = parent_pair[0]
-
-            if self._has_priority(input_priority, parent_priority):
-                self._pairs[index] = parent_pair
-                index = parent_index
-            else:
+        while current_index > 0:
+            parent_idx = self._parent_index(current_index)
+            parent_priority = self._pairs[parent_idx][0]
+            
+            # Stop if heap property is satisfied
+            if not self._has_priority(element_priority, parent_priority):
                 break
                 
-        self._pairs[index] = input_pair
+            # Move parent down
+            self._pairs[current_index] = self._pairs[parent_idx]
+            current_index = parent_idx
+            
+        # Place element in final position
+        self._pairs[current_index] = element
+
+    cdef void _sift_down(self, intp_t start_index):
+        """
+        Restore heap property by moving element at start_index downward.
+
+        This is used after removal to maintain the heap invariant.
+
+        Parameters
+        ----------
+        start_index : intp_t
+            Index of element to sift down
+        """
+        cdef tuple element = self._pairs[start_index]
+        cdef float64_t element_priority = element[0]
+        cdef intp_t current_index = start_index
+        cdef intp_t extreme_child_idx
+        cdef float64_t extreme_child_priority
+        cdef intp_t first_leaf = self.first_leaf_index()
+        
+        # Continue until we reach a leaf node
+        while current_index < first_leaf:
+            extreme_child_idx = self._find_extreme_child(current_index)
+            
+            if extreme_child_idx == INT_NONE_SENTINEL:
+                break
+                
+            extreme_child_priority = self._pairs[extreme_child_idx][0]
+            
+            # Stop if heap property is satisfied
+            if not self._has_priority(extreme_child_priority, element_priority):
+                break
+                
+            # Move extreme child up
+            self._pairs[current_index] = self._pairs[extreme_child_idx]
+            current_index = extreme_child_idx
+            
+        # Place element in final position
+        self._pairs[current_index] = element
 
     cdef void _heapify(self, list elements, list priorities):
         """
-        Initialize the heap with elements and priorities.
-        
+        Build heap from unsorted elements and priorities using Floyd's algorithm.
+
+        This is more efficient than inserting elements one by one.
+
         Parameters
         ----------
         elements : list
-            The elements of your heap.
+            List of elements to insert
         priorities : list
-            The priorities associated with your elements.
+            List of corresponding priorities
         """
-        self._pairs = list(zip(priorities, elements))
+        # Create pairs and set size
+        self._pairs = [(priorities[i], elements[i]) for i in range(len(elements))]
         self._size = len(self._pairs)
         
-        # Heapify from last internal node downward
-        cdef intp_t last_internal_index
-        cdef intp_t i
-        
+        # No work needed for trivial cases
         if self._size <= 1:
             return
             
-        with nogil:
-            last_internal_index = (self._size - 2) // self.branching_factor
-            
-        for i in range(last_internal_index, -1, -1):
-            self._push_down(i)
+        # Start from last internal node and sift down
+        cdef intp_t last_internal = self._parent_index(self._size - 1)
+        cdef intp_t i
+        
+        for i in range(last_internal, -1, -1):
+            self._sift_down(i)
 
     cpdef bint _validate(self):
-        """Validate heap properties"""
-        cdef intp_t current_index = 0
-        cdef intp_t first_leaf
-        cdef float64_t current_priority, child_priority
-        cdef intp_t first_child, last_child
-        cdef intp_t child_index
+        """
+        Validate that the heap property is maintained.
 
-        with nogil:
-            first_leaf = (self._size - 2) // self.branching_factor + 1
+        This is primarily for debugging and testing purposes.
 
-        while current_index < first_leaf:
-            current_priority = self._pairs[current_index][0]
+        Returns
+        -------
+        bool
+            True if heap property is satisfied, False otherwise
+        """
+        if self._size == 0:
+            return True
             
-            with nogil:
-                first_child = current_index * self.branching_factor + 1
-                last_child = first_child + self.branching_factor
-                if last_child > self._size:
-                    last_child = self._size
-                    
-            for child_index in range(first_child, last_child):
-                child_priority = self._pairs[child_index][0]
-                if self._has_priority(child_priority, current_priority):
+        cdef intp_t parent_idx
+        cdef intp_t first_child, last_child
+        cdef intp_t child_idx
+        cdef float64_t parent_priority, child_priority
+        cdef intp_t first_leaf = self.first_leaf_index()
+        
+        # Check each internal node
+        for parent_idx in range(first_leaf):
+            parent_priority = self._pairs[parent_idx][0]
+            first_child = self._first_child_index(parent_idx)
+            last_child = min(first_child + self.branching_factor, self._size)
+            
+            # Check all children of this parent
+            for child_idx in range(first_child, last_child):
+                child_priority = self._pairs[child_idx][0]
+                if self._has_priority(child_priority, parent_priority):
                     return False
                     
-            current_index += 1
         return True
 
     @classmethod
     def max_heap(cls, elements=None, priorities=None, branching_factor=2):
-        """Create a max heap"""
-        return cls(elements or [], priorities or [], branching_factor, True)
+        """
+        Create a max heap instance.
+
+        In a max heap, elements with higher priorities are at the top.
+
+        Parameters
+        ----------
+        elements : list, optional
+            Initial elements, by default None
+        priorities : list, optional
+            Initial priorities, by default None
+        branching_factor : int, optional
+            Branching factor, by default 2
+
+        Returns
+        -------
+        DWayHeap
+            A max heap instance
+        """
+        return cls(elements, priorities, branching_factor, True)
     
     @classmethod  
     def min_heap(cls, elements=None, priorities=None, branching_factor=2):
-        """Create a min heap"""
-        return cls(elements or [], priorities or [], branching_factor, False)
+        """
+        Create a min heap instance.
+
+        In a min heap, elements with lower priorities are at the top.
+
+        Parameters
+        ----------
+        elements : list, optional
+            Initial elements, by default None
+        priorities : list, optional
+            Initial priorities, by default None
+        branching_factor : int, optional
+            Branching factor, by default 2
+
+        Returns
+        -------
+        DWayHeap
+            A min heap instance
+        """
+        return cls(elements, priorities, branching_factor, False)
