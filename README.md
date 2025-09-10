@@ -26,7 +26,7 @@ uv run pytest
 ## Time Complexity
 | Data Structure           | Search             | Insert             | Delete             | Notes                                                    |
 | ------------------------ | ------------------ | ------------------ | ------------------ | -------------------------------------------------------- |
-| D-Way Heap               | O(d · log₍d₎ n)    | O(log₍d₎ n)        | O(log₍d₎ n)        | Larger *d* reduces height but increases percolation cost |
+| D-Way Heap               | O(d · log(d) n)    | O(log(d) n)        | O(log(d) n)        | Larger *d* reduces height but increases percolation cost |
 | Binary Search Tree (BST) | O(h), avg O(log n) | O(h), avg O(log n) | O(h), avg O(log n) | `h` = tree height; worst-case O(n) if unbalanced         |
 | Treap                    | O(log n) expected  | O(log n) expected  | O(log n) expected  | Balancing is randomized with heap priorities             |
 
