@@ -16,8 +16,6 @@ http://blog.man7.org/2012/10/how-much-do-builtinexpect-likely-and.html
 
 cimport cython
 from libc.stdlib cimport malloc, realloc, free
-from libc.string cimport memset, memcpy
-from libc.math cimport log2
 
 import numpy as np
 cimport numpy as np
