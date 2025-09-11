@@ -605,7 +605,7 @@ cdef class BinarySearchTree:
         intp_t[:] result,
         intp_t* result_idx
     ):
-        """Left, right, root"""
+        """Left, root, right"""
         if node_idx == NONE_SENTINEL:
             return
         
@@ -630,7 +630,7 @@ cdef class BinarySearchTree:
         intp_t* result_idx
     ):
         """
-        Left, right, root.
+        Left, root, right.
 
         Same method as `_inorder_traversal()`, but instead this method traverses
         the values rather than the keys. Helper method for `values()`.
