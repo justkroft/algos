@@ -758,8 +758,9 @@ cdef class BinarySearchTree:
 
         cdef intp_t[:] keys = np.empty(count, dtype=np.int64)
         cdef intp_t[:] values = np.empty(count, dtype=np.int64)
+        cdef intp_t idx = 0
 
-        self._range_query_fill(self.root_idx, min_key, max_key, keys, values, &idk)
+        self._range_query_fill(self.root_idx, min_key, max_key, keys, values, &idx)
         return (np.asarray(keys), np.asarray(values))
 
     cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
@@ -778,6 +779,7 @@ cdef class BinarySearchTree:
             count = 1
             count += self._count_range(node.left_child, min_key, max_key)
             count += self._count_range(node.right_child, min_key, max_key)
+            return count
 
     cdef void _range_query_fill(
         self,
@@ -805,7 +807,9 @@ cdef class BinarySearchTree:
             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
         else:
             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+
             keys[idx[0]] = node.key
             values[idx[0]] = node.value
             idx[0] += 1
+            
             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
