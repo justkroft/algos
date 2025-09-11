@@ -236,3 +236,13 @@ class TestBinarySearchTree:
         self.bst.delete_multiple([20, 30])
         assert 20 not in self.bst
         assert 30 not in self.bst
+
+    def test_range_query(self):
+        keys = [50, 30, 70, 20, 40, 60, 80]
+        values = [100, 200, 300, 400, 500, 600, 700]
+        self.bst.build_tree(keys, values)
+
+        rk, rv = self.bst.range_query(20, 55)
+
+        np.testing.assert_array_equal(rk, np.array([20, 30, 40, 50]))
+        np.testing.assert_array_equal(rv, np.array([400, 200, 500, 100]))
