@@ -729,3 +729,83 @@ cdef class BinarySearchTree:
         self._postorder_items_traverse(node.left_child, result)
         self._postorder_items_traverse(node.right_child, result)
         result.append((node.key, node.value))
+
+    cpdef tuple range_query(self, intp_t min_key, intp_t max_key):
+        """
+        Range query returning arrays for keys and values.
+
+        Parameters
+        ----------
+        min_key : intp_t
+            The mininum key in the desired range.
+        max_key : intp_t
+            The maximum key in the desired range.
+        
+        Returns
+        -------
+        tuple
+            (keys_array, values_array) as arrays.
+        """
+        if self._size == 0:
+            empty = np.array([], dtype=np.int64)
+            return (empty, empty)
+
+        cdef intp_t count = self._count_range(self.root_idx, min_key, max_key)
+
+        if count == 0:
+            empty = np.array([], dtype=np.int64)
+            return (empty, empty)
+
+        cdef intp_t[:] keys = np.empty(count, dtype=np.int64)
+        cdef intp_t[:] values = np.empty(count, dtype=np.int64)
+
+        self._range_query_fill(self.root_idx, min_key, max_key, keys, values, &idk)
+        return (np.asarray(keys), np.asarray(values))
+
+    cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
+        """Count nodes in range"""
+        if node_idx == NONE_SENTINEL:
+            return 0
+
+        cdef Node_t* node = &self.nodes[node_idx]
+        cdef intp_t count = 0
+
+        if node.key > max_key:
+            return self._count_range(node.left_child, min_key, max_key)
+        elif node.key < min_key:
+            return self._count_range(node.right_child, min_key, max_key)
+        else:
+            count = 1
+            count += self._count_range(node.left_child, min_key, max_key)
+            count += self._count_range(node.right_child, min_key, max_key)
+
+    cdef void _range_query_fill(
+        self,
+        intp_t node_idx,
+        intp_t min_key,
+        intp_t max_key,
+        intp_t[:] keys,
+        intp_t[:] values,
+        intp_t* idx
+    ):
+        """
+        Fill pre-allocated arrays.
+
+        Get the number of nodes in the range using `_count_range()`.
+        Pass empty numpy arrays with this size and fill.
+        """
+        if node_idx == NONE_SENTINEL:
+            return
+
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.key > max_key:
+            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+        elif node.key < min_key:
+            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
+        else:
+            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+            keys[idx[0]] = node.key
+            values[idx[0]] = node.value
+            idx[0] += 1
+            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
