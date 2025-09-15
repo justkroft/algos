@@ -55,12 +55,8 @@ cdef class BinarySearchTree(_BaseTree):
     The keys are used for ordering and search, and the values is the data one
     wants to store and retrieve.
 
-    Attributes
-    ----------
-    nodes : Node_t*
-        A pointer to an array (first element of an array) of node structures
-        Each node contains a key and a value, and a pointer (index) to its
-        left- and right-child.
+    This implementation inherits from `_BaseTree` and adds BST-specific
+    insertion, deletion, and search logic.
     """
 
     def __setitem__(self, intp_t key, intp_t value) -> None:
