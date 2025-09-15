@@ -43,15 +43,10 @@ cdef extern from *:
 
 from src.typedefs cimport intp_t, float64_t
 include "src/constants.pxi"
-
-ctypedef packed struct Node_t:
-    intp_t key
-    intp_t value
-    intp_t left_child
-    intp_t right_child
+include "src/tree/_base_tree.pxi"
 
 
-cdef class BinarySearchTree:
+cdef class BinarySearchTree(_BaseTree):
     """
     Array-based Cython representation of a Binary Search Tree (BST).
 
