@@ -11,6 +11,17 @@ cdef class _BaseTree:
     
     Contains common functionality like memory management, traversals, 
     and basic operations that can be shared across different tree variants.
+
+    Tree algorithms that inherit from this base class are expected to implement
+    the following 'private' methods by itself:
+        - _find_node(self, intp_t key):
+            Find node index for a key
+        - _insert_node(self, intp_t key, intp_t value):
+            Internal tree insertion logic
+        - _delete_node(self, intp_t key):
+            Internal tree deletion logic
+        - _resize_arrays(self):
+            Resize the arrays of nodes in line with tree logic
     
     Attributes
     ----------
@@ -80,6 +91,103 @@ cdef class _BaseTree:
         if self.free_stack:
             free(self.free_stack)
 
+    def __setitem__(self, intp_t key, intp_t value) -> None:
+        """bst[key] = val, same as set()"""
+        self.insert(key, value)
+
+    def __delitem__(self, intp_t key) -> None:
+        """del bst[key], same as delete()"""
+        if not self.delete(key):
+            raise KeyError(f"Key {key} not found")
+
+    def build_tree(self, keys: list | np.ndarray, values: list | np.ndarray) -> None:
+        """
+        Build Tree in optimized manner through an array of keys and values.
+
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of associative keys.
+        values : list | np.ndarray
+            An array of data you want to store/retrieve.
+        """
+        if len(keys) != len(values):
+            raise ValueError("Keys and values must have same length")
+
+        needed_capacity = self._size + len(keys)
+        while self.capacity < needed_capacity:
+            self._resize_arrays()
+        
+        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
+        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
+        cdef intp_t n = len(keys)
+        cdef intp_t i
+
+        for i in range(n):
+            self._insert_node(key_view[i], val_view[i])
+    
+    cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
+        """
+        Delete multiple keys and return number of successful deletions.
+        
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of keys to delete.
+        """
+        cdef intp_t deleted_count = 0
+        cdef intp_t i, n = len(keys)
+        
+        for i in range(n):
+            if self._delete_node(keys[i]):
+                deleted_count += 1
+        
+        return deleted_count
+
+    cpdef bint insert(self, intp_t key, intp_t value):
+        """
+        Insert key-value pair in the tree.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+        value : intp_t
+            The value associated to the key.
+
+        Returns
+        -------
+        bint
+            Boolean indicating whether the insertion was successfull or not.
+        """
+        # resize if needed
+        if UNLIKELY(self.free_count < 2):
+            self._resize_arrays()
+        
+        cdef intp_t success
+        success = self._insert_node(key, value)
+        
+        return bool(success)
+    
+    cpdef bint delete(self, intp_t key):
+        """
+        Delete a key and it's value.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+
+        Returns
+        -------
+        intp_t
+            Boolean indicating whether the deletion was successfull or not.
+        """
+        cdef intp_t success
+        success = self._delete_node(key)
+
+        return bool(success)
+
     # memory management methods
     cdef inline intp_t _allocate_node(self):
         """Get free node from free stack (O(1))"""
@@ -98,31 +206,6 @@ cdef class _BaseTree:
             self.free_stack_top += 1
             self.free_stack[self.free_stack_top] = idx
             self.free_count += 1
-    
-    cdef void _resize_arrays(self):
-        """Double capacity when running low on space"""
-        cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
-        cdef Node_t* new_nodes = <Node_t*>realloc(
-            self.nodes, sizeof(Node_t) * new_capacity
-        )
-        cdef intp_t* new_free_stack = <intp_t*>realloc(
-            self.free_stack, sizeof(intp_t) * new_capacity
-        )
-        
-        if not new_nodes or not new_free_stack:
-            raise MemoryError("Failed to resize")
-
-        self.nodes = new_nodes
-        self.free_stack = new_free_stack
-
-        # Add new indices to free stack
-        cdef intp_t i
-        for i in range(self.capacity, new_capacity):
-            self.free_stack_top += 1
-            self.free_stack[self.free_stack_top] = i
-            self.free_count += 1
-        
-        self.capacity = new_capacity
 
     # public methods
     cpdef bint is_empty(self):
@@ -552,3 +635,6 @@ cdef class _BaseTree:
 
     cdef intp_t _delete_node(self, intp_t key):
         raise NotImplementedError("Subclasses must implement _delete_node")
+
+    cdef void _resize_arrays(self):
+        raise NotImplementedError("Subclasses must implement _resize_arrays")
