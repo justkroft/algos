@@ -29,7 +29,7 @@ from src.typedefs cimport intp_t
 include "src/constants.pxi"
 include "src/tree/_base_tree.pxi"
 
-cdef enum Color:
+cdef enum NodeColor:
     RED = 0
     BLACK = 1
 
@@ -39,54 +39,164 @@ ctypedef packed struct RBNode_t:
     intp_t left_child
     intp_t right_child
     intp_t parent
-    Color color
+    NodeColor color
 
 
 cdef class RedBlackTree(_BaseTree):
 
-    cdef RBNode_t* nodes
+    cdef RBNode_t* rb_nodes
 
     cdef __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
-        super().__cinit__(initial_capacity)
+        super(RedBlackTree, self).__cinit__(initial_capacity)
 
-        self.nodes = <RBNode_t*>malloc(self.capacity * sizeof(RBNode_t))
-        if not self.nodes:
+        # free base nodes from _BaseTree and allocate RBNodes
+        if self.nodes:
+            free(self.nodes)
+
+        self.rb_nodes = <RBNode_t*>malloc(self.capacity * sizeof(RBNode_t))
+        if not self.rb_nodes:
             raise MemoryError("Failed to allocate memory for Red-Black Tree")
 
-        # init all nodes
-        cdef intp_t i
-        for i in range(self.capacity):
-            self.nodes[i].parent = NONE_SENTINEL
-            self.nodes[i].color = BLACK
+        # for compatibility with base class
+        self.nodes = <Node_t*>self.rb_nodes
 
-    def __setitem__(self, intp_t key, intp_t value) -> None:
-        self.insert(key, value)
+    def __dealloc__(self):
+        if self.rb_nodes:
+            free(self.rb_nodes)
+        # Set to NULL to prevent double free in base class
+        self.nodes = NULL
+        if self.free_stack:
+            free(self.free_stack)
+        self.free_stack = NULL
 
-    def __delitem__(self, intp_t key) -> None:
-        if not self.delete(key):
-            raise KeyError(f"Key {key} not found")
+    cdef intp_t _find_node(self, intp_t key):
+        cdef intp_t current = self.root_idx
+        cdef RBNode_t* node
+    
+        while LIKELY(current != NONE_SENTINEL):
+            node = &self.rb_nodes[current]
 
-    def build_tree(self, keys: list | np.ndarray, values: list | np.ndarray) -> None:
-        if len(keys) != len(values):
-            raise ValueError("Keys and values must have same length")
+            if LIKELY(node.left_child != NONE_SENTINEL):
+                PREFETCH_READ(&self.rb_nodes[node.left_child])
+            if LIKELY(node.right_child != NONE_SENTINEL):
+                PREFETCH_READ(&self.rb_nodes[node.right_child])
 
-        needed_capacity = self._size + len(keys)
-        while self.capacity < needed_capacity:
-            self._resize_rb_arrays()
+            if LIKELY(key < node.key):
+                current = node.left_child
+            elif LIKELY(key > node.key):
+                current = node.right_child
+            else:
+                return current
 
-        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
-        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
-        cdef intp_t n = len(keys)
-        cdef intp_t i
+        return NONE_SENTINEL
 
-        for i in range(n):
-            self._insert_node(key_view[i], val_view[i])
+    cdef intp_t _insert_node(self, intp_t key, intp_t value):
+        cdef intp_t new_idx = self._allocate_node()
+        if UNLIKELY(new_idx == NONE_SENTINEL)
+            return 0
 
-    cpdef intp_t delete_multiple(self, key: list | np.ndarray):
-        cdef intp_t deleted_count = 0
-        cdef intp_t i, n = len(keys)
+        # init new rb-node
+        self.rb_nodes[new_idx].key = key
+        self.rb_nodes[new_idx].value = value
+        self.rb_nodes[new_idx].left_child = NONE_SENTINEL
+        self.rb_nodes[new_idx].right_child = NONE_SENTINEL
+        self.rb_nodes[new_idx].parent = NONE_SENTINEL
+        self.rb_nodes[new_idx].color = RED
 
-        for i in range(n):
-            if self._delete_node(keys[i]):
-                deleted_count += 1
-        return deleted_count
+        if UNLIKELY(self.root_idx == NONE_SENTINEL):  # empty tree
+            self.root_idx = new_idx
+            self.rb_nodes[new_idx].color = BLACK  # root is always black
+            self._size += 1
+            return 1
+
+        cdef intp_t current = self.root_idx
+        cdef intp_t parent = NONE_SENTINEL
+        cdef RBNode_t* node
+
+        while LIKELY(current != NONE_SENTINEL):
+            parent = current
+            node = &self.rb_nodes[current]
+
+            if LIKELY(key < node.key):
+                if LIKELY(node.left_child != NONE_SENTINEL):
+                    PREFETCH_READ(&self.rb_nodes[node.left_child])
+                current = node.left_child
+            elif LIKELY(key > node.key):
+                if LIKELY(node.right_child != NONE_SENTINEL):
+                    PREFETCH_READ(&self.rb_nodes[node.right_child])
+                current = node.right_child
+            else:
+                # key exists and we update value
+                node.value = value
+                self._deallocate_node(new_idx)
+                return 1
+
+        self.rb_nodes[new_idx].parent = parent
+        if key < self.rb_nodes[parent].key:
+            self.rb_nodes[parent].left_child = new_idx
+        else:
+            self.rb_nodes[parent].right_child = new_idx
+    
+        self._insert_fix(new_idx)
+        self._size += 1
+        return 1
+
+    cdef void _insert_fix(self, intp_t node_idx):
+        cdef intp_t current = node_idx
+        cdef intp_t parent, grandparent, uncle
+
+        while (
+            current != self.root_idx
+            and self.rb_nodes[self.rb_nodes[current].parent].color == RED
+        ):
+            parent = self.rb_nodes[current].parent
+            grandparent = self.rb_nodes[parent].parent
+
+            if parent == self.rb_nodes[grandparent].left_child:
+                uncle = self.rb_nodes[grandparent].right_child
+
+                if (
+                    uncle != NONE_SENTINEL
+                    and self.rb_nodes[uncle] == RED
+                ):  # uncle is red
+                    self.rb_nodes[parent].color = BLACK
+                    self.rb_nodes[uncle].color = BLACK
+                    self.rb_nodes[grandparent].color = RED
+                    current = grandparent
+                else:  # uncle is black, current is right child
+                    if current == self.rb_nodes[parent].right_child:
+                        current = parent
+                        self._rotate_left(current)
+                        parent = self.rb_nodes[current].parent
+                        grandparent = self.rb_nodes[parent].parent
+
+                    # uncle is black, current is left child
+                    self.rb_nodes[parent].color = BLACK
+                    self.rb_nodes[grandparent].color = RED
+                    self._rotate_right(grandparent)
+            else:
+                uncle = self.rb_nodes[grandparent].left_child
+
+                if (
+                    uncle != NONE_SENTINEL
+                    and self.rb_nodes[uncle].color == RED
+                ):  # uncle is red
+                    self.rb_nodes[parent].color = BLACK
+                    self.rb_nodes[uncle].color = BLACK
+                    self.rb_nodes[grandparent].color = RED
+                    current = grandparent
+                else:
+                    # uncle is black, current is left child
+                    if current == self.rb_nodes[parent].left_child:
+                        current = parent
+                        self._rotate_right(current)
+                        parent = self.rb_nodes[current].parent
+                        grandparent = self.rb_nodes[parent].parent
+
+                    # uncle is balck, current is right child
+                    self.rb_nodes[parent].color = BLACK
+                    self.rb_nodes[grandparent].color = RED
+                    self._rotate_left(grandparent)
+
+        # root is always black
+        self.rb_nodes[self.root_idx].color = BLACK
