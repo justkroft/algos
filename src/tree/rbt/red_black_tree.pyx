@@ -156,7 +156,8 @@ cdef class RedBlackTree(_BaseTree):
         self.rb_nodes[new_idx].left_child = self.nil_node_idx
         self.rb_nodes[new_idx].right_child = self.nil_node_idx
         self.rb_nodes[new_idx].parent = self.nil_node_idx
-        self.rb_nodes[new_idx].color = RED
+        # self.rb_nodes[new_idx].color = RED
+        self._set_red(self.rb_nodes[new_idx])
 
         if UNLIKELY(self.root_idx == NONE_SENTINEL):  # empty tree
             self.root_idx = new_idx
@@ -211,9 +212,9 @@ cdef class RedBlackTree(_BaseTree):
                 uncle = self.rb_nodes[grandparent].right_child
 
                 if self._is_red(uncle):
-                    self.rb_nodes[parent].color = BLACK
-                    self.rb_nodes[uncle].color = BLACK
-                    self.rb_nodes[grandparent].color = RED
+                    self._set_black(parent)
+                    self._set_black(uncle)
+                    self._set_red(grandparent)
                     current = grandparent
                 else:
                     # uncle is black node, current is right child
@@ -250,3 +251,157 @@ cdef class RedBlackTree(_BaseTree):
 
         # root is always black
         self._set_black(self.root_idx)
+
+    cdef intp_t _delete_node(self. intp_t key):
+        """Internal deletion logic with Red-Black Tree balancing"""
+        cdef intp_t node_to_delete = self._find_node(key)
+        if UNLIKELY(node_to_delete == NONE_SENTINEL):
+            return 0
+
+        cdef intp_t replacement
+        cdef intp_t original_node = node_to_delete
+        cdef NodeColor original_color = self._get_color(original_node)
+
+        if self.rb_nodes[node_to_delete].left_child == self.nil_node_idx:
+            replacement = self.rb_nodes[node_to_delete].right_child
+            self._transplant(node_to_delete, replacement)
+        elif self.rb_nodes[node_to_delete].right_child == self.nil_node_idx:
+            replacement = self.rb_nodes[node_to_delete].left_child
+            self._transplant(node_to_delete, replacement)
+        else:
+            # node has two children, find successor
+            cdef intp_t successor = self._minimum(self.rb_nodes[node_to_delete].right_child)
+            original_node = successor
+            original_color = self._get_color(successor)
+            replacement = self.rb_nodes[successor].right_child
+
+            if self.rb_nodes[success].parent == node_to_delete:
+                if replacement != self.nil_node_idx:
+                    self.rb_nodes[replacement].parent = successor
+            else:
+                self._transplant(successor, self.rb_nodes[successor].right_child)
+                self.rb_nodes[successor].right_child = self.rb_nodes[node_to_delete].right_child
+                if self.rb_nodes[successor].right_child != self.nil_node_idx:
+                    self.rb_nodes[self.rb_nodes[successor].right_child].parent = successor
+
+            self._transplant(node_to_delete, successor)
+            self.rb_nodes[successor].left_child = self.rb_nodes[node_to_delete].left_child
+            if self.rb_nodes[successor].left_child != self.nil_node_idx:
+                self.rb_nodes[self.rb_nodes[successor].left_child].parent = successor
+            self._set_color(successor, self._get_color(node_to_delete))
+
+        # fix rb-tree properties if black node was deleted
+        if original_color == BLACK and replacement != self.nil_node_idx:
+            self._delete_fixup(replacement)
+
+        self._deallocate_node(node_to_delete)
+        self._size -= 1
+        return 1
+
+    cdef void _delete_fixup(self, intp_t node_idx):
+         """Fix Red-Black Tree properties after deletion"""
+        cdef intp_t current = node_idx
+        cdef intp_t sibling
+
+        while (
+            current != self.root_idx
+            and (
+                current == NONE_SENTINEL
+                or self._is_black(self.rb_nodes[current])
+            )
+        ):
+            if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:
+                sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+
+                if self._is_red(sibling):
+                    self._set_black(self.rb_nodes[sibling])
+                    self._set_red(self.rb_nodes[current].parent)
+                    self._rotate_left(self.rb_nodes[current].parent)
+                    sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+
+                # both sibling's children are black
+                if (
+                    (
+                        self.rb_nodes[sibling].left_child == NONE_SENTINEL
+                        or self._is_black(
+                            self.rb_nodes[self.rb_nodes[sibling].left_child]
+                        )
+                    )
+                    and (
+                        self.rb_nodes[sibling].right_child == NONE_SENTINEL
+                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
+                    )
+                ):
+                    self._set_red(self.rb_nodes[sibling])
+                    current = self.rb_nodes[current].parent
+                else:
+                    # sibling's right child is black, left child is red
+                    if (
+                        self.rb_nodes[sibling].right_child == NONE_SENTINEL
+                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
+                    ):
+                        if self.rb_nodes[sibling].left_child != NONE_SENTINEL:
+                            self._set_black(
+                                self.rb_nodes[self.rb_nodes[sibling].right_child]
+                            )
+                        self._set_red(self.rb_nodes[sibling])
+                        self._rotate_right(sibling)
+                        sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+                    
+                    # sibling's right child is red
+                    self._set_color(
+                        self.rb_nodes[sibling],
+                        self._get_color(self.rb_nodes[self.rb_nodes[current].parent])
+                    )
+                    self._set_black(self.rb_nodes[self.rb_nodes[current].parent])
+                    if self.rb_nodes[sibling].right_child != NONE_SENTINEL:
+                        self._set_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
+                    self._rotate_left(self.rb_nodes[current].parent)
+                    current = self.root_idx
+            else:
+                sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+
+                if self._is_red(self.rb_nodes[sibling]):
+                    self._set_black(self.rb_nodes[sibling])
+                    self._set_red(self.rb_nodes[self.rb_nodes[current].parent])
+                    self._rotate_right(self.rb_nodes[current].parent)
+                    sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+
+                # both of sibling's children are black
+                if (
+                    (
+                        self.rb_nodes[sibling].left_child == NONE_SENTINEL
+                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].left_child])
+                    )
+                    and (
+                        self.rb_nodes[sibling].right_child == NONE_SENTINEL
+                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
+                    )
+                ):
+                    self._set_red(self.rb_nodes[sibling])
+                    current = self.rb_nodes[current].parent
+                else:
+                    # sibling's left child is black, right child is red
+                    if (
+                        self.rb_nodes[sibling].left_child == NONE_SENTINEL
+                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].left_child])
+                    ):
+                        if self.rb_nodes[sibling].right_child != NONE_SENTINEL:
+                            self._set_red(self.rb_nodes[self.rb_nodes[sibling].right_child])
+                        self._set_red(self.rb_nodes[sibling].color)
+                        self._rotate_left(sibling)
+                        sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+
+                    # sibling's left child is red
+                    self._set_color(
+                        self.rb_nodes[sibling],
+                        self._get_color(self.rb_nodes[self.rb_nodes[current].parent])
+                    )
+                    self._set_black(self.rb_nodes[self.rb_nodes[current].parent])
+                    if self.rb_nodes[sibling].left_child != NONE_SENTINEL:
+                        self._set_black(self.rb_nodes[self.rb_nodes[sibling].left_child])
+                    self._rotate_right(self.rb_nodes[current].parent)
+                    current = self.root_idx
+
+        if current != NONE_SENTINEL:
+            self._set_black(self.rb_nodes[current])
