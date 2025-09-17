@@ -405,3 +405,39 @@ cdef class RedBlackTree(_BaseTree):
 
         if current != NONE_SENTINEL:
             self._set_black(self.rb_nodes[current])
+
+    cdef void _rotate_left(self, intp_t node_idx):
+        cdef intp_t right_child = self.rb_nodes[node_idx].right_child
+
+        self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child
+        if self.rb_nodes[right_child].left_child != NONE_SENTINEL:
+            self.rb_nodes[self.rb_nodes[right_child].left_child].parent = node_idx
+
+        self.rb_nodes[right_child].parent = self.rb_nodes[node_idx].parent
+        if self.rb_nodes[node_idx].parent == NONE_SENTINEL:
+            self.root_idx = right_child
+        elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].left_child:
+            self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = right_child
+        else:
+            self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = right_child
+
+        self.rb_nodes[right_child].left_child = node_idx
+        self.rb_nodes[node_idx].parent = right_child
+
+    cdef void _rotate_right(self, intp_t node_idx):
+        cdef intp_t left_child = self.rb_nodes[node_idx].left_child
+
+        self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child
+        if self.rb_nodes[left_child].right_child != NONE_SENTINEL:
+            self.rb_nodes[self.rb_nodes[left_child].right_child].parent = node_idx
+
+        self.rb_nodes[left_child].parent = self.rb_nodes[node_idx].parent
+        if self.rb_nodes[node_idx].parent == NONE_SENTINEL:
+            self.root_idx = left_child
+        elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].right_child:
+            self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = left_child
+        else:
+            self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = left_child
+
+        self.rb_nodes[left_child].right_child = node_idx
+        self.rb_nodes[node_idx].parent = left_child
