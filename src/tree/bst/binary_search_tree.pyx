@@ -59,6 +59,32 @@ cdef class BinarySearchTree(_BaseTree):
     insertion, deletion, and search logic.
     """
 
+    cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+        """
+        Build Tree in optimized manner through an array of keys and values.
+
+        Parameters
+        ----------
+        keys : list | np.ndarray
+            An array of associative keys.
+        values : list | np.ndarray
+            An array of data you want to store/retrieve.
+        """
+        if len(keys) != len(values):
+            raise ValueError("Keys and values must have same length")
+
+        needed_capacity = self._size + len(keys)
+        while self.capacity < needed_capacity:
+            self._resize_arrays()
+        
+        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
+        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
+        cdef intp_t n = len(keys)
+        cdef intp_t i
+
+        for i in range(n):
+            self._insert_node(key_view[i], val_view[i])
+
     cdef intp_t _find_node(self, intp_t key):
         """Find node index for a key (-1 if not found)"""
         cdef intp_t current = self.root_idx

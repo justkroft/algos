@@ -54,12 +54,18 @@ cdef class RedBlackTree(_BaseTree):
     cdef RBNode_t* rb_nodes
     cdef intp_t nil_node_idx
 
-    cdef __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
-        super(RedBlackTree, self).__cinit__(initial_capacity)
+    def __cinit__(self, intp_t initial_capacity=INITIAL_CAPACITY):
+       # Initialize base class attributes manually
+        self.capacity = initial_capacity
+        self.root_idx = NONE_SENTINEL
+        self.free_stack_top = -1
+        self.free_count = 0
+        self._size = 0
 
-        # free base nodes from _BaseTree and allocate RBNodes
-        if self.nodes:
-            free(self.nodes)
+        # Allocate base class memory first
+        self.free_stack = <intp_t*>malloc(self.capacity * sizeof(intp_t))
+        if not self.free_stack:
+            raise MemoryError("Failed to allocate free stack")
 
         self.rb_nodes = <RBNode_t*>malloc(self.capacity * sizeof(RBNode_t))
         if not self.rb_nodes:
@@ -70,10 +76,12 @@ cdef class RedBlackTree(_BaseTree):
 
         # NIL_SENTINEL at index 0
         self.nil_node_idx = 0
+        self.rb_nodes[0].key = 0  # Add this
+        self.rb_nodes[0].value = 0  # Add this
         self.rb_nodes[0].flags = BLACK  # NIL is always a black node
-        self.rb_nodes[0].parent = 0
-        self.rb_nodes[0].left_child = 0
-        self.rb_nodes[0].right_child = 0
+        self.rb_nodes[0].parent = self.nil_node_idx
+        self.rb_nodes[0].left_child = self.nil_node_idx
+        self.rb_nodes[0].right_child = self.nil_node_idx
 
         # start free stack from index 1
         self.free_stack_top = self.capacity - 2  # 0 based and NIL node
@@ -91,32 +99,55 @@ cdef class RedBlackTree(_BaseTree):
             free(self.free_stack)
         self.free_stack = NULL
 
-    cpdef void build_balanced_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+    cpdef intp_t get(self, intp_t key):
+        """Override base class get to use RB nodes directly"""
+        cdef intp_t idx = self._find_node(key)
+        
+        if idx == NONE_SENTINEL:
+            raise KeyError(f"Key {key} not found")
+        
+        return self.rb_nodes[idx].value
+
+    cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
         if len(keys) != len(values):
             raise ValueError("Keys and values must have same length")
 
-        self.root_idx = NONE_SENTINEL
-        self._size = 0
-
-        self.free_stack_top = self.capacity - 2
-        self.free_count = self.capacity - 1
-        cdef intp_t i
-        for i in range(1, self.capacity):
-            self.free_stack[i-1] = i
-
         if len(keys) == 0:
+            self.root_idx = NONE_SENTINEL
+            self._size = 0
             return
 
         needed_capacity = len(keys) + 1
         while self.capacity < needed_capacity:
             self._resize_arrays()
 
+        # Reset tree state
+        self.root_idx = NONE_SENTINEL
+        self._size = 0
+
+        # Reset free stack (skip index 0 which is NIL)
+        self.free_stack_top = -1
+        self.free_count = 0
+        cdef intp_t i
+        for i in range(1, self.capacity):
+            self.free_stack_top += 1
+            self.free_stack[self.free_stack_top] = i
+            self.free_count += 1
+
+        # CRUCIAL: Sort the keys and values together
         cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
         cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
+        
+        # Sort by keys, keeping key-value pairs together
+        cdef intp_t[:] sorted_indices = np.argsort(keys)
+        cdef intp_t[:] sorted_keys = keys[sorted_indices]
+        cdef intp_t[:] sorted_values = values[sorted_indices]
+        
         cdef intp_t n = len(keys)
 
+        # Build the tree with sorted data
         self.root_idx = self._build_balanced_tree_recursive(
-            key_view, val_view, 0, n - 1, True
+            sorted_keys, sorted_values, 0, n - 1, True, self.nil_node_idx
         )
         self._size = n
 
@@ -126,7 +157,8 @@ cdef class RedBlackTree(_BaseTree):
         intp_t[:] values,
         intp_t start,
         intp_t end,
-        bint is_black
+        bint is_black,
+        intp_t parent_idx
     ):
         if start > end:
             return self.nil_node_idx
@@ -137,24 +169,22 @@ cdef class RedBlackTree(_BaseTree):
         if node_idx == NONE_SENTINEL:
             raise MemoryError("Failed to allocate node during tree building")
 
+        # Initialize the node
         self.rb_nodes[node_idx].key = keys[mid]
         self.rb_nodes[node_idx].value = values[mid]
-        self._set_color(node_idx, BLACK is is_black else RED)
+        self.rb_nodes[node_idx].parent = parent_idx
+        self._set_color(node_idx, BLACK if is_black else RED)
 
         cdef intp_t left_child = self._build_balanced_tree_recursive(
-            keys, values, start, mid - 1, False
+            keys, values, start, mid - 1, False, node_idx
         )
         cdef intp_t right_child = self._build_balanced_tree_recursive(
-            keys, values, mid + 1, end, False
+            keys, values, mid + 1, end, False, node_idx
         )
 
         self.rb_nodes[node_idx].left_child = left_child
         self.rb_nodes[node_idx].right_child = right_child
 
-        if left_child != self.nil_node_idx:
-            self.rb_nodes[left_child].parent = node_idx
-        if right_child != self.nil_node_idx:
-            self.rb_nodes[right_child].parent = node_idx
         return node_idx
 
     cdef inline bint _is_red(self, intp_t node_idx):
@@ -165,7 +195,7 @@ cdef class RedBlackTree(_BaseTree):
 
     cdef inline bint _is_black(self, intp_t node_idx):
         return (
-            node_idx != self.nil_node_idx
+            node_idx == self.nil_node_idx
             or (self.rb_nodes[node_idx].flags & COLOR_MASK) == BLACK
         )
 
@@ -213,7 +243,7 @@ cdef class RedBlackTree(_BaseTree):
     cdef intp_t _insert_node(self, intp_t key, intp_t value):
         """Internal insertion logic with Red-Black Tree balancing"""
         cdef intp_t new_idx = self._allocate_node()
-        if UNLIKELY(new_idx == NONE_SENTINEL)
+        if UNLIKELY(new_idx == NONE_SENTINEL):
             return 0
 
         # init new rb-node
@@ -222,8 +252,7 @@ cdef class RedBlackTree(_BaseTree):
         self.rb_nodes[new_idx].left_child = self.nil_node_idx
         self.rb_nodes[new_idx].right_child = self.nil_node_idx
         self.rb_nodes[new_idx].parent = self.nil_node_idx
-        # self.rb_nodes[new_idx].color = RED
-        self._set_red(self.rb_nodes[new_idx])
+        self._set_red(new_idx)
 
         if UNLIKELY(self.root_idx == NONE_SENTINEL):  # empty tree
             self.root_idx = new_idx
@@ -318,13 +347,14 @@ cdef class RedBlackTree(_BaseTree):
         # root is always black
         self._set_black(self.root_idx)
 
-    cdef intp_t _delete_node(self. intp_t key):
+    cdef intp_t _delete_node(self, intp_t key):
         """Internal deletion logic with Red-Black Tree balancing"""
         cdef intp_t node_to_delete = self._find_node(key)
         if UNLIKELY(node_to_delete == NONE_SENTINEL):
             return 0
 
         cdef intp_t replacement
+        cdef intp_t successor
         cdef intp_t original_node = node_to_delete
         cdef NodeColor original_color = self._get_color(original_node)
 
@@ -336,12 +366,12 @@ cdef class RedBlackTree(_BaseTree):
             self._transplant(node_to_delete, replacement)
         else:
             # node has two children, find successor
-            cdef intp_t successor = self._minimum(self.rb_nodes[node_to_delete].right_child)
+            successor = self._minimum(self.rb_nodes[node_to_delete].right_child)
             original_node = successor
             original_color = self._get_color(successor)
             replacement = self.rb_nodes[successor].right_child
 
-            if self.rb_nodes[success].parent == node_to_delete:
+            if self.rb_nodes[successor].parent == node_to_delete:
                 if replacement != self.nil_node_idx:
                     self.rb_nodes[replacement].parent = successor
             else:
@@ -365,122 +395,81 @@ cdef class RedBlackTree(_BaseTree):
         return 1
 
     cdef void _delete_fixup(self, intp_t node_idx):
-         """Fix Red-Black Tree properties after deletion"""
+        """Fix Red-Black Tree properties after deletion"""
         cdef intp_t current = node_idx
         cdef intp_t sibling
 
-        while (
-            current != self.root_idx
-            and (
-                current == NONE_SENTINEL
-                or self._is_black(self.rb_nodes[current])
-            )
-        ):
+        while current != self.root_idx and self._is_black(current):
             if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:
                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
 
                 if self._is_red(sibling):
-                    self._set_black(self.rb_nodes[sibling])
+                    self._set_black(sibling)
                     self._set_red(self.rb_nodes[current].parent)
                     self._rotate_left(self.rb_nodes[current].parent)
                     sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
 
                 # both sibling's children are black
                 if (
-                    (
-                        self.rb_nodes[sibling].left_child == NONE_SENTINEL
-                        or self._is_black(
-                            self.rb_nodes[self.rb_nodes[sibling].left_child]
-                        )
-                    )
-                    and (
-                        self.rb_nodes[sibling].right_child == NONE_SENTINEL
-                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
-                    )
+                    self._is_black(self.rb_nodes[sibling].left_child)
+                    and self._is_black(self.rb_nodes[sibling].right_child)
                 ):
-                    self._set_red(self.rb_nodes[sibling])
+                    self._set_red(sibling)
                     current = self.rb_nodes[current].parent
                 else:
                     # sibling's right child is black, left child is red
-                    if (
-                        self.rb_nodes[sibling].right_child == NONE_SENTINEL
-                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
-                    ):
-                        if self.rb_nodes[sibling].left_child != NONE_SENTINEL:
-                            self._set_black(
-                                self.rb_nodes[self.rb_nodes[sibling].right_child]
-                            )
-                        self._set_red(self.rb_nodes[sibling])
+                    if self._is_black(self.rb_nodes[sibling].right_child):
+                        self._set_black(self.rb_nodes[sibling].left_child)
+                        self._set_red(sibling)
                         self._rotate_right(sibling)
                         sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
                     
                     # sibling's right child is red
-                    self._set_color(
-                        self.rb_nodes[sibling],
-                        self._get_color(self.rb_nodes[self.rb_nodes[current].parent])
-                    )
-                    self._set_black(self.rb_nodes[self.rb_nodes[current].parent])
-                    if self.rb_nodes[sibling].right_child != NONE_SENTINEL:
-                        self._set_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
+                    self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))
+                    self._set_black(self.rb_nodes[current].parent)
+                    self._set_black(self.rb_nodes[sibling].right_child)
                     self._rotate_left(self.rb_nodes[current].parent)
                     current = self.root_idx
             else:
                 sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
 
-                if self._is_red(self.rb_nodes[sibling]):
-                    self._set_black(self.rb_nodes[sibling])
-                    self._set_red(self.rb_nodes[self.rb_nodes[current].parent])
+                if self._is_red(sibling):
+                    self._set_black(sibling)
+                    self._set_red(self.rb_nodes[current].parent)
                     self._rotate_right(self.rb_nodes[current].parent)
                     sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
 
                 # both of sibling's children are black
-                if (
-                    (
-                        self.rb_nodes[sibling].left_child == NONE_SENTINEL
-                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].left_child])
-                    )
-                    and (
-                        self.rb_nodes[sibling].right_child == NONE_SENTINEL
-                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].right_child])
-                    )
-                ):
-                    self._set_red(self.rb_nodes[sibling])
+                if (self._is_black(self.rb_nodes[sibling].left_child) and
+                    self._is_black(self.rb_nodes[sibling].right_child)):
+                    self._set_red(sibling)
                     current = self.rb_nodes[current].parent
                 else:
                     # sibling's left child is black, right child is red
-                    if (
-                        self.rb_nodes[sibling].left_child == NONE_SENTINEL
-                        or self._is_black(self.rb_nodes[self.rb_nodes[sibling].left_child])
-                    ):
-                        if self.rb_nodes[sibling].right_child != NONE_SENTINEL:
-                            self._set_red(self.rb_nodes[self.rb_nodes[sibling].right_child])
-                        self._set_red(self.rb_nodes[sibling].color)
+                    if self._is_black(self.rb_nodes[sibling].left_child):
+                        self._set_black(self.rb_nodes[sibling].right_child)
+                        self._set_red(sibling)
                         self._rotate_left(sibling)
                         sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
 
                     # sibling's left child is red
-                    self._set_color(
-                        self.rb_nodes[sibling],
-                        self._get_color(self.rb_nodes[self.rb_nodes[current].parent])
-                    )
-                    self._set_black(self.rb_nodes[self.rb_nodes[current].parent])
-                    if self.rb_nodes[sibling].left_child != NONE_SENTINEL:
-                        self._set_black(self.rb_nodes[self.rb_nodes[sibling].left_child])
+                    self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))
+                    self._set_black(self.rb_nodes[current].parent)
+                    self._set_black(self.rb_nodes[sibling].left_child)
                     self._rotate_right(self.rb_nodes[current].parent)
                     current = self.root_idx
 
-        if current != NONE_SENTINEL:
-            self._set_black(self.rb_nodes[current])
+        self._set_black(current)
 
     cdef void _rotate_left(self, intp_t node_idx):
         cdef intp_t right_child = self.rb_nodes[node_idx].right_child
 
         self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child
-        if self.rb_nodes[right_child].left_child != NONE_SENTINEL:
+        if self.rb_nodes[right_child].left_child != self.nil_node_idx:
             self.rb_nodes[self.rb_nodes[right_child].left_child].parent = node_idx
 
         self.rb_nodes[right_child].parent = self.rb_nodes[node_idx].parent
-        if self.rb_nodes[node_idx].parent == NONE_SENTINEL:
+        if self.rb_nodes[node_idx].parent == self.nil_node_idx:
             self.root_idx = right_child
         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].left_child:
             self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = right_child
@@ -494,11 +483,11 @@ cdef class RedBlackTree(_BaseTree):
         cdef intp_t left_child = self.rb_nodes[node_idx].left_child
 
         self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child
-        if self.rb_nodes[left_child].right_child != NONE_SENTINEL:
+        if self.rb_nodes[left_child].right_child != self.nil_node_idx:
             self.rb_nodes[self.rb_nodes[left_child].right_child].parent = node_idx
 
         self.rb_nodes[left_child].parent = self.rb_nodes[node_idx].parent
-        if self.rb_nodes[node_idx].parent == NONE_SENTINEL:
+        if self.rb_nodes[node_idx].parent == self.nil_node_idx:
             self.root_idx = left_child
         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].right_child:
             self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = left_child
@@ -509,8 +498,8 @@ cdef class RedBlackTree(_BaseTree):
         self.rb_nodes[node_idx].parent = left_child
 
     cdef void _transplant(self, intp_t u, intp_t v):
-         """Replace subtree rooted at u with subtree rooted at v"""
-         if self.rb_nodes[u].parent == NONE_SENTINEL:
+        """Replace subtree rooted at u with subtree rooted at v"""
+        if self.rb_nodes[u].parent == NONE_SENTINEL:
             self.root_idx = v
         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
             self.rb_nodes[self.rb_nodes[u].parent].left_child = v
@@ -545,6 +534,30 @@ cdef class RedBlackTree(_BaseTree):
         cdef intp_t i
         for i in range(self.capacity, new_capacity):
             self.free_stack_top += 1
-            self.free_stack[self.free_stack_top] = 1
+            self.free_stack[self.free_stack_top] = i
             self.free_count += 1
         self.capacity = new_capacity
+
+    cdef void _inorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, root, right"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+
+        if node.left_child != self.nil_node_idx:
+            PREFETCH_READ(&self.rb_nodes[node.left_child])
+
+        self._inorder_traversal(node.left_child, result, result_idx)
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+        if node.right_child != self.nil_node_idx:
+            PREFETCH_READ(&self.rb_nodes[node.right_child])
+
+        self._inorder_traversal(node.right_child, result, result_idx)

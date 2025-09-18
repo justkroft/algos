@@ -99,32 +99,6 @@ cdef class _BaseTree:
         """del bst[key], same as delete()"""
         if not self.delete(key):
             raise KeyError(f"Key {key} not found")
-
-    def build_tree(self, keys: list | np.ndarray, values: list | np.ndarray) -> None:
-        """
-        Build Tree in optimized manner through an array of keys and values.
-
-        Parameters
-        ----------
-        keys : list | np.ndarray
-            An array of associative keys.
-        values : list | np.ndarray
-            An array of data you want to store/retrieve.
-        """
-        if len(keys) != len(values):
-            raise ValueError("Keys and values must have same length")
-
-        needed_capacity = self._size + len(keys)
-        while self.capacity < needed_capacity:
-            self._resize_arrays()
-        
-        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
-        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
-        cdef intp_t n = len(keys)
-        cdef intp_t i
-
-        for i in range(n):
-            self._insert_node(key_view[i], val_view[i])
     
     cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
         """
@@ -625,8 +599,11 @@ cdef class _BaseTree:
             
             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
 
-    # private methods: basic tree operations
+    # basic tree operations
     # to be overridden by subclass
+    cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+        raise NotImplementedError("Subclass must implement build_tree")
+
     cdef intp_t _find_node(self, intp_t key):
         raise NotImplementedError("Subclasses must implement _find_node")
 
