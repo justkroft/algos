@@ -91,6 +91,72 @@ cdef class RedBlackTree(_BaseTree):
             free(self.free_stack)
         self.free_stack = NULL
 
+    cpdef void build_balanced_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+        if len(keys) != len(values):
+            raise ValueError("Keys and values must have same length")
+
+        self.root_idx = NONE_SENTINEL
+        self._size = 0
+
+        self.free_stack_top = self.capacity - 2
+        self.free_count = self.capacity - 1
+        cdef intp_t i
+        for i in range(1, self.capacity):
+            self.free_stack[i-1] = i
+
+        if len(keys) == 0:
+            return
+
+        needed_capacity = len(keys) + 1
+        while self.capacity < needed_capacity:
+            self._resize_arrays()
+
+        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
+        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
+        cdef intp_t n = len(keys)
+
+        self.root_idx = self._build_balanced_tree_recursive(
+            key_view, val_view, 0, n - 1, True
+        )
+        self._size = n
+
+    cdef intp_t _build_balanced_tree_recursive(
+        self,
+        intp_t[:] keys,
+        intp_t[:] values,
+        intp_t start,
+        intp_t end,
+        bint is_black
+    ):
+        if start > end:
+            return self.nil_node_idx
+
+        cdef intp_t mid = start + (end - start) // 2
+        cdef intp_t node_idx = self._allocate_node()
+
+        if node_idx == NONE_SENTINEL:
+            raise MemoryError("Failed to allocate node during tree building")
+
+        self.rb_nodes[node_idx].key = keys[mid]
+        self.rb_nodes[node_idx].value = values[mid]
+        self._set_color(node_idx, BLACK is is_black else RED)
+
+        cdef intp_t left_child = self._build_balanced_tree_recursive(
+            keys, values, start, mid - 1, False
+        )
+        cdef intp_t right_child = self._build_balanced_tree_recursive(
+            keys, values, mid + 1, end, False
+        )
+
+        self.rb_nodes[node_idx].left_child = left_child
+        self.rb_nodes[node_idx].right_child = right_child
+
+        if left_child != self.nil_node_idx:
+            self.rb_nodes[left_child].parent = node_idx
+        if right_child != self.nil_node_idx:
+            self.rb_nodes[right_child].parent = node_idx
+        return node_idx
+
     cdef inline bint _is_red(self, intp_t node_idx):
         return (
             node_idx != self.nil_node_idx
@@ -441,3 +507,44 @@ cdef class RedBlackTree(_BaseTree):
 
         self.rb_nodes[left_child].right_child = node_idx
         self.rb_nodes[node_idx].parent = left_child
+
+    cdef void _transplant(self, intp_t u, intp_t v):
+         """Replace subtree rooted at u with subtree rooted at v"""
+         if self.rb_nodes[u].parent == NONE_SENTINEL:
+            self.root_idx = v
+        elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
+            self.rb_nodes[self.rb_nodes[u].parent].left_child = v
+        else:
+            self.rb_nodes[self.rb_nodes[u].parent].right_child = v
+
+        if v != NONE_SENTINEL:
+            self.rb_nodes[v].parent = self.rb_nodes[u].parent
+
+    cdef intp_t _minimum(self, intp_t node_idx):
+        """Find minimum node in subtree rooted at node_idx"""
+        while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:
+            node_idx = self.rb_nodes[node_idx].left_child
+        return node_idx
+
+    cdef void _resize_arrays(self):
+        cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
+        cdef RBNode_t* new_rb_nodes = <RBNode_t*>realloc(
+            self.rb_nodes, sizeof(RBNode_t) * new_capacity
+        )
+        cdef intp_t* new_free_stack = <intp_t*>realloc(
+            self.free_stack, sizeof(intp_t) * new_capacity
+        )
+
+        if not new_rb_nodes or not new_free_stack:
+            raise MemoryError("Failed to resize arrays")
+
+        self.rb_nodes = new_rb_nodes
+        self.nodes = <Node_t*>new_rb_nodes
+        self.free_stack = new_free_stack
+
+        cdef intp_t i
+        for i in range(self.capacity, new_capacity):
+            self.free_stack_top += 1
+            self.free_stack[self.free_stack_top] = 1
+            self.free_count += 1
+        self.capacity = new_capacity
