@@ -383,137 +383,6 @@ cdef class _BaseTree:
         self._postorder_items_traverse(self.root_idx, result)
         return result
 
-    cdef void _inorder_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """Left, root, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-
-        self._inorder_traversal(node.left_child, result, result_idx)
-        result[result_idx[0]] = node.key
-        result_idx[0] += 1
-
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-
-        self._inorder_traversal(node.right_child, result, result_idx)
-    
-    cdef void _inorder_values_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """
-        Left, root, right.
-
-        Same method as `_inorder_traversal()`, but instead this method traverses
-        the values rather than the keys. Helper method for `values()`.
-        """
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-
-        self._inorder_values_traversal(node.left_child, result, result_idx)
-        result[result_idx[0]] = node.value
-        result_idx[0] += 1
-
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-
-        self._inorder_values_traversal(node.right_child, result, result_idx)
-
-    cdef void _preorder_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """Root, left, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        result[result_idx[0]] = node.key
-        result_idx[0] += 1
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-
-        self._preorder_traversal(node.left_child, result, result_idx)
-        self._preorder_traversal(node.right_child, result, result_idx)
-
-    cdef void _postorder_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """Left, right, root"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-        
-        self._postorder_traversal(node.left_child, result, result_idx)
-        self._postorder_traversal(node.right_child, result, result_idx)
-        result[result_idx[0]] = node.key
-        result_idx[0] += 1
-
-    cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
-        """Left, root, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-        
-        self._inorder_items_traverse(node.left_child, result)
-        result.append((node.key, node.value))
-        self._inorder_items_traverse(node.right_child, result)
-
-    cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
-        """Root, left, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-        
-        result.append((node.key, node.value))
-        self._preorder_items_traverse(node.left_child, result)
-        self._preorder_items_traverse(node.right_child, result)
-
-    cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
-        """Left, right, root"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-        
-        self._postorder_items_traverse(node.left_child, result)
-        self._postorder_items_traverse(node.right_child, result)
-        result.append((node.key, node.value))
-
     # range queries
     cpdef tuple range_query(self, intp_t min_key, intp_t max_key):
         """
@@ -615,3 +484,56 @@ cdef class _BaseTree:
 
     cdef void _resize_arrays(self):
         raise NotImplementedError("Subclasses must implement _resize_arrays")
+
+    cdef void _inorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, root, right"""
+        raise NotImplementedError("Subclasses must implement _inorder_traversal")
+    
+    cdef void _inorder_values_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """
+        Left, root, right.
+
+        Same method as `_inorder_traversal()`, but instead this method traverses
+        the values rather than the keys. Helper method for `values()`.
+        """
+        raise NotImplementedError("Subclasses must implement _inorder_values_traversal")
+
+    cdef void _preorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Root, left, right"""
+        raise NotImplementedError("Subclasses must implement _preorder_traversal")
+
+    cdef void _postorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, right, root"""
+        raise NotImplementedError("Subclasses must implement _postorder_traversal")
+
+    cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, root, right"""
+        raise NotImplementedError("Subclasses must implement _inorder_items_traverse")
+
+    cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
+        """Root, left, right"""
+        raise NotImplementedError("Subclasses must implement _preorder_items_traverse")
+
+    cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, right, root"""
+        raise NotImplementedError("Subclasses must implement _postorder_items_traverse")
