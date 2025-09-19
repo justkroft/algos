@@ -561,3 +561,90 @@ cdef class RedBlackTree(_BaseTree):
             PREFETCH_READ(&self.rb_nodes[node.right_child])
 
         self._inorder_traversal(node.right_child, result, result_idx)
+    
+    cdef void _inorder_values_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, root, right - for values"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+
+        self._inorder_values_traversal(node.left_child, result, result_idx)
+        result[result_idx[0]] = node.value
+        result_idx[0] += 1
+        self._inorder_values_traversal(node.right_child, result, result_idx)
+
+    cdef void _preorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Root, left, right"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+        
+        self._preorder_traversal(node.left_child, result, result_idx)
+        self._preorder_traversal(node.right_child, result, result_idx)
+
+    cdef void _postorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, right, root"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+        
+        self._postorder_traversal(node.left_child, result, result_idx)
+        self._postorder_traversal(node.right_child, result, result_idx)
+        
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+    cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, root, right"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+        
+        self._inorder_items_traverse(node.left_child, result)
+        result.append((node.key, node.value))
+        self._inorder_items_traverse(node.right_child, result)
+
+    cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
+        """Root, left, right"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+        
+        result.append((node.key, node.value))
+        self._preorder_items_traverse(node.left_child, result)
+        self._preorder_items_traverse(node.right_child, result)
+
+    cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, right, root"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+        
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+        
+        self._postorder_items_traverse(node.left_child, result)
+        self._postorder_items_traverse(node.right_child, result)
+        result.append((node.key, node.value))
+
