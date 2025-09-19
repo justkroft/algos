@@ -648,3 +648,81 @@ cdef class RedBlackTree(_BaseTree):
         self._postorder_items_traverse(node.right_child, result)
         result.append((node.key, node.value))
 
+    cpdef intp_t black_height(self):
+        """Return the black height of the tree"""
+        if self.root_idx == NONE_SENTINEL:
+            return 0
+        return self._calculate_black_height(self.root_idx)
+    
+    cdef intp_t _calculate_black_height(self, intp_t node_idx):
+        """Calculate black height from a given node to any leaf"""
+        if node_idx == self.nil_node_idx:
+            return 1
+        cdef intp_t left_black_height = self._calculate_black_height(self.rb_nodes[node_idx].left_child)
+
+        if self._is_black(node_idx):
+            return left_black_height + 1
+        else:
+            return left_black_height
+
+    cpdef tuple statistics(self):
+        """
+        Return tree statistics
+
+        Returns
+        -------
+        tuple
+            (size, tree_height, black_height, max_depth, avg_depth)
+        """
+        if self._size == 0:
+            return (0, 0, 0, 0, 0.0)
+
+        cdef intp_t max_depth = 0
+        cdef intp_t node_count = 0
+        cdef intp_t total_depth = 0
+
+        self._calculate_depths(
+            self.root_idx,
+            0,
+            &max_depth,
+            &total_depth,
+            &node_count
+        )
+        
+        cdef double avg_depth = <double>total_depth / node_count if node_count > 0 else 0.0
+        cdef intp_t tree_height = max_depth + 1
+        cdef intp_t black_height = self.black_height()
+    
+        return (self._size, tree_height, black_height, max_depth, avg_depth)
+
+    cdef void _calculate_depths(
+        self,
+        intp_t node_idx,
+        intp_t current_depth,
+        intp_t* max_depth,
+        intp_t* total_depth,
+        intp_t* node_count
+    ):
+        if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:
+            return
+
+        node_count[0] += 1
+        total_depth[0] += current_depth
+
+        if current_depth > max_depth[0]:
+            max_depth[0] = current_depth
+            
+        self._calculate_depths(
+            self.rb_nodes[node_idx].left_child,
+            current_depth + 1,
+            max_depth,
+            total_depth,
+            node_count
+        )
+        self._calculate_depths(
+            self.rb_nodes[node_idx].right_child,
+            current_depth + 1,
+            max_depth,
+            total_depth,
+            node_count
+        )
