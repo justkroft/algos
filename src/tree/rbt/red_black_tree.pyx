@@ -116,7 +116,7 @@ cdef class RedBlackTree(_BaseTree):
         # sort for cache friendly traversal
         cdef intp_t[:] sorted_indices = np.argsort(keys)
         cdef intp_t[:] sorted_keys = keys[sorted_indices]
-        cdef intp_t[:] result
+        cdef intp_t[:] result = np.empty(n, dtype=np.int64)
 
         cdef intp_t original_pos
         for i in range(n):
@@ -257,6 +257,9 @@ cdef class RedBlackTree(_BaseTree):
 
     cdef intp_t _find_node(self, intp_t key):
         """Find node index for a key (-1 if not found)"""
+        if self.root_idx == NONE_SENTINEL:
+            return NONE_SENTINEL
+
         cdef intp_t current = self.root_idx
         cdef RBNode_t* node
 
