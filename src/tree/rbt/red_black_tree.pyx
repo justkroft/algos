@@ -438,22 +438,29 @@ cdef class RedBlackTree(_BaseTree):
         """Fix Red-Black Tree properties after deletion"""
         cdef intp_t current = node_idx
         cdef intp_t sibling
+        cdef intp_t parent_idx
 
         while current != self.root_idx and self._is_black(current):
-            if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:
-                sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+            parent_idx = self.rb_nodes[current].parent
+
+            if parent_idx == self.nil_node_idx or parent_idx == NONE_SENTINEL:
+                break
+                
+            if current == self.rb_nodes[parent_idx].left_child:
+                sibling = self.rb_nodes[parent_idx].right_child
+
+                if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:
+                    break
 
                 if self._is_red(sibling):
                     self._set_black(sibling)
-                    self._set_red(self.rb_nodes[current].parent)
-                    self._rotate_left(self.rb_nodes[current].parent)
+                    self._set_red(parent_idx)
+                    self._rotate_left(parent_idx)
                     sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
 
                 # both sibling's children are black
-                if (
-                    self._is_black(self.rb_nodes[sibling].left_child)
-                    and self._is_black(self.rb_nodes[sibling].right_child)
-                ):
+                if (self._is_black(self.rb_nodes[sibling].left_child) and
+                    self._is_black(self.rb_nodes[sibling].right_child)):
                     self._set_red(sibling)
                     current = self.rb_nodes[current].parent
                 else:
@@ -471,12 +478,16 @@ cdef class RedBlackTree(_BaseTree):
                     self._rotate_left(self.rb_nodes[current].parent)
                     current = self.root_idx
             else:
-                sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+                sibling = self.rb_nodes[parent_idx].left_child
+                
+                # Guard against invalid sibling
+                if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:
+                    break
 
                 if self._is_red(sibling):
                     self._set_black(sibling)
-                    self._set_red(self.rb_nodes[current].parent)
-                    self._rotate_right(self.rb_nodes[current].parent)
+                    self._set_red(parent_idx)
+                    self._rotate_right(parent_idx)
                     sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
 
                 # both of sibling's children are black
@@ -539,7 +550,7 @@ cdef class RedBlackTree(_BaseTree):
 
     cdef void _transplant(self, intp_t u, intp_t v):
         """Replace subtree rooted at u with subtree rooted at v"""
-        if self.rb_nodes[u].parent == NONE_SENTINEL:
+        if self.rb_nodes[u].parent == self.nil_node_idx:
             self.root_idx = v
         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
             self.rb_nodes[self.rb_nodes[u].parent].left_child = v
@@ -551,7 +562,10 @@ cdef class RedBlackTree(_BaseTree):
 
     cdef intp_t _minimum(self, intp_t node_idx):
         """Find minimum node in subtree rooted at node_idx"""
-        while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:
+        if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:
+            return self.nil_node_idx
+
+        while self.rb_nodes[node_idx].left_child != self.nil_node_idx:
             node_idx = self.rb_nodes[node_idx].left_child
         return node_idx
 

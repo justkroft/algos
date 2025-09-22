@@ -32107,6 +32107,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
 static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixup(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx) {
   __pyx_t_3src_8typedefs_intp_t __pyx_v_current;
   __pyx_t_3src_8typedefs_intp_t __pyx_v_sibling;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_parent_idx;
   int __pyx_t_1;
   int __pyx_t_2;
   __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
@@ -32120,16 +32121,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
  *         """Fix Red-Black Tree properties after deletion"""
  *         cdef intp_t current = node_idx             # <<<<<<<<<<<<<<
  *         cdef intp_t sibling
- * 
+ *         cdef intp_t parent_idx
 */
   __pyx_v_current = __pyx_v_node_idx;
 
-  /* "src/tree/rbt/red_black_tree.pyx":442
- *         cdef intp_t sibling
+  /* "src/tree/rbt/red_black_tree.pyx":443
+ *         cdef intp_t parent_idx
  * 
  *         while current != self.root_idx and self._is_black(current):             # <<<<<<<<<<<<<<
- *             if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+ *             parent_idx = self.rb_nodes[current].parent
+ * 
 */
   while (1) {
     __pyx_t_2 = (__pyx_v_current != __pyx_v_self->__pyx_base.root_idx);
@@ -32138,71 +32139,153 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
       __pyx_t_1 = __pyx_t_2;
       goto __pyx_L5_bool_binop_done;
     }
-    __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, __pyx_v_current); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 442, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, __pyx_v_current); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 443, __pyx_L1_error)
     __pyx_t_1 = __pyx_t_2;
     __pyx_L5_bool_binop_done:;
     if (!__pyx_t_1) break;
 
-    /* "src/tree/rbt/red_black_tree.pyx":443
+    /* "src/tree/rbt/red_black_tree.pyx":444
  * 
  *         while current != self.root_idx and self._is_black(current):
- *             if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:             # <<<<<<<<<<<<<<
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+ *             parent_idx = self.rb_nodes[current].parent             # <<<<<<<<<<<<<<
+ * 
+ *             if parent_idx == self.nil_node_idx or parent_idx == NONE_SENTINEL:
+*/
+    __pyx_t_3 = (__pyx_v_self->rb_nodes[__pyx_v_current]).parent;
+    __pyx_v_parent_idx = __pyx_t_3;
+
+    /* "src/tree/rbt/red_black_tree.pyx":446
+ *             parent_idx = self.rb_nodes[current].parent
+ * 
+ *             if parent_idx == self.nil_node_idx or parent_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *                 break
  * 
 */
-    __pyx_t_1 = (__pyx_v_current == (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).left_child);
+    __pyx_t_2 = (__pyx_v_parent_idx == __pyx_v_self->nil_node_idx);
+    if (!__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L8_bool_binop_done;
+    }
+    __pyx_t_2 = (__pyx_v_parent_idx == -1L);
+    __pyx_t_1 = __pyx_t_2;
+    __pyx_L8_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "src/tree/rbt/red_black_tree.pyx":444
- *         while current != self.root_idx and self._is_black(current):
- *             if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child             # <<<<<<<<<<<<<<
+      /* "src/tree/rbt/red_black_tree.pyx":447
+ * 
+ *             if parent_idx == self.nil_node_idx or parent_idx == NONE_SENTINEL:
+ *                 break             # <<<<<<<<<<<<<<
+ * 
+ *             if current == self.rb_nodes[parent_idx].left_child:
+*/
+      goto __pyx_L4_break;
+
+      /* "src/tree/rbt/red_black_tree.pyx":446
+ *             parent_idx = self.rb_nodes[current].parent
+ * 
+ *             if parent_idx == self.nil_node_idx or parent_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *                 break
+ * 
+*/
+    }
+
+    /* "src/tree/rbt/red_black_tree.pyx":449
+ *                 break
+ * 
+ *             if current == self.rb_nodes[parent_idx].left_child:             # <<<<<<<<<<<<<<
+ *                 sibling = self.rb_nodes[parent_idx].right_child
+ * 
+*/
+    __pyx_t_1 = (__pyx_v_current == (__pyx_v_self->rb_nodes[__pyx_v_parent_idx]).left_child);
+    if (__pyx_t_1) {
+
+      /* "src/tree/rbt/red_black_tree.pyx":450
+ * 
+ *             if current == self.rb_nodes[parent_idx].left_child:
+ *                 sibling = self.rb_nodes[parent_idx].right_child             # <<<<<<<<<<<<<<
+ * 
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:
+*/
+      __pyx_t_3 = (__pyx_v_self->rb_nodes[__pyx_v_parent_idx]).right_child;
+      __pyx_v_sibling = __pyx_t_3;
+
+      /* "src/tree/rbt/red_black_tree.pyx":452
+ *                 sibling = self.rb_nodes[parent_idx].right_child
+ * 
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *                     break
+ * 
+*/
+      __pyx_t_2 = (__pyx_v_sibling == __pyx_v_self->nil_node_idx);
+      if (!__pyx_t_2) {
+      } else {
+        __pyx_t_1 = __pyx_t_2;
+        goto __pyx_L12_bool_binop_done;
+      }
+      __pyx_t_2 = (__pyx_v_sibling == -1L);
+      __pyx_t_1 = __pyx_t_2;
+      __pyx_L12_bool_binop_done:;
+      if (__pyx_t_1) {
+
+        /* "src/tree/rbt/red_black_tree.pyx":453
+ * 
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:
+ *                     break             # <<<<<<<<<<<<<<
  * 
  *                 if self._is_red(sibling):
 */
-      __pyx_t_3 = (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).right_child;
-      __pyx_v_sibling = __pyx_t_3;
+        goto __pyx_L4_break;
 
-      /* "src/tree/rbt/red_black_tree.pyx":446
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+        /* "src/tree/rbt/red_black_tree.pyx":452
+ *                 sibling = self.rb_nodes[parent_idx].right_child
+ * 
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *                     break
+ * 
+*/
+      }
+
+      /* "src/tree/rbt/red_black_tree.pyx":455
+ *                     break
  * 
  *                 if self._is_red(sibling):             # <<<<<<<<<<<<<<
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)
 */
-      __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 446, __pyx_L1_error)
+      __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 455, __pyx_L1_error)
       if (__pyx_t_1) {
 
-        /* "src/tree/rbt/red_black_tree.pyx":447
+        /* "src/tree/rbt/red_black_tree.pyx":456
  * 
  *                 if self._is_red(sibling):
  *                     self._set_black(sibling)             # <<<<<<<<<<<<<<
- *                     self._set_red(self.rb_nodes[current].parent)
- *                     self._rotate_left(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)
+ *                     self._rotate_left(parent_idx)
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 447, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 456, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":448
+        /* "src/tree/rbt/red_black_tree.pyx":457
  *                 if self._is_red(sibling):
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
- *                     self._rotate_left(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)             # <<<<<<<<<<<<<<
+ *                     self._rotate_left(parent_idx)
  *                     sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 448, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_parent_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 457, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":449
+        /* "src/tree/rbt/red_black_tree.pyx":458
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)
- *                     self._rotate_left(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
+ *                     self._set_red(parent_idx)
+ *                     self._rotate_left(parent_idx)             # <<<<<<<<<<<<<<
  *                     sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
  * 
 */
-        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_left(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 449, __pyx_L1_error)
+        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_left(__pyx_v_self, __pyx_v_parent_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 458, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":450
- *                     self._set_red(self.rb_nodes[current].parent)
- *                     self._rotate_left(self.rb_nodes[current].parent)
+        /* "src/tree/rbt/red_black_tree.pyx":459
+ *                     self._set_red(parent_idx)
+ *                     self._rotate_left(parent_idx)
  *                     sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child             # <<<<<<<<<<<<<<
  * 
  *                 # both sibling's children are black
@@ -32210,60 +32293,60 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
         __pyx_t_3 = (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).right_child;
         __pyx_v_sibling = __pyx_t_3;
 
-        /* "src/tree/rbt/red_black_tree.pyx":446
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+        /* "src/tree/rbt/red_black_tree.pyx":455
+ *                     break
  * 
  *                 if self._is_red(sibling):             # <<<<<<<<<<<<<<
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)
 */
       }
 
-      /* "src/tree/rbt/red_black_tree.pyx":454
+      /* "src/tree/rbt/red_black_tree.pyx":462
+ * 
  *                 # both sibling's children are black
- *                 if (
- *                     self._is_black(self.rb_nodes[sibling].left_child)             # <<<<<<<<<<<<<<
- *                     and self._is_black(self.rb_nodes[sibling].right_child)
- *                 ):
+ *                 if (self._is_black(self.rb_nodes[sibling].left_child) and             # <<<<<<<<<<<<<<
+ *                     self._is_black(self.rb_nodes[sibling].right_child)):
+ *                     self._set_red(sibling)
 */
-      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 454, __pyx_L1_error)
+      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 462, __pyx_L1_error)
       if (__pyx_t_2) {
       } else {
         __pyx_t_1 = __pyx_t_2;
-        goto __pyx_L10_bool_binop_done;
+        goto __pyx_L16_bool_binop_done;
       }
 
-      /* "src/tree/rbt/red_black_tree.pyx":455
- *                 if (
- *                     self._is_black(self.rb_nodes[sibling].left_child)
- *                     and self._is_black(self.rb_nodes[sibling].right_child)             # <<<<<<<<<<<<<<
- *                 ):
+      /* "src/tree/rbt/red_black_tree.pyx":463
+ *                 # both sibling's children are black
+ *                 if (self._is_black(self.rb_nodes[sibling].left_child) and
+ *                     self._is_black(self.rb_nodes[sibling].right_child)):             # <<<<<<<<<<<<<<
  *                     self._set_red(sibling)
+ *                     current = self.rb_nodes[current].parent
 */
-      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 455, __pyx_L1_error)
+      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 463, __pyx_L1_error)
       __pyx_t_1 = __pyx_t_2;
-      __pyx_L10_bool_binop_done:;
+      __pyx_L16_bool_binop_done:;
 
-      /* "src/tree/rbt/red_black_tree.pyx":453
+      /* "src/tree/rbt/red_black_tree.pyx":462
  * 
  *                 # both sibling's children are black
- *                 if (             # <<<<<<<<<<<<<<
- *                     self._is_black(self.rb_nodes[sibling].left_child)
- *                     and self._is_black(self.rb_nodes[sibling].right_child)
+ *                 if (self._is_black(self.rb_nodes[sibling].left_child) and             # <<<<<<<<<<<<<<
+ *                     self._is_black(self.rb_nodes[sibling].right_child)):
+ *                     self._set_red(sibling)
 */
       if (__pyx_t_1) {
 
-        /* "src/tree/rbt/red_black_tree.pyx":457
- *                     and self._is_black(self.rb_nodes[sibling].right_child)
- *                 ):
+        /* "src/tree/rbt/red_black_tree.pyx":464
+ *                 if (self._is_black(self.rb_nodes[sibling].left_child) and
+ *                     self._is_black(self.rb_nodes[sibling].right_child)):
  *                     self._set_red(sibling)             # <<<<<<<<<<<<<<
  *                     current = self.rb_nodes[current].parent
  *                 else:
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":458
- *                 ):
+        /* "src/tree/rbt/red_black_tree.pyx":465
+ *                     self._is_black(self.rb_nodes[sibling].right_child)):
  *                     self._set_red(sibling)
  *                     current = self.rb_nodes[current].parent             # <<<<<<<<<<<<<<
  *                 else:
@@ -32272,17 +32355,17 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
         __pyx_t_3 = (__pyx_v_self->rb_nodes[__pyx_v_current]).parent;
         __pyx_v_current = __pyx_t_3;
 
-        /* "src/tree/rbt/red_black_tree.pyx":453
+        /* "src/tree/rbt/red_black_tree.pyx":462
  * 
  *                 # both sibling's children are black
- *                 if (             # <<<<<<<<<<<<<<
- *                     self._is_black(self.rb_nodes[sibling].left_child)
- *                     and self._is_black(self.rb_nodes[sibling].right_child)
+ *                 if (self._is_black(self.rb_nodes[sibling].left_child) and             # <<<<<<<<<<<<<<
+ *                     self._is_black(self.rb_nodes[sibling].right_child)):
+ *                     self._set_red(sibling)
 */
-        goto __pyx_L9;
+        goto __pyx_L15;
       }
 
-      /* "src/tree/rbt/red_black_tree.pyx":461
+      /* "src/tree/rbt/red_black_tree.pyx":468
  *                 else:
  *                     # sibling's right child is black, left child is red
  *                     if self._is_black(self.rb_nodes[sibling].right_child):             # <<<<<<<<<<<<<<
@@ -32290,37 +32373,37 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
  *                         self._set_red(sibling)
 */
       /*else*/ {
-        __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 461, __pyx_L1_error)
+        __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 468, __pyx_L1_error)
         if (__pyx_t_1) {
 
-          /* "src/tree/rbt/red_black_tree.pyx":462
+          /* "src/tree/rbt/red_black_tree.pyx":469
  *                     # sibling's right child is black, left child is red
  *                     if self._is_black(self.rb_nodes[sibling].right_child):
  *                         self._set_black(self.rb_nodes[sibling].left_child)             # <<<<<<<<<<<<<<
  *                         self._set_red(sibling)
  *                         self._rotate_right(sibling)
 */
-          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 462, __pyx_L1_error)
+          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 469, __pyx_L1_error)
 
-          /* "src/tree/rbt/red_black_tree.pyx":463
+          /* "src/tree/rbt/red_black_tree.pyx":470
  *                     if self._is_black(self.rb_nodes[sibling].right_child):
  *                         self._set_black(self.rb_nodes[sibling].left_child)
  *                         self._set_red(sibling)             # <<<<<<<<<<<<<<
  *                         self._rotate_right(sibling)
  *                         sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
 */
-          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 463, __pyx_L1_error)
+          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 470, __pyx_L1_error)
 
-          /* "src/tree/rbt/red_black_tree.pyx":464
+          /* "src/tree/rbt/red_black_tree.pyx":471
  *                         self._set_black(self.rb_nodes[sibling].left_child)
  *                         self._set_red(sibling)
  *                         self._rotate_right(sibling)             # <<<<<<<<<<<<<<
  *                         sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
  * 
 */
-          ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_right(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L1_error)
+          ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_right(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 471, __pyx_L1_error)
 
-          /* "src/tree/rbt/red_black_tree.pyx":465
+          /* "src/tree/rbt/red_black_tree.pyx":472
  *                         self._set_red(sibling)
  *                         self._rotate_right(sibling)
  *                         sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child             # <<<<<<<<<<<<<<
@@ -32330,7 +32413,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
           __pyx_t_3 = (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).right_child;
           __pyx_v_sibling = __pyx_t_3;
 
-          /* "src/tree/rbt/red_black_tree.pyx":461
+          /* "src/tree/rbt/red_black_tree.pyx":468
  *                 else:
  *                     # sibling's right child is black, left child is red
  *                     if self._is_black(self.rb_nodes[sibling].right_child):             # <<<<<<<<<<<<<<
@@ -32339,116 +32422,152 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
 */
         }
 
-        /* "src/tree/rbt/red_black_tree.pyx":468
+        /* "src/tree/rbt/red_black_tree.pyx":475
  * 
  *                     # sibling's right child is red
  *                     self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))             # <<<<<<<<<<<<<<
  *                     self._set_black(self.rb_nodes[current].parent)
  *                     self._set_black(self.rb_nodes[sibling].right_child)
 */
-        __pyx_t_4 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__get_color(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 468, __pyx_L1_error)
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_color(__pyx_v_self, __pyx_v_sibling, __pyx_t_4); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 468, __pyx_L1_error)
+        __pyx_t_4 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__get_color(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 475, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_color(__pyx_v_self, __pyx_v_sibling, __pyx_t_4); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 475, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":469
+        /* "src/tree/rbt/red_black_tree.pyx":476
  *                     # sibling's right child is red
  *                     self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))
  *                     self._set_black(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
  *                     self._set_black(self.rb_nodes[sibling].right_child)
  *                     self._rotate_left(self.rb_nodes[current].parent)
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 469, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 476, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":470
+        /* "src/tree/rbt/red_black_tree.pyx":477
  *                     self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))
  *                     self._set_black(self.rb_nodes[current].parent)
  *                     self._set_black(self.rb_nodes[sibling].right_child)             # <<<<<<<<<<<<<<
  *                     self._rotate_left(self.rb_nodes[current].parent)
  *                     current = self.root_idx
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 470, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 477, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":471
+        /* "src/tree/rbt/red_black_tree.pyx":478
  *                     self._set_black(self.rb_nodes[current].parent)
  *                     self._set_black(self.rb_nodes[sibling].right_child)
  *                     self._rotate_left(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
  *                     current = self.root_idx
  *             else:
 */
-        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_left(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 471, __pyx_L1_error)
+        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_left(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 478, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":472
+        /* "src/tree/rbt/red_black_tree.pyx":479
  *                     self._set_black(self.rb_nodes[sibling].right_child)
  *                     self._rotate_left(self.rb_nodes[current].parent)
  *                     current = self.root_idx             # <<<<<<<<<<<<<<
  *             else:
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+ *                 sibling = self.rb_nodes[parent_idx].left_child
 */
         __pyx_t_3 = __pyx_v_self->__pyx_base.root_idx;
         __pyx_v_current = __pyx_t_3;
       }
-      __pyx_L9:;
+      __pyx_L15:;
 
-      /* "src/tree/rbt/red_black_tree.pyx":443
+      /* "src/tree/rbt/red_black_tree.pyx":449
+ *                 break
  * 
- *         while current != self.root_idx and self._is_black(current):
- *             if current == self.rb_nodes[self.rb_nodes[current].parent].left_child:             # <<<<<<<<<<<<<<
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].right_child
+ *             if current == self.rb_nodes[parent_idx].left_child:             # <<<<<<<<<<<<<<
+ *                 sibling = self.rb_nodes[parent_idx].right_child
  * 
 */
-      goto __pyx_L7;
+      goto __pyx_L10;
     }
 
-    /* "src/tree/rbt/red_black_tree.pyx":474
+    /* "src/tree/rbt/red_black_tree.pyx":481
  *                     current = self.root_idx
  *             else:
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child             # <<<<<<<<<<<<<<
+ *                 sibling = self.rb_nodes[parent_idx].left_child             # <<<<<<<<<<<<<<
+ * 
+ *                 # Guard against invalid sibling
+*/
+    /*else*/ {
+      __pyx_t_3 = (__pyx_v_self->rb_nodes[__pyx_v_parent_idx]).left_child;
+      __pyx_v_sibling = __pyx_t_3;
+
+      /* "src/tree/rbt/red_black_tree.pyx":484
+ * 
+ *                 # Guard against invalid sibling
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *                     break
+ * 
+*/
+      __pyx_t_2 = (__pyx_v_sibling == __pyx_v_self->nil_node_idx);
+      if (!__pyx_t_2) {
+      } else {
+        __pyx_t_1 = __pyx_t_2;
+        goto __pyx_L20_bool_binop_done;
+      }
+      __pyx_t_2 = (__pyx_v_sibling == -1L);
+      __pyx_t_1 = __pyx_t_2;
+      __pyx_L20_bool_binop_done:;
+      if (__pyx_t_1) {
+
+        /* "src/tree/rbt/red_black_tree.pyx":485
+ *                 # Guard against invalid sibling
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:
+ *                     break             # <<<<<<<<<<<<<<
  * 
  *                 if self._is_red(sibling):
 */
-    /*else*/ {
-      __pyx_t_3 = (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).left_child;
-      __pyx_v_sibling = __pyx_t_3;
+        goto __pyx_L4_break;
 
-      /* "src/tree/rbt/red_black_tree.pyx":476
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+        /* "src/tree/rbt/red_black_tree.pyx":484
+ * 
+ *                 # Guard against invalid sibling
+ *                 if sibling == self.nil_node_idx or sibling == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *                     break
+ * 
+*/
+      }
+
+      /* "src/tree/rbt/red_black_tree.pyx":487
+ *                     break
  * 
  *                 if self._is_red(sibling):             # <<<<<<<<<<<<<<
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)
 */
-      __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 476, __pyx_L1_error)
+      __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 487, __pyx_L1_error)
       if (__pyx_t_1) {
 
-        /* "src/tree/rbt/red_black_tree.pyx":477
+        /* "src/tree/rbt/red_black_tree.pyx":488
  * 
  *                 if self._is_red(sibling):
  *                     self._set_black(sibling)             # <<<<<<<<<<<<<<
- *                     self._set_red(self.rb_nodes[current].parent)
- *                     self._rotate_right(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)
+ *                     self._rotate_right(parent_idx)
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 477, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 488, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":478
+        /* "src/tree/rbt/red_black_tree.pyx":489
  *                 if self._is_red(sibling):
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
- *                     self._rotate_right(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)             # <<<<<<<<<<<<<<
+ *                     self._rotate_right(parent_idx)
  *                     sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_parent_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 489, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":479
+        /* "src/tree/rbt/red_black_tree.pyx":490
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)
- *                     self._rotate_right(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
+ *                     self._set_red(parent_idx)
+ *                     self._rotate_right(parent_idx)             # <<<<<<<<<<<<<<
  *                     sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
  * 
 */
-        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_right(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 479, __pyx_L1_error)
+        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_right(__pyx_v_self, __pyx_v_parent_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 490, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":480
- *                     self._set_red(self.rb_nodes[current].parent)
- *                     self._rotate_right(self.rb_nodes[current].parent)
+        /* "src/tree/rbt/red_black_tree.pyx":491
+ *                     self._set_red(parent_idx)
+ *                     self._rotate_right(parent_idx)
  *                     sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child             # <<<<<<<<<<<<<<
  * 
  *                 # both of sibling's children are black
@@ -32456,41 +32575,41 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
         __pyx_t_3 = (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).left_child;
         __pyx_v_sibling = __pyx_t_3;
 
-        /* "src/tree/rbt/red_black_tree.pyx":476
- *                 sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
+        /* "src/tree/rbt/red_black_tree.pyx":487
+ *                     break
  * 
  *                 if self._is_red(sibling):             # <<<<<<<<<<<<<<
  *                     self._set_black(sibling)
- *                     self._set_red(self.rb_nodes[current].parent)
+ *                     self._set_red(parent_idx)
 */
       }
 
-      /* "src/tree/rbt/red_black_tree.pyx":483
+      /* "src/tree/rbt/red_black_tree.pyx":494
  * 
  *                 # both of sibling's children are black
  *                 if (self._is_black(self.rb_nodes[sibling].left_child) and             # <<<<<<<<<<<<<<
  *                     self._is_black(self.rb_nodes[sibling].right_child)):
  *                     self._set_red(sibling)
 */
-      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 483, __pyx_L1_error)
+      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 494, __pyx_L1_error)
       if (__pyx_t_2) {
       } else {
         __pyx_t_1 = __pyx_t_2;
-        goto __pyx_L15_bool_binop_done;
+        goto __pyx_L24_bool_binop_done;
       }
 
-      /* "src/tree/rbt/red_black_tree.pyx":484
+      /* "src/tree/rbt/red_black_tree.pyx":495
  *                 # both of sibling's children are black
  *                 if (self._is_black(self.rb_nodes[sibling].left_child) and
  *                     self._is_black(self.rb_nodes[sibling].right_child)):             # <<<<<<<<<<<<<<
  *                     self._set_red(sibling)
  *                     current = self.rb_nodes[current].parent
 */
-      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_2 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 495, __pyx_L1_error)
       __pyx_t_1 = __pyx_t_2;
-      __pyx_L15_bool_binop_done:;
+      __pyx_L24_bool_binop_done:;
 
-      /* "src/tree/rbt/red_black_tree.pyx":483
+      /* "src/tree/rbt/red_black_tree.pyx":494
  * 
  *                 # both of sibling's children are black
  *                 if (self._is_black(self.rb_nodes[sibling].left_child) and             # <<<<<<<<<<<<<<
@@ -32499,16 +32618,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
 */
       if (__pyx_t_1) {
 
-        /* "src/tree/rbt/red_black_tree.pyx":485
+        /* "src/tree/rbt/red_black_tree.pyx":496
  *                 if (self._is_black(self.rb_nodes[sibling].left_child) and
  *                     self._is_black(self.rb_nodes[sibling].right_child)):
  *                     self._set_red(sibling)             # <<<<<<<<<<<<<<
  *                     current = self.rb_nodes[current].parent
  *                 else:
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 485, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":486
+        /* "src/tree/rbt/red_black_tree.pyx":497
  *                     self._is_black(self.rb_nodes[sibling].right_child)):
  *                     self._set_red(sibling)
  *                     current = self.rb_nodes[current].parent             # <<<<<<<<<<<<<<
@@ -32518,17 +32637,17 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
         __pyx_t_3 = (__pyx_v_self->rb_nodes[__pyx_v_current]).parent;
         __pyx_v_current = __pyx_t_3;
 
-        /* "src/tree/rbt/red_black_tree.pyx":483
+        /* "src/tree/rbt/red_black_tree.pyx":494
  * 
  *                 # both of sibling's children are black
  *                 if (self._is_black(self.rb_nodes[sibling].left_child) and             # <<<<<<<<<<<<<<
  *                     self._is_black(self.rb_nodes[sibling].right_child)):
  *                     self._set_red(sibling)
 */
-        goto __pyx_L14;
+        goto __pyx_L23;
       }
 
-      /* "src/tree/rbt/red_black_tree.pyx":489
+      /* "src/tree/rbt/red_black_tree.pyx":500
  *                 else:
  *                     # sibling's left child is black, right child is red
  *                     if self._is_black(self.rb_nodes[sibling].left_child):             # <<<<<<<<<<<<<<
@@ -32536,37 +32655,37 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
  *                         self._set_red(sibling)
 */
       /*else*/ {
-        __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 489, __pyx_L1_error)
+        __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 500, __pyx_L1_error)
         if (__pyx_t_1) {
 
-          /* "src/tree/rbt/red_black_tree.pyx":490
+          /* "src/tree/rbt/red_black_tree.pyx":501
  *                     # sibling's left child is black, right child is red
  *                     if self._is_black(self.rb_nodes[sibling].left_child):
  *                         self._set_black(self.rb_nodes[sibling].right_child)             # <<<<<<<<<<<<<<
  *                         self._set_red(sibling)
  *                         self._rotate_left(sibling)
 */
-          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 490, __pyx_L1_error)
+          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 501, __pyx_L1_error)
 
-          /* "src/tree/rbt/red_black_tree.pyx":491
+          /* "src/tree/rbt/red_black_tree.pyx":502
  *                     if self._is_black(self.rb_nodes[sibling].left_child):
  *                         self._set_black(self.rb_nodes[sibling].right_child)
  *                         self._set_red(sibling)             # <<<<<<<<<<<<<<
  *                         self._rotate_left(sibling)
  *                         sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
 */
-          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 491, __pyx_L1_error)
+          __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_red(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 502, __pyx_L1_error)
 
-          /* "src/tree/rbt/red_black_tree.pyx":492
+          /* "src/tree/rbt/red_black_tree.pyx":503
  *                         self._set_black(self.rb_nodes[sibling].right_child)
  *                         self._set_red(sibling)
  *                         self._rotate_left(sibling)             # <<<<<<<<<<<<<<
  *                         sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child
  * 
 */
-          ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_left(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
+          ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_left(__pyx_v_self, __pyx_v_sibling); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 503, __pyx_L1_error)
 
-          /* "src/tree/rbt/red_black_tree.pyx":493
+          /* "src/tree/rbt/red_black_tree.pyx":504
  *                         self._set_red(sibling)
  *                         self._rotate_left(sibling)
  *                         sibling = self.rb_nodes[self.rb_nodes[current].parent].left_child             # <<<<<<<<<<<<<<
@@ -32576,7 +32695,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
           __pyx_t_3 = (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_current]).parent]).left_child;
           __pyx_v_sibling = __pyx_t_3;
 
-          /* "src/tree/rbt/red_black_tree.pyx":489
+          /* "src/tree/rbt/red_black_tree.pyx":500
  *                 else:
  *                     # sibling's left child is black, right child is red
  *                     if self._is_black(self.rb_nodes[sibling].left_child):             # <<<<<<<<<<<<<<
@@ -32585,44 +32704,44 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
 */
         }
 
-        /* "src/tree/rbt/red_black_tree.pyx":496
+        /* "src/tree/rbt/red_black_tree.pyx":507
  * 
  *                     # sibling's left child is red
  *                     self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))             # <<<<<<<<<<<<<<
  *                     self._set_black(self.rb_nodes[current].parent)
  *                     self._set_black(self.rb_nodes[sibling].left_child)
 */
-        __pyx_t_4 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__get_color(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L1_error)
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_color(__pyx_v_self, __pyx_v_sibling, __pyx_t_4); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L1_error)
+        __pyx_t_4 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__get_color(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 507, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_color(__pyx_v_self, __pyx_v_sibling, __pyx_t_4); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 507, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":497
+        /* "src/tree/rbt/red_black_tree.pyx":508
  *                     # sibling's left child is red
  *                     self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))
  *                     self._set_black(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
  *                     self._set_black(self.rb_nodes[sibling].left_child)
  *                     self._rotate_right(self.rb_nodes[current].parent)
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 497, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":498
+        /* "src/tree/rbt/red_black_tree.pyx":509
  *                     self._set_color(sibling, self._get_color(self.rb_nodes[current].parent))
  *                     self._set_black(self.rb_nodes[current].parent)
  *                     self._set_black(self.rb_nodes[sibling].left_child)             # <<<<<<<<<<<<<<
  *                     self._rotate_right(self.rb_nodes[current].parent)
  *                     current = self.root_idx
 */
-        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 498, __pyx_L1_error)
+        __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_sibling]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 509, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":499
+        /* "src/tree/rbt/red_black_tree.pyx":510
  *                     self._set_black(self.rb_nodes[current].parent)
  *                     self._set_black(self.rb_nodes[sibling].left_child)
  *                     self._rotate_right(self.rb_nodes[current].parent)             # <<<<<<<<<<<<<<
  *                     current = self.root_idx
  * 
 */
-        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_right(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 499, __pyx_L1_error)
+        ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_rotate_right(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_current]).parent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 510, __pyx_L1_error)
 
-        /* "src/tree/rbt/red_black_tree.pyx":500
+        /* "src/tree/rbt/red_black_tree.pyx":511
  *                     self._set_black(self.rb_nodes[sibling].left_child)
  *                     self._rotate_right(self.rb_nodes[current].parent)
  *                     current = self.root_idx             # <<<<<<<<<<<<<<
@@ -32632,19 +32751,20 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
         __pyx_t_3 = __pyx_v_self->__pyx_base.root_idx;
         __pyx_v_current = __pyx_t_3;
       }
-      __pyx_L14:;
+      __pyx_L23:;
     }
-    __pyx_L7:;
+    __pyx_L10:;
   }
+  __pyx_L4_break:;
 
-  /* "src/tree/rbt/red_black_tree.pyx":502
+  /* "src/tree/rbt/red_black_tree.pyx":513
  *                     current = self.root_idx
  * 
  *         self._set_black(current)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _rotate_left(self, intp_t node_idx):
 */
-  __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, __pyx_v_current); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 502, __pyx_L1_error)
+  __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__set_black(__pyx_v_self, __pyx_v_current); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 513, __pyx_L1_error)
 
   /* "src/tree/rbt/red_black_tree.pyx":437
  *         return 1
@@ -32661,7 +32781,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__delete_fixu
   __pyx_L0:;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":504
+/* "src/tree/rbt/red_black_tree.pyx":515
  *         self._set_black(current)
  * 
  *     cdef void _rotate_left(self, intp_t node_idx):             # <<<<<<<<<<<<<<
@@ -32674,7 +32794,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
   int __pyx_t_2;
 
-  /* "src/tree/rbt/red_black_tree.pyx":505
+  /* "src/tree/rbt/red_black_tree.pyx":516
  * 
  *     cdef void _rotate_left(self, intp_t node_idx):
  *         cdef intp_t right_child = self.rb_nodes[node_idx].right_child             # <<<<<<<<<<<<<<
@@ -32684,7 +32804,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_1 = (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).right_child;
   __pyx_v_right_child = __pyx_t_1;
 
-  /* "src/tree/rbt/red_black_tree.pyx":507
+  /* "src/tree/rbt/red_black_tree.pyx":518
  *         cdef intp_t right_child = self.rb_nodes[node_idx].right_child
  * 
  *         self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child             # <<<<<<<<<<<<<<
@@ -32694,7 +32814,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_1 = (__pyx_v_self->rb_nodes[__pyx_v_right_child]).left_child;
   (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).right_child = __pyx_t_1;
 
-  /* "src/tree/rbt/red_black_tree.pyx":508
+  /* "src/tree/rbt/red_black_tree.pyx":519
  * 
  *         self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child
  *         if self.rb_nodes[right_child].left_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32704,7 +32824,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_2 = ((__pyx_v_self->rb_nodes[__pyx_v_right_child]).left_child != __pyx_v_self->nil_node_idx);
   if (__pyx_t_2) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":509
+    /* "src/tree/rbt/red_black_tree.pyx":520
  *         self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child
  *         if self.rb_nodes[right_child].left_child != self.nil_node_idx:
  *             self.rb_nodes[self.rb_nodes[right_child].left_child].parent = node_idx             # <<<<<<<<<<<<<<
@@ -32713,7 +32833,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
 */
     (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_right_child]).left_child]).parent = __pyx_v_node_idx;
 
-    /* "src/tree/rbt/red_black_tree.pyx":508
+    /* "src/tree/rbt/red_black_tree.pyx":519
  * 
  *         self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child
  *         if self.rb_nodes[right_child].left_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32722,7 +32842,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":511
+  /* "src/tree/rbt/red_black_tree.pyx":522
  *             self.rb_nodes[self.rb_nodes[right_child].left_child].parent = node_idx
  * 
  *         self.rb_nodes[right_child].parent = self.rb_nodes[node_idx].parent             # <<<<<<<<<<<<<<
@@ -32732,7 +32852,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_1 = (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent;
   (__pyx_v_self->rb_nodes[__pyx_v_right_child]).parent = __pyx_t_1;
 
-  /* "src/tree/rbt/red_black_tree.pyx":512
+  /* "src/tree/rbt/red_black_tree.pyx":523
  * 
  *         self.rb_nodes[right_child].parent = self.rb_nodes[node_idx].parent
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32742,7 +32862,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_2 = ((__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent == __pyx_v_self->nil_node_idx);
   if (__pyx_t_2) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":513
+    /* "src/tree/rbt/red_black_tree.pyx":524
  *         self.rb_nodes[right_child].parent = self.rb_nodes[node_idx].parent
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:
  *             self.root_idx = right_child             # <<<<<<<<<<<<<<
@@ -32751,7 +32871,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
 */
     __pyx_v_self->__pyx_base.root_idx = __pyx_v_right_child;
 
-    /* "src/tree/rbt/red_black_tree.pyx":512
+    /* "src/tree/rbt/red_black_tree.pyx":523
  * 
  *         self.rb_nodes[right_child].parent = self.rb_nodes[node_idx].parent
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32761,7 +32881,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
     goto __pyx_L4;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":514
+  /* "src/tree/rbt/red_black_tree.pyx":525
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:
  *             self.root_idx = right_child
  *         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].left_child:             # <<<<<<<<<<<<<<
@@ -32771,7 +32891,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   __pyx_t_2 = (__pyx_v_node_idx == (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent]).left_child);
   if (__pyx_t_2) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":515
+    /* "src/tree/rbt/red_black_tree.pyx":526
  *             self.root_idx = right_child
  *         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].left_child:
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = right_child             # <<<<<<<<<<<<<<
@@ -32780,7 +32900,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
 */
     (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent]).left_child = __pyx_v_right_child;
 
-    /* "src/tree/rbt/red_black_tree.pyx":514
+    /* "src/tree/rbt/red_black_tree.pyx":525
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:
  *             self.root_idx = right_child
  *         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].left_child:             # <<<<<<<<<<<<<<
@@ -32790,7 +32910,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
     goto __pyx_L4;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":517
+  /* "src/tree/rbt/red_black_tree.pyx":528
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = right_child
  *         else:
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = right_child             # <<<<<<<<<<<<<<
@@ -32802,7 +32922,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   }
   __pyx_L4:;
 
-  /* "src/tree/rbt/red_black_tree.pyx":519
+  /* "src/tree/rbt/red_black_tree.pyx":530
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = right_child
  * 
  *         self.rb_nodes[right_child].left_child = node_idx             # <<<<<<<<<<<<<<
@@ -32811,7 +32931,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
 */
   (__pyx_v_self->rb_nodes[__pyx_v_right_child]).left_child = __pyx_v_node_idx;
 
-  /* "src/tree/rbt/red_black_tree.pyx":520
+  /* "src/tree/rbt/red_black_tree.pyx":531
  * 
  *         self.rb_nodes[right_child].left_child = node_idx
  *         self.rb_nodes[node_idx].parent = right_child             # <<<<<<<<<<<<<<
@@ -32820,7 +32940,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
 */
   (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent = __pyx_v_right_child;
 
-  /* "src/tree/rbt/red_black_tree.pyx":504
+  /* "src/tree/rbt/red_black_tree.pyx":515
  *         self._set_black(current)
  * 
  *     cdef void _rotate_left(self, intp_t node_idx):             # <<<<<<<<<<<<<<
@@ -32831,7 +32951,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_left
   /* function exit code */
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":522
+/* "src/tree/rbt/red_black_tree.pyx":533
  *         self.rb_nodes[node_idx].parent = right_child
  * 
  *     cdef void _rotate_right(self, intp_t node_idx):             # <<<<<<<<<<<<<<
@@ -32844,7 +32964,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
   int __pyx_t_2;
 
-  /* "src/tree/rbt/red_black_tree.pyx":523
+  /* "src/tree/rbt/red_black_tree.pyx":534
  * 
  *     cdef void _rotate_right(self, intp_t node_idx):
  *         cdef intp_t left_child = self.rb_nodes[node_idx].left_child             # <<<<<<<<<<<<<<
@@ -32854,7 +32974,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_1 = (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child;
   __pyx_v_left_child = __pyx_t_1;
 
-  /* "src/tree/rbt/red_black_tree.pyx":525
+  /* "src/tree/rbt/red_black_tree.pyx":536
  *         cdef intp_t left_child = self.rb_nodes[node_idx].left_child
  * 
  *         self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child             # <<<<<<<<<<<<<<
@@ -32864,7 +32984,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_1 = (__pyx_v_self->rb_nodes[__pyx_v_left_child]).right_child;
   (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child = __pyx_t_1;
 
-  /* "src/tree/rbt/red_black_tree.pyx":526
+  /* "src/tree/rbt/red_black_tree.pyx":537
  * 
  *         self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child
  *         if self.rb_nodes[left_child].right_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32874,7 +32994,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_2 = ((__pyx_v_self->rb_nodes[__pyx_v_left_child]).right_child != __pyx_v_self->nil_node_idx);
   if (__pyx_t_2) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":527
+    /* "src/tree/rbt/red_black_tree.pyx":538
  *         self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child
  *         if self.rb_nodes[left_child].right_child != self.nil_node_idx:
  *             self.rb_nodes[self.rb_nodes[left_child].right_child].parent = node_idx             # <<<<<<<<<<<<<<
@@ -32883,7 +33003,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
 */
     (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_left_child]).right_child]).parent = __pyx_v_node_idx;
 
-    /* "src/tree/rbt/red_black_tree.pyx":526
+    /* "src/tree/rbt/red_black_tree.pyx":537
  * 
  *         self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child
  *         if self.rb_nodes[left_child].right_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32892,7 +33012,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":529
+  /* "src/tree/rbt/red_black_tree.pyx":540
  *             self.rb_nodes[self.rb_nodes[left_child].right_child].parent = node_idx
  * 
  *         self.rb_nodes[left_child].parent = self.rb_nodes[node_idx].parent             # <<<<<<<<<<<<<<
@@ -32902,7 +33022,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_1 = (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent;
   (__pyx_v_self->rb_nodes[__pyx_v_left_child]).parent = __pyx_t_1;
 
-  /* "src/tree/rbt/red_black_tree.pyx":530
+  /* "src/tree/rbt/red_black_tree.pyx":541
  * 
  *         self.rb_nodes[left_child].parent = self.rb_nodes[node_idx].parent
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32912,7 +33032,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_2 = ((__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent == __pyx_v_self->nil_node_idx);
   if (__pyx_t_2) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":531
+    /* "src/tree/rbt/red_black_tree.pyx":542
  *         self.rb_nodes[left_child].parent = self.rb_nodes[node_idx].parent
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:
  *             self.root_idx = left_child             # <<<<<<<<<<<<<<
@@ -32921,7 +33041,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
 */
     __pyx_v_self->__pyx_base.root_idx = __pyx_v_left_child;
 
-    /* "src/tree/rbt/red_black_tree.pyx":530
+    /* "src/tree/rbt/red_black_tree.pyx":541
  * 
  *         self.rb_nodes[left_child].parent = self.rb_nodes[node_idx].parent
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -32931,7 +33051,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
     goto __pyx_L4;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":532
+  /* "src/tree/rbt/red_black_tree.pyx":543
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:
  *             self.root_idx = left_child
  *         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].right_child:             # <<<<<<<<<<<<<<
@@ -32941,7 +33061,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   __pyx_t_2 = (__pyx_v_node_idx == (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent]).right_child);
   if (__pyx_t_2) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":533
+    /* "src/tree/rbt/red_black_tree.pyx":544
  *             self.root_idx = left_child
  *         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].right_child:
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = left_child             # <<<<<<<<<<<<<<
@@ -32950,7 +33070,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
 */
     (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent]).right_child = __pyx_v_left_child;
 
-    /* "src/tree/rbt/red_black_tree.pyx":532
+    /* "src/tree/rbt/red_black_tree.pyx":543
  *         if self.rb_nodes[node_idx].parent == self.nil_node_idx:
  *             self.root_idx = left_child
  *         elif node_idx == self.rb_nodes[self.rb_nodes[node_idx].parent].right_child:             # <<<<<<<<<<<<<<
@@ -32960,7 +33080,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
     goto __pyx_L4;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":535
+  /* "src/tree/rbt/red_black_tree.pyx":546
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].right_child = left_child
  *         else:
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = left_child             # <<<<<<<<<<<<<<
@@ -32972,7 +33092,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   }
   __pyx_L4:;
 
-  /* "src/tree/rbt/red_black_tree.pyx":537
+  /* "src/tree/rbt/red_black_tree.pyx":548
  *             self.rb_nodes[self.rb_nodes[node_idx].parent].left_child = left_child
  * 
  *         self.rb_nodes[left_child].right_child = node_idx             # <<<<<<<<<<<<<<
@@ -32981,7 +33101,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
 */
   (__pyx_v_self->rb_nodes[__pyx_v_left_child]).right_child = __pyx_v_node_idx;
 
-  /* "src/tree/rbt/red_black_tree.pyx":538
+  /* "src/tree/rbt/red_black_tree.pyx":549
  * 
  *         self.rb_nodes[left_child].right_child = node_idx
  *         self.rb_nodes[node_idx].parent = left_child             # <<<<<<<<<<<<<<
@@ -32990,7 +33110,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
 */
   (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).parent = __pyx_v_left_child;
 
-  /* "src/tree/rbt/red_black_tree.pyx":522
+  /* "src/tree/rbt/red_black_tree.pyx":533
  *         self.rb_nodes[node_idx].parent = right_child
  * 
  *     cdef void _rotate_right(self, intp_t node_idx):             # <<<<<<<<<<<<<<
@@ -33001,49 +33121,49 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__rotate_righ
   /* function exit code */
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":540
+/* "src/tree/rbt/red_black_tree.pyx":551
  *         self.rb_nodes[node_idx].parent = left_child
  * 
  *     cdef void _transplant(self, intp_t u, intp_t v):             # <<<<<<<<<<<<<<
  *         """Replace subtree rooted at u with subtree rooted at v"""
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:
 */
 
 static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_u, __pyx_t_3src_8typedefs_intp_t __pyx_v_v) {
   int __pyx_t_1;
   __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
 
-  /* "src/tree/rbt/red_black_tree.pyx":542
+  /* "src/tree/rbt/red_black_tree.pyx":553
  *     cdef void _transplant(self, intp_t u, intp_t v):
  *         """Replace subtree rooted at u with subtree rooted at v"""
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:             # <<<<<<<<<<<<<<
  *             self.root_idx = v
  *         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
 */
-  __pyx_t_1 = ((__pyx_v_self->rb_nodes[__pyx_v_u]).parent == -1L);
+  __pyx_t_1 = ((__pyx_v_self->rb_nodes[__pyx_v_u]).parent == __pyx_v_self->nil_node_idx);
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":543
+    /* "src/tree/rbt/red_black_tree.pyx":554
  *         """Replace subtree rooted at u with subtree rooted at v"""
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:
  *             self.root_idx = v             # <<<<<<<<<<<<<<
  *         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
  *             self.rb_nodes[self.rb_nodes[u].parent].left_child = v
 */
     __pyx_v_self->__pyx_base.root_idx = __pyx_v_v;
 
-    /* "src/tree/rbt/red_black_tree.pyx":542
+    /* "src/tree/rbt/red_black_tree.pyx":553
  *     cdef void _transplant(self, intp_t u, intp_t v):
  *         """Replace subtree rooted at u with subtree rooted at v"""
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:             # <<<<<<<<<<<<<<
  *             self.root_idx = v
  *         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
 */
     goto __pyx_L3;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":544
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:
+  /* "src/tree/rbt/red_black_tree.pyx":555
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:
  *             self.root_idx = v
  *         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:             # <<<<<<<<<<<<<<
  *             self.rb_nodes[self.rb_nodes[u].parent].left_child = v
@@ -33052,7 +33172,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
   __pyx_t_1 = (__pyx_v_u == (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_u]).parent]).left_child);
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":545
+    /* "src/tree/rbt/red_black_tree.pyx":556
  *             self.root_idx = v
  *         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:
  *             self.rb_nodes[self.rb_nodes[u].parent].left_child = v             # <<<<<<<<<<<<<<
@@ -33061,8 +33181,8 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
 */
     (__pyx_v_self->rb_nodes[(__pyx_v_self->rb_nodes[__pyx_v_u]).parent]).left_child = __pyx_v_v;
 
-    /* "src/tree/rbt/red_black_tree.pyx":544
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:
+    /* "src/tree/rbt/red_black_tree.pyx":555
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:
  *             self.root_idx = v
  *         elif u == self.rb_nodes[self.rb_nodes[u].parent].left_child:             # <<<<<<<<<<<<<<
  *             self.rb_nodes[self.rb_nodes[u].parent].left_child = v
@@ -33071,7 +33191,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
     goto __pyx_L3;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":547
+  /* "src/tree/rbt/red_black_tree.pyx":558
  *             self.rb_nodes[self.rb_nodes[u].parent].left_child = v
  *         else:
  *             self.rb_nodes[self.rb_nodes[u].parent].right_child = v             # <<<<<<<<<<<<<<
@@ -33083,7 +33203,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
   }
   __pyx_L3:;
 
-  /* "src/tree/rbt/red_black_tree.pyx":549
+  /* "src/tree/rbt/red_black_tree.pyx":560
  *             self.rb_nodes[self.rb_nodes[u].parent].right_child = v
  * 
  *         if v != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -33093,7 +33213,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
   __pyx_t_1 = (__pyx_v_v != -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":550
+    /* "src/tree/rbt/red_black_tree.pyx":561
  * 
  *         if v != NONE_SENTINEL:
  *             self.rb_nodes[v].parent = self.rb_nodes[u].parent             # <<<<<<<<<<<<<<
@@ -33103,7 +33223,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
     __pyx_t_2 = (__pyx_v_self->rb_nodes[__pyx_v_u]).parent;
     (__pyx_v_self->rb_nodes[__pyx_v_v]).parent = __pyx_t_2;
 
-    /* "src/tree/rbt/red_black_tree.pyx":549
+    /* "src/tree/rbt/red_black_tree.pyx":560
  *             self.rb_nodes[self.rb_nodes[u].parent].right_child = v
  * 
  *         if v != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -33112,54 +33232,92 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__transplant(
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":540
+  /* "src/tree/rbt/red_black_tree.pyx":551
  *         self.rb_nodes[node_idx].parent = left_child
  * 
  *     cdef void _transplant(self, intp_t u, intp_t v):             # <<<<<<<<<<<<<<
  *         """Replace subtree rooted at u with subtree rooted at v"""
- *         if self.rb_nodes[u].parent == NONE_SENTINEL:
+ *         if self.rb_nodes[u].parent == self.nil_node_idx:
 */
 
   /* function exit code */
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":552
+/* "src/tree/rbt/red_black_tree.pyx":563
  *             self.rb_nodes[v].parent = self.rb_nodes[u].parent
  * 
  *     cdef intp_t _minimum(self, intp_t node_idx):             # <<<<<<<<<<<<<<
  *         """Find minimum node in subtree rooted at node_idx"""
- *         while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:
+ *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:
 */
 
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__minimum(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx) {
   __pyx_t_3src_8typedefs_intp_t __pyx_r;
   int __pyx_t_1;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
+  int __pyx_t_2;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
 
-  /* "src/tree/rbt/red_black_tree.pyx":554
+  /* "src/tree/rbt/red_black_tree.pyx":565
  *     cdef intp_t _minimum(self, intp_t node_idx):
  *         """Find minimum node in subtree rooted at node_idx"""
- *         while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return self.nil_node_idx
+ * 
+*/
+  __pyx_t_2 = (__pyx_v_node_idx == __pyx_v_self->nil_node_idx);
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_node_idx == -1L);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":566
+ *         """Find minimum node in subtree rooted at node_idx"""
+ *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:
+ *             return self.nil_node_idx             # <<<<<<<<<<<<<<
+ * 
+ *         while self.rb_nodes[node_idx].left_child != self.nil_node_idx:
+*/
+    __pyx_r = __pyx_v_self->nil_node_idx;
+    goto __pyx_L0;
+
+    /* "src/tree/rbt/red_black_tree.pyx":565
+ *     cdef intp_t _minimum(self, intp_t node_idx):
+ *         """Find minimum node in subtree rooted at node_idx"""
+ *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return self.nil_node_idx
+ * 
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":568
+ *             return self.nil_node_idx
+ * 
+ *         while self.rb_nodes[node_idx].left_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
  *             node_idx = self.rb_nodes[node_idx].left_child
  *         return node_idx
 */
   while (1) {
-    __pyx_t_1 = ((__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child != -1L);
+    __pyx_t_1 = ((__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child != __pyx_v_self->nil_node_idx);
     if (!__pyx_t_1) break;
 
-    /* "src/tree/rbt/red_black_tree.pyx":555
- *         """Find minimum node in subtree rooted at node_idx"""
- *         while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:
+    /* "src/tree/rbt/red_black_tree.pyx":569
+ * 
+ *         while self.rb_nodes[node_idx].left_child != self.nil_node_idx:
  *             node_idx = self.rb_nodes[node_idx].left_child             # <<<<<<<<<<<<<<
  *         return node_idx
  * 
 */
-    __pyx_t_2 = (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child;
-    __pyx_v_node_idx = __pyx_t_2;
+    __pyx_t_3 = (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child;
+    __pyx_v_node_idx = __pyx_t_3;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":556
- *         while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:
+  /* "src/tree/rbt/red_black_tree.pyx":570
+ *         while self.rb_nodes[node_idx].left_child != self.nil_node_idx:
  *             node_idx = self.rb_nodes[node_idx].left_child
  *         return node_idx             # <<<<<<<<<<<<<<
  * 
@@ -33168,12 +33326,12 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
   __pyx_r = __pyx_v_node_idx;
   goto __pyx_L0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":552
+  /* "src/tree/rbt/red_black_tree.pyx":563
  *             self.rb_nodes[v].parent = self.rb_nodes[u].parent
  * 
  *     cdef intp_t _minimum(self, intp_t node_idx):             # <<<<<<<<<<<<<<
  *         """Find minimum node in subtree rooted at node_idx"""
- *         while self.rb_nodes[node_idx].left_child != NONE_SENTINEL:
+ *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:
 */
 
   /* function exit code */
@@ -33181,7 +33339,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
   return __pyx_r;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":558
+/* "src/tree/rbt/red_black_tree.pyx":572
  *         return node_idx
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
@@ -33209,7 +33367,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_resize_arrays", 0);
 
-  /* "src/tree/rbt/red_black_tree.pyx":559
+  /* "src/tree/rbt/red_black_tree.pyx":573
  * 
  *     cdef void _resize_arrays(self):
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR             # <<<<<<<<<<<<<<
@@ -33218,7 +33376,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_new_capacity = (__pyx_v_self->__pyx_base.capacity * 2);
 
-  /* "src/tree/rbt/red_black_tree.pyx":560
+  /* "src/tree/rbt/red_black_tree.pyx":574
  *     cdef void _resize_arrays(self):
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
  *         cdef RBNode_t* new_rb_nodes = <RBNode_t*>realloc(             # <<<<<<<<<<<<<<
@@ -33227,7 +33385,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_new_rb_nodes = ((__pyx_t_3src_4tree_3rbt_14red_black_tree_RBNode_t *)realloc(__pyx_v_self->rb_nodes, ((sizeof(__pyx_t_3src_4tree_3rbt_14red_black_tree_RBNode_t)) * __pyx_v_new_capacity)));
 
-  /* "src/tree/rbt/red_black_tree.pyx":563
+  /* "src/tree/rbt/red_black_tree.pyx":577
  *             self.rb_nodes, sizeof(RBNode_t) * new_capacity
  *         )
  *         cdef intp_t* new_free_stack = <intp_t*>realloc(             # <<<<<<<<<<<<<<
@@ -33236,7 +33394,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_new_free_stack = ((__pyx_t_3src_8typedefs_intp_t *)realloc(__pyx_v_self->__pyx_base.free_stack, ((sizeof(__pyx_t_3src_8typedefs_intp_t)) * __pyx_v_new_capacity)));
 
-  /* "src/tree/rbt/red_black_tree.pyx":567
+  /* "src/tree/rbt/red_black_tree.pyx":581
  *         )
  * 
  *         if not new_rb_nodes or not new_free_stack:             # <<<<<<<<<<<<<<
@@ -33254,7 +33412,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":568
+    /* "src/tree/rbt/red_black_tree.pyx":582
  * 
  *         if not new_rb_nodes or not new_free_stack:
  *             raise MemoryError("Failed to resize arrays")             # <<<<<<<<<<<<<<
@@ -33270,14 +33428,14 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 568, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 582, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 568, __pyx_L1_error)
+    __PYX_ERR(0, 582, __pyx_L1_error)
 
-    /* "src/tree/rbt/red_black_tree.pyx":567
+    /* "src/tree/rbt/red_black_tree.pyx":581
  *         )
  * 
  *         if not new_rb_nodes or not new_free_stack:             # <<<<<<<<<<<<<<
@@ -33286,7 +33444,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":570
+  /* "src/tree/rbt/red_black_tree.pyx":584
  *             raise MemoryError("Failed to resize arrays")
  * 
  *         self.rb_nodes = new_rb_nodes             # <<<<<<<<<<<<<<
@@ -33295,7 +33453,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_self->rb_nodes = __pyx_v_new_rb_nodes;
 
-  /* "src/tree/rbt/red_black_tree.pyx":571
+  /* "src/tree/rbt/red_black_tree.pyx":585
  * 
  *         self.rb_nodes = new_rb_nodes
  *         self.nodes = <Node_t*>new_rb_nodes             # <<<<<<<<<<<<<<
@@ -33304,7 +33462,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_self->__pyx_base.nodes = ((__pyx_t_3src_4tree_3rbt_14red_black_tree_Node_t *)__pyx_v_new_rb_nodes);
 
-  /* "src/tree/rbt/red_black_tree.pyx":572
+  /* "src/tree/rbt/red_black_tree.pyx":586
  *         self.rb_nodes = new_rb_nodes
  *         self.nodes = <Node_t*>new_rb_nodes
  *         self.free_stack = new_free_stack             # <<<<<<<<<<<<<<
@@ -33313,7 +33471,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_self->__pyx_base.free_stack = __pyx_v_new_free_stack;
 
-  /* "src/tree/rbt/red_black_tree.pyx":575
+  /* "src/tree/rbt/red_black_tree.pyx":589
  * 
  *         cdef intp_t i
  *         for i in range(self.capacity, new_capacity):             # <<<<<<<<<<<<<<
@@ -33325,7 +33483,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
   for (__pyx_t_9 = __pyx_v_self->__pyx_base.capacity; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "src/tree/rbt/red_black_tree.pyx":576
+    /* "src/tree/rbt/red_black_tree.pyx":590
  *         cdef intp_t i
  *         for i in range(self.capacity, new_capacity):
  *             self.free_stack_top += 1             # <<<<<<<<<<<<<<
@@ -33334,7 +33492,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
     __pyx_v_self->__pyx_base.free_stack_top = (__pyx_v_self->__pyx_base.free_stack_top + 1);
 
-    /* "src/tree/rbt/red_black_tree.pyx":577
+    /* "src/tree/rbt/red_black_tree.pyx":591
  *         for i in range(self.capacity, new_capacity):
  *             self.free_stack_top += 1
  *             self.free_stack[self.free_stack_top] = i             # <<<<<<<<<<<<<<
@@ -33343,7 +33501,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
     (__pyx_v_self->__pyx_base.free_stack[__pyx_v_self->__pyx_base.free_stack_top]) = __pyx_v_i;
 
-    /* "src/tree/rbt/red_black_tree.pyx":578
+    /* "src/tree/rbt/red_black_tree.pyx":592
  *             self.free_stack_top += 1
  *             self.free_stack[self.free_stack_top] = i
  *             self.free_count += 1             # <<<<<<<<<<<<<<
@@ -33353,7 +33511,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
     __pyx_v_self->__pyx_base.free_count = (__pyx_v_self->__pyx_base.free_count + 1);
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":579
+  /* "src/tree/rbt/red_black_tree.pyx":593
  *             self.free_stack[self.free_stack_top] = i
  *             self.free_count += 1
  *         self.capacity = new_capacity             # <<<<<<<<<<<<<<
@@ -33362,7 +33520,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
 */
   __pyx_v_self->__pyx_base.capacity = __pyx_v_new_capacity;
 
-  /* "src/tree/rbt/red_black_tree.pyx":558
+  /* "src/tree/rbt/red_black_tree.pyx":572
  *         return node_idx
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
@@ -33381,7 +33539,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__resize_arra
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":581
+/* "src/tree/rbt/red_black_tree.pyx":595
  *         self.capacity = new_capacity
  * 
  *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
@@ -33400,7 +33558,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":588
+  /* "src/tree/rbt/red_black_tree.pyx":602
  *     ):
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33418,7 +33576,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":589
+    /* "src/tree/rbt/red_black_tree.pyx":603
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -33427,7 +33585,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":588
+    /* "src/tree/rbt/red_black_tree.pyx":602
  *     ):
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33436,7 +33594,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":591
+  /* "src/tree/rbt/red_black_tree.pyx":605
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -33445,7 +33603,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":593
+  /* "src/tree/rbt/red_black_tree.pyx":607
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         if node.left_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33455,7 +33613,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   __pyx_t_1 = (__pyx_v_node->left_child != __pyx_v_self->nil_node_idx);
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":594
+    /* "src/tree/rbt/red_black_tree.pyx":608
  * 
  *         if node.left_child != self.nil_node_idx:
  *             PREFETCH_READ(&self.rb_nodes[node.left_child])             # <<<<<<<<<<<<<<
@@ -33464,7 +33622,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
     PREFETCH_READ((&(__pyx_v_self->rb_nodes[__pyx_v_node->left_child])));
 
-    /* "src/tree/rbt/red_black_tree.pyx":593
+    /* "src/tree/rbt/red_black_tree.pyx":607
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         if node.left_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33473,16 +33631,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":596
+  /* "src/tree/rbt/red_black_tree.pyx":610
  *             PREFETCH_READ(&self.rb_nodes[node.left_child])
  * 
  *         self._inorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
  *         result[result_idx[0]] = node.key
  *         result_idx[0] += 1
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 596, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 610, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":597
+  /* "src/tree/rbt/red_black_tree.pyx":611
  * 
  *         self._inorder_traversal(node.left_child, result, result_idx)
  *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
@@ -33493,7 +33651,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   __pyx_t_4 = (__pyx_v_result_idx[0]);
   *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_4 * __pyx_v_result.strides[0]) )) = __pyx_t_3;
 
-  /* "src/tree/rbt/red_black_tree.pyx":598
+  /* "src/tree/rbt/red_black_tree.pyx":612
  *         self._inorder_traversal(node.left_child, result, result_idx)
  *         result[result_idx[0]] = node.key
  *         result_idx[0] += 1             # <<<<<<<<<<<<<<
@@ -33503,7 +33661,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   __pyx_t_5 = 0;
   (__pyx_v_result_idx[__pyx_t_5]) = ((__pyx_v_result_idx[__pyx_t_5]) + 1);
 
-  /* "src/tree/rbt/red_black_tree.pyx":600
+  /* "src/tree/rbt/red_black_tree.pyx":614
  *         result_idx[0] += 1
  * 
  *         if node.right_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33513,7 +33671,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   __pyx_t_1 = (__pyx_v_node->right_child != __pyx_v_self->nil_node_idx);
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":601
+    /* "src/tree/rbt/red_black_tree.pyx":615
  * 
  *         if node.right_child != self.nil_node_idx:
  *             PREFETCH_READ(&self.rb_nodes[node.right_child])             # <<<<<<<<<<<<<<
@@ -33522,7 +33680,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
     PREFETCH_READ((&(__pyx_v_self->rb_nodes[__pyx_v_node->right_child])));
 
-    /* "src/tree/rbt/red_black_tree.pyx":600
+    /* "src/tree/rbt/red_black_tree.pyx":614
  *         result_idx[0] += 1
  * 
  *         if node.right_child != self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33531,16 +33689,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":603
+  /* "src/tree/rbt/red_black_tree.pyx":617
  *             PREFETCH_READ(&self.rb_nodes[node.right_child])
  * 
  *         self._inorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _inorder_values_traversal(
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 603, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":581
+  /* "src/tree/rbt/red_black_tree.pyx":595
  *         self.capacity = new_capacity
  * 
  *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
@@ -33555,7 +33713,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_tra
   __pyx_L0:;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":605
+/* "src/tree/rbt/red_black_tree.pyx":619
  *         self._inorder_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
@@ -33574,7 +33732,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":612
+  /* "src/tree/rbt/red_black_tree.pyx":626
  *     ):
  *         """Left, root, right - for values"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33592,7 +33750,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":613
+    /* "src/tree/rbt/red_black_tree.pyx":627
  *         """Left, root, right - for values"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -33601,7 +33759,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":612
+    /* "src/tree/rbt/red_black_tree.pyx":626
  *     ):
  *         """Left, root, right - for values"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33610,7 +33768,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":615
+  /* "src/tree/rbt/red_black_tree.pyx":629
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -33619,16 +33777,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":617
+  /* "src/tree/rbt/red_black_tree.pyx":631
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         self._inorder_values_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
  *         result[result_idx[0]] = node.value
  *         result_idx[0] += 1
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 631, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":618
+  /* "src/tree/rbt/red_black_tree.pyx":632
  * 
  *         self._inorder_values_traversal(node.left_child, result, result_idx)
  *         result[result_idx[0]] = node.value             # <<<<<<<<<<<<<<
@@ -33639,7 +33797,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
   __pyx_t_4 = (__pyx_v_result_idx[0]);
   *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_4 * __pyx_v_result.strides[0]) )) = __pyx_t_3;
 
-  /* "src/tree/rbt/red_black_tree.pyx":619
+  /* "src/tree/rbt/red_black_tree.pyx":633
  *         self._inorder_values_traversal(node.left_child, result, result_idx)
  *         result[result_idx[0]] = node.value
  *         result_idx[0] += 1             # <<<<<<<<<<<<<<
@@ -33649,16 +33807,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
   __pyx_t_5 = 0;
   (__pyx_v_result_idx[__pyx_t_5]) = ((__pyx_v_result_idx[__pyx_t_5]) + 1);
 
-  /* "src/tree/rbt/red_black_tree.pyx":620
+  /* "src/tree/rbt/red_black_tree.pyx":634
  *         result[result_idx[0]] = node.value
  *         result_idx[0] += 1
  *         self._inorder_values_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _preorder_traversal(
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 620, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 634, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":605
+  /* "src/tree/rbt/red_black_tree.pyx":619
  *         self._inorder_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
@@ -33673,7 +33831,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_val
   __pyx_L0:;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":622
+/* "src/tree/rbt/red_black_tree.pyx":636
  *         self._inorder_values_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
@@ -33692,7 +33850,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":629
+  /* "src/tree/rbt/red_black_tree.pyx":643
  *     ):
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33710,7 +33868,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":630
+    /* "src/tree/rbt/red_black_tree.pyx":644
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -33719,7 +33877,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":629
+    /* "src/tree/rbt/red_black_tree.pyx":643
  *     ):
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33728,7 +33886,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":632
+  /* "src/tree/rbt/red_black_tree.pyx":646
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -33737,7 +33895,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":634
+  /* "src/tree/rbt/red_black_tree.pyx":648
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
@@ -33748,7 +33906,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
   __pyx_t_4 = (__pyx_v_result_idx[0]);
   *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_4 * __pyx_v_result.strides[0]) )) = __pyx_t_3;
 
-  /* "src/tree/rbt/red_black_tree.pyx":635
+  /* "src/tree/rbt/red_black_tree.pyx":649
  * 
  *         result[result_idx[0]] = node.key
  *         result_idx[0] += 1             # <<<<<<<<<<<<<<
@@ -33758,25 +33916,25 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
   __pyx_t_5 = 0;
   (__pyx_v_result_idx[__pyx_t_5]) = ((__pyx_v_result_idx[__pyx_t_5]) + 1);
 
-  /* "src/tree/rbt/red_black_tree.pyx":637
+  /* "src/tree/rbt/red_black_tree.pyx":651
  *         result_idx[0] += 1
  * 
  *         self._preorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
  *         self._preorder_traversal(node.right_child, result, result_idx)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 637, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 651, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":638
+  /* "src/tree/rbt/red_black_tree.pyx":652
  * 
  *         self._preorder_traversal(node.left_child, result, result_idx)
  *         self._preorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _postorder_traversal(
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":622
+  /* "src/tree/rbt/red_black_tree.pyx":636
  *         self._inorder_values_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
@@ -33791,7 +33949,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_tr
   __pyx_L0:;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":640
+/* "src/tree/rbt/red_black_tree.pyx":654
  *         self._preorder_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
@@ -33810,7 +33968,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":647
+  /* "src/tree/rbt/red_black_tree.pyx":661
  *     ):
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33828,7 +33986,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":648
+    /* "src/tree/rbt/red_black_tree.pyx":662
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -33837,7 +33995,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":647
+    /* "src/tree/rbt/red_black_tree.pyx":661
  *     ):
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33846,7 +34004,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":650
+  /* "src/tree/rbt/red_black_tree.pyx":664
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -33855,25 +34013,25 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":652
+  /* "src/tree/rbt/red_black_tree.pyx":666
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         self._postorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
  *         self._postorder_traversal(node.right_child, result, result_idx)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 666, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":653
+  /* "src/tree/rbt/red_black_tree.pyx":667
  * 
  *         self._postorder_traversal(node.left_child, result, result_idx)
  *         self._postorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
  * 
  *         result[result_idx[0]] = node.key
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 653, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 667, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":655
+  /* "src/tree/rbt/red_black_tree.pyx":669
  *         self._postorder_traversal(node.right_child, result, result_idx)
  * 
  *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
@@ -33884,7 +34042,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
   __pyx_t_4 = (__pyx_v_result_idx[0]);
   *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_4 * __pyx_v_result.strides[0]) )) = __pyx_t_3;
 
-  /* "src/tree/rbt/red_black_tree.pyx":656
+  /* "src/tree/rbt/red_black_tree.pyx":670
  * 
  *         result[result_idx[0]] = node.key
  *         result_idx[0] += 1             # <<<<<<<<<<<<<<
@@ -33894,7 +34052,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
   __pyx_t_5 = 0;
   (__pyx_v_result_idx[__pyx_t_5]) = ((__pyx_v_result_idx[__pyx_t_5]) + 1);
 
-  /* "src/tree/rbt/red_black_tree.pyx":640
+  /* "src/tree/rbt/red_black_tree.pyx":654
  *         self._preorder_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
@@ -33909,7 +34067,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_t
   __pyx_L0:;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":658
+/* "src/tree/rbt/red_black_tree.pyx":672
  *         result_idx[0] += 1
  * 
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -33931,7 +34089,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_inorder_items_traverse", 0);
 
-  /* "src/tree/rbt/red_black_tree.pyx":660
+  /* "src/tree/rbt/red_black_tree.pyx":674
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33949,7 +34107,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":661
+    /* "src/tree/rbt/red_black_tree.pyx":675
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -33958,7 +34116,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":660
+    /* "src/tree/rbt/red_black_tree.pyx":674
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -33967,7 +34125,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":663
+  /* "src/tree/rbt/red_black_tree.pyx":677
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -33976,16 +34134,16 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":665
+  /* "src/tree/rbt/red_black_tree.pyx":679
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         self._inorder_items_traverse(node.left_child, result)             # <<<<<<<<<<<<<<
  *         result.append((node.key, node.value))
  *         self._inorder_items_traverse(node.right_child, result)
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":666
+  /* "src/tree/rbt/red_black_tree.pyx":680
  * 
  *         self._inorder_items_traverse(node.left_child, result)
  *         result.append((node.key, node.value))             # <<<<<<<<<<<<<<
@@ -33994,33 +34152,33 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
 */
   if (unlikely(__pyx_v_result == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 666, __pyx_L1_error)
+    __PYX_ERR(0, 680, __pyx_L1_error)
   }
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 666, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 680, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 666, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 680, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":667
+  /* "src/tree/rbt/red_black_tree.pyx":681
  *         self._inorder_items_traverse(node.left_child, result)
  *         result.append((node.key, node.value))
  *         self._inorder_items_traverse(node.right_child, result)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 667, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 681, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":658
+  /* "src/tree/rbt/red_black_tree.pyx":672
  *         result_idx[0] += 1
  * 
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -34039,7 +34197,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__inorder_ite
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":669
+/* "src/tree/rbt/red_black_tree.pyx":683
  *         self._inorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -34061,7 +34219,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_preorder_items_traverse", 0);
 
-  /* "src/tree/rbt/red_black_tree.pyx":671
+  /* "src/tree/rbt/red_black_tree.pyx":685
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -34079,7 +34237,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":672
+    /* "src/tree/rbt/red_black_tree.pyx":686
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -34088,7 +34246,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":671
+    /* "src/tree/rbt/red_black_tree.pyx":685
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -34097,7 +34255,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":674
+  /* "src/tree/rbt/red_black_tree.pyx":688
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -34106,7 +34264,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":676
+  /* "src/tree/rbt/red_black_tree.pyx":690
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         result.append((node.key, node.value))             # <<<<<<<<<<<<<<
@@ -34115,42 +34273,42 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
 */
   if (unlikely(__pyx_v_result == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 676, __pyx_L1_error)
+    __PYX_ERR(0, 690, __pyx_L1_error)
   }
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 690, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 690, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 690, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 676, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 690, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 676, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 690, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 690, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":677
+  /* "src/tree/rbt/red_black_tree.pyx":691
  * 
  *         result.append((node.key, node.value))
  *         self._preorder_items_traverse(node.left_child, result)             # <<<<<<<<<<<<<<
  *         self._preorder_items_traverse(node.right_child, result)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":678
+  /* "src/tree/rbt/red_black_tree.pyx":692
  *         result.append((node.key, node.value))
  *         self._preorder_items_traverse(node.left_child, result)
  *         self._preorder_items_traverse(node.right_child, result)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 678, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":669
+  /* "src/tree/rbt/red_black_tree.pyx":683
  *         self._inorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -34169,7 +34327,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__preorder_it
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":680
+/* "src/tree/rbt/red_black_tree.pyx":694
  *         self._preorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -34191,7 +34349,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_postorder_items_traverse", 0);
 
-  /* "src/tree/rbt/red_black_tree.pyx":682
+  /* "src/tree/rbt/red_black_tree.pyx":696
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -34209,7 +34367,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":683
+    /* "src/tree/rbt/red_black_tree.pyx":697
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
  *             return             # <<<<<<<<<<<<<<
@@ -34218,7 +34376,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":682
+    /* "src/tree/rbt/red_black_tree.pyx":696
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -34227,7 +34385,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":685
+  /* "src/tree/rbt/red_black_tree.pyx":699
  *             return
  * 
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -34236,25 +34394,25 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
 */
   __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/rbt/red_black_tree.pyx":687
+  /* "src/tree/rbt/red_black_tree.pyx":701
  *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
  * 
  *         self._postorder_items_traverse(node.left_child, result)             # <<<<<<<<<<<<<<
  *         self._postorder_items_traverse(node.right_child, result)
  *         result.append((node.key, node.value))
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 687, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 701, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":688
+  /* "src/tree/rbt/red_black_tree.pyx":702
  * 
  *         self._postorder_items_traverse(node.left_child, result)
  *         self._postorder_items_traverse(node.right_child, result)             # <<<<<<<<<<<<<<
  *         result.append((node.key, node.value))
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 688, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 702, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":689
+  /* "src/tree/rbt/red_black_tree.pyx":703
  *         self._postorder_items_traverse(node.left_child, result)
  *         self._postorder_items_traverse(node.right_child, result)
  *         result.append((node.key, node.value))             # <<<<<<<<<<<<<<
@@ -34263,24 +34421,24 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
 */
   if (unlikely(__pyx_v_result == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 689, __pyx_L1_error)
+    __PYX_ERR(0, 703, __pyx_L1_error)
   }
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 689, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 703, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 689, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 703, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 703, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":680
+  /* "src/tree/rbt/red_black_tree.pyx":694
  *         self._preorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -34299,7 +34457,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__postorder_i
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":691
+/* "src/tree/rbt/red_black_tree.pyx":705
  *         result.append((node.key, node.value))
  * 
  *     cpdef intp_t black_height(self):             # <<<<<<<<<<<<<<
@@ -34344,7 +34502,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_black_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 691, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_black_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_15black_height)) {
         __pyx_t_3 = NULL;
@@ -34367,10 +34525,10 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 691, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 705, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 705, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -34389,7 +34547,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
     #endif
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":693
+  /* "src/tree/rbt/red_black_tree.pyx":707
  *     cpdef intp_t black_height(self):
  *         """Return the black height of the tree"""
  *         if self.root_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -34399,7 +34557,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
   __pyx_t_7 = (__pyx_v_self->__pyx_base.root_idx == -1L);
   if (__pyx_t_7) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":694
+    /* "src/tree/rbt/red_black_tree.pyx":708
  *         """Return the black height of the tree"""
  *         if self.root_idx == NONE_SENTINEL:
  *             return 0             # <<<<<<<<<<<<<<
@@ -34409,7 +34567,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":693
+    /* "src/tree/rbt/red_black_tree.pyx":707
  *     cpdef intp_t black_height(self):
  *         """Return the black height of the tree"""
  *         if self.root_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -34418,18 +34576,18 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":695
+  /* "src/tree/rbt/red_black_tree.pyx":709
  *         if self.root_idx == NONE_SENTINEL:
  *             return 0
  *         return self._calculate_black_height(self.root_idx)             # <<<<<<<<<<<<<<
  * 
  *     cdef intp_t _calculate_black_height(self, intp_t node_idx):
 */
-  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_black_height(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 695, __pyx_L1_error)
+  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_black_height(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 709, __pyx_L1_error)
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":691
+  /* "src/tree/rbt/red_black_tree.pyx":705
  *         result.append((node.key, node.value))
  * 
  *     cpdef intp_t black_height(self):             # <<<<<<<<<<<<<<
@@ -34503,8 +34661,8 @@ static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_14blac
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("black_height", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_black_height(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L1_error)
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_black_height(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 705, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 705, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -34521,7 +34679,7 @@ static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_14blac
   return __pyx_r;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":697
+/* "src/tree/rbt/red_black_tree.pyx":711
  *         return self._calculate_black_height(self.root_idx)
  * 
  *     cdef intp_t _calculate_black_height(self, intp_t node_idx):             # <<<<<<<<<<<<<<
@@ -34538,7 +34696,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":699
+  /* "src/tree/rbt/red_black_tree.pyx":713
  *     cdef intp_t _calculate_black_height(self, intp_t node_idx):
  *         """Calculate black height from a given node to any leaf"""
  *         if node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -34548,7 +34706,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
   __pyx_t_1 = (__pyx_v_node_idx == __pyx_v_self->nil_node_idx);
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":700
+    /* "src/tree/rbt/red_black_tree.pyx":714
  *         """Calculate black height from a given node to any leaf"""
  *         if node_idx == self.nil_node_idx:
  *             return 1             # <<<<<<<<<<<<<<
@@ -34558,7 +34716,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":699
+    /* "src/tree/rbt/red_black_tree.pyx":713
  *     cdef intp_t _calculate_black_height(self, intp_t node_idx):
  *         """Calculate black height from a given node to any leaf"""
  *         if node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
@@ -34567,27 +34725,27 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":701
+  /* "src/tree/rbt/red_black_tree.pyx":715
  *         if node_idx == self.nil_node_idx:
  *             return 1
  *         cdef intp_t left_black_height = self._calculate_black_height(self.rb_nodes[node_idx].left_child)             # <<<<<<<<<<<<<<
  * 
  *         if self._is_black(node_idx):
 */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_black_height(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_black_height(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 715, __pyx_L1_error)
   __pyx_v_left_black_height = __pyx_t_2;
 
-  /* "src/tree/rbt/red_black_tree.pyx":703
+  /* "src/tree/rbt/red_black_tree.pyx":717
  *         cdef intp_t left_black_height = self._calculate_black_height(self.rb_nodes[node_idx].left_child)
  * 
  *         if self._is_black(node_idx):             # <<<<<<<<<<<<<<
  *             return left_black_height + 1
  *         else:
 */
-  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, __pyx_v_node_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 703, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, __pyx_v_node_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 717, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":704
+    /* "src/tree/rbt/red_black_tree.pyx":718
  * 
  *         if self._is_black(node_idx):
  *             return left_black_height + 1             # <<<<<<<<<<<<<<
@@ -34597,7 +34755,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
     __pyx_r = (__pyx_v_left_black_height + 1);
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":703
+    /* "src/tree/rbt/red_black_tree.pyx":717
  *         cdef intp_t left_black_height = self._calculate_black_height(self.rb_nodes[node_idx].left_child)
  * 
  *         if self._is_black(node_idx):             # <<<<<<<<<<<<<<
@@ -34606,7 +34764,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":706
+  /* "src/tree/rbt/red_black_tree.pyx":720
  *             return left_black_height + 1
  *         else:
  *             return left_black_height             # <<<<<<<<<<<<<<
@@ -34618,7 +34776,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
     goto __pyx_L0;
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":697
+  /* "src/tree/rbt/red_black_tree.pyx":711
  *         return self._calculate_black_height(self.root_idx)
  * 
  *     cdef intp_t _calculate_black_height(self, intp_t node_idx):             # <<<<<<<<<<<<<<
@@ -34634,7 +34792,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
   return __pyx_r;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":708
+/* "src/tree/rbt/red_black_tree.pyx":722
  *             return left_black_height
  * 
  *     cpdef tuple statistics(self):             # <<<<<<<<<<<<<<
@@ -34688,7 +34846,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_statistics); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_statistics); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 722, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_17statistics)) {
         __Pyx_XDECREF(__pyx_r);
@@ -34712,10 +34870,10 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 708, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 722, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 708, __pyx_L1_error)
+        if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 722, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -34734,7 +34892,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
     #endif
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":717
+  /* "src/tree/rbt/red_black_tree.pyx":731
  *             (size, tree_height, black_height, max_depth, avg_depth)
  *         """
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -34744,7 +34902,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
   __pyx_t_6 = (__pyx_v_self->__pyx_base._size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":718
+    /* "src/tree/rbt/red_black_tree.pyx":732
  *         """
  *         if self._size == 0:
  *             return (0, 0, 0, 0, 0.0)             # <<<<<<<<<<<<<<
@@ -34756,7 +34914,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
     __pyx_r = __pyx_mstate_global->__pyx_tuple[2];
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":717
+    /* "src/tree/rbt/red_black_tree.pyx":731
  *             (size, tree_height, black_height, max_depth, avg_depth)
  *         """
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -34765,7 +34923,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":720
+  /* "src/tree/rbt/red_black_tree.pyx":734
  *             return (0, 0, 0, 0, 0.0)
  * 
  *         cdef intp_t max_depth = 0             # <<<<<<<<<<<<<<
@@ -34774,7 +34932,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
 */
   __pyx_v_max_depth = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":721
+  /* "src/tree/rbt/red_black_tree.pyx":735
  * 
  *         cdef intp_t max_depth = 0
  *         cdef intp_t node_count = 0             # <<<<<<<<<<<<<<
@@ -34783,7 +34941,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
 */
   __pyx_v_node_count = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":722
+  /* "src/tree/rbt/red_black_tree.pyx":736
  *         cdef intp_t max_depth = 0
  *         cdef intp_t node_count = 0
  *         cdef intp_t total_depth = 0             # <<<<<<<<<<<<<<
@@ -34792,16 +34950,16 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
 */
   __pyx_v_total_depth = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":724
+  /* "src/tree/rbt/red_black_tree.pyx":738
  *         cdef intp_t total_depth = 0
  * 
  *         self._calculate_depths(             # <<<<<<<<<<<<<<
  *             self.root_idx,
  *             0,
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_depths(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx, 0, (&__pyx_v_max_depth), (&__pyx_v_total_depth), (&__pyx_v_node_count)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 724, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_depths(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx, 0, (&__pyx_v_max_depth), (&__pyx_v_total_depth), (&__pyx_v_node_count)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 738, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":732
+  /* "src/tree/rbt/red_black_tree.pyx":746
  *         )
  * 
  *         cdef double avg_depth = <double>total_depth / node_count if node_count > 0 else 0.0             # <<<<<<<<<<<<<<
@@ -34816,7 +34974,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
   }
   __pyx_v_avg_depth = __pyx_t_7;
 
-  /* "src/tree/rbt/red_black_tree.pyx":733
+  /* "src/tree/rbt/red_black_tree.pyx":747
  * 
  *         cdef double avg_depth = <double>total_depth / node_count if node_count > 0 else 0.0
  *         cdef intp_t tree_height = max_depth + 1             # <<<<<<<<<<<<<<
@@ -34825,17 +34983,17 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
 */
   __pyx_v_tree_height = (__pyx_v_max_depth + 1);
 
-  /* "src/tree/rbt/red_black_tree.pyx":734
+  /* "src/tree/rbt/red_black_tree.pyx":748
  *         cdef double avg_depth = <double>total_depth / node_count if node_count > 0 else 0.0
  *         cdef intp_t tree_height = max_depth + 1
  *         cdef intp_t black_height = self.black_height()             # <<<<<<<<<<<<<<
  * 
  *         return (self._size, tree_height, black_height, max_depth, avg_depth)
 */
-  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->black_height(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 734, __pyx_L1_error)
+  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->black_height(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 748, __pyx_L1_error)
   __pyx_v_black_height = __pyx_t_8;
 
-  /* "src/tree/rbt/red_black_tree.pyx":736
+  /* "src/tree/rbt/red_black_tree.pyx":750
  *         cdef intp_t black_height = self.black_height()
  * 
  *         return (self._size, tree_height, black_height, max_depth, avg_depth)             # <<<<<<<<<<<<<<
@@ -34843,28 +35001,28 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
  *     cdef void _calculate_depths(
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyLong_FromSsize_t(__pyx_v_self->__pyx_base._size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 736, __pyx_L1_error)
+  __pyx_t_1 = PyLong_FromSsize_t(__pyx_v_self->__pyx_base._size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_tree_height); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 736, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_tree_height); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_black_height); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 736, __pyx_L1_error)
+  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_black_height); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_max_depth); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 736, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_max_depth); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_avg_depth); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 736, __pyx_L1_error)
+  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_avg_depth); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyTuple_New(5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 736, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 736, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 750, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 736, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 750, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_4) != (0)) __PYX_ERR(0, 736, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_4) != (0)) __PYX_ERR(0, 750, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_3) != (0)) __PYX_ERR(0, 736, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_3) != (0)) __PYX_ERR(0, 750, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_9);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 4, __pyx_t_9) != (0)) __PYX_ERR(0, 736, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 4, __pyx_t_9) != (0)) __PYX_ERR(0, 750, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
@@ -34874,7 +35032,7 @@ static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statist
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":708
+  /* "src/tree/rbt/red_black_tree.pyx":722
  *             return left_black_height
  * 
  *     cpdef tuple statistics(self):             # <<<<<<<<<<<<<<
@@ -34950,7 +35108,7 @@ static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_16stat
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("statistics", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statistics(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statistics(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -34967,7 +35125,7 @@ static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_16stat
   return __pyx_r;
 }
 
-/* "src/tree/rbt/red_black_tree.pyx":738
+/* "src/tree/rbt/red_black_tree.pyx":752
  *         return (self._size, tree_height, black_height, max_depth, avg_depth)
  * 
  *     cdef void _calculate_depths(             # <<<<<<<<<<<<<<
@@ -34983,7 +35141,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":746
+  /* "src/tree/rbt/red_black_tree.pyx":760
  *         intp_t* node_count
  *     ):
  *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -35001,7 +35159,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":747
+    /* "src/tree/rbt/red_black_tree.pyx":761
  *     ):
  *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
@@ -35010,7 +35168,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
 */
     goto __pyx_L0;
 
-    /* "src/tree/rbt/red_black_tree.pyx":746
+    /* "src/tree/rbt/red_black_tree.pyx":760
  *         intp_t* node_count
  *     ):
  *         if node_idx == self.nil_node_idx or node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -35019,7 +35177,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":749
+  /* "src/tree/rbt/red_black_tree.pyx":763
  *             return
  * 
  *         node_count[0] += 1             # <<<<<<<<<<<<<<
@@ -35029,7 +35187,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
   __pyx_t_3 = 0;
   (__pyx_v_node_count[__pyx_t_3]) = ((__pyx_v_node_count[__pyx_t_3]) + 1);
 
-  /* "src/tree/rbt/red_black_tree.pyx":750
+  /* "src/tree/rbt/red_black_tree.pyx":764
  * 
  *         node_count[0] += 1
  *         total_depth[0] += current_depth             # <<<<<<<<<<<<<<
@@ -35039,7 +35197,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
   __pyx_t_3 = 0;
   (__pyx_v_total_depth[__pyx_t_3]) = ((__pyx_v_total_depth[__pyx_t_3]) + __pyx_v_current_depth);
 
-  /* "src/tree/rbt/red_black_tree.pyx":752
+  /* "src/tree/rbt/red_black_tree.pyx":766
  *         total_depth[0] += current_depth
  * 
  *         if current_depth > max_depth[0]:             # <<<<<<<<<<<<<<
@@ -35049,7 +35207,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
   __pyx_t_1 = (__pyx_v_current_depth > (__pyx_v_max_depth[0]));
   if (__pyx_t_1) {
 
-    /* "src/tree/rbt/red_black_tree.pyx":753
+    /* "src/tree/rbt/red_black_tree.pyx":767
  * 
  *         if current_depth > max_depth[0]:
  *             max_depth[0] = current_depth             # <<<<<<<<<<<<<<
@@ -35058,7 +35216,7 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
 */
     (__pyx_v_max_depth[0]) = __pyx_v_current_depth;
 
-    /* "src/tree/rbt/red_black_tree.pyx":752
+    /* "src/tree/rbt/red_black_tree.pyx":766
  *         total_depth[0] += current_depth
  * 
  *         if current_depth > max_depth[0]:             # <<<<<<<<<<<<<<
@@ -35067,25 +35225,25 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
 */
   }
 
-  /* "src/tree/rbt/red_black_tree.pyx":755
+  /* "src/tree/rbt/red_black_tree.pyx":769
  *             max_depth[0] = current_depth
  * 
  *         self._calculate_depths(             # <<<<<<<<<<<<<<
  *             self.rb_nodes[node_idx].left_child,
  *             current_depth + 1,
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_depths(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child, (__pyx_v_current_depth + 1), __pyx_v_max_depth, __pyx_v_total_depth, __pyx_v_node_count); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 755, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_depths(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).left_child, (__pyx_v_current_depth + 1), __pyx_v_max_depth, __pyx_v_total_depth, __pyx_v_node_count); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 769, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":762
+  /* "src/tree/rbt/red_black_tree.pyx":776
  *             node_count
  *         )
  *         self._calculate_depths(             # <<<<<<<<<<<<<<
  *             self.rb_nodes[node_idx].right_child,
  *             current_depth + 1,
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_depths(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).right_child, (__pyx_v_current_depth + 1), __pyx_v_max_depth, __pyx_v_total_depth, __pyx_v_node_count); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 762, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_depths(__pyx_v_self, (__pyx_v_self->rb_nodes[__pyx_v_node_idx]).right_child, (__pyx_v_current_depth + 1), __pyx_v_max_depth, __pyx_v_total_depth, __pyx_v_node_count); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 776, __pyx_L1_error)
 
-  /* "src/tree/rbt/red_black_tree.pyx":738
+  /* "src/tree/rbt/red_black_tree.pyx":752
  *         return (self._size, tree_height, black_height, max_depth, avg_depth)
  * 
  *     cdef void _calculate_depths(             # <<<<<<<<<<<<<<
@@ -38258,28 +38416,28 @@ __Pyx_RefNannySetupContext("PyInit_red_black_tree", 0);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_build_tree, __pyx_t_5) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":691
+  /* "src/tree/rbt/red_black_tree.pyx":705
  *         result.append((node.key, node.value))
  * 
  *     cpdef intp_t black_height(self):             # <<<<<<<<<<<<<<
  *         """Return the black height of the tree"""
  *         if self.root_idx == NONE_SENTINEL:
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_15black_height, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree_black_height, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[26])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_15black_height, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree_black_height, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[26])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 705, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_black_height, __pyx_t_5) < 0) __PYX_ERR(0, 691, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_black_height, __pyx_t_5) < 0) __PYX_ERR(0, 705, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/rbt/red_black_tree.pyx":708
+  /* "src/tree/rbt/red_black_tree.pyx":722
  *             return left_black_height
  * 
  *     cpdef tuple statistics(self):             # <<<<<<<<<<<<<<
  *         """
  *         Return tree statistics
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_17statistics, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree_statistics, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[27])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 708, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_17statistics, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree_statistics, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[27])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_statistics, __pyx_t_5) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_statistics, __pyx_t_5) < 0) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "(tree fragment)":1
@@ -38661,14 +38819,14 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "src/tree/rbt/red_black_tree.pyx":718
+  /* "src/tree/rbt/red_black_tree.pyx":732
  *         """
  *         if self._size == 0:
  *             return (0, 0, 0, 0, 0.0)             # <<<<<<<<<<<<<<
  * 
  *         cdef intp_t max_depth = 0
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_float_0_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_float_0_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 732, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_RefNannyFinishContext();
@@ -38851,12 +39009,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[25] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_rbt_red_black_tree_pyx, __pyx_mstate->__pyx_n_u_build_tree, __pyx_k_A_3avS_1A_AQ_3avS_A_QfBa_d_Ba_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[25])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 691, 32};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 705, 32};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[26] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_rbt_red_black_tree_pyx, __pyx_mstate->__pyx_n_u_black_height, __pyx_k_A_4z_A_1_t_1D, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[26])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 708, 130};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 722, 130};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[27] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_rbt_red_black_tree_pyx, __pyx_mstate->__pyx_n_u_statistics, __pyx_k_A_4wc_Cs_S_a_Q_Q_Q_BnKrQXXY_Ba_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[27])) goto bad;
   }
