@@ -108,6 +108,43 @@ cdef class RedBlackTree(_BaseTree):
         
         return self.rb_nodes[idx].value
 
+    cpdef np.ndarray get_multiple(self, np.ndarray keys):
+        cdef intp_t n = len(keys)
+        if n == 0:
+            return np.array([], dtype=np.int64)
+
+        # sort for cache friendly traversal
+        cdef intp_t[:] sorted_indices = np.argsort(keys)
+        cdef intp_t[:] sorted_keys = keys[sorted_indices]
+        cdef intp_t[:] result
+
+        cdef intp_t original_pos
+        for i in range(n):
+            idx = self._find_node(sorted_keys[i])
+            original_pos = sorted_indices[i]
+            result[original_pos] = self.rb_nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
+        return np.asarray(result)
+
+    cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+        cdef intp_t n = len(keys)
+        cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
+        cdef intp_t i, idx
+
+        for i in range(n):
+            idx = self._find_node(keys[i])
+            result[i] = 1 if idx != NONE_SENTINEL else 0
+
+        return np.asarray(result, dtype=bool)
+
+    cpdef intp_t delete_multiple(self, np.ndarray keys):
+        cdef intp_t deleted_count = 0
+        cdef intp_t i, n = len(keys)
+
+        for i in range(n):
+            if self._delete_node(keys[i]):
+                deleted_count += 1
+        return deleted_count
+
     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
         if len(keys) != len(values):
             raise ValueError("Keys and values must have same length")

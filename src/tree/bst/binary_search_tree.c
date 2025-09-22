@@ -1997,7 +1997,6 @@ struct __pyx_memoryviewslice_obj {
 */
 
 struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree {
-  __pyx_t_3src_8typedefs_intp_t (*delete_multiple)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, int __pyx_skip_dispatch);
   int (*insert)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch);
   int (*__pyx_delete)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch);
   __pyx_t_3src_8typedefs_intp_t (*_allocate_node)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *);
@@ -2005,8 +2004,6 @@ struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree {
   int (*is_empty)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch);
   __pyx_t_3src_8typedefs_intp_t (*get)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch);
   int (*contains)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch);
-  PyArrayObject *(*get_multiple)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, int __pyx_skip_dispatch);
-  PyArrayObject *(*contains_multiple)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, int __pyx_skip_dispatch);
   PyArrayObject *(*keys)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch);
   PyArrayObject *(*values)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch);
   PyObject *(*items)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch);
@@ -2019,6 +2016,9 @@ struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree {
   PyObject *(*range_query)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch);
   __pyx_t_3src_8typedefs_intp_t (*_count_range)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t);
   void (*_range_query_fill)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __Pyx_memviewslice, __Pyx_memviewslice, __pyx_t_3src_8typedefs_intp_t *);
+  PyArrayObject *(*get_multiple)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch);
+  __pyx_t_3src_8typedefs_intp_t (*delete_multiple)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch);
+  PyArrayObject *(*contains_multiple)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch);
   void (*build_tree)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, PyObject *, int __pyx_skip_dispatch);
   __pyx_t_3src_8typedefs_intp_t (*_find_node)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t);
   __pyx_t_3src_8typedefs_intp_t (*_insert_node)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t);
@@ -3345,7 +3345,6 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayObject *__pyx_v_self); /* proto*/
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *__pyx_v_self); /* proto*/
 static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__pyx_v_self); /* proto*/
-static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
 static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value, int __pyx_skip_dispatch); /* proto*/
 static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
 static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__allocate_node(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto*/
@@ -3353,8 +3352,6 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
 static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
 static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, int __pyx_skip_dispatch); /* proto*/
-static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
-static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
 static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_keys(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_values(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
@@ -3367,6 +3364,9 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
 static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_query(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key, int __pyx_skip_dispatch); /* proto*/
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__count_range(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key); /* proto*/
 static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query_fill(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key, __Pyx_memviewslice __pyx_v_keys, __Pyx_memviewslice __pyx_v_values, __pyx_t_3src_8typedefs_intp_t *__pyx_v_idx); /* proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
 static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_keys, CYTHON_UNUSED PyObject *__pyx_v_values, int __pyx_skip_dispatch); /* proto*/
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__find_node(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto*/
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__insert_node(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED __pyx_t_3src_8typedefs_intp_t __pyx_v_key, CYTHON_UNUSED __pyx_t_3src_8typedefs_intp_t __pyx_v_value); /* proto*/
@@ -3379,6 +3379,9 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_t
 static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_items_traverse(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, CYTHON_UNUSED PyObject *__pyx_v_result); /* proto*/
 static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_items_traverse(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, CYTHON_UNUSED PyObject *__pyx_v_result); /* proto*/
 static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_items_traverse(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, CYTHON_UNUSED PyObject *__pyx_v_result); /* proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch); /* proto*/
 static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values, int __pyx_skip_dispatch); /* proto*/
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__find_node(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto*/
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__insert_node(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value); /* proto*/
@@ -3488,7 +3491,7 @@ static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_ImportError;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_[] = ": ";
-static const char __pyx_k_A[] = "\320\004&\320&A\300\021\330\010\016\320\016!\240\021\240!";
+static const char __pyx_k_A[] = "\200A\330\010\016\320\016!\240\021\240!";
 static const char __pyx_k_O[] = "O";
 static const char __pyx_k_Q[] = "\200\001\330\004\n\210+\220Q";
 static const char __pyx_k_c[] = "c";
@@ -3501,6 +3504,7 @@ static const char __pyx_k__6[] = "?";
 static const char __pyx_k_gc[] = "gc";
 static const char __pyx_k_id[] = "id";
 static const char __pyx_k_np[] = "np";
+static const char __pyx_k_A_2[] = "\320\004&\320&A\300\021\330\010\016\320\016!\240\021\240!";
 static const char __pyx_k_A_t[] = "\200A\340\010\017\210t\220>\240\021";
 static const char __pyx_k_Key[] = "Key ";
 static const char __pyx_k_abc[] = "abc";
@@ -3646,9 +3650,9 @@ static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_A_4wc_2V1D_b_XV2Q_r[] = "\200A\340\010\013\2104\210w\220c\230\021\330\014\023\2202\220V\2301\230D\240\006\240b\250\001\340\010 \240\002\240&\250\001\250\024\250X\260V\2702\270Q\330\010!\240\021\340\010\014\320\014 \240\001\240\024\240[\260\010\270\001\270\021\330\010\017\210r\220\030\230\021\230!";
+static const char __pyx_k_A_A_3aq_E_aq_t_Qa_q[] = "\200A\360\022\000\t%\240A\330\010\033\2303\230a\230q\340\010\014\210E\220\025\220a\220q\330\014\017\210t\220=\240\001\240\024\240Q\240a\330\020!\240\021\340\010\017\210q";
 static const char __pyx_k_BaseTree_build_tree[] = "_BaseTree.build_tree";
 static const char __pyx_k_NotImplementedError[] = "NotImplementedError";
-static const char __pyx_k_Q_A_3aq_E_aq_t_Qa_q[] = "\320\004-\250Q\360\022\000\t%\240A\330\010\033\2303\230a\230q\340\010\014\210E\220\025\220a\220q\330\014\017\210t\220=\240\001\240\024\240Q\240a\330\020!\240\021\340\010\017\210q";
 static const char __pyx_k_BaseTree_range_query[] = "_BaseTree.range_query";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_A_4wc_2V1D_b_XV2Q_k_r[] = "\200A\340\010\013\2104\210w\220c\230\021\330\014\023\2202\220V\2301\230D\240\006\240b\250\001\340\010 \240\002\240&\250\001\250\024\250X\260V\2702\270Q\330\010!\240\021\340\010\014\320\014!\240\021\240$\240k\260\030\270\021\270!\330\010\017\210r\220\030\230\021\230!";
@@ -3673,18 +3677,21 @@ static const char __pyx_k_Index_out_of_bounds_axis_d[] = "Index out of bounds (a
 static const char __pyx_k_BinarySearchTree_build_tree[] = "BinarySearchTree.build_tree";
 static const char __pyx_k_Step_may_not_be_zero_axis_d[] = "Step may not be zero (axis %d)";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
+static const char __pyx_k_BinarySearchTree_get_multiple[] = "BinarySearchTree.get_multiple";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
+static const char __pyx_k_A_1A_BfAS_b_E_aq_k_aq_5_T_7q_r[] = "\200A\360\024\000\t\031\230\003\2301\230A\330\010$\240B\240f\250A\250S\260\006\260b\270\001\360\006\000\t\r\210E\220\025\220a\220q\330\014\022\220$\220k\240\021\240$\240a\240q\330\014\022\220!\2205\230\005\230T\240\023\320$7\260q\340\010\017\210r\220\030\230\021\230(\240&\250\001";
 static const char __pyx_k_A_3avS_1A_AQ_gRs_1_d_Ba_q_HAV6[] = "\320\004&\320&A\300\021\360\026\000\t\014\2103\210a\210v\220S\230\003\2301\230A\330\014\022\220*\230A\230Q\340\010\032\230$\230g\240R\240s\250!\2501\330\010\016\210d\220*\230B\230a\330\014\020\220\017\230q\340\010\"\240\"\240H\250A\250V\2606\270\022\2701\330\010\"\240\"\240H\250A\250X\260V\2702\270Q\330\010\030\230\003\2301\230A\360\006\000\t\r\210E\220\025\220a\220q\330\014\020\220\r\230Q\230h\240a\240t\2508\2601\260A";
 static const char __pyx_k_Author_Just_van_der_Kroft_This[] = "\nAuthor: Just van der Kroft\n\nThis code utilizes some CPU-level compiler optimization hints.\n\nLIKELY/UNLIKELY are used for CPU branch prediction optimization. The CPU\npre-loads instructions for the likely path, reducing pipeline stalls.\n\nPREFETCH_READ/_WRITE are used for memory hierarchy optimization. This brings\ndata from RAM into L1/L2/L3 cache, and should reduce memory access latency.\n\nSee also\nhttps://stackoverflow.com/questions/109710/how-do-the-likely-unlikely-macros-in-the-linux-kernel-work-and-what-is-their-ben. # noqa: E501\nhttp://blog.man7.org/2012/10/how-much-do-builtinexpect-likely-and.html\n";
-static const char __pyx_k_a2_1A_2S_2V1D_b_2Rq_b_as_U_1_d[] = "\320\004.\250a\3602\000\t\031\230\003\2301\230A\330\010\013\2102\210S\220\001\330\014\023\2202\220V\2301\230D\240\006\240b\250\001\360\n\000\t\014\2102\210R\210q\330\014\026\220b\230\006\230a\230s\240&\250\002\250!\330\014\020\220\005\220U\230!\2301\330\020\026\220d\230+\240Q\240d\250!\2501\330\020\027\220q\230\005\230T\240\026\240q\250\004\250J\260d\270#\320=P\320PQ\330\014\023\2202\220X\230Q\230a\360\010\000\t)\250\002\250(\260!\2601\330\010%\240T\250\021\250!\330\010\022\220\"\220K\230q\240\001\360\006\000\t\r\210E\220\025\220a\220q\330\014\022\220$\220k\240\021\240+\250Q\250a\330\014\033\230>\250\021\250!\330\014\023\2201\320\024$\240D\250\006\250a\250t\260:\270T\300\023\320DW\320WX\330\010\017\210r\220\030\230\021\230!";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
-static const char __pyx_k_31_1A_BfAS_b_E_aq_k_aq_5_T_7q_r[] = "\320\0043\2601\360\024\000\t\031\230\003\2301\230A\330\010$\240B\240f\250A\250S\260\006\260b\270\001\360\006\000\t\r\210E\220\025\220a\220q\330\014\022\220$\220k\240\021\240$\240a\240q\330\014\022\220!\2205\230\005\230T\240\023\320$7\260q\340\010\017\210r\220\030\230\021\230(\240&\250\001";
+static const char __pyx_k_A_1A_2S_2V1D_b_1_T_Kq_E_aq_k_Qa[] = "\200A\360,\000\t\031\230\003\2301\230A\330\010\013\2102\210S\220\001\330\014\023\2202\220V\2301\230D\240\006\240b\250\001\360\006\000\t)\250\002\250(\260!\2601\330\010%\240T\250\021\250!\330\010\022\220\"\220K\230q\240\001\360\006\000\t\r\210E\220\025\220a\220q\330\014\022\220$\220k\240\021\240+\250Q\250a\330\014\033\230>\250\021\250!\330\014\023\2201\320\024$\240D\250\006\250a\250t\260:\270T\300\023\320DW\320WX\330\010\017\210r\220\030\230\021\230!";
 static const char __pyx_k_Subclasses_must_implement__find[] = "Subclasses must implement _find_node";
 static const char __pyx_k_src_tree_bst_binary_search_tree[] = "src.tree.bst.binary_search_tree";
 static const char __pyx_k_A_4wc_BfAT_r_G1_D_Qd_Ya_6_A_BfAT[] = "\200A\360 \000\t\014\2104\210w\220c\230\021\330\014\024\220B\220f\230A\230T\240\026\240r\250\021\330\014\024\220G\2301\340\010\034\230D\240\r\250Q\250d\260+\270Y\300a\340\010\013\2106\220\023\220A\330\014\024\220B\220f\230A\230T\240\026\240r\250\021\330\014\024\220G\2301\340\010\036\230b\240\006\240a\240w\250f\260B\260a\330\010 \240\002\240&\250\001\250\027\260\006\260b\270\001\330\010\032\230!\340\010\014\320\014\036\230a\230t\240;\250i\260y\300\006\300h\310a\310q\330\010\020\220\002\220(\230!\2307\240\"\240H\250A\250Q";
 static const char __pyx_k_All_dimensions_preceding_dimensi[] = "All dimensions preceding dimension %d must be indexed and not sliced";
 static const char __pyx_k_BinarySearchTree___reduce_cython[] = "BinarySearchTree.__reduce_cython__";
 static const char __pyx_k_BinarySearchTree___setstate_cyth[] = "BinarySearchTree.__setstate_cython__";
+static const char __pyx_k_BinarySearchTree_contains_multip[] = "BinarySearchTree.contains_multiple";
+static const char __pyx_k_BinarySearchTree_delete_multiple[] = "BinarySearchTree.delete_multiple";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
 static const char __pyx_k_Cannot_assign_to_read_only_memor[] = "Cannot assign to read-only memoryview";
@@ -3698,6 +3705,9 @@ static const char __pyx_k_Keys_and_values_must_have_same_l[] = "Keys and values 
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
 static const char __pyx_k_Out_of_bounds_on_buffer_access_a[] = "Out of bounds on buffer access (axis ";
 static const char __pyx_k_Subclass_must_implement_build_tr[] = "Subclass must implement build_tree";
+static const char __pyx_k_Subclass_must_implement_contains[] = "Subclass must implement contains_multiple";
+static const char __pyx_k_Subclass_must_implement_delete_m[] = "Subclass must implement delete_multiple";
+static const char __pyx_k_Subclass_must_implement_get_mult[] = "Subclass must implement get_multiple";
 static const char __pyx_k_Subclasses_must_implement__delet[] = "Subclasses must implement _delete_node";
 static const char __pyx_k_Subclasses_must_implement__inord[] = "Subclasses must implement _inorder_traversal";
 static const char __pyx_k_Subclasses_must_implement__inser[] = "Subclasses must implement _insert_node";
@@ -3765,30 +3775,33 @@ static int __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_8__bool__(st
 static void __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_10__dealloc__(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
 static int __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_12__setitem__(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value); /* proto */
 static int __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_14__delitem__(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18insert(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20delete(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_empty(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26contains(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34values(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48postorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50range_query(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16insert(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18delete(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20is_empty(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22get(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24contains(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26keys(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28values(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32inorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34preorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36postorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44range_query(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyArrayObject *__pyx_v_keys); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyArrayObject *__pyx_v_keys); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyArrayObject *__pyx_v_keys); /* proto */
 static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_52build_tree(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values); /* proto */
 static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_54__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_56__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_6build_tree(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_8__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_10__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_3src_4tree_3bst_18binary_search_tree__BaseTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_3src_4tree_3bst_18binary_search_tree_BinarySearchTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3864,8 +3877,8 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[2];
-  PyObject *__pyx_codeobj_tab[24];
-  PyObject *__pyx_string_tab[206];
+  PyObject *__pyx_codeobj_tab[27];
+  PyObject *__pyx_string_tab[212];
   PyObject *__pyx_int_0;
   PyObject *__pyx_int_1;
   PyObject *__pyx_int_112105877;
@@ -3939,182 +3952,188 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_BinarySearchTree___reduce_cython __pyx_string_tab[27]
 #define __pyx_n_u_BinarySearchTree___setstate_cyth __pyx_string_tab[28]
 #define __pyx_n_u_BinarySearchTree_build_tree __pyx_string_tab[29]
-#define __pyx_kp_u_Buffer_view_does_not_expose_stri __pyx_string_tab[30]
-#define __pyx_kp_u_Can_only_create_a_buffer_that_is __pyx_string_tab[31]
-#define __pyx_kp_u_Cannot_assign_to_read_only_memor __pyx_string_tab[32]
-#define __pyx_kp_u_Cannot_create_writable_memory_vi __pyx_string_tab[33]
-#define __pyx_kp_u_Cannot_index_with_type __pyx_string_tab[34]
-#define __pyx_kp_u_Cannot_transpose_memoryview_with __pyx_string_tab[35]
-#define __pyx_kp_u_Dimension_d_is_not_direct __pyx_string_tab[36]
-#define __pyx_n_u_Ellipsis __pyx_string_tab[37]
-#define __pyx_kp_u_Empty_shape_tuple_for_cython_arr __pyx_string_tab[38]
-#define __pyx_kp_u_Failed_to_allocate_memory __pyx_string_tab[39]
-#define __pyx_kp_u_Failed_to_resize __pyx_string_tab[40]
-#define __pyx_n_u_ImportError __pyx_string_tab[41]
-#define __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 __pyx_string_tab[42]
-#define __pyx_n_u_IndexError __pyx_string_tab[43]
-#define __pyx_kp_u_Index_out_of_bounds_axis_d __pyx_string_tab[44]
-#define __pyx_kp_u_Indirect_dimensions_not_supporte __pyx_string_tab[45]
-#define __pyx_kp_u_Invalid_mode_expected_c_or_fortr __pyx_string_tab[46]
-#define __pyx_kp_u_Invalid_shape_in_axis __pyx_string_tab[47]
-#define __pyx_kp_u_Key __pyx_string_tab[48]
-#define __pyx_n_u_KeyError __pyx_string_tab[49]
-#define __pyx_kp_u_Keys_and_values_must_have_same_l __pyx_string_tab[50]
-#define __pyx_n_u_MemoryError __pyx_string_tab[51]
-#define __pyx_kp_u_MemoryView_of __pyx_string_tab[52]
-#define __pyx_n_u_NotImplementedError __pyx_string_tab[53]
-#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[54]
-#define __pyx_n_b_O __pyx_string_tab[55]
-#define __pyx_kp_u_Out_of_bounds_on_buffer_access_a __pyx_string_tab[56]
-#define __pyx_n_u_PickleError __pyx_string_tab[57]
-#define __pyx_n_u_Sequence __pyx_string_tab[58]
-#define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[59]
-#define __pyx_kp_u_Subclass_must_implement_build_tr __pyx_string_tab[60]
-#define __pyx_kp_u_Subclasses_must_implement__delet __pyx_string_tab[61]
-#define __pyx_kp_u_Subclasses_must_implement__find __pyx_string_tab[62]
-#define __pyx_kp_u_Subclasses_must_implement__inord __pyx_string_tab[63]
-#define __pyx_kp_u_Subclasses_must_implement__inord_2 __pyx_string_tab[64]
-#define __pyx_kp_u_Subclasses_must_implement__inord_3 __pyx_string_tab[65]
-#define __pyx_kp_u_Subclasses_must_implement__inser __pyx_string_tab[66]
-#define __pyx_kp_u_Subclasses_must_implement__posto __pyx_string_tab[67]
-#define __pyx_kp_u_Subclasses_must_implement__posto_2 __pyx_string_tab[68]
-#define __pyx_kp_u_Subclasses_must_implement__preor __pyx_string_tab[69]
-#define __pyx_kp_u_Subclasses_must_implement__preor_2 __pyx_string_tab[70]
-#define __pyx_kp_u_Subclasses_must_implement__resiz __pyx_string_tab[71]
-#define __pyx_n_u_TypeError __pyx_string_tab[72]
-#define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[73]
-#define __pyx_n_u_ValueError __pyx_string_tab[74]
-#define __pyx_n_u_View_MemoryView __pyx_string_tab[75]
-#define __pyx_kp_u__2 __pyx_string_tab[76]
-#define __pyx_kp_u__3 __pyx_string_tab[77]
-#define __pyx_kp_u__4 __pyx_string_tab[78]
-#define __pyx_kp_u__5 __pyx_string_tab[79]
-#define __pyx_kp_u__6 __pyx_string_tab[80]
-#define __pyx_n_u_abc __pyx_string_tab[81]
-#define __pyx_kp_u_add_note __pyx_string_tab[82]
-#define __pyx_n_u_allocate_buffer __pyx_string_tab[83]
-#define __pyx_kp_u_and __pyx_string_tab[84]
-#define __pyx_n_u_argsort __pyx_string_tab[85]
-#define __pyx_n_u_array __pyx_string_tab[86]
-#define __pyx_n_u_asarray __pyx_string_tab[87]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[88]
-#define __pyx_kp_u_at_0x __pyx_string_tab[89]
-#define __pyx_n_u_base __pyx_string_tab[90]
-#define __pyx_n_u_build_tree __pyx_string_tab[91]
-#define __pyx_n_u_c __pyx_string_tab[92]
-#define __pyx_n_u_class __pyx_string_tab[93]
-#define __pyx_n_u_class_getitem __pyx_string_tab[94]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[95]
-#define __pyx_kp_u_collections_abc __pyx_string_tab[96]
-#define __pyx_n_u_contains __pyx_string_tab[97]
-#define __pyx_n_u_contains_multiple __pyx_string_tab[98]
-#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[99]
-#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[100]
-#define __pyx_n_u_count __pyx_string_tab[101]
-#define __pyx_n_u_delete __pyx_string_tab[102]
-#define __pyx_n_u_delete_multiple __pyx_string_tab[103]
-#define __pyx_n_u_dict __pyx_string_tab[104]
-#define __pyx_kp_u_disable __pyx_string_tab[105]
-#define __pyx_n_u_dtype __pyx_string_tab[106]
-#define __pyx_n_u_dtype_is_object __pyx_string_tab[107]
-#define __pyx_n_u_empty __pyx_string_tab[108]
-#define __pyx_n_u_empty_like __pyx_string_tab[109]
-#define __pyx_kp_u_enable __pyx_string_tab[110]
-#define __pyx_n_u_encode __pyx_string_tab[111]
-#define __pyx_n_u_enumerate __pyx_string_tab[112]
-#define __pyx_n_u_error __pyx_string_tab[113]
-#define __pyx_n_u_flags __pyx_string_tab[114]
-#define __pyx_n_u_format __pyx_string_tab[115]
-#define __pyx_n_u_fortran __pyx_string_tab[116]
-#define __pyx_n_u_func __pyx_string_tab[117]
-#define __pyx_kp_u_gc __pyx_string_tab[118]
-#define __pyx_n_u_get __pyx_string_tab[119]
-#define __pyx_n_u_get_multiple __pyx_string_tab[120]
-#define __pyx_n_u_getstate __pyx_string_tab[121]
-#define __pyx_kp_u_got __pyx_string_tab[122]
-#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[123]
-#define __pyx_n_u_id __pyx_string_tab[124]
-#define __pyx_n_u_import __pyx_string_tab[125]
-#define __pyx_n_u_index __pyx_string_tab[126]
-#define __pyx_n_u_initial_capacity __pyx_string_tab[127]
-#define __pyx_n_u_initializing __pyx_string_tab[128]
-#define __pyx_n_u_inorder __pyx_string_tab[129]
-#define __pyx_n_u_inorder_items __pyx_string_tab[130]
-#define __pyx_n_u_insert __pyx_string_tab[131]
-#define __pyx_n_u_int64 __pyx_string_tab[132]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[133]
-#define __pyx_n_u_is_empty __pyx_string_tab[134]
-#define __pyx_kp_u_isenabled __pyx_string_tab[135]
-#define __pyx_n_u_items __pyx_string_tab[136]
-#define __pyx_n_u_itemsize __pyx_string_tab[137]
-#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[138]
-#define __pyx_n_u_key __pyx_string_tab[139]
-#define __pyx_n_u_keys __pyx_string_tab[140]
-#define __pyx_kp_u_list_np_ndarray __pyx_string_tab[141]
-#define __pyx_n_u_main __pyx_string_tab[142]
-#define __pyx_n_u_max_key __pyx_string_tab[143]
-#define __pyx_n_u_memview __pyx_string_tab[144]
-#define __pyx_n_u_min_key __pyx_string_tab[145]
-#define __pyx_n_u_mode __pyx_string_tab[146]
-#define __pyx_n_u_module __pyx_string_tab[147]
-#define __pyx_n_u_name __pyx_string_tab[148]
-#define __pyx_n_u_name_2 __pyx_string_tab[149]
-#define __pyx_n_u_ndim __pyx_string_tab[150]
-#define __pyx_n_u_new __pyx_string_tab[151]
-#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[152]
-#define __pyx_kp_u_not_found __pyx_string_tab[153]
-#define __pyx_n_u_np __pyx_string_tab[154]
-#define __pyx_n_u_numpy __pyx_string_tab[155]
-#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[156]
-#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[157]
-#define __pyx_n_u_obj __pyx_string_tab[158]
-#define __pyx_kp_u_object __pyx_string_tab[159]
-#define __pyx_n_u_pack __pyx_string_tab[160]
-#define __pyx_n_u_pickle __pyx_string_tab[161]
-#define __pyx_n_u_pop __pyx_string_tab[162]
-#define __pyx_n_u_postorder __pyx_string_tab[163]
-#define __pyx_n_u_postorder_items __pyx_string_tab[164]
-#define __pyx_n_u_preorder __pyx_string_tab[165]
-#define __pyx_n_u_preorder_items __pyx_string_tab[166]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[167]
-#define __pyx_n_u_pyx_state __pyx_string_tab[168]
-#define __pyx_n_u_pyx_type __pyx_string_tab[169]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[170]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[171]
-#define __pyx_n_u_qualname __pyx_string_tab[172]
-#define __pyx_n_u_range __pyx_string_tab[173]
-#define __pyx_n_u_range_query __pyx_string_tab[174]
-#define __pyx_n_u_reduce __pyx_string_tab[175]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[176]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[177]
-#define __pyx_n_u_register __pyx_string_tab[178]
-#define __pyx_n_u_self __pyx_string_tab[179]
-#define __pyx_n_u_set_name __pyx_string_tab[180]
-#define __pyx_n_u_setstate __pyx_string_tab[181]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[182]
-#define __pyx_n_u_shape __pyx_string_tab[183]
-#define __pyx_n_u_size __pyx_string_tab[184]
-#define __pyx_n_u_spec __pyx_string_tab[185]
-#define __pyx_kp_u_src_tree__base_tree_pxi __pyx_string_tab[186]
-#define __pyx_n_u_src_tree_bst_binary_search_tree __pyx_string_tab[187]
-#define __pyx_kp_u_src_tree_bst_binary_search_tree_2 __pyx_string_tab[188]
-#define __pyx_n_u_start __pyx_string_tab[189]
-#define __pyx_n_u_step __pyx_string_tab[190]
-#define __pyx_n_u_stop __pyx_string_tab[191]
-#define __pyx_kp_u_strided_and_direct __pyx_string_tab[192]
-#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[193]
-#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[194]
-#define __pyx_kp_u_stringsource __pyx_string_tab[195]
-#define __pyx_n_u_struct __pyx_string_tab[196]
-#define __pyx_n_u_test __pyx_string_tab[197]
-#define __pyx_n_u_uint8 __pyx_string_tab[198]
-#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[199]
-#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[200]
-#define __pyx_n_u_unpack __pyx_string_tab[201]
-#define __pyx_n_u_update __pyx_string_tab[202]
-#define __pyx_n_u_value __pyx_string_tab[203]
-#define __pyx_n_u_values __pyx_string_tab[204]
-#define __pyx_n_u_x __pyx_string_tab[205]
+#define __pyx_n_u_BinarySearchTree_contains_multip __pyx_string_tab[30]
+#define __pyx_n_u_BinarySearchTree_delete_multiple __pyx_string_tab[31]
+#define __pyx_n_u_BinarySearchTree_get_multiple __pyx_string_tab[32]
+#define __pyx_kp_u_Buffer_view_does_not_expose_stri __pyx_string_tab[33]
+#define __pyx_kp_u_Can_only_create_a_buffer_that_is __pyx_string_tab[34]
+#define __pyx_kp_u_Cannot_assign_to_read_only_memor __pyx_string_tab[35]
+#define __pyx_kp_u_Cannot_create_writable_memory_vi __pyx_string_tab[36]
+#define __pyx_kp_u_Cannot_index_with_type __pyx_string_tab[37]
+#define __pyx_kp_u_Cannot_transpose_memoryview_with __pyx_string_tab[38]
+#define __pyx_kp_u_Dimension_d_is_not_direct __pyx_string_tab[39]
+#define __pyx_n_u_Ellipsis __pyx_string_tab[40]
+#define __pyx_kp_u_Empty_shape_tuple_for_cython_arr __pyx_string_tab[41]
+#define __pyx_kp_u_Failed_to_allocate_memory __pyx_string_tab[42]
+#define __pyx_kp_u_Failed_to_resize __pyx_string_tab[43]
+#define __pyx_n_u_ImportError __pyx_string_tab[44]
+#define __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 __pyx_string_tab[45]
+#define __pyx_n_u_IndexError __pyx_string_tab[46]
+#define __pyx_kp_u_Index_out_of_bounds_axis_d __pyx_string_tab[47]
+#define __pyx_kp_u_Indirect_dimensions_not_supporte __pyx_string_tab[48]
+#define __pyx_kp_u_Invalid_mode_expected_c_or_fortr __pyx_string_tab[49]
+#define __pyx_kp_u_Invalid_shape_in_axis __pyx_string_tab[50]
+#define __pyx_kp_u_Key __pyx_string_tab[51]
+#define __pyx_n_u_KeyError __pyx_string_tab[52]
+#define __pyx_kp_u_Keys_and_values_must_have_same_l __pyx_string_tab[53]
+#define __pyx_n_u_MemoryError __pyx_string_tab[54]
+#define __pyx_kp_u_MemoryView_of __pyx_string_tab[55]
+#define __pyx_n_u_NotImplementedError __pyx_string_tab[56]
+#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[57]
+#define __pyx_n_b_O __pyx_string_tab[58]
+#define __pyx_kp_u_Out_of_bounds_on_buffer_access_a __pyx_string_tab[59]
+#define __pyx_n_u_PickleError __pyx_string_tab[60]
+#define __pyx_n_u_Sequence __pyx_string_tab[61]
+#define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[62]
+#define __pyx_kp_u_Subclass_must_implement_build_tr __pyx_string_tab[63]
+#define __pyx_kp_u_Subclass_must_implement_contains __pyx_string_tab[64]
+#define __pyx_kp_u_Subclass_must_implement_delete_m __pyx_string_tab[65]
+#define __pyx_kp_u_Subclass_must_implement_get_mult __pyx_string_tab[66]
+#define __pyx_kp_u_Subclasses_must_implement__delet __pyx_string_tab[67]
+#define __pyx_kp_u_Subclasses_must_implement__find __pyx_string_tab[68]
+#define __pyx_kp_u_Subclasses_must_implement__inord __pyx_string_tab[69]
+#define __pyx_kp_u_Subclasses_must_implement__inord_2 __pyx_string_tab[70]
+#define __pyx_kp_u_Subclasses_must_implement__inord_3 __pyx_string_tab[71]
+#define __pyx_kp_u_Subclasses_must_implement__inser __pyx_string_tab[72]
+#define __pyx_kp_u_Subclasses_must_implement__posto __pyx_string_tab[73]
+#define __pyx_kp_u_Subclasses_must_implement__posto_2 __pyx_string_tab[74]
+#define __pyx_kp_u_Subclasses_must_implement__preor __pyx_string_tab[75]
+#define __pyx_kp_u_Subclasses_must_implement__preor_2 __pyx_string_tab[76]
+#define __pyx_kp_u_Subclasses_must_implement__resiz __pyx_string_tab[77]
+#define __pyx_n_u_TypeError __pyx_string_tab[78]
+#define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[79]
+#define __pyx_n_u_ValueError __pyx_string_tab[80]
+#define __pyx_n_u_View_MemoryView __pyx_string_tab[81]
+#define __pyx_kp_u__2 __pyx_string_tab[82]
+#define __pyx_kp_u__3 __pyx_string_tab[83]
+#define __pyx_kp_u__4 __pyx_string_tab[84]
+#define __pyx_kp_u__5 __pyx_string_tab[85]
+#define __pyx_kp_u__6 __pyx_string_tab[86]
+#define __pyx_n_u_abc __pyx_string_tab[87]
+#define __pyx_kp_u_add_note __pyx_string_tab[88]
+#define __pyx_n_u_allocate_buffer __pyx_string_tab[89]
+#define __pyx_kp_u_and __pyx_string_tab[90]
+#define __pyx_n_u_argsort __pyx_string_tab[91]
+#define __pyx_n_u_array __pyx_string_tab[92]
+#define __pyx_n_u_asarray __pyx_string_tab[93]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[94]
+#define __pyx_kp_u_at_0x __pyx_string_tab[95]
+#define __pyx_n_u_base __pyx_string_tab[96]
+#define __pyx_n_u_build_tree __pyx_string_tab[97]
+#define __pyx_n_u_c __pyx_string_tab[98]
+#define __pyx_n_u_class __pyx_string_tab[99]
+#define __pyx_n_u_class_getitem __pyx_string_tab[100]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[101]
+#define __pyx_kp_u_collections_abc __pyx_string_tab[102]
+#define __pyx_n_u_contains __pyx_string_tab[103]
+#define __pyx_n_u_contains_multiple __pyx_string_tab[104]
+#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[105]
+#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[106]
+#define __pyx_n_u_count __pyx_string_tab[107]
+#define __pyx_n_u_delete __pyx_string_tab[108]
+#define __pyx_n_u_delete_multiple __pyx_string_tab[109]
+#define __pyx_n_u_dict __pyx_string_tab[110]
+#define __pyx_kp_u_disable __pyx_string_tab[111]
+#define __pyx_n_u_dtype __pyx_string_tab[112]
+#define __pyx_n_u_dtype_is_object __pyx_string_tab[113]
+#define __pyx_n_u_empty __pyx_string_tab[114]
+#define __pyx_n_u_empty_like __pyx_string_tab[115]
+#define __pyx_kp_u_enable __pyx_string_tab[116]
+#define __pyx_n_u_encode __pyx_string_tab[117]
+#define __pyx_n_u_enumerate __pyx_string_tab[118]
+#define __pyx_n_u_error __pyx_string_tab[119]
+#define __pyx_n_u_flags __pyx_string_tab[120]
+#define __pyx_n_u_format __pyx_string_tab[121]
+#define __pyx_n_u_fortran __pyx_string_tab[122]
+#define __pyx_n_u_func __pyx_string_tab[123]
+#define __pyx_kp_u_gc __pyx_string_tab[124]
+#define __pyx_n_u_get __pyx_string_tab[125]
+#define __pyx_n_u_get_multiple __pyx_string_tab[126]
+#define __pyx_n_u_getstate __pyx_string_tab[127]
+#define __pyx_kp_u_got __pyx_string_tab[128]
+#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[129]
+#define __pyx_n_u_id __pyx_string_tab[130]
+#define __pyx_n_u_import __pyx_string_tab[131]
+#define __pyx_n_u_index __pyx_string_tab[132]
+#define __pyx_n_u_initial_capacity __pyx_string_tab[133]
+#define __pyx_n_u_initializing __pyx_string_tab[134]
+#define __pyx_n_u_inorder __pyx_string_tab[135]
+#define __pyx_n_u_inorder_items __pyx_string_tab[136]
+#define __pyx_n_u_insert __pyx_string_tab[137]
+#define __pyx_n_u_int64 __pyx_string_tab[138]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[139]
+#define __pyx_n_u_is_empty __pyx_string_tab[140]
+#define __pyx_kp_u_isenabled __pyx_string_tab[141]
+#define __pyx_n_u_items __pyx_string_tab[142]
+#define __pyx_n_u_itemsize __pyx_string_tab[143]
+#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[144]
+#define __pyx_n_u_key __pyx_string_tab[145]
+#define __pyx_n_u_keys __pyx_string_tab[146]
+#define __pyx_kp_u_list_np_ndarray __pyx_string_tab[147]
+#define __pyx_n_u_main __pyx_string_tab[148]
+#define __pyx_n_u_max_key __pyx_string_tab[149]
+#define __pyx_n_u_memview __pyx_string_tab[150]
+#define __pyx_n_u_min_key __pyx_string_tab[151]
+#define __pyx_n_u_mode __pyx_string_tab[152]
+#define __pyx_n_u_module __pyx_string_tab[153]
+#define __pyx_n_u_name __pyx_string_tab[154]
+#define __pyx_n_u_name_2 __pyx_string_tab[155]
+#define __pyx_n_u_ndim __pyx_string_tab[156]
+#define __pyx_n_u_new __pyx_string_tab[157]
+#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[158]
+#define __pyx_kp_u_not_found __pyx_string_tab[159]
+#define __pyx_n_u_np __pyx_string_tab[160]
+#define __pyx_n_u_numpy __pyx_string_tab[161]
+#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[162]
+#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[163]
+#define __pyx_n_u_obj __pyx_string_tab[164]
+#define __pyx_kp_u_object __pyx_string_tab[165]
+#define __pyx_n_u_pack __pyx_string_tab[166]
+#define __pyx_n_u_pickle __pyx_string_tab[167]
+#define __pyx_n_u_pop __pyx_string_tab[168]
+#define __pyx_n_u_postorder __pyx_string_tab[169]
+#define __pyx_n_u_postorder_items __pyx_string_tab[170]
+#define __pyx_n_u_preorder __pyx_string_tab[171]
+#define __pyx_n_u_preorder_items __pyx_string_tab[172]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[173]
+#define __pyx_n_u_pyx_state __pyx_string_tab[174]
+#define __pyx_n_u_pyx_type __pyx_string_tab[175]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[176]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[177]
+#define __pyx_n_u_qualname __pyx_string_tab[178]
+#define __pyx_n_u_range __pyx_string_tab[179]
+#define __pyx_n_u_range_query __pyx_string_tab[180]
+#define __pyx_n_u_reduce __pyx_string_tab[181]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[182]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[183]
+#define __pyx_n_u_register __pyx_string_tab[184]
+#define __pyx_n_u_self __pyx_string_tab[185]
+#define __pyx_n_u_set_name __pyx_string_tab[186]
+#define __pyx_n_u_setstate __pyx_string_tab[187]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[188]
+#define __pyx_n_u_shape __pyx_string_tab[189]
+#define __pyx_n_u_size __pyx_string_tab[190]
+#define __pyx_n_u_spec __pyx_string_tab[191]
+#define __pyx_kp_u_src_tree__base_tree_pxi __pyx_string_tab[192]
+#define __pyx_n_u_src_tree_bst_binary_search_tree __pyx_string_tab[193]
+#define __pyx_kp_u_src_tree_bst_binary_search_tree_2 __pyx_string_tab[194]
+#define __pyx_n_u_start __pyx_string_tab[195]
+#define __pyx_n_u_step __pyx_string_tab[196]
+#define __pyx_n_u_stop __pyx_string_tab[197]
+#define __pyx_kp_u_strided_and_direct __pyx_string_tab[198]
+#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[199]
+#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[200]
+#define __pyx_kp_u_stringsource __pyx_string_tab[201]
+#define __pyx_n_u_struct __pyx_string_tab[202]
+#define __pyx_n_u_test __pyx_string_tab[203]
+#define __pyx_n_u_uint8 __pyx_string_tab[204]
+#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[205]
+#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[206]
+#define __pyx_n_u_unpack __pyx_string_tab[207]
+#define __pyx_n_u_update __pyx_string_tab[208]
+#define __pyx_n_u_value __pyx_string_tab[209]
+#define __pyx_n_u_values __pyx_string_tab[210]
+#define __pyx_n_u_x __pyx_string_tab[211]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -4165,8 +4184,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<24; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<206; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<27; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<212; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_int_0);
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_int_112105877);
@@ -4223,8 +4242,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<24; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<206; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<27; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<212; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_1);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_112105877);
@@ -20109,7 +20128,7 @@ static int __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_14__delitem_
  *         if not self.delete(key):
  *             raise KeyError(f"Key {key} not found")             # <<<<<<<<<<<<<<
  * 
- *     cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
+ *     cpdef bint insert(self, intp_t key, intp_t value):
 */
     __pyx_t_4 = NULL;
     __Pyx_INCREF(__pyx_builtin_KeyError);
@@ -20176,320 +20195,12 @@ static int __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_14__delitem_
 /* "src/tree/_base_tree.pxi":103
  *             raise KeyError(f"Key {key} not found")
  * 
- *     cpdef intp_t delete_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Delete multiple keys and return number of successful deletions.
-*/
-
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, int __pyx_skip_dispatch) {
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_deleted_count;
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_i;
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_n;
-  __pyx_t_3src_8typedefs_intp_t __pyx_r;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  size_t __pyx_t_5;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_8;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_9;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_10;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_11;
-  int __pyx_t_12;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("delete_multiple", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (
-  #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree &&
-  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
-  #else
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
-  #endif
-  ) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_delete_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple)) {
-        __pyx_t_3 = NULL;
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = 1;
-        #if CYTHON_UNPACK_METHODS
-        if (unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-          assert(__pyx_t_3);
-          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-          __Pyx_INCREF(__pyx_t_3);
-          __Pyx_INCREF(__pyx__function);
-          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-          __pyx_t_5 = 0;
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_keys};
-          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-        }
-        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_r = __pyx_t_6;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "src/tree/_base_tree.pxi":112
- *             An array of keys to delete.
- *         """
- *         cdef intp_t deleted_count = 0             # <<<<<<<<<<<<<<
- *         cdef intp_t i, n = len(keys)
- * 
-*/
-  __pyx_v_deleted_count = 0;
-
-  /* "src/tree/_base_tree.pxi":113
- *         """
- *         cdef intp_t deleted_count = 0
- *         cdef intp_t i, n = len(keys)             # <<<<<<<<<<<<<<
- * 
- *         for i in range(n):
-*/
-  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(1, 113, __pyx_L1_error)
-  __pyx_v_n = __pyx_t_7;
-
-  /* "src/tree/_base_tree.pxi":115
- *         cdef intp_t i, n = len(keys)
- * 
- *         for i in range(n):             # <<<<<<<<<<<<<<
- *             if self._delete_node(keys[i]):
- *                 deleted_count += 1
-*/
-  __pyx_t_6 = __pyx_v_n;
-  __pyx_t_8 = __pyx_t_6;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
-
-    /* "src/tree/_base_tree.pxi":116
- * 
- *         for i in range(n):
- *             if self._delete_node(keys[i]):             # <<<<<<<<<<<<<<
- *                 deleted_count += 1
- * 
-*/
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_keys, __pyx_v_i, __pyx_t_3src_8typedefs_intp_t, 1, PyLong_FromSsize_t, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 116, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 116, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_11 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_delete_node(__pyx_v_self, __pyx_t_10); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 116, __pyx_L1_error)
-    __pyx_t_12 = (__pyx_t_11 != 0);
-    if (__pyx_t_12) {
-
-      /* "src/tree/_base_tree.pxi":117
- *         for i in range(n):
- *             if self._delete_node(keys[i]):
- *                 deleted_count += 1             # <<<<<<<<<<<<<<
- * 
- *         return deleted_count
-*/
-      __pyx_v_deleted_count = (__pyx_v_deleted_count + 1);
-
-      /* "src/tree/_base_tree.pxi":116
- * 
- *         for i in range(n):
- *             if self._delete_node(keys[i]):             # <<<<<<<<<<<<<<
- *                 deleted_count += 1
- * 
-*/
-    }
-  }
-
-  /* "src/tree/_base_tree.pxi":119
- *                 deleted_count += 1
- * 
- *         return deleted_count             # <<<<<<<<<<<<<<
- * 
- *     cpdef bint insert(self, intp_t key, intp_t value):
-*/
-  __pyx_r = __pyx_v_deleted_count;
-  goto __pyx_L0;
-
-  /* "src/tree/_base_tree.pxi":103
- *             raise KeyError(f"Key {key} not found")
- * 
- *     cpdef intp_t delete_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Delete multiple keys and return number of successful deletions.
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16delete_multiple, "\n        Delete multiple keys and return number of successful deletions.\n        \n        Parameters\n        ----------\n        keys : list | np.ndarray\n            An array of keys to delete.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple = {"delete_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16delete_multiple};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_keys = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[1] = {0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("delete_multiple (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 103, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 103, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "delete_multiple", 0) < 0) __PYX_ERR(1, 103, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("delete_multiple", 1, 1, 1, i); __PYX_ERR(1, 103, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 103, __pyx_L3_error)
-    }
-    __pyx_v_keys = values[0];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("delete_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 103, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16delete_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_keys);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("delete_multiple", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple(__pyx_v_self, __pyx_v_keys, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L1_error)
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/tree/_base_tree.pxi":121
- *         return deleted_count
- * 
  *     cpdef bint insert(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
  *         """
  *         Insert key-value pair in the tree.
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20529,15 +20240,15 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_insert); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_insert); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 121, __pyx_L1_error)
+        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 103, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_value); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 121, __pyx_L1_error)
+        __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_value); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 103, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_7 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -20558,10 +20269,10 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 121, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_8;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20580,7 +20291,7 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":138
+  /* "src/tree/_base_tree.pxi":120
  *         """
  *         # resize if needed
  *         if UNLIKELY(self.free_count < 2):             # <<<<<<<<<<<<<<
@@ -20590,16 +20301,16 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct
   __pyx_t_8 = UNLIKELY((__pyx_v_self->free_count < 2));
   if (__pyx_t_8) {
 
-    /* "src/tree/_base_tree.pxi":139
+    /* "src/tree/_base_tree.pxi":121
  *         # resize if needed
  *         if UNLIKELY(self.free_count < 2):
  *             self._resize_arrays()             # <<<<<<<<<<<<<<
  * 
  *         cdef intp_t success
 */
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_resize_arrays(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 139, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_resize_arrays(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
 
-    /* "src/tree/_base_tree.pxi":138
+    /* "src/tree/_base_tree.pxi":120
  *         """
  *         # resize if needed
  *         if UNLIKELY(self.free_count < 2):             # <<<<<<<<<<<<<<
@@ -20608,32 +20319,32 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct
 */
   }
 
-  /* "src/tree/_base_tree.pxi":142
+  /* "src/tree/_base_tree.pxi":124
  * 
  *         cdef intp_t success
  *         success = self._insert_node(key, value)             # <<<<<<<<<<<<<<
  * 
  *         return bool(success)
 */
-  __pyx_t_9 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_insert_node(__pyx_v_self, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 142, __pyx_L1_error)
+  __pyx_t_9 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_insert_node(__pyx_v_self, __pyx_v_key, __pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 124, __pyx_L1_error)
   __pyx_v_success = __pyx_t_9;
 
-  /* "src/tree/_base_tree.pxi":144
+  /* "src/tree/_base_tree.pxi":126
  *         success = self._insert_node(key, value)
  * 
  *         return bool(success)             # <<<<<<<<<<<<<<
  * 
  *     cpdef bint delete(self, intp_t key):
 */
-  __pyx_t_1 = PyLong_FromSsize_t(__pyx_v_success); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 144, __pyx_L1_error)
+  __pyx_t_1 = PyLong_FromSsize_t(__pyx_v_success); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(1, 144, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(1, 126, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = (!(!__pyx_t_8));
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":121
- *         return deleted_count
+  /* "src/tree/_base_tree.pxi":103
+ *             raise KeyError(f"Key {key} not found")
  * 
  *     cpdef bint insert(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
  *         """
@@ -20656,16 +20367,16 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(struct
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18insert, "\n        Insert key-value pair in the tree.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n        value : intp_t\n            The value associated to the key.\n\n        Returns\n        -------\n        bint\n            Boolean indicating whether the insertion was successfull or not.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert = {"insert", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18insert};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16insert, "\n        Insert key-value pair in the tree.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n        value : intp_t\n            The value associated to the key.\n\n        Returns\n        -------\n        bint\n            Boolean indicating whether the insertion was successfull or not.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert = {"insert", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16insert};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20696,39 +20407,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,&__pyx_mstate_global->__pyx_n_u_value,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 121, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 103, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 121, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 103, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 121, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 103, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insert", 0) < 0) __PYX_ERR(1, 121, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insert", 0) < 0) __PYX_ERR(1, 103, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, i); __PYX_ERR(1, 121, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, i); __PYX_ERR(1, 103, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 121, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 103, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 121, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 103, __pyx_L3_error)
     }
-    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L3_error)
-    __pyx_v_value = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_value == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L3_error)
+    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_value == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 121, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 103, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20739,7 +20450,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18insert(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key, __pyx_v_value);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16insert(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key, __pyx_v_value);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -20749,7 +20460,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18insert(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_16insert(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -20759,8 +20470,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18inse
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(__pyx_v_self, __pyx_v_key, __pyx_v_value, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert(__pyx_v_self, __pyx_v_key, __pyx_v_value, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -20777,7 +20488,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18inse
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":146
+/* "src/tree/_base_tree.pxi":128
  *         return bool(success)
  * 
  *     cpdef bint delete(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -20785,7 +20496,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18inse
  *         Delete a key and it's value.
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20824,13 +20535,13 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(struct
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_delete); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 146, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_delete); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 146, __pyx_L1_error)
+        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 128, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -20850,10 +20561,10 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(struct
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 146, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 146, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 128, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_7;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20872,31 +20583,31 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(struct
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":161
+  /* "src/tree/_base_tree.pxi":143
  *         """
  *         cdef intp_t success
  *         success = self._delete_node(key)             # <<<<<<<<<<<<<<
  * 
  *         return bool(success)
 */
-  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_delete_node(__pyx_v_self, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 161, __pyx_L1_error)
+  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_delete_node(__pyx_v_self, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 143, __pyx_L1_error)
   __pyx_v_success = __pyx_t_8;
 
-  /* "src/tree/_base_tree.pxi":163
+  /* "src/tree/_base_tree.pxi":145
  *         success = self._delete_node(key)
  * 
  *         return bool(success)             # <<<<<<<<<<<<<<
  * 
  *     # memory management methods
 */
-  __pyx_t_1 = PyLong_FromSsize_t(__pyx_v_success); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 163, __pyx_L1_error)
+  __pyx_t_1 = PyLong_FromSsize_t(__pyx_v_success); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(1, 163, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = (!(!__pyx_t_7));
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":146
+  /* "src/tree/_base_tree.pxi":128
  *         return bool(success)
  * 
  *     cpdef bint delete(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -20919,16 +20630,16 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(struct
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20delete, "\n        Delete a key and it's value.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n\n        Returns\n        -------\n        intp_t\n            Boolean indicating whether the deletion was successfull or not.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete = {"delete", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20delete};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18delete, "\n        Delete a key and it's value.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n\n        Returns\n        -------\n        intp_t\n            Boolean indicating whether the deletion was successfull or not.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete = {"delete", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18delete};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20958,32 +20669,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 146, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 128, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 146, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "delete", 0) < 0) __PYX_ERR(1, 146, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "delete", 0) < 0) __PYX_ERR(1, 128, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("delete", 1, 1, 1, i); __PYX_ERR(1, 146, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("delete", 1, 1, 1, i); __PYX_ERR(1, 128, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 146, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 128, __pyx_L3_error)
     }
-    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 146, __pyx_L3_error)
+    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 128, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("delete", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 146, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("delete", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 128, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20994,7 +20705,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20delete(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18delete(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -21004,7 +20715,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20delete(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_18delete(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -21014,8 +20725,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20dele
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("delete", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 146, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 146, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 128, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -21032,7 +20743,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20dele
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":166
+/* "src/tree/_base_tree.pxi":148
  * 
  *     # memory management methods
  *     cdef inline intp_t _allocate_node(self):             # <<<<<<<<<<<<<<
@@ -21045,7 +20756,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
   __pyx_t_3src_8typedefs_intp_t __pyx_r;
   int __pyx_t_1;
 
-  /* "src/tree/_base_tree.pxi":169
+  /* "src/tree/_base_tree.pxi":151
  *         """Get free node from free stack (O(1))"""
  *         cdef intp_t idx
  *         if UNLIKELY(self.free_stack_top < 0):             # <<<<<<<<<<<<<<
@@ -21055,7 +20766,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
   __pyx_t_1 = UNLIKELY((__pyx_v_self->free_stack_top < 0));
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":170
+    /* "src/tree/_base_tree.pxi":152
  *         cdef intp_t idx
  *         if UNLIKELY(self.free_stack_top < 0):
  *             return NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -21065,7 +20776,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
     __pyx_r = -1L;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":169
+    /* "src/tree/_base_tree.pxi":151
  *         """Get free node from free stack (O(1))"""
  *         cdef intp_t idx
  *         if UNLIKELY(self.free_stack_top < 0):             # <<<<<<<<<<<<<<
@@ -21074,7 +20785,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
 */
   }
 
-  /* "src/tree/_base_tree.pxi":172
+  /* "src/tree/_base_tree.pxi":154
  *             return NONE_SENTINEL
  * 
  *         idx = self.free_stack[self.free_stack_top]             # <<<<<<<<<<<<<<
@@ -21083,7 +20794,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
 */
   __pyx_v_idx = (__pyx_v_self->free_stack[__pyx_v_self->free_stack_top]);
 
-  /* "src/tree/_base_tree.pxi":173
+  /* "src/tree/_base_tree.pxi":155
  * 
  *         idx = self.free_stack[self.free_stack_top]
  *         self.free_stack_top -= 1             # <<<<<<<<<<<<<<
@@ -21092,7 +20803,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
 */
   __pyx_v_self->free_stack_top = (__pyx_v_self->free_stack_top - 1);
 
-  /* "src/tree/_base_tree.pxi":174
+  /* "src/tree/_base_tree.pxi":156
  *         idx = self.free_stack[self.free_stack_top]
  *         self.free_stack_top -= 1
  *         self.free_count -= 1             # <<<<<<<<<<<<<<
@@ -21101,7 +20812,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
 */
   __pyx_v_self->free_count = (__pyx_v_self->free_count - 1);
 
-  /* "src/tree/_base_tree.pxi":175
+  /* "src/tree/_base_tree.pxi":157
  *         self.free_stack_top -= 1
  *         self.free_count -= 1
  *         return idx             # <<<<<<<<<<<<<<
@@ -21111,7 +20822,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
   __pyx_r = __pyx_v_idx;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":166
+  /* "src/tree/_base_tree.pxi":148
  * 
  *     # memory management methods
  *     cdef inline intp_t _allocate_node(self):             # <<<<<<<<<<<<<<
@@ -21124,7 +20835,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":177
+/* "src/tree/_base_tree.pxi":159
  *         return idx
  * 
  *     cdef inline void _deallocate_node(self, intp_t idx):             # <<<<<<<<<<<<<<
@@ -21135,7 +20846,7 @@ static CYTHON_INLINE __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18bin
 static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__deallocate_node(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_idx) {
   int __pyx_t_1;
 
-  /* "src/tree/_base_tree.pxi":179
+  /* "src/tree/_base_tree.pxi":161
  *     cdef inline void _deallocate_node(self, intp_t idx):
  *         """Return node to free stack (O(1))"""
  *         if LIKELY(self.free_stack_top < self.capacity - 1):             # <<<<<<<<<<<<<<
@@ -21145,7 +20856,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
   __pyx_t_1 = LIKELY((__pyx_v_self->free_stack_top < (__pyx_v_self->capacity - 1)));
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":180
+    /* "src/tree/_base_tree.pxi":162
  *         """Return node to free stack (O(1))"""
  *         if LIKELY(self.free_stack_top < self.capacity - 1):
  *             self.free_stack_top += 1             # <<<<<<<<<<<<<<
@@ -21154,7 +20865,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
 */
     __pyx_v_self->free_stack_top = (__pyx_v_self->free_stack_top + 1);
 
-    /* "src/tree/_base_tree.pxi":181
+    /* "src/tree/_base_tree.pxi":163
  *         if LIKELY(self.free_stack_top < self.capacity - 1):
  *             self.free_stack_top += 1
  *             self.free_stack[self.free_stack_top] = idx             # <<<<<<<<<<<<<<
@@ -21163,7 +20874,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
 */
     (__pyx_v_self->free_stack[__pyx_v_self->free_stack_top]) = __pyx_v_idx;
 
-    /* "src/tree/_base_tree.pxi":182
+    /* "src/tree/_base_tree.pxi":164
  *             self.free_stack_top += 1
  *             self.free_stack[self.free_stack_top] = idx
  *             self.free_count += 1             # <<<<<<<<<<<<<<
@@ -21172,7 +20883,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
 */
     __pyx_v_self->free_count = (__pyx_v_self->free_count + 1);
 
-    /* "src/tree/_base_tree.pxi":179
+    /* "src/tree/_base_tree.pxi":161
  *     cdef inline void _deallocate_node(self, intp_t idx):
  *         """Return node to free stack (O(1))"""
  *         if LIKELY(self.free_stack_top < self.capacity - 1):             # <<<<<<<<<<<<<<
@@ -21181,7 +20892,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
 */
   }
 
-  /* "src/tree/_base_tree.pxi":177
+  /* "src/tree/_base_tree.pxi":159
  *         return idx
  * 
  *     cdef inline void _deallocate_node(self, intp_t idx):             # <<<<<<<<<<<<<<
@@ -21192,7 +20903,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
   /* function exit code */
 }
 
-/* "src/tree/_base_tree.pxi":185
+/* "src/tree/_base_tree.pxi":167
  * 
  *     # public methods
  *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -21200,7 +20911,7 @@ static CYTHON_INLINE void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTre
  *         return self._size == 0
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21236,9 +20947,9 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(stru
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_is_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 185, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_is_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 167, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
@@ -21259,10 +20970,10 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(stru
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 185, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 167, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 185, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 167, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -21281,7 +20992,7 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(stru
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":187
+  /* "src/tree/_base_tree.pxi":169
  *     cpdef bint is_empty(self):
  *         """Check whether the BST is empty."""
  *         return self._size == 0             # <<<<<<<<<<<<<<
@@ -21291,7 +21002,7 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(stru
   __pyx_r = (__pyx_v_self->_size == 0);
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":185
+  /* "src/tree/_base_tree.pxi":167
  * 
  *     # public methods
  *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
@@ -21313,16 +21024,16 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(stru
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_empty, "Check whether the BST is empty.");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty = {"is_empty", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_empty};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20is_empty, "Check whether the BST is empty.");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty = {"is_empty", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20is_empty};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21348,14 +21059,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("is_empty", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_empty(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20is_empty(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_empty(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_20is_empty(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -21365,8 +21076,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_e
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_empty", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 185, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 185, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 167, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -21383,7 +21094,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_e
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":189
+/* "src/tree/_base_tree.pxi":171
  *         return self._size == 0
  * 
  *     cpdef intp_t get(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -21391,7 +21102,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22is_e
  *         Retrieve value for a key.
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21431,13 +21142,13 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 189, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 189, __pyx_L1_error)
+        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 171, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -21457,10 +21168,10 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 189, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 171, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 189, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 171, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_7;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -21479,17 +21190,17 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":209
+  /* "src/tree/_base_tree.pxi":191
  *         """
  *         cdef intp_t idx
  *         idx = self._find_node(key)             # <<<<<<<<<<<<<<
  * 
  *         if idx == NONE_SENTINEL:
 */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 209, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 191, __pyx_L1_error)
   __pyx_v_idx = __pyx_t_7;
 
-  /* "src/tree/_base_tree.pxi":211
+  /* "src/tree/_base_tree.pxi":193
  *         idx = self._find_node(key)
  * 
  *         if idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21499,7 +21210,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_8 = (__pyx_v_idx == -1L);
   if (unlikely(__pyx_t_8)) {
 
-    /* "src/tree/_base_tree.pxi":212
+    /* "src/tree/_base_tree.pxi":194
  * 
  *         if idx == NONE_SENTINEL:
  *             raise KeyError(f"Key {key} not found")             # <<<<<<<<<<<<<<
@@ -21509,16 +21220,16 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = NULL;
     __Pyx_INCREF(__pyx_builtin_KeyError);
     __pyx_t_4 = __pyx_builtin_KeyError; 
-    __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 212, __pyx_L1_error)
+    __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 212, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_Key;
     __pyx_t_9[1] = __pyx_t_3;
     __pyx_t_9[2] = __pyx_mstate_global->__pyx_kp_u_not_found;
     __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_9, 3, 4 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3) + 10, 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3));
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 212, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_6 = 1;
@@ -21528,14 +21239,14 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 212, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(1, 212, __pyx_L1_error)
+    __PYX_ERR(1, 194, __pyx_L1_error)
 
-    /* "src/tree/_base_tree.pxi":211
+    /* "src/tree/_base_tree.pxi":193
  *         idx = self._find_node(key)
  * 
  *         if idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -21544,7 +21255,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/_base_tree.pxi":214
+  /* "src/tree/_base_tree.pxi":196
  *             raise KeyError(f"Key {key} not found")
  * 
  *         return self.nodes[idx].value             # <<<<<<<<<<<<<<
@@ -21554,7 +21265,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_r = (__pyx_v_self->nodes[__pyx_v_idx]).value;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":189
+  /* "src/tree/_base_tree.pxi":171
  *         return self._size == 0
  * 
  *     cpdef intp_t get(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -21577,16 +21288,16 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get, "\n        Retrieve value for a key.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n\n        Returns\n        -------\n        intp_t\n            The value associated to the key.\n        \n        Raises\n        ------\n        KeyError\n            Error if the key is not found.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get = {"get", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22get, "\n        Retrieve value for a key.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n\n        Returns\n        -------\n        intp_t\n            The value associated to the key.\n        \n        Raises\n        ------\n        KeyError\n            Error if the key is not found.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get = {"get", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22get};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21616,32 +21327,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 189, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 171, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 189, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 171, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get", 0) < 0) __PYX_ERR(1, 189, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get", 0) < 0) __PYX_ERR(1, 171, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get", 1, 1, 1, i); __PYX_ERR(1, 189, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get", 1, 1, 1, i); __PYX_ERR(1, 171, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 189, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 171, __pyx_L3_error)
     }
-    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 189, __pyx_L3_error)
+    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 171, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 189, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 171, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21652,7 +21363,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22get(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -21662,7 +21373,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_22get(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
@@ -21672,8 +21383,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 189, __pyx_L1_error)
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 189, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 171, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -21690,7 +21401,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get(
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":216
+/* "src/tree/_base_tree.pxi":198
  *         return self.nodes[idx].value
  * 
  *     cpdef bint contains(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -21698,7 +21409,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24get(
  *         Check existence of a value for a key.
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21737,13 +21448,13 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(stru
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_contains); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 216, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_contains); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 198, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 216, __pyx_L1_error)
+        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 198, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -21763,10 +21474,10 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(stru
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 216, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 198, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 216, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 198, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_7;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -21785,27 +21496,27 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(stru
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":231
+  /* "src/tree/_base_tree.pxi":213
  *         """
  *         cdef intp_t idx
  *         idx = self._find_node(key)             # <<<<<<<<<<<<<<
  *         return idx != NONE_SENTINEL
  * 
 */
-  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 231, __pyx_L1_error)
+  __pyx_t_8 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, __pyx_v_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 213, __pyx_L1_error)
   __pyx_v_idx = __pyx_t_8;
 
-  /* "src/tree/_base_tree.pxi":232
+  /* "src/tree/_base_tree.pxi":214
  *         cdef intp_t idx
  *         idx = self._find_node(key)
  *         return idx != NONE_SENTINEL             # <<<<<<<<<<<<<<
  * 
- *     cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):
+ *     # public methods: tree traversals
 */
   __pyx_r = (__pyx_v_idx != -1L);
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":216
+  /* "src/tree/_base_tree.pxi":198
  *         return self.nodes[idx].value
  * 
  *     cpdef bint contains(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -21828,16 +21539,16 @@ static int __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(stru
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26contains, "\n        Check existence of a value for a key.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n\n        Returns\n        -------\n        bint\n            Boolean indicating whether the key exists in the tree or not.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains = {"contains", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26contains};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24contains, "\n        Check existence of a value for a key.\n\n        Parameters\n        ----------\n        key : intp_t\n            The associative key.\n\n        Returns\n        -------\n        bint\n            Boolean indicating whether the key exists in the tree or not.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains = {"contains", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24contains};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21867,32 +21578,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 216, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 198, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 216, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 198, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "contains", 0) < 0) __PYX_ERR(1, 216, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "contains", 0) < 0) __PYX_ERR(1, 198, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("contains", 1, 1, 1, i); __PYX_ERR(1, 216, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("contains", 1, 1, 1, i); __PYX_ERR(1, 198, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 216, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 198, __pyx_L3_error)
     }
-    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 216, __pyx_L3_error)
+    __pyx_v_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 198, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("contains", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 216, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("contains", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 198, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21903,7 +21614,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26contains(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24contains(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_key);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -21913,7 +21624,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26contains(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_24contains(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_key) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -21923,8 +21634,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26cont
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("contains", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 216, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 216, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains(__pyx_v_self, __pyx_v_key, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 198, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -21941,1071 +21652,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26cont
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":234
- *         return idx != NONE_SENTINEL
- * 
- *     cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
-*/
-
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, int __pyx_skip_dispatch) {
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_n;
-  __Pyx_memviewslice __pyx_v_results = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_i;
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_idx;
-  __Pyx_memviewslice __pyx_v_sorted_indices = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_sorted_keys = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_original_pos;
-  PyArrayObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  size_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  int __pyx_t_7;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
-  __Pyx_memviewslice __pyx_t_10 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_11;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_12;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_13;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_14;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_15;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("get_multiple", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (
-  #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree &&
-  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
-  #else
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
-  #endif
-  ) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 234, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple)) {
-        __Pyx_XDECREF((PyObject *)__pyx_r);
-        __pyx_t_3 = NULL;
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = 1;
-        #if CYTHON_UNPACK_METHODS
-        if (unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-          assert(__pyx_t_3);
-          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-          __Pyx_INCREF(__pyx_t_3);
-          __Pyx_INCREF(__pyx__function);
-          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-          __pyx_t_5 = 0;
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_keys};
-          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 234, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-        }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 234, __pyx_L1_error)
-        __pyx_r = ((PyArrayObject *)__pyx_t_2);
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "src/tree/_base_tree.pxi":259
- *             missing keys marked as NONE_SENTINEL.
- *         """
- *         cdef intp_t n = len(keys)             # <<<<<<<<<<<<<<
- *         if n == 0:
- *             return np.array([], dtype=np.int64)
-*/
-  __pyx_t_6 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(1, 259, __pyx_L1_error)
-  __pyx_v_n = __pyx_t_6;
-
-  /* "src/tree/_base_tree.pxi":260
- *         """
- *         cdef intp_t n = len(keys)
- *         if n == 0:             # <<<<<<<<<<<<<<
- *             return np.array([], dtype=np.int64)
- * 
-*/
-  __pyx_t_7 = (__pyx_v_n == 0);
-  if (__pyx_t_7) {
-
-    /* "src/tree/_base_tree.pxi":261
- *         cdef intp_t n = len(keys)
- *         if n == 0:
- *             return np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
- * 
- *         # heuristic cutoff
-*/
-    __Pyx_XDECREF((PyObject *)__pyx_r);
-    __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 261, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 261, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 261, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 261, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 261, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_5 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-      assert(__pyx_t_2);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-      __pyx_t_5 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 261, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_9, __pyx_t_8, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 261, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 261, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-    }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 261, __pyx_L1_error)
-    __pyx_r = ((PyArrayObject *)__pyx_t_1);
-    __pyx_t_1 = 0;
-    goto __pyx_L0;
-
-    /* "src/tree/_base_tree.pxi":260
- *         """
- *         cdef intp_t n = len(keys)
- *         if n == 0:             # <<<<<<<<<<<<<<
- *             return np.array([], dtype=np.int64)
- * 
-*/
-  }
-
-  /* "src/tree/_base_tree.pxi":266
- *         cdef intp_t[:] results
- *         cdef intp_t i, idx
- *         if n < 32:             # <<<<<<<<<<<<<<
- *             results = np.empty(n, dtype=np.int64)
- *             for i in range(n):
-*/
-  __pyx_t_7 = (__pyx_v_n < 32);
-  if (__pyx_t_7) {
-
-    /* "src/tree/_base_tree.pxi":267
- *         cdef intp_t i, idx
- *         if n < 32:
- *             results = np.empty(n, dtype=np.int64)             # <<<<<<<<<<<<<<
- *             for i in range(n):
- *                 idx = self._find_node(keys[i])
-*/
-    __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 267, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 267, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = PyLong_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 267, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 267, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 267, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_5 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_9))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_9);
-      assert(__pyx_t_3);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_9);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_9, __pyx__function);
-      __pyx_t_5 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_8};
-      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 267, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 267, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_9, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 267, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-    }
-    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 267, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_v_results = __pyx_t_10;
-    __pyx_t_10.memview = NULL;
-    __pyx_t_10.data = NULL;
-
-    /* "src/tree/_base_tree.pxi":268
- *         if n < 32:
- *             results = np.empty(n, dtype=np.int64)
- *             for i in range(n):             # <<<<<<<<<<<<<<
- *                 idx = self._find_node(keys[i])
- *                 results[i] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
-*/
-    __pyx_t_11 = __pyx_v_n;
-    __pyx_t_12 = __pyx_t_11;
-    for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-      __pyx_v_i = __pyx_t_13;
-
-      /* "src/tree/_base_tree.pxi":269
- *             results = np.empty(n, dtype=np.int64)
- *             for i in range(n):
- *                 idx = self._find_node(keys[i])             # <<<<<<<<<<<<<<
- *                 results[i] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
- *             return np.asarray(results)
-*/
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_keys, __pyx_v_i, __pyx_t_3src_8typedefs_intp_t, 1, PyLong_FromSsize_t, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 269, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_14 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 269, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_15 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, __pyx_t_14); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 269, __pyx_L1_error)
-      __pyx_v_idx = __pyx_t_15;
-
-      /* "src/tree/_base_tree.pxi":270
- *             for i in range(n):
- *                 idx = self._find_node(keys[i])
- *                 results[i] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL             # <<<<<<<<<<<<<<
- *             return np.asarray(results)
- * 
-*/
-      __pyx_t_7 = (__pyx_v_idx != -1L);
-      if (__pyx_t_7) {
-        __pyx_t_15 = (__pyx_v_self->nodes[__pyx_v_idx]).value;
-      } else {
-        __pyx_t_15 = -1L;
-      }
-      __pyx_t_14 = __pyx_v_i;
-      *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_results.data + __pyx_t_14 * __pyx_v_results.strides[0]) )) = __pyx_t_15;
-    }
-
-    /* "src/tree/_base_tree.pxi":271
- *                 idx = self._find_node(keys[i])
- *                 results[i] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
- *             return np.asarray(results)             # <<<<<<<<<<<<<<
- * 
- *         # larger input array
-*/
-    __Pyx_XDECREF((PyObject *)__pyx_r);
-    __pyx_t_9 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 271, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 271, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_results, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 271, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = 1;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_2);
-      assert(__pyx_t_9);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_9);
-      __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
-      __pyx_t_5 = 0;
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_9, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 271, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-    }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 271, __pyx_L1_error)
-    __pyx_r = ((PyArrayObject *)__pyx_t_1);
-    __pyx_t_1 = 0;
-    goto __pyx_L0;
-
-    /* "src/tree/_base_tree.pxi":266
- *         cdef intp_t[:] results
- *         cdef intp_t i, idx
- *         if n < 32:             # <<<<<<<<<<<<<<
- *             results = np.empty(n, dtype=np.int64)
- *             for i in range(n):
-*/
-  }
-
-  /* "src/tree/_base_tree.pxi":275
- *         # larger input array
- *         # sort for cache-friendly traversal
- *         cdef intp_t[:] sorted_indices = np.argsort(keys)             # <<<<<<<<<<<<<<
- *         cdef intp_t[:] sorted_keys = keys[sorted_indices]
- *         results = np.empty_like(keys)
-*/
-  __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 275, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_argsort); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 275, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_9))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_9);
-    assert(__pyx_t_2);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_9);
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_9, __pyx__function);
-    __pyx_t_5 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_keys};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 275, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 275, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_sorted_indices = __pyx_t_10;
-  __pyx_t_10.memview = NULL;
-  __pyx_t_10.data = NULL;
-
-  /* "src/tree/_base_tree.pxi":276
- *         # sort for cache-friendly traversal
- *         cdef intp_t[:] sorted_indices = np.argsort(keys)
- *         cdef intp_t[:] sorted_keys = keys[sorted_indices]             # <<<<<<<<<<<<<<
- *         results = np.empty_like(keys)
- * 
-*/
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_sorted_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 276, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_keys, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 276, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 276, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_v_sorted_keys = __pyx_t_10;
-  __pyx_t_10.memview = NULL;
-  __pyx_t_10.data = NULL;
-
-  /* "src/tree/_base_tree.pxi":277
- *         cdef intp_t[:] sorted_indices = np.argsort(keys)
- *         cdef intp_t[:] sorted_keys = keys[sorted_indices]
- *         results = np.empty_like(keys)             # <<<<<<<<<<<<<<
- * 
- *         cdef intp_t original_pos
-*/
-  __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 277, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_empty_like); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 277, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_4);
-    assert(__pyx_t_1);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-    __Pyx_INCREF(__pyx_t_1);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-    __pyx_t_5 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_keys};
-    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 277, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-  }
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 277, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_v_results = __pyx_t_10;
-  __pyx_t_10.memview = NULL;
-  __pyx_t_10.data = NULL;
-
-  /* "src/tree/_base_tree.pxi":280
- * 
- *         cdef intp_t original_pos
- *         for i in range(n):             # <<<<<<<<<<<<<<
- *             idx = self._find_node(sorted_keys[i])
- *             original_pos = sorted_indices[i]
-*/
-  __pyx_t_11 = __pyx_v_n;
-  __pyx_t_12 = __pyx_t_11;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
-
-    /* "src/tree/_base_tree.pxi":281
- *         cdef intp_t original_pos
- *         for i in range(n):
- *             idx = self._find_node(sorted_keys[i])             # <<<<<<<<<<<<<<
- *             original_pos = sorted_indices[i]
- *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
-*/
-    __pyx_t_15 = __pyx_v_i;
-    __pyx_t_14 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_sorted_keys.data + __pyx_t_15 * __pyx_v_sorted_keys.strides[0]) )))); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 281, __pyx_L1_error)
-    __pyx_v_idx = __pyx_t_14;
-
-    /* "src/tree/_base_tree.pxi":282
- *         for i in range(n):
- *             idx = self._find_node(sorted_keys[i])
- *             original_pos = sorted_indices[i]             # <<<<<<<<<<<<<<
- *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
- *         return np.asarray(results)
-*/
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_original_pos = (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_sorted_indices.data + __pyx_t_14 * __pyx_v_sorted_indices.strides[0]) )));
-
-    /* "src/tree/_base_tree.pxi":283
- *             idx = self._find_node(sorted_keys[i])
- *             original_pos = sorted_indices[i]
- *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL             # <<<<<<<<<<<<<<
- *         return np.asarray(results)
- * 
-*/
-    __pyx_t_7 = (__pyx_v_idx != -1L);
-    if (__pyx_t_7) {
-      __pyx_t_14 = (__pyx_v_self->nodes[__pyx_v_idx]).value;
-    } else {
-      __pyx_t_14 = -1L;
-    }
-    __pyx_t_15 = __pyx_v_original_pos;
-    *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_results.data + __pyx_t_15 * __pyx_v_results.strides[0]) )) = __pyx_t_14;
-  }
-
-  /* "src/tree/_base_tree.pxi":284
- *             original_pos = sorted_indices[i]
- *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
- *         return np.asarray(results)             # <<<<<<<<<<<<<<
- * 
- *     cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):
-*/
-  __Pyx_XDECREF((PyObject *)__pyx_r);
-  __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 284, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 284, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_results, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 284, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    assert(__pyx_t_4);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_4);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
-    __pyx_t_5 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_1};
-    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 284, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-  }
-  if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 284, __pyx_L1_error)
-  __pyx_r = ((PyArrayObject *)__pyx_t_9);
-  __pyx_t_9 = 0;
-  goto __pyx_L0;
-
-  /* "src/tree/_base_tree.pxi":234
- *         return idx != NONE_SENTINEL
- * 
- *     cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_10, 1);
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_results, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_sorted_indices, 1);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_sorted_keys, 1);
-  __Pyx_XGIVEREF((PyObject *)__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28get_multiple, "\n        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL\n        for missing keys. I.e., if the key does not exist, the array will\n        contain -1 as a value.\n\n        - For small inputs (len(keys) < 32), a simple unsorted loop is used.\n        This avoids the O(n log n) sort overhead and is faster when the\n        number of lookups is small.\n        - For larger inputs, keys are sorted before lookup. This improves\n        cache locality in the binary search tree traversal (`_find_node()`),\n        since lookups of nearby keys tend to reuse nodes higher in the tree.\n        Prefetching is also more effective, reducing cache misses.\n\n        Parameters\n        ----------\n        keys : list | np.ndarray\n            An array of keys to retrieve.\n\n        Returns\n        -------\n        np.ndarray[int64]\n            Array of values corresponding to the input keys, with\n            missing keys marked as NONE_SENTINEL.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple = {"get_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28get_multiple};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_keys = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[1] = {0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("get_multiple (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 234, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 234, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_multiple", 0) < 0) __PYX_ERR(1, 234, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_multiple", 1, 1, 1, i); __PYX_ERR(1, 234, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 234, __pyx_L3_error)
-    }
-    __pyx_v_keys = values[0];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 234, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28get_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_keys);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("get_multiple", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple(__pyx_v_self, __pyx_v_keys, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 234, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/tree/_base_tree.pxi":286
- *         return np.asarray(results)
- * 
- *     cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Check existence of multiple keys efficiently, returns boolean NumPy
-*/
-
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys, int __pyx_skip_dispatch) {
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_n;
-  __Pyx_memviewslice __pyx_v_result = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_i;
-  __pyx_t_3src_8typedefs_intp_t __pyx_v_idx;
-  PyArrayObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  size_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  __Pyx_memviewslice __pyx_t_9 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_10;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_11;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_12;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_13;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_14;
-  __pyx_t_5numpy_uint8_t __pyx_t_15;
-  int __pyx_t_16;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("contains_multiple", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (
-  #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree &&
-  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
-  #else
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
-  #endif
-  ) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_contains_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 286, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple)) {
-        __Pyx_XDECREF((PyObject *)__pyx_r);
-        __pyx_t_3 = NULL;
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = 1;
-        #if CYTHON_UNPACK_METHODS
-        if (unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-          assert(__pyx_t_3);
-          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-          __Pyx_INCREF(__pyx_t_3);
-          __Pyx_INCREF(__pyx__function);
-          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-          __pyx_t_5 = 0;
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_keys};
-          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 286, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-        }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 286, __pyx_L1_error)
-        __pyx_r = ((PyArrayObject *)__pyx_t_2);
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "src/tree/_base_tree.pxi":296
- *             An array of keys to check for existence.
- *         """
- *         cdef intp_t n = len(keys)             # <<<<<<<<<<<<<<
- *         cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
- *         cdef intp_t i, idx
-*/
-  __pyx_t_6 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(1, 296, __pyx_L1_error)
-  __pyx_v_n = __pyx_t_6;
-
-  /* "src/tree/_base_tree.pxi":297
- *         """
- *         cdef intp_t n = len(keys)
- *         cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)             # <<<<<<<<<<<<<<
- *         cdef intp_t i, idx
- * 
-*/
-  __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_uint8); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_5 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    assert(__pyx_t_2);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-    __pyx_t_5 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 297, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 297, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 297, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 297, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_result = __pyx_t_9;
-  __pyx_t_9.memview = NULL;
-  __pyx_t_9.data = NULL;
-
-  /* "src/tree/_base_tree.pxi":300
- *         cdef intp_t i, idx
- * 
- *         for i in range(n):             # <<<<<<<<<<<<<<
- *             idx = self._find_node(keys[i])
- *             result[i] = 1 if idx != NONE_SENTINEL else 0
-*/
-  __pyx_t_10 = __pyx_v_n;
-  __pyx_t_11 = __pyx_t_10;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
-
-    /* "src/tree/_base_tree.pxi":301
- * 
- *         for i in range(n):
- *             idx = self._find_node(keys[i])             # <<<<<<<<<<<<<<
- *             result[i] = 1 if idx != NONE_SENTINEL else 0
- * 
-*/
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_keys, __pyx_v_i, __pyx_t_3src_8typedefs_intp_t, 1, PyLong_FromSsize_t, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 301, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 301, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_14 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_find_node(__pyx_v_self, __pyx_t_13); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 301, __pyx_L1_error)
-    __pyx_v_idx = __pyx_t_14;
-
-    /* "src/tree/_base_tree.pxi":302
- *         for i in range(n):
- *             idx = self._find_node(keys[i])
- *             result[i] = 1 if idx != NONE_SENTINEL else 0             # <<<<<<<<<<<<<<
- * 
- *         return np.asarray(result, dtype=bool)
-*/
-    __pyx_t_16 = (__pyx_v_idx != -1L);
-    if (__pyx_t_16) {
-      __pyx_t_15 = 1;
-    } else {
-      __pyx_t_15 = 0;
-    }
-    __pyx_t_14 = __pyx_v_i;
-    *((__pyx_t_5numpy_uint8_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_14 * __pyx_v_result.strides[0]) )) = __pyx_t_15;
-  }
-
-  /* "src/tree/_base_tree.pxi":304
- *             result[i] = 1 if idx != NONE_SENTINEL else 0
- * 
- *         return np.asarray(result, dtype=bool)             # <<<<<<<<<<<<<<
- * 
- *     # public methods: tree traversals
-*/
-  __Pyx_XDECREF((PyObject *)__pyx_r);
-  __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 304, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 304, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint8_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint8_t, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 304, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_8))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_8);
-    assert(__pyx_t_3);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_8);
-    __Pyx_INCREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_8, __pyx__function);
-    __pyx_t_5 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_7};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 304, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject*)&PyBool_Type), __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 304, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 304, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 304, __pyx_L1_error)
-  __pyx_r = ((PyArrayObject *)__pyx_t_1);
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "src/tree/_base_tree.pxi":286
- *         return np.asarray(results)
- * 
- *     cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Check existence of multiple keys efficiently, returns boolean NumPy
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __PYX_XCLEAR_MEMVIEW(&__pyx_t_9, 1);
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_result, 1);
-  __Pyx_XGIVEREF((PyObject *)__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30contains_multiple, "\n        Check existence of multiple keys efficiently, returns boolean NumPy\n        array: 1 if the key exists in the tree, 0 if not.\n\n        Parameters\n        ----------\n        keys : list | np.ndarray\n            An array of keys to check for existence.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple = {"contains_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30contains_multiple};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_keys = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[1] = {0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("contains_multiple (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 286, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 286, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "contains_multiple", 0) < 0) __PYX_ERR(1, 286, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("contains_multiple", 1, 1, 1, i); __PYX_ERR(1, 286, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 286, __pyx_L3_error)
-    }
-    __pyx_v_keys = values[0];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("contains_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 286, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30contains_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_keys);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyObject *__pyx_v_keys) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("contains_multiple", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple(__pyx_v_self, __pyx_v_keys, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 286, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/tree/_base_tree.pxi":307
+/* "src/tree/_base_tree.pxi":217
  * 
  *     # public methods: tree traversals
  *     cpdef np.ndarray keys(self):             # <<<<<<<<<<<<<<
@@ -23013,7 +21660,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30cont
  *         return self.inorder()
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23048,9 +21695,9 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_ke
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_keys); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 307, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_keys); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 217, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys)) {
         __Pyx_XDECREF((PyObject *)__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -23072,10 +21719,10 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_ke
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 307, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 217, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 307, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 217, __pyx_L1_error)
         __pyx_r = ((PyArrayObject *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23094,7 +21741,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_ke
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":309
+  /* "src/tree/_base_tree.pxi":219
  *     cpdef np.ndarray keys(self):
  *         """Return all keys in sorted order (inorder traversal)."""
  *         return self.inorder()             # <<<<<<<<<<<<<<
@@ -23102,13 +21749,13 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_ke
  *     cpdef np.ndarray values(self):
 */
   __Pyx_XDECREF((PyObject *)__pyx_r);
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->inorder(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 309, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->inorder(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":307
+  /* "src/tree/_base_tree.pxi":217
  * 
  *     # public methods: tree traversals
  *     cpdef np.ndarray keys(self):             # <<<<<<<<<<<<<<
@@ -23131,16 +21778,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_ke
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys, "Return all keys in sorted order (inorder traversal).");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys = {"keys", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26keys, "Return all keys in sorted order (inorder traversal).");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys = {"keys", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26keys};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23166,14 +21813,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("keys", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26keys(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_26keys(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -23182,7 +21829,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("keys", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_keys(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 307, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_keys(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -23199,7 +21846,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":311
+/* "src/tree/_base_tree.pxi":221
  *         return self.inorder()
  * 
  *     cpdef np.ndarray values(self):             # <<<<<<<<<<<<<<
@@ -23207,7 +21854,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32keys
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23248,9 +21895,9 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 311, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values)) {
         __Pyx_XDECREF((PyObject *)__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -23272,10 +21919,10 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 311, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 221, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 311, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 221, __pyx_L1_error)
         __pyx_r = ((PyArrayObject *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23294,7 +21941,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":313
+  /* "src/tree/_base_tree.pxi":223
  *     cpdef np.ndarray values(self):
  *         """Return all values in key-sorted order."""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -23304,7 +21951,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":314
+    /* "src/tree/_base_tree.pxi":224
  *         """Return all values in key-sorted order."""
  *         if self._size == 0:
  *             return np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -23313,16 +21960,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
 */
     __Pyx_XDECREF((PyObject *)__pyx_r);
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 314, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 224, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 314, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 224, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 314, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 224, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 314, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 224, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 314, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 224, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_5 = 1;
@@ -23339,24 +21986,24 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 314, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 224, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 314, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 224, __pyx_L1_error)
       __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 314, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 224, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 314, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 224, __pyx_L1_error)
     __pyx_r = ((PyArrayObject *)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":313
+    /* "src/tree/_base_tree.pxi":223
  *     cpdef np.ndarray values(self):
  *         """Return all values in key-sorted order."""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -23365,7 +22012,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
 */
   }
 
-  /* "src/tree/_base_tree.pxi":316
+  /* "src/tree/_base_tree.pxi":226
  *             return np.array([], dtype=np.int64)
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -23373,16 +22020,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
  * 
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 316, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 316, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 316, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 316, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 316, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = 1;
@@ -23399,25 +22046,25 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_7};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 316, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 316, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 226, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 316, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 316, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_result = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/tree/_base_tree.pxi":317
+  /* "src/tree/_base_tree.pxi":227
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
  *         cdef intp_t result_idx = 0             # <<<<<<<<<<<<<<
@@ -23426,16 +22073,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
 */
   __pyx_v_result_idx = 0;
 
-  /* "src/tree/_base_tree.pxi":319
+  /* "src/tree/_base_tree.pxi":229
  *         cdef intp_t result_idx = 0
  * 
  *         self._inorder_values_traversal(self.root_idx, result, &result_idx)             # <<<<<<<<<<<<<<
  *         return np.asarray(result)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_inorder_values_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 319, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_inorder_values_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 229, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":320
+  /* "src/tree/_base_tree.pxi":230
  * 
  *         self._inorder_values_traversal(self.root_idx, result, &result_idx)
  *         return np.asarray(result)             # <<<<<<<<<<<<<<
@@ -23444,12 +22091,12 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
 */
   __Pyx_XDECREF((PyObject *)__pyx_r);
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 320, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 320, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 320, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -23469,15 +22116,15 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 320, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 320, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 230, __pyx_L1_error)
   __pyx_r = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":311
+  /* "src/tree/_base_tree.pxi":221
  *         return self.inorder()
  * 
  *     cpdef np.ndarray values(self):             # <<<<<<<<<<<<<<
@@ -23504,16 +22151,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_va
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34values, "Return all values in key-sorted order.");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values = {"values", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34values};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28values, "Return all values in key-sorted order.");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values = {"values", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28values};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23539,14 +22186,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("values", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34values(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28values(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34values(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_28values(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -23555,7 +22202,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34valu
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("values", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_values(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 311, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_values(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -23572,7 +22219,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34valu
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":322
+/* "src/tree/_base_tree.pxi":232
  *         return np.asarray(result)
  * 
  *     cpdef list items(self):             # <<<<<<<<<<<<<<
@@ -23580,7 +22227,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34valu
  *         return self.inorder_items()
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23615,9 +22262,9 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(s
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 322, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 232, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -23639,10 +22286,10 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(s
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 322, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 232, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 322, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 232, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23661,7 +22308,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(s
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":324
+  /* "src/tree/_base_tree.pxi":234
  *     cpdef list items(self):
  *         """Return all (key, value) pairs in sorted order."""
  *         return self.inorder_items()             # <<<<<<<<<<<<<<
@@ -23669,13 +22316,13 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(s
  *     cpdef np.ndarray inorder(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->inorder_items(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 324, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->inorder_items(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":322
+  /* "src/tree/_base_tree.pxi":232
  *         return np.asarray(result)
  * 
  *     cpdef list items(self):             # <<<<<<<<<<<<<<
@@ -23698,16 +22345,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(s
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36items, "Return all (key, value) pairs in sorted order.");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items = {"items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36items};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30items, "Return all (key, value) pairs in sorted order.");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items = {"items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30items};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23733,14 +22380,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("items", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_30items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -23749,7 +22396,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36item
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("items", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 322, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -23766,7 +22413,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36item
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":326
+/* "src/tree/_base_tree.pxi":236
  *         return self.inorder_items()
  * 
  *     cpdef np.ndarray inorder(self):             # <<<<<<<<<<<<<<
@@ -23774,7 +22421,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36item
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -23815,9 +22462,9 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_inorder); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 326, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_inorder); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 236, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder)) {
         __Pyx_XDECREF((PyObject *)__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -23839,10 +22486,10 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 326, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 236, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 326, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 236, __pyx_L1_error)
         __pyx_r = ((PyArrayObject *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23861,7 +22508,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":328
+  /* "src/tree/_base_tree.pxi":238
  *     cpdef np.ndarray inorder(self):
  *         """Return inorder traversal of keys"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -23871,7 +22518,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":329
+    /* "src/tree/_base_tree.pxi":239
  *         """Return inorder traversal of keys"""
  *         if self._size == 0:
  *             return np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -23880,16 +22527,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
 */
     __Pyx_XDECREF((PyObject *)__pyx_r);
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 329, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 329, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 329, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 329, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 329, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_5 = 1;
@@ -23906,24 +22553,24 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 329, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 239, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 329, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 239, __pyx_L1_error)
       __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 329, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 239, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 329, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 239, __pyx_L1_error)
     __pyx_r = ((PyArrayObject *)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":328
+    /* "src/tree/_base_tree.pxi":238
  *     cpdef np.ndarray inorder(self):
  *         """Return inorder traversal of keys"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -23932,7 +22579,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
 */
   }
 
-  /* "src/tree/_base_tree.pxi":331
+  /* "src/tree/_base_tree.pxi":241
  *             return np.array([], dtype=np.int64)
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -23940,16 +22587,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
  * 
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 331, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 331, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 331, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 331, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 331, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = 1;
@@ -23966,25 +22613,25 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_7};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 331, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 241, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 331, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 241, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 331, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 241, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 331, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 241, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_result = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/tree/_base_tree.pxi":332
+  /* "src/tree/_base_tree.pxi":242
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
  *         cdef intp_t result_idx = 0             # <<<<<<<<<<<<<<
@@ -23993,16 +22640,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
 */
   __pyx_v_result_idx = 0;
 
-  /* "src/tree/_base_tree.pxi":334
+  /* "src/tree/_base_tree.pxi":244
  *         cdef intp_t result_idx = 0
  * 
  *         self._inorder_traversal(self.root_idx, result, &result_idx)             # <<<<<<<<<<<<<<
  *         return np.asarray(result)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_inorder_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 334, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_inorder_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 244, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":335
+  /* "src/tree/_base_tree.pxi":245
  * 
  *         self._inorder_traversal(self.root_idx, result, &result_idx)
  *         return np.asarray(result)             # <<<<<<<<<<<<<<
@@ -24011,12 +22658,12 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
 */
   __Pyx_XDECREF((PyObject *)__pyx_r);
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 335, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 335, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 335, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -24036,15 +22683,15 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 335, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 335, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 245, __pyx_L1_error)
   __pyx_r = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":326
+  /* "src/tree/_base_tree.pxi":236
  *         return self.inorder_items()
  * 
  *     cpdef np.ndarray inorder(self):             # <<<<<<<<<<<<<<
@@ -24071,16 +22718,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_in
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder, "Return inorder traversal of keys");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder = {"inorder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32inorder, "Return inorder traversal of keys");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder = {"inorder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32inorder};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24106,14 +22753,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("inorder", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32inorder(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_32inorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -24122,7 +22769,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inor
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("inorder", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 326, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -24139,7 +22786,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inor
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":337
+/* "src/tree/_base_tree.pxi":247
  *         return np.asarray(result)
  * 
  *     cpdef np.ndarray preorder(self):             # <<<<<<<<<<<<<<
@@ -24147,7 +22794,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inor
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24188,9 +22835,9 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_preorder); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 337, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_preorder); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 247, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder)) {
         __Pyx_XDECREF((PyObject *)__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -24212,10 +22859,10 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 337, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 247, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 337, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 247, __pyx_L1_error)
         __pyx_r = ((PyArrayObject *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -24234,7 +22881,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":339
+  /* "src/tree/_base_tree.pxi":249
  *     cpdef np.ndarray preorder(self):
  *         """Return preorder traversal of keys"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -24244,7 +22891,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":340
+    /* "src/tree/_base_tree.pxi":250
  *         """Return preorder traversal of keys"""
  *         if self._size == 0:
  *             return np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -24253,16 +22900,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
 */
     __Pyx_XDECREF((PyObject *)__pyx_r);
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 340, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 340, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 340, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 340, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 340, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_5 = 1;
@@ -24279,24 +22926,24 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 340, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 250, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 340, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 250, __pyx_L1_error)
       __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 340, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 250, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 340, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 250, __pyx_L1_error)
     __pyx_r = ((PyArrayObject *)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":339
+    /* "src/tree/_base_tree.pxi":249
  *     cpdef np.ndarray preorder(self):
  *         """Return preorder traversal of keys"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -24305,7 +22952,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
 */
   }
 
-  /* "src/tree/_base_tree.pxi":342
+  /* "src/tree/_base_tree.pxi":252
  *             return np.array([], dtype=np.int64)
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -24313,16 +22960,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
  * 
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 342, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 342, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 342, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 342, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 342, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = 1;
@@ -24339,25 +22986,25 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_7};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 342, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 252, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 342, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 252, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 342, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 252, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 342, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 252, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_result = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/tree/_base_tree.pxi":343
+  /* "src/tree/_base_tree.pxi":253
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
  *         cdef intp_t result_idx = 0             # <<<<<<<<<<<<<<
@@ -24366,16 +23013,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
 */
   __pyx_v_result_idx = 0;
 
-  /* "src/tree/_base_tree.pxi":345
+  /* "src/tree/_base_tree.pxi":255
  *         cdef intp_t result_idx = 0
  * 
  *         self._preorder_traversal(self.root_idx, result, &result_idx)             # <<<<<<<<<<<<<<
  *         return np.asarray(result)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_preorder_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 345, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_preorder_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 255, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":346
+  /* "src/tree/_base_tree.pxi":256
  * 
  *         self._preorder_traversal(self.root_idx, result, &result_idx)
  *         return np.asarray(result)             # <<<<<<<<<<<<<<
@@ -24384,12 +23031,12 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
 */
   __Pyx_XDECREF((PyObject *)__pyx_r);
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 346, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 346, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 346, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -24409,15 +23056,15 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 346, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 256, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 346, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 256, __pyx_L1_error)
   __pyx_r = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":337
+  /* "src/tree/_base_tree.pxi":247
  *         return np.asarray(result)
  * 
  *     cpdef np.ndarray preorder(self):             # <<<<<<<<<<<<<<
@@ -24444,16 +23091,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_pr
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder, "Return preorder traversal of keys");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder = {"preorder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34preorder, "Return preorder traversal of keys");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder = {"preorder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34preorder};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24479,14 +23126,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("preorder", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34preorder(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_34preorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -24495,7 +23142,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preo
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("preorder", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorder(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 337, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorder(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -24512,7 +23159,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preo
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":348
+/* "src/tree/_base_tree.pxi":258
  *         return np.asarray(result)
  * 
  *     cpdef np.ndarray postorder(self):             # <<<<<<<<<<<<<<
@@ -24520,7 +23167,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preo
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24561,9 +23208,9 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_postorder); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 348, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_postorder); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder)) {
         __Pyx_XDECREF((PyObject *)__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -24585,10 +23232,10 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 348, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 258, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 348, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 258, __pyx_L1_error)
         __pyx_r = ((PyArrayObject *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -24607,7 +23254,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":350
+  /* "src/tree/_base_tree.pxi":260
  *     cpdef np.ndarray postorder(self):
  *         """Return postorder traversal of keys"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -24617,7 +23264,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":351
+    /* "src/tree/_base_tree.pxi":261
  *         """Return postorder traversal of keys"""
  *         if self._size == 0:
  *             return np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -24626,16 +23273,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
 */
     __Pyx_XDECREF((PyObject *)__pyx_r);
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 351, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 351, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 351, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 351, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 351, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_5 = 1;
@@ -24652,24 +23299,24 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 351, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 351, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 261, __pyx_L1_error)
       __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 351, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 351, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 261, __pyx_L1_error)
     __pyx_r = ((PyArrayObject *)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":350
+    /* "src/tree/_base_tree.pxi":260
  *     cpdef np.ndarray postorder(self):
  *         """Return postorder traversal of keys"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -24678,7 +23325,7 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
 */
   }
 
-  /* "src/tree/_base_tree.pxi":353
+  /* "src/tree/_base_tree.pxi":263
  *             return np.array([], dtype=np.int64)
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -24686,16 +23333,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
  * 
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 353, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 353, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 353, __pyx_L1_error)
+  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_self->_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 353, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 353, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = 1;
@@ -24712,25 +23359,25 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_7};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 353, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 353, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 263, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 353, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 353, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(1, 263, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_result = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/tree/_base_tree.pxi":354
+  /* "src/tree/_base_tree.pxi":264
  * 
  *         cdef intp_t[:] result = np.empty(self._size, dtype=np.int64)
  *         cdef intp_t result_idx = 0             # <<<<<<<<<<<<<<
@@ -24739,16 +23386,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
 */
   __pyx_v_result_idx = 0;
 
-  /* "src/tree/_base_tree.pxi":356
+  /* "src/tree/_base_tree.pxi":266
  *         cdef intp_t result_idx = 0
  * 
  *         self._postorder_traversal(self.root_idx, result, &result_idx)             # <<<<<<<<<<<<<<
  *         return np.asarray(result)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_postorder_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 356, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_postorder_traversal(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result, (&__pyx_v_result_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 266, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":357
+  /* "src/tree/_base_tree.pxi":267
  * 
  *         self._postorder_traversal(self.root_idx, result, &result_idx)
  *         return np.asarray(result)             # <<<<<<<<<<<<<<
@@ -24757,12 +23404,12 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
 */
   __Pyx_XDECREF((PyObject *)__pyx_r);
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 357, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 357, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 357, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -24782,15 +23429,15 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 357, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 357, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 267, __pyx_L1_error)
   __pyx_r = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":348
+  /* "src/tree/_base_tree.pxi":258
  *         return np.asarray(result)
  * 
  *     cpdef np.ndarray postorder(self):             # <<<<<<<<<<<<<<
@@ -24817,16 +23464,16 @@ static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_po
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder, "Return postorder traversal of keys");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder = {"postorder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36postorder, "Return postorder traversal of keys");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder = {"postorder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36postorder};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24852,14 +23499,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("postorder", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36postorder(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_36postorder(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -24868,7 +23515,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42post
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("postorder", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postorder(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 348, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postorder(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -24885,7 +23532,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42post
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":359
+/* "src/tree/_base_tree.pxi":269
  *         return np.asarray(result)
  * 
  *     cpdef list inorder_items(self):             # <<<<<<<<<<<<<<
@@ -24893,7 +23540,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42post
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -24930,9 +23577,9 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_inorder_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 359, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_inorder_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 269, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -24954,10 +23601,10 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 359, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 269, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 359, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 269, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -24976,7 +23623,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":361
+  /* "src/tree/_base_tree.pxi":271
  *     cpdef list inorder_items(self):
  *         """Return inorder traversal of (key, value) pairs"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -24986,7 +23633,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":362
+    /* "src/tree/_base_tree.pxi":272
  *         """Return inorder traversal of (key, value) pairs"""
  *         if self._size == 0:
  *             return []             # <<<<<<<<<<<<<<
@@ -24994,13 +23641,13 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
  *         cdef list result = []
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 362, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":361
+    /* "src/tree/_base_tree.pxi":271
  *     cpdef list inorder_items(self):
  *         """Return inorder traversal of (key, value) pairs"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25009,28 +23656,28 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
 */
   }
 
-  /* "src/tree/_base_tree.pxi":364
+  /* "src/tree/_base_tree.pxi":274
  *             return []
  * 
  *         cdef list result = []             # <<<<<<<<<<<<<<
  *         self._inorder_items_traverse(self.root_idx, result)
  *         return result
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 364, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/tree/_base_tree.pxi":365
+  /* "src/tree/_base_tree.pxi":275
  * 
  *         cdef list result = []
  *         self._inorder_items_traverse(self.root_idx, result)             # <<<<<<<<<<<<<<
  *         return result
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_inorder_items_traverse(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 365, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_inorder_items_traverse(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 275, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":366
+  /* "src/tree/_base_tree.pxi":276
  *         cdef list result = []
  *         self._inorder_items_traverse(self.root_idx, result)
  *         return result             # <<<<<<<<<<<<<<
@@ -25042,7 +23689,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":359
+  /* "src/tree/_base_tree.pxi":269
  *         return np.asarray(result)
  * 
  *     cpdef list inorder_items(self):             # <<<<<<<<<<<<<<
@@ -25066,16 +23713,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inorder_items, "Return inorder traversal of (key, value) pairs");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items = {"inorder_items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inorder_items};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder_items, "Return inorder traversal of (key, value) pairs");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items = {"inorder_items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder_items};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25101,14 +23748,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("inorder_items", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inorder_items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder_items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_38inorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -25117,7 +23764,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inor
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("inorder_items", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 359, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_inorder_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25134,7 +23781,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inor
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":368
+/* "src/tree/_base_tree.pxi":278
  *         return result
  * 
  *     cpdef list preorder_items(self):             # <<<<<<<<<<<<<<
@@ -25142,7 +23789,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44inor
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25179,9 +23826,9 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_preorder_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 368, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_preorder_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 278, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -25203,10 +23850,10 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 368, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 278, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 368, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 278, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -25225,7 +23872,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":370
+  /* "src/tree/_base_tree.pxi":280
  *     cpdef list preorder_items(self):
  *         """Return preorder traversal of (key, value) pairs"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25235,7 +23882,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":371
+    /* "src/tree/_base_tree.pxi":281
  *         """Return preorder traversal of (key, value) pairs"""
  *         if self._size == 0:
  *             return []             # <<<<<<<<<<<<<<
@@ -25243,13 +23890,13 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
  *         cdef list result = []
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 371, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":370
+    /* "src/tree/_base_tree.pxi":280
  *     cpdef list preorder_items(self):
  *         """Return preorder traversal of (key, value) pairs"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25258,28 +23905,28 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
 */
   }
 
-  /* "src/tree/_base_tree.pxi":373
+  /* "src/tree/_base_tree.pxi":283
  *             return []
  * 
  *         cdef list result = []             # <<<<<<<<<<<<<<
  *         self._preorder_items_traverse(self.root_idx, result)
  *         return result
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 373, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/tree/_base_tree.pxi":374
+  /* "src/tree/_base_tree.pxi":284
  * 
  *         cdef list result = []
  *         self._preorder_items_traverse(self.root_idx, result)             # <<<<<<<<<<<<<<
  *         return result
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_preorder_items_traverse(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 374, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_preorder_items_traverse(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 284, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":375
+  /* "src/tree/_base_tree.pxi":285
  *         cdef list result = []
  *         self._preorder_items_traverse(self.root_idx, result)
  *         return result             # <<<<<<<<<<<<<<
@@ -25291,7 +23938,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":368
+  /* "src/tree/_base_tree.pxi":278
  *         return result
  * 
  *     cpdef list preorder_items(self):             # <<<<<<<<<<<<<<
@@ -25315,16 +23962,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorde
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preorder_items, "Return preorder traversal of (key, value) pairs");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items = {"preorder_items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preorder_items};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder_items, "Return preorder traversal of (key, value) pairs");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items = {"preorder_items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder_items};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25350,14 +23997,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("preorder_items", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preorder_items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder_items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_40preorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -25366,7 +24013,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preo
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("preorder_items", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorder_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 368, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_preorder_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25383,7 +24030,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preo
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":377
+/* "src/tree/_base_tree.pxi":287
  *         return result
  * 
  *     cpdef list postorder_items(self):             # <<<<<<<<<<<<<<
@@ -25391,7 +24038,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46preo
  *         if self._size == 0:
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25428,9 +24075,9 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_postorder_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 377, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_postorder_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 287, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -25452,10 +24099,10 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 377, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 287, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 377, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(1, 287, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -25474,7 +24121,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":379
+  /* "src/tree/_base_tree.pxi":289
  *     cpdef list postorder_items(self):
  *         """Return postorder traversal of (key, value) pairs"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25484,7 +24131,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
   __pyx_t_6 = (__pyx_v_self->_size == 0);
   if (__pyx_t_6) {
 
-    /* "src/tree/_base_tree.pxi":380
+    /* "src/tree/_base_tree.pxi":290
  *         """Return postorder traversal of (key, value) pairs"""
  *         if self._size == 0:
  *             return []             # <<<<<<<<<<<<<<
@@ -25492,13 +24139,13 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
  *         cdef list result = []
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 380, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 290, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":379
+    /* "src/tree/_base_tree.pxi":289
  *     cpdef list postorder_items(self):
  *         """Return postorder traversal of (key, value) pairs"""
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25507,28 +24154,28 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
 */
   }
 
-  /* "src/tree/_base_tree.pxi":382
+  /* "src/tree/_base_tree.pxi":292
  *             return []
  * 
  *         cdef list result = []             # <<<<<<<<<<<<<<
  *         self._postorder_items_traverse(self.root_idx, result)
  *         return result
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 382, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/tree/_base_tree.pxi":383
+  /* "src/tree/_base_tree.pxi":293
  * 
  *         cdef list result = []
  *         self._postorder_items_traverse(self.root_idx, result)             # <<<<<<<<<<<<<<
  *         return result
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_postorder_items_traverse(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 383, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_postorder_items_traverse(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 293, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":384
+  /* "src/tree/_base_tree.pxi":294
  *         cdef list result = []
  *         self._postorder_items_traverse(self.root_idx, result)
  *         return result             # <<<<<<<<<<<<<<
@@ -25540,7 +24187,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":377
+  /* "src/tree/_base_tree.pxi":287
  *         return result
  * 
  *     cpdef list postorder_items(self):             # <<<<<<<<<<<<<<
@@ -25564,16 +24211,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postord
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48postorder_items, "Return postorder traversal of (key, value) pairs");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items = {"postorder_items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48postorder_items};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder_items, "Return postorder traversal of (key, value) pairs");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items = {"postorder_items", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder_items};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25599,14 +24246,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("postorder_items", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48postorder_items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder_items(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48postorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_42postorder_items(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -25615,7 +24262,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48post
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("postorder_items", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postorder_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 377, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_postorder_items(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25632,7 +24279,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48post
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":387
+/* "src/tree/_base_tree.pxi":297
  * 
  *     # range queries
  *     cpdef tuple range_query(self, intp_t min_key, intp_t max_key):             # <<<<<<<<<<<<<<
@@ -25640,7 +24287,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48post
  *         Range query returning arrays for keys and values.
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25685,16 +24332,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_range_query); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 387, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_range_query); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 297, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_min_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 387, __pyx_L1_error)
+        __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_min_key); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 297, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_max_key); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 387, __pyx_L1_error)
+        __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_max_key); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 297, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_7 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -25715,10 +24362,10 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 387, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 297, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(1, 387, __pyx_L1_error)
+        if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(1, 297, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -25737,7 +24384,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":403
+  /* "src/tree/_base_tree.pxi":313
  *             (keys_array, values_array) as arrays.
  *         """
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25747,7 +24394,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
   __pyx_t_8 = (__pyx_v_self->_size == 0);
   if (__pyx_t_8) {
 
-    /* "src/tree/_base_tree.pxi":404
+    /* "src/tree/_base_tree.pxi":314
  *         """
  *         if self._size == 0:
  *             empty = np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -25755,16 +24402,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
  * 
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 404, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 404, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 404, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 404, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 404, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_7 = 1;
@@ -25781,22 +24428,22 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 404, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_5, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 404, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_5, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 314, __pyx_L1_error)
       __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_6, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 404, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __pyx_v_empty = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "src/tree/_base_tree.pxi":405
+    /* "src/tree/_base_tree.pxi":315
  *         if self._size == 0:
  *             empty = np.array([], dtype=np.int64)
  *             return (empty, empty)             # <<<<<<<<<<<<<<
@@ -25804,19 +24451,19 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
  *         cdef intp_t count = self._count_range(self.root_idx, min_key, max_key)
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 405, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_empty);
     __Pyx_GIVEREF(__pyx_v_empty);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_empty) != (0)) __PYX_ERR(1, 405, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_empty) != (0)) __PYX_ERR(1, 315, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_empty);
     __Pyx_GIVEREF(__pyx_v_empty);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_empty) != (0)) __PYX_ERR(1, 405, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_empty) != (0)) __PYX_ERR(1, 315, __pyx_L1_error);
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":403
+    /* "src/tree/_base_tree.pxi":313
  *             (keys_array, values_array) as arrays.
  *         """
  *         if self._size == 0:             # <<<<<<<<<<<<<<
@@ -25825,17 +24472,17 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
 */
   }
 
-  /* "src/tree/_base_tree.pxi":407
+  /* "src/tree/_base_tree.pxi":317
  *             return (empty, empty)
  * 
  *         cdef intp_t count = self._count_range(self.root_idx, min_key, max_key)             # <<<<<<<<<<<<<<
  * 
  *         if count == 0:
 */
-  __pyx_t_9 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 407, __pyx_L1_error)
+  __pyx_t_9 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 317, __pyx_L1_error)
   __pyx_v_count = __pyx_t_9;
 
-  /* "src/tree/_base_tree.pxi":409
+  /* "src/tree/_base_tree.pxi":319
  *         cdef intp_t count = self._count_range(self.root_idx, min_key, max_key)
  * 
  *         if count == 0:             # <<<<<<<<<<<<<<
@@ -25845,7 +24492,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
   __pyx_t_8 = (__pyx_v_count == 0);
   if (__pyx_t_8) {
 
-    /* "src/tree/_base_tree.pxi":410
+    /* "src/tree/_base_tree.pxi":320
  * 
  *         if count == 0:
  *             empty = np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -25853,16 +24500,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
  * 
 */
     __pyx_t_6 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 410, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 410, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 410, __pyx_L1_error)
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 410, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 410, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_7 = 1;
@@ -25879,22 +24526,22 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_6, __pyx_t_5};
-      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 410, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 320, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 410, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_2, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 320, __pyx_L1_error)
       __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 410, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 320, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __pyx_v_empty = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "src/tree/_base_tree.pxi":411
+    /* "src/tree/_base_tree.pxi":321
  *         if count == 0:
  *             empty = np.array([], dtype=np.int64)
  *             return (empty, empty)             # <<<<<<<<<<<<<<
@@ -25902,19 +24549,19 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
  *         cdef intp_t[:] keys = np.empty(count, dtype=np.int64)
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 411, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 321, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_empty);
     __Pyx_GIVEREF(__pyx_v_empty);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_empty) != (0)) __PYX_ERR(1, 411, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_empty) != (0)) __PYX_ERR(1, 321, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_empty);
     __Pyx_GIVEREF(__pyx_v_empty);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_empty) != (0)) __PYX_ERR(1, 411, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_empty) != (0)) __PYX_ERR(1, 321, __pyx_L1_error);
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":409
+    /* "src/tree/_base_tree.pxi":319
  *         cdef intp_t count = self._count_range(self.root_idx, min_key, max_key)
  * 
  *         if count == 0:             # <<<<<<<<<<<<<<
@@ -25923,7 +24570,7 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
 */
   }
 
-  /* "src/tree/_base_tree.pxi":413
+  /* "src/tree/_base_tree.pxi":323
  *             return (empty, empty)
  * 
  *         cdef intp_t[:] keys = np.empty(count, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -25931,16 +24578,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
  *         cdef intp_t idx = 0
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 413, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 413, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 413, __pyx_L1_error)
+  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 413, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 413, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_7 = 1;
@@ -25957,25 +24604,25 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_4};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 413, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_5, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 413, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_5, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 323, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_2, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 413, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 413, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 323, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_keys = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "src/tree/_base_tree.pxi":414
+  /* "src/tree/_base_tree.pxi":324
  * 
  *         cdef intp_t[:] keys = np.empty(count, dtype=np.int64)
  *         cdef intp_t[:] values = np.empty(count, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -25983,16 +24630,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 414, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 414, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 414, __pyx_L1_error)
+  __pyx_t_5 = PyLong_FromSsize_t(__pyx_v_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 414, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 414, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_7 = 1;
@@ -26009,25 +24656,25 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_5};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 414, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 414, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(1, 324, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_6, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 414, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 414, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 324, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_values = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "src/tree/_base_tree.pxi":415
+  /* "src/tree/_base_tree.pxi":325
  *         cdef intp_t[:] keys = np.empty(count, dtype=np.int64)
  *         cdef intp_t[:] values = np.empty(count, dtype=np.int64)
  *         cdef intp_t idx = 0             # <<<<<<<<<<<<<<
@@ -26036,16 +24683,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
 */
   __pyx_v_idx = 0;
 
-  /* "src/tree/_base_tree.pxi":417
+  /* "src/tree/_base_tree.pxi":327
  *         cdef intp_t idx = 0
  * 
  *         self._range_query_fill(self.root_idx, min_key, max_key, keys, values, &idx)             # <<<<<<<<<<<<<<
  *         return (np.asarray(keys), np.asarray(values))
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, (&__pyx_v_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 417, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_self->root_idx, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, (&__pyx_v_idx)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 327, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":418
+  /* "src/tree/_base_tree.pxi":328
  * 
  *         self._range_query_fill(self.root_idx, min_key, max_key, keys, values, &idx)
  *         return (np.asarray(keys), np.asarray(values))             # <<<<<<<<<<<<<<
@@ -26054,12 +24701,12 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_6 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_keys, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_keys, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -26079,16 +24726,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 418, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_values, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_values, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -26108,22 +24755,22 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 418, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1) != (0)) __PYX_ERR(1, 418, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1) != (0)) __PYX_ERR(1, 328, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3) != (0)) __PYX_ERR(1, 418, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3) != (0)) __PYX_ERR(1, 328, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
   __pyx_r = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "src/tree/_base_tree.pxi":387
+  /* "src/tree/_base_tree.pxi":297
  * 
  *     # range queries
  *     cpdef tuple range_query(self, intp_t min_key, intp_t max_key):             # <<<<<<<<<<<<<<
@@ -26152,16 +24799,16 @@ static PyObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_q
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50range_query, "\n        Range query returning arrays for keys and values.\n\n        Parameters\n        ----------\n        min_key : intp_t\n            The mininum key in the desired range.\n        max_key : intp_t\n            The maximum key in the desired range.\n        \n        Returns\n        -------\n        tuple\n            (keys_array, values_array) as arrays.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query = {"range_query", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50range_query};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44range_query, "\n        Range query returning arrays for keys and values.\n\n        Parameters\n        ----------\n        min_key : intp_t\n            The mininum key in the desired range.\n        max_key : intp_t\n            The maximum key in the desired range.\n        \n        Returns\n        -------\n        tuple\n            (keys_array, values_array) as arrays.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query = {"range_query", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44range_query};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -26192,39 +24839,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_min_key,&__pyx_mstate_global->__pyx_n_u_max_key,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 387, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 297, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 387, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 297, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 387, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 297, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "range_query", 0) < 0) __PYX_ERR(1, 387, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "range_query", 0) < 0) __PYX_ERR(1, 297, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("range_query", 1, 2, 2, i); __PYX_ERR(1, 387, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("range_query", 1, 2, 2, i); __PYX_ERR(1, 297, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 387, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 297, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 387, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 297, __pyx_L3_error)
     }
-    __pyx_v_min_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_min_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 387, __pyx_L3_error)
-    __pyx_v_max_key = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_max_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 387, __pyx_L3_error)
+    __pyx_v_min_key = __Pyx_PyIndex_AsSsize_t(values[0]); if (unlikely((__pyx_v_min_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 297, __pyx_L3_error)
+    __pyx_v_max_key = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_max_key == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 297, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("range_query", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 387, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("range_query", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 297, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -26235,7 +24882,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50range_query(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_min_key, __pyx_v_max_key);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44range_query(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_min_key, __pyx_v_max_key);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -26245,7 +24892,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50range_query(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_44range_query(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_min_key, __pyx_t_3src_8typedefs_intp_t __pyx_v_max_key) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -26254,7 +24901,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50rang
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("range_query", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_query(__pyx_v_self, __pyx_v_min_key, __pyx_v_max_key, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 387, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_query(__pyx_v_self, __pyx_v_min_key, __pyx_v_max_key, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -26271,7 +24918,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50rang
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":420
+/* "src/tree/_base_tree.pxi":330
  *         return (np.asarray(keys), np.asarray(values))
  * 
  *     cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):             # <<<<<<<<<<<<<<
@@ -26289,7 +24936,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/_base_tree.pxi":422
+  /* "src/tree/_base_tree.pxi":332
  *     cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
  *         """Count nodes in range"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -26299,7 +24946,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = (__pyx_v_node_idx == -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":423
+    /* "src/tree/_base_tree.pxi":333
  *         """Count nodes in range"""
  *         if node_idx == NONE_SENTINEL:
  *             return 0             # <<<<<<<<<<<<<<
@@ -26309,7 +24956,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":422
+    /* "src/tree/_base_tree.pxi":332
  *     cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
  *         """Count nodes in range"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -26318,7 +24965,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/_base_tree.pxi":425
+  /* "src/tree/_base_tree.pxi":335
  *             return 0
  * 
  *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -26327,7 +24974,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_node = (&(__pyx_v_self->nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/_base_tree.pxi":426
+  /* "src/tree/_base_tree.pxi":336
  * 
  *         cdef Node_t* node = &self.nodes[node_idx]
  *         cdef intp_t count = 0             # <<<<<<<<<<<<<<
@@ -26336,7 +24983,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_count = 0;
 
-  /* "src/tree/_base_tree.pxi":428
+  /* "src/tree/_base_tree.pxi":338
  *         cdef intp_t count = 0
  * 
  *         if node.key > max_key:             # <<<<<<<<<<<<<<
@@ -26346,18 +24993,18 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = (__pyx_v_node->key > __pyx_v_max_key);
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":429
+    /* "src/tree/_base_tree.pxi":339
  * 
  *         if node.key > max_key:
  *             return self._count_range(node.left_child, min_key, max_key)             # <<<<<<<<<<<<<<
  *         elif node.key < min_key:
  *             return self._count_range(node.right_child, min_key, max_key)
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 429, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 339, __pyx_L1_error)
     __pyx_r = __pyx_t_2;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":428
+    /* "src/tree/_base_tree.pxi":338
  *         cdef intp_t count = 0
  * 
  *         if node.key > max_key:             # <<<<<<<<<<<<<<
@@ -26366,7 +25013,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/_base_tree.pxi":430
+  /* "src/tree/_base_tree.pxi":340
  *         if node.key > max_key:
  *             return self._count_range(node.left_child, min_key, max_key)
  *         elif node.key < min_key:             # <<<<<<<<<<<<<<
@@ -26376,18 +25023,18 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = (__pyx_v_node->key < __pyx_v_min_key);
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":431
+    /* "src/tree/_base_tree.pxi":341
  *             return self._count_range(node.left_child, min_key, max_key)
  *         elif node.key < min_key:
  *             return self._count_range(node.right_child, min_key, max_key)             # <<<<<<<<<<<<<<
  *         else:
  *             count = 1
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 431, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 341, __pyx_L1_error)
     __pyx_r = __pyx_t_2;
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":430
+    /* "src/tree/_base_tree.pxi":340
  *         if node.key > max_key:
  *             return self._count_range(node.left_child, min_key, max_key)
  *         elif node.key < min_key:             # <<<<<<<<<<<<<<
@@ -26396,7 +25043,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/_base_tree.pxi":433
+  /* "src/tree/_base_tree.pxi":343
  *             return self._count_range(node.right_child, min_key, max_key)
  *         else:
  *             count = 1             # <<<<<<<<<<<<<<
@@ -26406,27 +25053,27 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   /*else*/ {
     __pyx_v_count = 1;
 
-    /* "src/tree/_base_tree.pxi":434
+    /* "src/tree/_base_tree.pxi":344
  *         else:
  *             count = 1
  *             count += self._count_range(node.left_child, min_key, max_key)             # <<<<<<<<<<<<<<
  *             count += self._count_range(node.right_child, min_key, max_key)
  *             return count
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 434, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 344, __pyx_L1_error)
     __pyx_v_count = (__pyx_v_count + __pyx_t_2);
 
-    /* "src/tree/_base_tree.pxi":435
+    /* "src/tree/_base_tree.pxi":345
  *             count = 1
  *             count += self._count_range(node.left_child, min_key, max_key)
  *             count += self._count_range(node.right_child, min_key, max_key)             # <<<<<<<<<<<<<<
  *             return count
  * 
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 435, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_count_range(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 345, __pyx_L1_error)
     __pyx_v_count = (__pyx_v_count + __pyx_t_2);
 
-    /* "src/tree/_base_tree.pxi":436
+    /* "src/tree/_base_tree.pxi":346
  *             count += self._count_range(node.left_child, min_key, max_key)
  *             count += self._count_range(node.right_child, min_key, max_key)
  *             return count             # <<<<<<<<<<<<<<
@@ -26437,7 +25084,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     goto __pyx_L0;
   }
 
-  /* "src/tree/_base_tree.pxi":420
+  /* "src/tree/_base_tree.pxi":330
  *         return (np.asarray(keys), np.asarray(values))
  * 
  *     cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):             # <<<<<<<<<<<<<<
@@ -26453,7 +25100,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":438
+/* "src/tree/_base_tree.pxi":348
  *             return count
  * 
  *     cdef void _range_query_fill(             # <<<<<<<<<<<<<<
@@ -26471,7 +25118,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/_base_tree.pxi":453
+  /* "src/tree/_base_tree.pxi":363
  *         Pass empty numpy arrays with this size and fill.
  *         """
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -26481,7 +25128,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
   __pyx_t_1 = (__pyx_v_node_idx == -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":454
+    /* "src/tree/_base_tree.pxi":364
  *         """
  *         if node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
@@ -26490,7 +25137,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
 */
     goto __pyx_L0;
 
-    /* "src/tree/_base_tree.pxi":453
+    /* "src/tree/_base_tree.pxi":363
  *         Pass empty numpy arrays with this size and fill.
  *         """
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -26499,7 +25146,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
 */
   }
 
-  /* "src/tree/_base_tree.pxi":456
+  /* "src/tree/_base_tree.pxi":366
  *             return
  * 
  *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -26508,7 +25155,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
 */
   __pyx_v_node = (&(__pyx_v_self->nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/_base_tree.pxi":458
+  /* "src/tree/_base_tree.pxi":368
  *         cdef Node_t* node = &self.nodes[node_idx]
  * 
  *         if node.key > max_key:             # <<<<<<<<<<<<<<
@@ -26518,16 +25165,16 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
   __pyx_t_1 = (__pyx_v_node->key > __pyx_v_max_key);
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":459
+    /* "src/tree/_base_tree.pxi":369
  * 
  *         if node.key > max_key:
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)             # <<<<<<<<<<<<<<
  *         elif node.key < min_key:
  *             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
 */
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 459, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 369, __pyx_L1_error)
 
-    /* "src/tree/_base_tree.pxi":458
+    /* "src/tree/_base_tree.pxi":368
  *         cdef Node_t* node = &self.nodes[node_idx]
  * 
  *         if node.key > max_key:             # <<<<<<<<<<<<<<
@@ -26537,7 +25184,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
     goto __pyx_L4;
   }
 
-  /* "src/tree/_base_tree.pxi":460
+  /* "src/tree/_base_tree.pxi":370
  *         if node.key > max_key:
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
  *         elif node.key < min_key:             # <<<<<<<<<<<<<<
@@ -26547,16 +25194,16 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
   __pyx_t_1 = (__pyx_v_node->key < __pyx_v_min_key);
   if (__pyx_t_1) {
 
-    /* "src/tree/_base_tree.pxi":461
+    /* "src/tree/_base_tree.pxi":371
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
  *         elif node.key < min_key:
  *             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)             # <<<<<<<<<<<<<<
  *         else:
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
 */
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 461, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 371, __pyx_L1_error)
 
-    /* "src/tree/_base_tree.pxi":460
+    /* "src/tree/_base_tree.pxi":370
  *         if node.key > max_key:
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
  *         elif node.key < min_key:             # <<<<<<<<<<<<<<
@@ -26566,7 +25213,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
     goto __pyx_L4;
   }
 
-  /* "src/tree/_base_tree.pxi":463
+  /* "src/tree/_base_tree.pxi":373
  *             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
  *         else:
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)             # <<<<<<<<<<<<<<
@@ -26574,9 +25221,9 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
  *             keys[idx[0]] = node.key
 */
   /*else*/ {
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 463, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 373, __pyx_L1_error)
 
-    /* "src/tree/_base_tree.pxi":465
+    /* "src/tree/_base_tree.pxi":375
  *             self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
  * 
  *             keys[idx[0]] = node.key             # <<<<<<<<<<<<<<
@@ -26587,7 +25234,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
     __pyx_t_3 = (__pyx_v_idx[0]);
     *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_keys.data + __pyx_t_3 * __pyx_v_keys.strides[0]) )) = __pyx_t_2;
 
-    /* "src/tree/_base_tree.pxi":466
+    /* "src/tree/_base_tree.pxi":376
  * 
  *             keys[idx[0]] = node.key
  *             values[idx[0]] = node.value             # <<<<<<<<<<<<<<
@@ -26598,7 +25245,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
     __pyx_t_3 = (__pyx_v_idx[0]);
     *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_values.data + __pyx_t_3 * __pyx_v_values.strides[0]) )) = __pyx_t_2;
 
-    /* "src/tree/_base_tree.pxi":467
+    /* "src/tree/_base_tree.pxi":377
  *             keys[idx[0]] = node.key
  *             values[idx[0]] = node.value
  *             idx[0] += 1             # <<<<<<<<<<<<<<
@@ -26608,18 +25255,18 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
     __pyx_t_4 = 0;
     (__pyx_v_idx[__pyx_t_4]) = ((__pyx_v_idx[__pyx_t_4]) + 1);
 
-    /* "src/tree/_base_tree.pxi":469
+    /* "src/tree/_base_tree.pxi":379
  *             idx[0] += 1
  * 
  *             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)             # <<<<<<<<<<<<<<
  * 
  *     # basic tree operations
 */
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 469, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self->__pyx_vtab)->_range_query_fill(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_min_key, __pyx_v_max_key, __pyx_v_keys, __pyx_v_values, __pyx_v_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 379, __pyx_L1_error)
   }
   __pyx_L4:;
 
-  /* "src/tree/_base_tree.pxi":438
+  /* "src/tree/_base_tree.pxi":348
  *             return count
  * 
  *     cdef void _range_query_fill(             # <<<<<<<<<<<<<<
@@ -26634,9 +25281,775 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query
   __pyx_L0:;
 }
 
-/* "src/tree/_base_tree.pxi":473
+/* "src/tree/_base_tree.pxi":383
  *     # basic tree operations
  *     # to be overridden by subclass
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement get_multiple")
+ * 
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch) {
+  PyArrayObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_multiple", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 383, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple)) {
+        __Pyx_XDECREF((PyObject *)__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 383, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 383, __pyx_L1_error)
+        __pyx_r = ((PyArrayObject *)__pyx_t_2);
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/_base_tree.pxi":384
+ *     # to be overridden by subclass
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):
+ *         raise NotImplementedError("Subclass must implement get_multiple")             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):
+*/
+  __pyx_t_2 = NULL;
+  __Pyx_INCREF(__pyx_builtin_NotImplementedError);
+  __pyx_t_4 = __pyx_builtin_NotImplementedError; 
+  __pyx_t_5 = 1;
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_Subclass_must_implement_get_mult};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 384, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 384, __pyx_L1_error)
+
+  /* "src/tree/_base_tree.pxi":383
+ *     # basic tree operations
+ *     # to be overridden by subclass
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement get_multiple")
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF((PyObject *)__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple = {"get_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_keys = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_multiple (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 383, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 383, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_multiple", 0) < 0) __PYX_ERR(1, 383, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_multiple", 1, 1, 1, i); __PYX_ERR(1, 383, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 383, __pyx_L3_error)
+    }
+    __pyx_v_keys = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 383, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_keys), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "keys", 0))) __PYX_ERR(1, 383, __pyx_L1_error)
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46get_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_keys);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_46get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyArrayObject *__pyx_v_keys) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_multiple", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple(__pyx_v_self, __pyx_v_keys, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 383, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/_base_tree.pxi":386
+ *         raise NotImplementedError("Subclass must implement get_multiple")
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement delete_multiple")
+ * 
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch) {
+  __pyx_t_3src_8typedefs_intp_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("delete_multiple", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_delete_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 386, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 386, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 386, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_6;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/_base_tree.pxi":387
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):
+ *         raise NotImplementedError("Subclass must implement delete_multiple")             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+*/
+  __pyx_t_2 = NULL;
+  __Pyx_INCREF(__pyx_builtin_NotImplementedError);
+  __pyx_t_4 = __pyx_builtin_NotImplementedError; 
+  __pyx_t_5 = 1;
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_Subclass_must_implement_delete_m};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 387, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 387, __pyx_L1_error)
+
+  /* "src/tree/_base_tree.pxi":386
+ *         raise NotImplementedError("Subclass must implement get_multiple")
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement delete_multiple")
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple = {"delete_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_keys = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("delete_multiple (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 386, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 386, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "delete_multiple", 0) < 0) __PYX_ERR(1, 386, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("delete_multiple", 1, 1, 1, i); __PYX_ERR(1, 386, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 386, __pyx_L3_error)
+    }
+    __pyx_v_keys = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("delete_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 386, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_keys), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "keys", 0))) __PYX_ERR(1, 386, __pyx_L1_error)
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48delete_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_keys);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_48delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyArrayObject *__pyx_v_keys) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("delete_multiple", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple(__pyx_v_self, __pyx_v_keys, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 386, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 386, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/_base_tree.pxi":389
+ *         raise NotImplementedError("Subclass must implement delete_multiple")
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement contains_multiple")
+ * 
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, CYTHON_UNUSED PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch) {
+  PyArrayObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("contains_multiple", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_contains_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 389, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple)) {
+        __Pyx_XDECREF((PyObject *)__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 389, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 389, __pyx_L1_error)
+        __pyx_r = ((PyArrayObject *)__pyx_t_2);
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/_base_tree.pxi":390
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+ *         raise NotImplementedError("Subclass must implement contains_multiple")             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+*/
+  __pyx_t_2 = NULL;
+  __Pyx_INCREF(__pyx_builtin_NotImplementedError);
+  __pyx_t_4 = __pyx_builtin_NotImplementedError; 
+  __pyx_t_5 = 1;
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_Subclass_must_implement_contains};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 390, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 390, __pyx_L1_error)
+
+  /* "src/tree/_base_tree.pxi":389
+ *         raise NotImplementedError("Subclass must implement delete_multiple")
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement contains_multiple")
+ * 
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF((PyObject *)__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple = {"contains_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_keys = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("contains_multiple (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 389, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 389, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "contains_multiple", 0) < 0) __PYX_ERR(1, 389, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("contains_multiple", 1, 1, 1, i); __PYX_ERR(1, 389, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 389, __pyx_L3_error)
+    }
+    __pyx_v_keys = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("contains_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 389, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_keys), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "keys", 0))) __PYX_ERR(1, 389, __pyx_L1_error)
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50contains_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_keys);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_50contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *__pyx_v_self, PyArrayObject *__pyx_v_keys) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("contains_multiple", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple(__pyx_v_self, __pyx_v_keys, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 389, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree._BaseTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/_base_tree.pxi":392
+ *         raise NotImplementedError("Subclass must implement contains_multiple")
+ * 
  *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
  *         raise NotImplementedError("Subclass must implement build_tree")
  * 
@@ -26676,7 +26089,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(C
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_build_tree); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 473, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_build_tree); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 392, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_9_BaseTree_53build_tree)) {
         __pyx_t_3 = NULL;
@@ -26699,7 +26112,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(C
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 473, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 392, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -26719,8 +26132,8 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(C
     #endif
   }
 
-  /* "src/tree/_base_tree.pxi":474
- *     # to be overridden by subclass
+  /* "src/tree/_base_tree.pxi":393
+ * 
  *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
  *         raise NotImplementedError("Subclass must implement build_tree")             # <<<<<<<<<<<<<<
  * 
@@ -26735,16 +26148,16 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(C
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 474, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 393, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 474, __pyx_L1_error)
+  __PYX_ERR(1, 393, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":473
- *     # basic tree operations
- *     # to be overridden by subclass
+  /* "src/tree/_base_tree.pxi":392
+ *         raise NotImplementedError("Subclass must implement contains_multiple")
+ * 
  *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
  *         raise NotImplementedError("Subclass must implement build_tree")
  * 
@@ -26801,39 +26214,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,&__pyx_mstate_global->__pyx_n_u_values,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 473, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 392, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 473, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 392, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 473, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 392, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "build_tree", 0) < 0) __PYX_ERR(1, 473, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "build_tree", 0) < 0) __PYX_ERR(1, 392, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, i); __PYX_ERR(1, 473, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, i); __PYX_ERR(1, 392, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 473, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 392, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 473, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(1, 392, __pyx_L3_error)
     }
     __pyx_v_keys = values[0];
     __pyx_v_values = values[1];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 473, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 392, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -26863,8 +26276,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_52buil
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("build_tree", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(__pyx_v_self, __pyx_v_keys, __pyx_v_values, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 473, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 473, __pyx_L1_error)
+  __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree(__pyx_v_self, __pyx_v_keys, __pyx_v_values, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 392, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -26881,7 +26294,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_52buil
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":476
+/* "src/tree/_base_tree.pxi":395
  *         raise NotImplementedError("Subclass must implement build_tree")
  * 
  *     cdef intp_t _find_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -26901,7 +26314,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_find_node", 0);
 
-  /* "src/tree/_base_tree.pxi":477
+  /* "src/tree/_base_tree.pxi":396
  * 
  *     cdef intp_t _find_node(self, intp_t key):
  *         raise NotImplementedError("Subclasses must implement _find_node")             # <<<<<<<<<<<<<<
@@ -26917,14 +26330,14 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 477, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 396, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 477, __pyx_L1_error)
+  __PYX_ERR(1, 396, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":476
+  /* "src/tree/_base_tree.pxi":395
  *         raise NotImplementedError("Subclass must implement build_tree")
  * 
  *     cdef intp_t _find_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -26943,7 +26356,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":479
+/* "src/tree/_base_tree.pxi":398
  *         raise NotImplementedError("Subclasses must implement _find_node")
  * 
  *     cdef intp_t _insert_node(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
@@ -26963,7 +26376,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_insert_node", 0);
 
-  /* "src/tree/_base_tree.pxi":480
+  /* "src/tree/_base_tree.pxi":399
  * 
  *     cdef intp_t _insert_node(self, intp_t key, intp_t value):
  *         raise NotImplementedError("Subclasses must implement _insert_node")             # <<<<<<<<<<<<<<
@@ -26979,14 +26392,14 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 480, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 399, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 480, __pyx_L1_error)
+  __PYX_ERR(1, 399, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":479
+  /* "src/tree/_base_tree.pxi":398
  *         raise NotImplementedError("Subclasses must implement _find_node")
  * 
  *     cdef intp_t _insert_node(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
@@ -27005,7 +26418,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":482
+/* "src/tree/_base_tree.pxi":401
  *         raise NotImplementedError("Subclasses must implement _insert_node")
  * 
  *     cdef intp_t _delete_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -27025,7 +26438,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_delete_node", 0);
 
-  /* "src/tree/_base_tree.pxi":483
+  /* "src/tree/_base_tree.pxi":402
  * 
  *     cdef intp_t _delete_node(self, intp_t key):
  *         raise NotImplementedError("Subclasses must implement _delete_node")             # <<<<<<<<<<<<<<
@@ -27041,14 +26454,14 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 483, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 402, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 483, __pyx_L1_error)
+  __PYX_ERR(1, 402, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":482
+  /* "src/tree/_base_tree.pxi":401
  *         raise NotImplementedError("Subclasses must implement _insert_node")
  * 
  *     cdef intp_t _delete_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -27067,7 +26480,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/_base_tree.pxi":485
+/* "src/tree/_base_tree.pxi":404
  *         raise NotImplementedError("Subclasses must implement _delete_node")
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
@@ -27086,7 +26499,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__resize_arra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_resize_arrays", 0);
 
-  /* "src/tree/_base_tree.pxi":486
+  /* "src/tree/_base_tree.pxi":405
  * 
  *     cdef void _resize_arrays(self):
  *         raise NotImplementedError("Subclasses must implement _resize_arrays")             # <<<<<<<<<<<<<<
@@ -27102,14 +26515,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__resize_arra
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 486, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 486, __pyx_L1_error)
+  __PYX_ERR(1, 405, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":485
+  /* "src/tree/_base_tree.pxi":404
  *         raise NotImplementedError("Subclasses must implement _delete_node")
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
@@ -27126,7 +26539,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__resize_arra
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":488
+/* "src/tree/_base_tree.pxi":407
  *         raise NotImplementedError("Subclasses must implement _resize_arrays")
  * 
  *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
@@ -27145,7 +26558,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_tra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_inorder_traversal", 0);
 
-  /* "src/tree/_base_tree.pxi":495
+  /* "src/tree/_base_tree.pxi":414
  *     ):
  *         """Left, root, right"""
  *         raise NotImplementedError("Subclasses must implement _inorder_traversal")             # <<<<<<<<<<<<<<
@@ -27161,14 +26574,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_tra
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 495, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 414, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 495, __pyx_L1_error)
+  __PYX_ERR(1, 414, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":488
+  /* "src/tree/_base_tree.pxi":407
  *         raise NotImplementedError("Subclasses must implement _resize_arrays")
  * 
  *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
@@ -27185,7 +26598,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_tra
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":497
+/* "src/tree/_base_tree.pxi":416
  *         raise NotImplementedError("Subclasses must implement _inorder_traversal")
  * 
  *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
@@ -27204,7 +26617,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_val
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_inorder_values_traversal", 0);
 
-  /* "src/tree/_base_tree.pxi":509
+  /* "src/tree/_base_tree.pxi":428
  *         the values rather than the keys. Helper method for `values()`.
  *         """
  *         raise NotImplementedError("Subclasses must implement _inorder_values_traversal")             # <<<<<<<<<<<<<<
@@ -27220,14 +26633,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_val
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 509, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 428, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 509, __pyx_L1_error)
+  __PYX_ERR(1, 428, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":497
+  /* "src/tree/_base_tree.pxi":416
  *         raise NotImplementedError("Subclasses must implement _inorder_traversal")
  * 
  *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
@@ -27244,7 +26657,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_val
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":511
+/* "src/tree/_base_tree.pxi":430
  *         raise NotImplementedError("Subclasses must implement _inorder_values_traversal")
  * 
  *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
@@ -27263,7 +26676,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_tr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_preorder_traversal", 0);
 
-  /* "src/tree/_base_tree.pxi":518
+  /* "src/tree/_base_tree.pxi":437
  *     ):
  *         """Root, left, right"""
  *         raise NotImplementedError("Subclasses must implement _preorder_traversal")             # <<<<<<<<<<<<<<
@@ -27279,14 +26692,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_tr
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 518, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 518, __pyx_L1_error)
+  __PYX_ERR(1, 437, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":511
+  /* "src/tree/_base_tree.pxi":430
  *         raise NotImplementedError("Subclasses must implement _inorder_values_traversal")
  * 
  *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
@@ -27303,7 +26716,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_tr
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":520
+/* "src/tree/_base_tree.pxi":439
  *         raise NotImplementedError("Subclasses must implement _preorder_traversal")
  * 
  *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
@@ -27322,7 +26735,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_postorder_traversal", 0);
 
-  /* "src/tree/_base_tree.pxi":527
+  /* "src/tree/_base_tree.pxi":446
  *     ):
  *         """Left, right, root"""
  *         raise NotImplementedError("Subclasses must implement _postorder_traversal")             # <<<<<<<<<<<<<<
@@ -27338,14 +26751,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_t
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 527, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 527, __pyx_L1_error)
+  __PYX_ERR(1, 446, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":520
+  /* "src/tree/_base_tree.pxi":439
  *         raise NotImplementedError("Subclasses must implement _preorder_traversal")
  * 
  *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
@@ -27362,7 +26775,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_t
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":529
+/* "src/tree/_base_tree.pxi":448
  *         raise NotImplementedError("Subclasses must implement _postorder_traversal")
  * 
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -27381,7 +26794,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_ite
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_inorder_items_traverse", 0);
 
-  /* "src/tree/_base_tree.pxi":531
+  /* "src/tree/_base_tree.pxi":450
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, root, right"""
  *         raise NotImplementedError("Subclasses must implement _inorder_items_traverse")             # <<<<<<<<<<<<<<
@@ -27397,14 +26810,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_ite
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 531, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 450, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 531, __pyx_L1_error)
+  __PYX_ERR(1, 450, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":529
+  /* "src/tree/_base_tree.pxi":448
  *         raise NotImplementedError("Subclasses must implement _postorder_traversal")
  * 
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -27421,7 +26834,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__inorder_ite
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":533
+/* "src/tree/_base_tree.pxi":452
  *         raise NotImplementedError("Subclasses must implement _inorder_items_traverse")
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -27440,7 +26853,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_it
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_preorder_items_traverse", 0);
 
-  /* "src/tree/_base_tree.pxi":535
+  /* "src/tree/_base_tree.pxi":454
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
  *         """Root, left, right"""
  *         raise NotImplementedError("Subclasses must implement _preorder_items_traverse")             # <<<<<<<<<<<<<<
@@ -27456,14 +26869,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_it
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 535, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 535, __pyx_L1_error)
+  __PYX_ERR(1, 454, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":533
+  /* "src/tree/_base_tree.pxi":452
  *         raise NotImplementedError("Subclasses must implement _inorder_items_traverse")
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -27480,7 +26893,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__preorder_it
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/_base_tree.pxi":537
+/* "src/tree/_base_tree.pxi":456
  *         raise NotImplementedError("Subclasses must implement _preorder_items_traverse")
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -27499,7 +26912,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_postorder_items_traverse", 0);
 
-  /* "src/tree/_base_tree.pxi":539
+  /* "src/tree/_base_tree.pxi":458
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, right, root"""
  *         raise NotImplementedError("Subclasses must implement _postorder_items_traverse")             # <<<<<<<<<<<<<<
@@ -27513,14 +26926,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__postorder_i
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 539, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 458, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 539, __pyx_L1_error)
+  __PYX_ERR(1, 458, __pyx_L1_error)
 
-  /* "src/tree/_base_tree.pxi":537
+  /* "src/tree/_base_tree.pxi":456
  *         raise NotImplementedError("Subclasses must implement _preorder_items_traverse")
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -27744,12 +27157,1256 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_9_BaseTree_56__se
 /* "src/tree/bst/binary_search_tree.pyx":62
  *     """
  * 
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch) {
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_n;
+  __Pyx_memviewslice __pyx_v_sorted_indices = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_sorted_keys = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_results = NULL;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_original_pos;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_i;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_idx;
+  PyArrayObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  __Pyx_memviewslice __pyx_t_10 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_11;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_12;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_13;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_14;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_15;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_multiple", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple)) {
+        __Pyx_XDECREF((PyObject *)__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 62, __pyx_L1_error)
+        __pyx_r = ((PyArrayObject *)__pyx_t_2);
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":84
+ *             missing keys marked as NONE_SENTINEL.
+ *         """
+ *         cdef intp_t n = len(keys)             # <<<<<<<<<<<<<<
+ *         if n == 0:
+ *             return np.array([], dtype=np.int64)
+*/
+  __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_keys)); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_v_n = __pyx_t_6;
+
+  /* "src/tree/bst/binary_search_tree.pyx":85
+ *         """
+ *         cdef intp_t n = len(keys)
+ *         if n == 0:             # <<<<<<<<<<<<<<
+ *             return np.array([], dtype=np.int64)
+ * 
+*/
+  __pyx_t_7 = (__pyx_v_n == 0);
+  if (__pyx_t_7) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":86
+ *         cdef intp_t n = len(keys)
+ *         if n == 0:
+ *             return np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
+ * 
+ *         # sort for cache-friendly traversal
+*/
+    __Pyx_XDECREF((PyObject *)__pyx_r);
+    __pyx_t_2 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_5 = 1;
+    #if CYTHON_UNPACK_METHODS
+    if (unlikely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+      assert(__pyx_t_2);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(__pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+      __pyx_t_5 = 0;
+    }
+    #endif
+    {
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
+      __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_9, __pyx_t_8, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_r = ((PyArrayObject *)__pyx_t_1);
+    __pyx_t_1 = 0;
+    goto __pyx_L0;
+
+    /* "src/tree/bst/binary_search_tree.pyx":85
+ *         """
+ *         cdef intp_t n = len(keys)
+ *         if n == 0:             # <<<<<<<<<<<<<<
+ *             return np.array([], dtype=np.int64)
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":89
+ * 
+ *         # sort for cache-friendly traversal
+ *         cdef intp_t[:] sorted_indices = np.argsort(keys)             # <<<<<<<<<<<<<<
+ *         cdef intp_t[:] sorted_keys = keys[sorted_indices]
+ *         results = np.empty_like(keys)
+*/
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_argsort); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_9))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_9);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_9);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_9, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_sorted_indices = __pyx_t_10;
+  __pyx_t_10.memview = NULL;
+  __pyx_t_10.data = NULL;
+
+  /* "src/tree/bst/binary_search_tree.pyx":90
+ *         # sort for cache-friendly traversal
+ *         cdef intp_t[:] sorted_indices = np.argsort(keys)
+ *         cdef intp_t[:] sorted_keys = keys[sorted_indices]             # <<<<<<<<<<<<<<
+ *         results = np.empty_like(keys)
+ * 
+*/
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_sorted_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_3src_8typedefs_intp_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_3src_8typedefs_intp_t, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_9 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_keys), __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  __pyx_v_sorted_keys = __pyx_t_10;
+  __pyx_t_10.memview = NULL;
+  __pyx_t_10.data = NULL;
+
+  /* "src/tree/bst/binary_search_tree.pyx":91
+ *         cdef intp_t[:] sorted_indices = np.argsort(keys)
+ *         cdef intp_t[:] sorted_keys = keys[sorted_indices]
+ *         results = np.empty_like(keys)             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t original_pos
+*/
+  __pyx_t_1 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty_like); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_8))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_8);
+    assert(__pyx_t_1);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_8);
+    __Pyx_INCREF(__pyx_t_1);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_8, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_1, ((PyObject *)__pyx_v_keys)};
+    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+  }
+  __pyx_v_results = __pyx_t_9;
+  __pyx_t_9 = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":94
+ * 
+ *         cdef intp_t original_pos
+ *         for i in range(n):             # <<<<<<<<<<<<<<
+ *             idx = self._find_node(sorted_keys[i])
+ *             original_pos = sorted_indices[i]
+*/
+  __pyx_t_11 = __pyx_v_n;
+  __pyx_t_12 = __pyx_t_11;
+  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+    __pyx_v_i = __pyx_t_13;
+
+    /* "src/tree/bst/binary_search_tree.pyx":95
+ *         cdef intp_t original_pos
+ *         for i in range(n):
+ *             idx = self._find_node(sorted_keys[i])             # <<<<<<<<<<<<<<
+ *             original_pos = sorted_indices[i]
+ *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
+*/
+    __pyx_t_14 = __pyx_v_i;
+    __pyx_t_15 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._find_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_sorted_keys.data + __pyx_t_14 * __pyx_v_sorted_keys.strides[0]) )))); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_v_idx = __pyx_t_15;
+
+    /* "src/tree/bst/binary_search_tree.pyx":96
+ *         for i in range(n):
+ *             idx = self._find_node(sorted_keys[i])
+ *             original_pos = sorted_indices[i]             # <<<<<<<<<<<<<<
+ *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
+ *         return np.asarray(results)
+*/
+    __pyx_t_15 = __pyx_v_i;
+    __pyx_v_original_pos = (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_sorted_indices.data + __pyx_t_15 * __pyx_v_sorted_indices.strides[0]) )));
+
+    /* "src/tree/bst/binary_search_tree.pyx":97
+ *             idx = self._find_node(sorted_keys[i])
+ *             original_pos = sorted_indices[i]
+ *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL             # <<<<<<<<<<<<<<
+ *         return np.asarray(results)
+ * 
+*/
+    __pyx_t_7 = (__pyx_v_idx != -1L);
+    if (__pyx_t_7) {
+      __pyx_t_8 = PyLong_FromSsize_t((__pyx_v_self->__pyx_base.nodes[__pyx_v_idx]).value); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_9 = __pyx_t_8;
+      __pyx_t_8 = 0;
+    } else {
+      __Pyx_INCREF(__pyx_mstate_global->__pyx_int_neg_1);
+      __pyx_t_9 = __pyx_mstate_global->__pyx_int_neg_1;
+    }
+    if (unlikely((__Pyx_SetItemInt(__pyx_v_results, __pyx_v_original_pos, __pyx_t_9, __pyx_t_3src_8typedefs_intp_t, 1, PyLong_FromSsize_t, 0, 0, 0, 1) < 0))) __PYX_ERR(0, 97, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":98
+ *             original_pos = sorted_indices[i]
+ *             results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
+ *         return np.asarray(results)             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):
+*/
+  __Pyx_XDECREF((PyObject *)__pyx_r);
+  __pyx_t_8 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_8);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_8);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_results};
+    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+  }
+  if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_r = ((PyArrayObject *)__pyx_t_9);
+  __pyx_t_9 = 0;
+  goto __pyx_L0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":62
+ *     """
+ * 
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_10, 1);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_sorted_indices, 1);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_sorted_keys, 1);
+  __Pyx_XDECREF(__pyx_v_results);
+  __Pyx_XGIVEREF((PyObject *)__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple, "\n        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL\n        for missing keys. I.e., if the key does not exist, the array will\n        contain -1 as a value.\n\n        Keys are sorted before lookup. This improves cache locality in the\n        binary search tree traversal (`_find_node()`),\n        since lookups of nearby keys tend to reuse nodes higher in the tree.\n        Prefetching is also more effective, reducing cache misses.\n\n        Parameters\n        ----------\n        keys : np.ndarray\n            An array of keys to retrieve.\n\n        Returns\n        -------\n        np.ndarray[int64]\n            Array of values corresponding to the input keys, with\n            missing keys marked as NONE_SENTINEL.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple = {"get_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_keys = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_multiple (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 62, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 62, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_multiple", 0) < 0) __PYX_ERR(0, 62, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_multiple", 1, 1, 1, i); __PYX_ERR(0, 62, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 62, __pyx_L3_error)
+    }
+    __pyx_v_keys = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 62, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_keys), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "keys", 0))) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v_keys);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_multiple", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple(__pyx_v_self, __pyx_v_keys, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.get_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/bst/binary_search_tree.pyx":100
+ *         return np.asarray(results)
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Delete multiple keys and return number of successful deletions.
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch) {
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_deleted_count;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_i;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_n;
+  __pyx_t_3src_8typedefs_intp_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_8;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_9;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_10;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_11;
+  int __pyx_t_12;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("delete_multiple", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_delete_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_6;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":109
+ *             An array of keys to delete.
+ *         """
+ *         cdef intp_t deleted_count = 0             # <<<<<<<<<<<<<<
+ *         cdef intp_t i, n = len(keys)
+ * 
+*/
+  __pyx_v_deleted_count = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":110
+ *         """
+ *         cdef intp_t deleted_count = 0
+ *         cdef intp_t i, n = len(keys)             # <<<<<<<<<<<<<<
+ * 
+ *         for i in range(n):
+*/
+  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_keys)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_v_n = __pyx_t_7;
+
+  /* "src/tree/bst/binary_search_tree.pyx":112
+ *         cdef intp_t i, n = len(keys)
+ * 
+ *         for i in range(n):             # <<<<<<<<<<<<<<
+ *             if self._delete_node(keys[i]):
+ *                 deleted_count += 1
+*/
+  __pyx_t_6 = __pyx_v_n;
+  __pyx_t_8 = __pyx_t_6;
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_i = __pyx_t_9;
+
+    /* "src/tree/bst/binary_search_tree.pyx":113
+ * 
+ *         for i in range(n):
+ *             if self._delete_node(keys[i]):             # <<<<<<<<<<<<<<
+ *                 deleted_count += 1
+ * 
+*/
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_keys), __pyx_v_i, __pyx_t_3src_8typedefs_intp_t, 1, PyLong_FromSsize_t, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 113, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_11 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._delete_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_t_10); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_12 = (__pyx_t_11 != 0);
+    if (__pyx_t_12) {
+
+      /* "src/tree/bst/binary_search_tree.pyx":114
+ *         for i in range(n):
+ *             if self._delete_node(keys[i]):
+ *                 deleted_count += 1             # <<<<<<<<<<<<<<
+ * 
+ *         return deleted_count
+*/
+      __pyx_v_deleted_count = (__pyx_v_deleted_count + 1);
+
+      /* "src/tree/bst/binary_search_tree.pyx":113
+ * 
+ *         for i in range(n):
+ *             if self._delete_node(keys[i]):             # <<<<<<<<<<<<<<
+ *                 deleted_count += 1
+ * 
+*/
+    }
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":116
+ *                 deleted_count += 1
+ * 
+ *         return deleted_count             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+*/
+  __pyx_r = __pyx_v_deleted_count;
+  goto __pyx_L0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":100
+ *         return np.asarray(results)
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Delete multiple keys and return number of successful deletions.
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2delete_multiple, "\n        Delete multiple keys and return number of successful deletions.\n        \n        Parameters\n        ----------\n        keys : np.ndarray\n            An array of keys to delete.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple = {"delete_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2delete_multiple};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_keys = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("delete_multiple (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 100, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 100, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "delete_multiple", 0) < 0) __PYX_ERR(0, 100, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("delete_multiple", 1, 1, 1, i); __PYX_ERR(0, 100, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 100, __pyx_L3_error)
+    }
+    __pyx_v_keys = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("delete_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 100, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_keys), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "keys", 0))) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2delete_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v_keys);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2delete_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("delete_multiple", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_delete_multiple(__pyx_v_self, __pyx_v_keys, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.delete_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/bst/binary_search_tree.pyx":118
+ *         return deleted_count
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Check existence of multiple keys efficiently, returns boolean NumPy
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyArrayObject *__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys, int __pyx_skip_dispatch) {
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_n;
+  __Pyx_memviewslice __pyx_v_result = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_i;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_idx;
+  PyArrayObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  __Pyx_memviewslice __pyx_t_9 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_10;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_11;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_12;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_13;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_14;
+  __pyx_t_5numpy_uint8_t __pyx_t_15;
+  int __pyx_t_16;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("contains_multiple", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_contains_multiple); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple)) {
+        __Pyx_XDECREF((PyObject *)__pyx_r);
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_keys)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 118, __pyx_L1_error)
+        __pyx_r = ((PyArrayObject *)__pyx_t_2);
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":128
+ *             An array of keys to check for existence.
+ *         """
+ *         cdef intp_t n = len(keys)             # <<<<<<<<<<<<<<
+ *         cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
+ *         cdef intp_t i, idx
+*/
+  __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_keys)); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_v_n = __pyx_t_6;
+
+  /* "src/tree/bst/binary_search_tree.pyx":129
+ *         """
+ *         cdef intp_t n = len(keys)
+ *         cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)             # <<<<<<<<<<<<<<
+ *         cdef intp_t i, idx
+ * 
+*/
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyLong_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_uint8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_4};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_7, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_result = __pyx_t_9;
+  __pyx_t_9.memview = NULL;
+  __pyx_t_9.data = NULL;
+
+  /* "src/tree/bst/binary_search_tree.pyx":132
+ *         cdef intp_t i, idx
+ * 
+ *         for i in range(n):             # <<<<<<<<<<<<<<
+ *             idx = self._find_node(keys[i])
+ *             result[i] = 1 if idx != NONE_SENTINEL else 0
+*/
+  __pyx_t_10 = __pyx_v_n;
+  __pyx_t_11 = __pyx_t_10;
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
+
+    /* "src/tree/bst/binary_search_tree.pyx":133
+ * 
+ *         for i in range(n):
+ *             idx = self._find_node(keys[i])             # <<<<<<<<<<<<<<
+ *             result[i] = 1 if idx != NONE_SENTINEL else 0
+ * 
+*/
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_keys), __pyx_v_i, __pyx_t_3src_8typedefs_intp_t, 1, PyLong_FromSsize_t, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_14 = ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._find_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_t_13); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_v_idx = __pyx_t_14;
+
+    /* "src/tree/bst/binary_search_tree.pyx":134
+ *         for i in range(n):
+ *             idx = self._find_node(keys[i])
+ *             result[i] = 1 if idx != NONE_SENTINEL else 0             # <<<<<<<<<<<<<<
+ * 
+ *         return np.asarray(result, dtype=bool)
+*/
+    __pyx_t_16 = (__pyx_v_idx != -1L);
+    if (__pyx_t_16) {
+      __pyx_t_15 = 1;
+    } else {
+      __pyx_t_15 = 0;
+    }
+    __pyx_t_14 = __pyx_v_i;
+    *((__pyx_t_5numpy_uint8_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_14 * __pyx_v_result.strides[0]) )) = __pyx_t_15;
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":136
+ *             result[i] = 1 if idx != NONE_SENTINEL else 0
+ * 
+ *         return np.asarray(result, dtype=bool)             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+*/
+  __Pyx_XDECREF((PyObject *)__pyx_r);
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_result, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint8_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint8_t, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_5 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_8))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_8);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_8);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_8, __pyx__function);
+    __pyx_t_5 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_t_7};
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject*)&PyBool_Type), __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_r = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":118
+ *         return deleted_count
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Check existence of multiple keys efficiently, returns boolean NumPy
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_9, 1);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_result, 1);
+  __Pyx_XGIVEREF((PyObject *)__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4contains_multiple, "\n        Check existence of multiple keys efficiently, returns boolean NumPy\n        array: 1 if the key exists in the tree, 0 if not.\n\n        Parameters\n        ----------\n        keys : np.ndarray\n            An array of keys to check for existence.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple = {"contains_multiple", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4contains_multiple};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_keys = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("contains_multiple (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 118, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 118, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "contains_multiple", 0) < 0) __PYX_ERR(0, 118, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("contains_multiple", 1, 1, 1, i); __PYX_ERR(0, 118, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 118, __pyx_L3_error)
+    }
+    __pyx_v_keys = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("contains_multiple", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 118, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_keys), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "keys", 0))) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4contains_multiple(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v_keys);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4contains_multiple(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyArrayObject *__pyx_v_keys) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("contains_multiple", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((PyObject *)__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_contains_multiple(__pyx_v_self, __pyx_v_keys, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree.contains_multiple", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/bst/binary_search_tree.pyx":138
+ *         return np.asarray(result, dtype=bool)
+ * 
  *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
  *         """
  *         Build Tree in optimized manner through an array of keys and values.
 */
 
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -27798,9 +28455,9 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_build_tree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_build_tree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
@@ -27821,7 +28478,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -27841,19 +28498,19 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
     #endif
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":73
+  /* "src/tree/bst/binary_search_tree.pyx":149
  *             An array of data you want to store/retrieve.
  *         """
  *         if len(keys) != len(values):             # <<<<<<<<<<<<<<
  *             raise ValueError("Keys and values must have same length")
  * 
 */
-  __pyx_t_6 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 73, __pyx_L1_error)
-  __pyx_t_7 = PyObject_Length(__pyx_v_values); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_v_values); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
   __pyx_t_8 = (__pyx_t_6 != __pyx_t_7);
   if (unlikely(__pyx_t_8)) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":74
+    /* "src/tree/bst/binary_search_tree.pyx":150
  *         """
  *         if len(keys) != len(values):
  *             raise ValueError("Keys and values must have same length")             # <<<<<<<<<<<<<<
@@ -27869,14 +28526,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 74, __pyx_L1_error)
+    __PYX_ERR(0, 150, __pyx_L1_error)
 
-    /* "src/tree/bst/binary_search_tree.pyx":73
+    /* "src/tree/bst/binary_search_tree.pyx":149
  *             An array of data you want to store/retrieve.
  *         """
  *         if len(keys) != len(values):             # <<<<<<<<<<<<<<
@@ -27885,17 +28542,17 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":76
+  /* "src/tree/bst/binary_search_tree.pyx":152
  *             raise ValueError("Keys and values must have same length")
  * 
  *         needed_capacity = self._size + len(keys)             # <<<<<<<<<<<<<<
  *         while self.capacity < needed_capacity:
  *             self._resize_arrays()
 */
-  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 152, __pyx_L1_error)
   __pyx_v_needed_capacity = (__pyx_v_self->__pyx_base._size + __pyx_t_7);
 
-  /* "src/tree/bst/binary_search_tree.pyx":77
+  /* "src/tree/bst/binary_search_tree.pyx":153
  * 
  *         needed_capacity = self._size + len(keys)
  *         while self.capacity < needed_capacity:             # <<<<<<<<<<<<<<
@@ -27906,17 +28563,17 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
     __pyx_t_8 = (__pyx_v_self->__pyx_base.capacity < __pyx_v_needed_capacity);
     if (!__pyx_t_8) break;
 
-    /* "src/tree/bst/binary_search_tree.pyx":78
+    /* "src/tree/bst/binary_search_tree.pyx":154
  *         needed_capacity = self._size + len(keys)
  *         while self.capacity < needed_capacity:
  *             self._resize_arrays()             # <<<<<<<<<<<<<<
  * 
  *         cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
 */
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._resize_arrays(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._resize_arrays(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":80
+  /* "src/tree/bst/binary_search_tree.pyx":156
  *             self._resize_arrays()
  * 
  *         cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -27924,14 +28581,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
  *         cdef intp_t n = len(keys)
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_5 = 1;
@@ -27948,24 +28605,24 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_4, __pyx_v_keys};
-    __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_9, __pyx_t_2, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_9, __pyx_t_2, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_2);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_key_view = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "src/tree/bst/binary_search_tree.pyx":81
+  /* "src/tree/bst/binary_search_tree.pyx":157
  * 
  *         cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
  *         cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -27973,14 +28630,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
  *         cdef intp_t i
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_int64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_5 = 1;
@@ -27997,34 +28654,34 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_3, __pyx_v_values};
-    __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_4, __pyx_t_2, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_4, __pyx_t_2, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_9, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_2);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_3src_8typedefs_intp_t(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_val_view = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "src/tree/bst/binary_search_tree.pyx":82
+  /* "src/tree/bst/binary_search_tree.pyx":158
  *         cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
  *         cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
  *         cdef intp_t n = len(keys)             # <<<<<<<<<<<<<<
  *         cdef intp_t i
  * 
 */
-  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 158, __pyx_L1_error)
   __pyx_v_n = __pyx_t_7;
 
-  /* "src/tree/bst/binary_search_tree.pyx":85
+  /* "src/tree/bst/binary_search_tree.pyx":161
  *         cdef intp_t i
  * 
  *         for i in range(n):             # <<<<<<<<<<<<<<
@@ -28036,7 +28693,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
   for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
     __pyx_v_i = __pyx_t_13;
 
-    /* "src/tree/bst/binary_search_tree.pyx":86
+    /* "src/tree/bst/binary_search_tree.pyx":162
  * 
  *         for i in range(n):
  *             self._insert_node(key_view[i], val_view[i])             # <<<<<<<<<<<<<<
@@ -28045,11 +28702,11 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
 */
     __pyx_t_14 = __pyx_v_i;
     __pyx_t_15 = __pyx_v_i;
-    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._insert_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_key_view.data + __pyx_t_14 * __pyx_v_key_view.strides[0]) ))), (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_val_view.data + __pyx_t_15 * __pyx_v_val_view.strides[0]) )))); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 86, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._insert_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_key_view.data + __pyx_t_14 * __pyx_v_key_view.strides[0]) ))), (*((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_val_view.data + __pyx_t_15 * __pyx_v_val_view.strides[0]) )))); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L1_error)
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":62
- *     """
+  /* "src/tree/bst/binary_search_tree.pyx":138
+ *         return np.asarray(result, dtype=bool)
  * 
  *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
  *         """
@@ -28073,16 +28730,16 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_buil
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree, "\n        Build Tree in optimized manner through an array of keys and values.\n\n        Parameters\n        ----------\n        keys : list | np.ndarray\n            An array of associative keys.\n        values : list | np.ndarray\n            An array of data you want to store/retrieve.\n        ");
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree = {"build_tree", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree(PyObject *__pyx_v_self, 
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_6build_tree, "\n        Build Tree in optimized manner through an array of keys and values.\n\n        Parameters\n        ----------\n        keys : list | np.ndarray\n            An array of associative keys.\n        values : list | np.ndarray\n            An array of data you want to store/retrieve.\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree = {"build_tree", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_6build_tree};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -28113,39 +28770,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_keys,&__pyx_mstate_global->__pyx_n_u_values,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 62, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 138, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 62, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 138, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 62, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "build_tree", 0) < 0) __PYX_ERR(0, 62, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "build_tree", 0) < 0) __PYX_ERR(0, 138, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, i); __PYX_ERR(0, 62, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, i); __PYX_ERR(0, 138, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 62, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 62, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 138, __pyx_L3_error)
     }
     __pyx_v_keys = values[0];
     __pyx_v_values = values[1];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 62, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("build_tree", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 138, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28156,7 +28813,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v_keys, __pyx_v_values);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_6build_tree(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v_keys, __pyx_v_values);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -28166,7 +28823,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_6build_tree(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -28175,8 +28832,8 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTre
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("build_tree", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree(__pyx_v_self, __pyx_v_keys, __pyx_v_values, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree(__pyx_v_self, __pyx_v_keys, __pyx_v_values, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -28193,7 +28850,7 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTre
   return __pyx_r;
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":88
+/* "src/tree/bst/binary_search_tree.pyx":164
  *             self._insert_node(key_view[i], val_view[i])
  * 
  *     cdef intp_t _find_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -28208,7 +28865,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
   int __pyx_t_2;
 
-  /* "src/tree/bst/binary_search_tree.pyx":90
+  /* "src/tree/bst/binary_search_tree.pyx":166
  *     cdef intp_t _find_node(self, intp_t key):
  *         """Find node index for a key (-1 if not found)"""
  *         cdef intp_t current = self.root_idx             # <<<<<<<<<<<<<<
@@ -28218,7 +28875,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = __pyx_v_self->__pyx_base.root_idx;
   __pyx_v_current = __pyx_t_1;
 
-  /* "src/tree/bst/binary_search_tree.pyx":94
+  /* "src/tree/bst/binary_search_tree.pyx":170
  *         cdef intp_t next_idx
  * 
  *         while LIKELY(current != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28229,7 +28886,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_current != -1L));
     if (!__pyx_t_2) break;
 
-    /* "src/tree/bst/binary_search_tree.pyx":95
+    /* "src/tree/bst/binary_search_tree.pyx":171
  * 
  *         while LIKELY(current != NONE_SENTINEL):
  *             node = &self.nodes[current]             # <<<<<<<<<<<<<<
@@ -28238,7 +28895,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_current]));
 
-    /* "src/tree/bst/binary_search_tree.pyx":97
+    /* "src/tree/bst/binary_search_tree.pyx":173
  *             node = &self.nodes[current]
  * 
  *             if LIKELY(node.left_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28248,7 +28905,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_node->left_child != -1L));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":98
+      /* "src/tree/bst/binary_search_tree.pyx":174
  * 
  *             if LIKELY(node.left_child != NONE_SENTINEL):
  *                 PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
@@ -28257,7 +28914,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
 
-      /* "src/tree/bst/binary_search_tree.pyx":97
+      /* "src/tree/bst/binary_search_tree.pyx":173
  *             node = &self.nodes[current]
  * 
  *             if LIKELY(node.left_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28266,7 +28923,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":99
+    /* "src/tree/bst/binary_search_tree.pyx":175
  *             if LIKELY(node.left_child != NONE_SENTINEL):
  *                 PREFETCH_READ(&self.nodes[node.left_child])
  *             if LIKELY(node.right_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28276,7 +28933,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_node->right_child != -1L));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":100
+      /* "src/tree/bst/binary_search_tree.pyx":176
  *                 PREFETCH_READ(&self.nodes[node.left_child])
  *             if LIKELY(node.right_child != NONE_SENTINEL):
  *                 PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
@@ -28285,7 +28942,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
 
-      /* "src/tree/bst/binary_search_tree.pyx":99
+      /* "src/tree/bst/binary_search_tree.pyx":175
  *             if LIKELY(node.left_child != NONE_SENTINEL):
  *                 PREFETCH_READ(&self.nodes[node.left_child])
  *             if LIKELY(node.right_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28294,7 +28951,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":102
+    /* "src/tree/bst/binary_search_tree.pyx":178
  *                 PREFETCH_READ(&self.nodes[node.right_child])
  * 
  *             if LIKELY(key < node.key):             # <<<<<<<<<<<<<<
@@ -28304,7 +28961,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_key < __pyx_v_node->key));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":103
+      /* "src/tree/bst/binary_search_tree.pyx":179
  * 
  *             if LIKELY(key < node.key):
  *                 current = node.left_child             # <<<<<<<<<<<<<<
@@ -28314,7 +28971,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = __pyx_v_node->left_child;
       __pyx_v_current = __pyx_t_1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":102
+      /* "src/tree/bst/binary_search_tree.pyx":178
  *                 PREFETCH_READ(&self.nodes[node.right_child])
  * 
  *             if LIKELY(key < node.key):             # <<<<<<<<<<<<<<
@@ -28324,7 +28981,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L7;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":104
+    /* "src/tree/bst/binary_search_tree.pyx":180
  *             if LIKELY(key < node.key):
  *                 current = node.left_child
  *             elif LIKELY(key > node.key):             # <<<<<<<<<<<<<<
@@ -28334,7 +28991,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_key > __pyx_v_node->key));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":105
+      /* "src/tree/bst/binary_search_tree.pyx":181
  *                 current = node.left_child
  *             elif LIKELY(key > node.key):
  *                 current = node.right_child             # <<<<<<<<<<<<<<
@@ -28344,7 +29001,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = __pyx_v_node->right_child;
       __pyx_v_current = __pyx_t_1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":104
+      /* "src/tree/bst/binary_search_tree.pyx":180
  *             if LIKELY(key < node.key):
  *                 current = node.left_child
  *             elif LIKELY(key > node.key):             # <<<<<<<<<<<<<<
@@ -28354,7 +29011,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L7;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":107
+    /* "src/tree/bst/binary_search_tree.pyx":183
  *                 current = node.right_child
  *             else:
  *                 return current             # <<<<<<<<<<<<<<
@@ -28368,7 +29025,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_L7:;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":109
+  /* "src/tree/bst/binary_search_tree.pyx":185
  *                 return current
  * 
  *         return NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28378,7 +29035,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_r = -1L;
   goto __pyx_L0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":88
+  /* "src/tree/bst/binary_search_tree.pyx":164
  *             self._insert_node(key_view[i], val_view[i])
  * 
  *     cdef intp_t _find_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -28391,7 +29048,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":111
+/* "src/tree/bst/binary_search_tree.pyx":187
  *         return NONE_SENTINEL
  * 
  *     cdef intp_t _insert_node(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
@@ -28412,7 +29069,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":115
+  /* "src/tree/bst/binary_search_tree.pyx":191
  *         cdef intp_t new_idx
  * 
  *         if UNLIKELY(self.root_idx == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28422,17 +29079,17 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = UNLIKELY((__pyx_v_self->__pyx_base.root_idx == -1L));
   if (__pyx_t_1) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":116
+    /* "src/tree/bst/binary_search_tree.pyx":192
  * 
  *         if UNLIKELY(self.root_idx == NONE_SENTINEL):
  *             new_idx = self._allocate_node()             # <<<<<<<<<<<<<<
  *             if UNLIKELY(new_idx == NONE_SENTINEL):
  *                 # require resize
 */
-    __pyx_t_2 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__allocate_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__allocate_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L1_error)
     __pyx_v_new_idx = __pyx_t_2;
 
-    /* "src/tree/bst/binary_search_tree.pyx":117
+    /* "src/tree/bst/binary_search_tree.pyx":193
  *         if UNLIKELY(self.root_idx == NONE_SENTINEL):
  *             new_idx = self._allocate_node()
  *             if UNLIKELY(new_idx == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28442,7 +29099,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = UNLIKELY((__pyx_v_new_idx == -1L));
     if (__pyx_t_1) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":119
+      /* "src/tree/bst/binary_search_tree.pyx":195
  *             if UNLIKELY(new_idx == NONE_SENTINEL):
  *                 # require resize
  *                 return 0             # <<<<<<<<<<<<<<
@@ -28452,7 +29109,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_r = 0;
       goto __pyx_L0;
 
-      /* "src/tree/bst/binary_search_tree.pyx":117
+      /* "src/tree/bst/binary_search_tree.pyx":193
  *         if UNLIKELY(self.root_idx == NONE_SENTINEL):
  *             new_idx = self._allocate_node()
  *             if UNLIKELY(new_idx == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28461,7 +29118,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":121
+    /* "src/tree/bst/binary_search_tree.pyx":197
  *                 return 0
  * 
  *             self.nodes[new_idx].key = key             # <<<<<<<<<<<<<<
@@ -28470,7 +29127,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).key = __pyx_v_key;
 
-    /* "src/tree/bst/binary_search_tree.pyx":122
+    /* "src/tree/bst/binary_search_tree.pyx":198
  * 
  *             self.nodes[new_idx].key = key
  *             self.nodes[new_idx].value = value             # <<<<<<<<<<<<<<
@@ -28479,7 +29136,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).value = __pyx_v_value;
 
-    /* "src/tree/bst/binary_search_tree.pyx":123
+    /* "src/tree/bst/binary_search_tree.pyx":199
  *             self.nodes[new_idx].key = key
  *             self.nodes[new_idx].value = value
  *             self.nodes[new_idx].left_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28488,7 +29145,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).left_child = -1L;
 
-    /* "src/tree/bst/binary_search_tree.pyx":124
+    /* "src/tree/bst/binary_search_tree.pyx":200
  *             self.nodes[new_idx].value = value
  *             self.nodes[new_idx].left_child = NONE_SENTINEL
  *             self.nodes[new_idx].right_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28497,7 +29154,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).right_child = -1L;
 
-    /* "src/tree/bst/binary_search_tree.pyx":125
+    /* "src/tree/bst/binary_search_tree.pyx":201
  *             self.nodes[new_idx].left_child = NONE_SENTINEL
  *             self.nodes[new_idx].right_child = NONE_SENTINEL
  *             self.root_idx = new_idx             # <<<<<<<<<<<<<<
@@ -28506,7 +29163,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_self->__pyx_base.root_idx = __pyx_v_new_idx;
 
-    /* "src/tree/bst/binary_search_tree.pyx":126
+    /* "src/tree/bst/binary_search_tree.pyx":202
  *             self.nodes[new_idx].right_child = NONE_SENTINEL
  *             self.root_idx = new_idx
  *             self._size += 1             # <<<<<<<<<<<<<<
@@ -28515,7 +29172,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_self->__pyx_base._size = (__pyx_v_self->__pyx_base._size + 1);
 
-    /* "src/tree/bst/binary_search_tree.pyx":127
+    /* "src/tree/bst/binary_search_tree.pyx":203
  *             self.root_idx = new_idx
  *             self._size += 1
  *             return 1             # <<<<<<<<<<<<<<
@@ -28525,7 +29182,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "src/tree/bst/binary_search_tree.pyx":115
+    /* "src/tree/bst/binary_search_tree.pyx":191
  *         cdef intp_t new_idx
  * 
  *         if UNLIKELY(self.root_idx == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28534,7 +29191,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":129
+  /* "src/tree/bst/binary_search_tree.pyx":205
  *             return 1
  * 
  *         cdef intp_t current = self.root_idx             # <<<<<<<<<<<<<<
@@ -28544,7 +29201,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_2 = __pyx_v_self->__pyx_base.root_idx;
   __pyx_v_current = __pyx_t_2;
 
-  /* "src/tree/bst/binary_search_tree.pyx":130
+  /* "src/tree/bst/binary_search_tree.pyx":206
  * 
  *         cdef intp_t current = self.root_idx
  *         cdef intp_t parent = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28553,7 +29210,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_parent = -1L;
 
-  /* "src/tree/bst/binary_search_tree.pyx":132
+  /* "src/tree/bst/binary_search_tree.pyx":208
  *         cdef intp_t parent = NONE_SENTINEL
  *         cdef Node_t* node
  *         cdef bint go_left = False             # <<<<<<<<<<<<<<
@@ -28562,7 +29219,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_go_left = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":134
+  /* "src/tree/bst/binary_search_tree.pyx":210
  *         cdef bint go_left = False
  * 
  *         while LIKELY(current != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28573,7 +29230,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = LIKELY((__pyx_v_current != -1L));
     if (!__pyx_t_1) break;
 
-    /* "src/tree/bst/binary_search_tree.pyx":135
+    /* "src/tree/bst/binary_search_tree.pyx":211
  * 
  *         while LIKELY(current != NONE_SENTINEL):
  *             parent = current             # <<<<<<<<<<<<<<
@@ -28582,7 +29239,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_parent = __pyx_v_current;
 
-    /* "src/tree/bst/binary_search_tree.pyx":136
+    /* "src/tree/bst/binary_search_tree.pyx":212
  *         while LIKELY(current != NONE_SENTINEL):
  *             parent = current
  *             node = &self.nodes[current]             # <<<<<<<<<<<<<<
@@ -28591,7 +29248,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_current]));
 
-    /* "src/tree/bst/binary_search_tree.pyx":139
+    /* "src/tree/bst/binary_search_tree.pyx":215
  * 
  *             # prefect likely next node
  *             if LIKELY(key < node.key):             # <<<<<<<<<<<<<<
@@ -28601,7 +29258,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = LIKELY((__pyx_v_key < __pyx_v_node->key));
     if (__pyx_t_1) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":140
+      /* "src/tree/bst/binary_search_tree.pyx":216
  *             # prefect likely next node
  *             if LIKELY(key < node.key):
  *                 if LIKELY(node.left_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28611,7 +29268,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = LIKELY((__pyx_v_node->left_child != -1L));
       if (__pyx_t_1) {
 
-        /* "src/tree/bst/binary_search_tree.pyx":141
+        /* "src/tree/bst/binary_search_tree.pyx":217
  *             if LIKELY(key < node.key):
  *                 if LIKELY(node.left_child != NONE_SENTINEL):
  *                     PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
@@ -28620,7 +29277,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
         PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
 
-        /* "src/tree/bst/binary_search_tree.pyx":140
+        /* "src/tree/bst/binary_search_tree.pyx":216
  *             # prefect likely next node
  *             if LIKELY(key < node.key):
  *                 if LIKELY(node.left_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28629,7 +29286,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       }
 
-      /* "src/tree/bst/binary_search_tree.pyx":142
+      /* "src/tree/bst/binary_search_tree.pyx":218
  *                 if LIKELY(node.left_child != NONE_SENTINEL):
  *                     PREFETCH_READ(&self.nodes[node.left_child])
  *                 current = node.left_child             # <<<<<<<<<<<<<<
@@ -28639,7 +29296,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_2 = __pyx_v_node->left_child;
       __pyx_v_current = __pyx_t_2;
 
-      /* "src/tree/bst/binary_search_tree.pyx":143
+      /* "src/tree/bst/binary_search_tree.pyx":219
  *                     PREFETCH_READ(&self.nodes[node.left_child])
  *                 current = node.left_child
  *                 go_left = True             # <<<<<<<<<<<<<<
@@ -28648,7 +29305,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_go_left = 1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":139
+      /* "src/tree/bst/binary_search_tree.pyx":215
  * 
  *             # prefect likely next node
  *             if LIKELY(key < node.key):             # <<<<<<<<<<<<<<
@@ -28658,7 +29315,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L7;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":144
+    /* "src/tree/bst/binary_search_tree.pyx":220
  *                 current = node.left_child
  *                 go_left = True
  *             elif LIKELY(key > node.key):             # <<<<<<<<<<<<<<
@@ -28668,7 +29325,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = LIKELY((__pyx_v_key > __pyx_v_node->key));
     if (__pyx_t_1) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":145
+      /* "src/tree/bst/binary_search_tree.pyx":221
  *                 go_left = True
  *             elif LIKELY(key > node.key):
  *                 if LIKELY(node.right_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28678,7 +29335,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = LIKELY((__pyx_v_node->right_child != -1L));
       if (__pyx_t_1) {
 
-        /* "src/tree/bst/binary_search_tree.pyx":146
+        /* "src/tree/bst/binary_search_tree.pyx":222
  *             elif LIKELY(key > node.key):
  *                 if LIKELY(node.right_child != NONE_SENTINEL):
  *                     PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
@@ -28687,7 +29344,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
         PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
 
-        /* "src/tree/bst/binary_search_tree.pyx":145
+        /* "src/tree/bst/binary_search_tree.pyx":221
  *                 go_left = True
  *             elif LIKELY(key > node.key):
  *                 if LIKELY(node.right_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28696,7 +29353,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       }
 
-      /* "src/tree/bst/binary_search_tree.pyx":147
+      /* "src/tree/bst/binary_search_tree.pyx":223
  *                 if LIKELY(node.right_child != NONE_SENTINEL):
  *                     PREFETCH_READ(&self.nodes[node.right_child])
  *                 current = node.right_child             # <<<<<<<<<<<<<<
@@ -28706,7 +29363,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_2 = __pyx_v_node->right_child;
       __pyx_v_current = __pyx_t_2;
 
-      /* "src/tree/bst/binary_search_tree.pyx":148
+      /* "src/tree/bst/binary_search_tree.pyx":224
  *                     PREFETCH_READ(&self.nodes[node.right_child])
  *                 current = node.right_child
  *                 go_left = False             # <<<<<<<<<<<<<<
@@ -28715,7 +29372,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_go_left = 0;
 
-      /* "src/tree/bst/binary_search_tree.pyx":144
+      /* "src/tree/bst/binary_search_tree.pyx":220
  *                 current = node.left_child
  *                 go_left = True
  *             elif LIKELY(key > node.key):             # <<<<<<<<<<<<<<
@@ -28725,7 +29382,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L7;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":150
+    /* "src/tree/bst/binary_search_tree.pyx":226
  *                 go_left = False
  *             else:
  *                 node.value = value             # <<<<<<<<<<<<<<
@@ -28735,7 +29392,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     /*else*/ {
       __pyx_v_node->value = __pyx_v_value;
 
-      /* "src/tree/bst/binary_search_tree.pyx":151
+      /* "src/tree/bst/binary_search_tree.pyx":227
  *             else:
  *                 node.value = value
  *                 return 1             # <<<<<<<<<<<<<<
@@ -28748,17 +29405,17 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_L7:;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":154
+  /* "src/tree/bst/binary_search_tree.pyx":230
  * 
  *         # allocate and link new node
  *         new_idx = self._allocate_node()             # <<<<<<<<<<<<<<
  *         if UNLIKELY(new_idx == NONE_SENTINEL):
  *             # require resize
 */
-  __pyx_t_2 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__allocate_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__allocate_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
   __pyx_v_new_idx = __pyx_t_2;
 
-  /* "src/tree/bst/binary_search_tree.pyx":155
+  /* "src/tree/bst/binary_search_tree.pyx":231
  *         # allocate and link new node
  *         new_idx = self._allocate_node()
  *         if UNLIKELY(new_idx == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28768,7 +29425,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = UNLIKELY((__pyx_v_new_idx == -1L));
   if (__pyx_t_1) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":157
+    /* "src/tree/bst/binary_search_tree.pyx":233
  *         if UNLIKELY(new_idx == NONE_SENTINEL):
  *             # require resize
  *             return 0             # <<<<<<<<<<<<<<
@@ -28778,7 +29435,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "src/tree/bst/binary_search_tree.pyx":155
+    /* "src/tree/bst/binary_search_tree.pyx":231
  *         # allocate and link new node
  *         new_idx = self._allocate_node()
  *         if UNLIKELY(new_idx == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28787,7 +29444,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":159
+  /* "src/tree/bst/binary_search_tree.pyx":235
  *             return 0
  * 
  *         self.nodes[new_idx].key = key             # <<<<<<<<<<<<<<
@@ -28796,7 +29453,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).key = __pyx_v_key;
 
-  /* "src/tree/bst/binary_search_tree.pyx":160
+  /* "src/tree/bst/binary_search_tree.pyx":236
  * 
  *         self.nodes[new_idx].key = key
  *         self.nodes[new_idx].value = value             # <<<<<<<<<<<<<<
@@ -28805,7 +29462,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).value = __pyx_v_value;
 
-  /* "src/tree/bst/binary_search_tree.pyx":161
+  /* "src/tree/bst/binary_search_tree.pyx":237
  *         self.nodes[new_idx].key = key
  *         self.nodes[new_idx].value = value
  *         self.nodes[new_idx].left_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28814,7 +29471,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).left_child = -1L;
 
-  /* "src/tree/bst/binary_search_tree.pyx":162
+  /* "src/tree/bst/binary_search_tree.pyx":238
  *         self.nodes[new_idx].value = value
  *         self.nodes[new_idx].left_child = NONE_SENTINEL
  *         self.nodes[new_idx].right_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28823,7 +29480,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   (__pyx_v_self->__pyx_base.nodes[__pyx_v_new_idx]).right_child = -1L;
 
-  /* "src/tree/bst/binary_search_tree.pyx":165
+  /* "src/tree/bst/binary_search_tree.pyx":241
  * 
  *         # link to parent
  *         if go_left:             # <<<<<<<<<<<<<<
@@ -28832,7 +29489,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   if (__pyx_v_go_left) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":166
+    /* "src/tree/bst/binary_search_tree.pyx":242
  *         # link to parent
  *         if go_left:
  *             self.nodes[parent].left_child = new_idx             # <<<<<<<<<<<<<<
@@ -28841,7 +29498,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     (__pyx_v_self->__pyx_base.nodes[__pyx_v_parent]).left_child = __pyx_v_new_idx;
 
-    /* "src/tree/bst/binary_search_tree.pyx":165
+    /* "src/tree/bst/binary_search_tree.pyx":241
  * 
  *         # link to parent
  *         if go_left:             # <<<<<<<<<<<<<<
@@ -28851,7 +29508,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     goto __pyx_L11;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":168
+  /* "src/tree/bst/binary_search_tree.pyx":244
  *             self.nodes[parent].left_child = new_idx
  *         else:
  *             self.nodes[parent].right_child = new_idx             # <<<<<<<<<<<<<<
@@ -28863,7 +29520,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   }
   __pyx_L11:;
 
-  /* "src/tree/bst/binary_search_tree.pyx":170
+  /* "src/tree/bst/binary_search_tree.pyx":246
  *             self.nodes[parent].right_child = new_idx
  * 
  *         self._size += 1             # <<<<<<<<<<<<<<
@@ -28872,7 +29529,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_self->__pyx_base._size = (__pyx_v_self->__pyx_base._size + 1);
 
-  /* "src/tree/bst/binary_search_tree.pyx":171
+  /* "src/tree/bst/binary_search_tree.pyx":247
  * 
  *         self._size += 1
  *         return 1             # <<<<<<<<<<<<<<
@@ -28882,7 +29539,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_r = 1;
   goto __pyx_L0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":111
+  /* "src/tree/bst/binary_search_tree.pyx":187
  *         return NONE_SENTINEL
  * 
  *     cdef intp_t _insert_node(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
@@ -28898,7 +29555,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":173
+/* "src/tree/bst/binary_search_tree.pyx":249
  *         return 1
  * 
  *     cdef intp_t _delete_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -28922,7 +29579,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":175
+  /* "src/tree/bst/binary_search_tree.pyx":251
  *     cdef intp_t _delete_node(self, intp_t key):
  *         """Internal deletion logic"""
  *         cdef intp_t current = self.root_idx             # <<<<<<<<<<<<<<
@@ -28932,7 +29589,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_1 = __pyx_v_self->__pyx_base.root_idx;
   __pyx_v_current = __pyx_t_1;
 
-  /* "src/tree/bst/binary_search_tree.pyx":176
+  /* "src/tree/bst/binary_search_tree.pyx":252
  *         """Internal deletion logic"""
  *         cdef intp_t current = self.root_idx
  *         cdef intp_t parent = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -28941,7 +29598,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_parent = -1L;
 
-  /* "src/tree/bst/binary_search_tree.pyx":177
+  /* "src/tree/bst/binary_search_tree.pyx":253
  *         cdef intp_t current = self.root_idx
  *         cdef intp_t parent = NONE_SENTINEL
  *         cdef bint is_left_child = False             # <<<<<<<<<<<<<<
@@ -28950,7 +29607,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_is_left_child = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":185
+  /* "src/tree/bst/binary_search_tree.pyx":261
  * 
  *         # find node to delete
  *         while LIKELY(current != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -28961,7 +29618,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_current != -1L));
     if (!__pyx_t_2) break;
 
-    /* "src/tree/bst/binary_search_tree.pyx":186
+    /* "src/tree/bst/binary_search_tree.pyx":262
  *         # find node to delete
  *         while LIKELY(current != NONE_SENTINEL):
  *             node = &self.nodes[current]             # <<<<<<<<<<<<<<
@@ -28970,7 +29627,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_current]));
 
-    /* "src/tree/bst/binary_search_tree.pyx":188
+    /* "src/tree/bst/binary_search_tree.pyx":264
  *             node = &self.nodes[current]
  * 
  *             if LIKELY(key < node.key):             # <<<<<<<<<<<<<<
@@ -28980,7 +29637,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_key < __pyx_v_node->key));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":189
+      /* "src/tree/bst/binary_search_tree.pyx":265
  * 
  *             if LIKELY(key < node.key):
  *                 parent = current             # <<<<<<<<<<<<<<
@@ -28989,7 +29646,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_parent = __pyx_v_current;
 
-      /* "src/tree/bst/binary_search_tree.pyx":190
+      /* "src/tree/bst/binary_search_tree.pyx":266
  *             if LIKELY(key < node.key):
  *                 parent = current
  *                 current = node.left_child             # <<<<<<<<<<<<<<
@@ -28999,7 +29656,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = __pyx_v_node->left_child;
       __pyx_v_current = __pyx_t_1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":191
+      /* "src/tree/bst/binary_search_tree.pyx":267
  *                 parent = current
  *                 current = node.left_child
  *                 is_left_child = True             # <<<<<<<<<<<<<<
@@ -29008,7 +29665,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_is_left_child = 1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":188
+      /* "src/tree/bst/binary_search_tree.pyx":264
  *             node = &self.nodes[current]
  * 
  *             if LIKELY(key < node.key):             # <<<<<<<<<<<<<<
@@ -29018,7 +29675,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L5;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":192
+    /* "src/tree/bst/binary_search_tree.pyx":268
  *                 current = node.left_child
  *                 is_left_child = True
  *             elif LIKELY(key > node.key):             # <<<<<<<<<<<<<<
@@ -29028,7 +29685,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = LIKELY((__pyx_v_key > __pyx_v_node->key));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":193
+      /* "src/tree/bst/binary_search_tree.pyx":269
  *                 is_left_child = True
  *             elif LIKELY(key > node.key):
  *                 parent = current             # <<<<<<<<<<<<<<
@@ -29037,7 +29694,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_parent = __pyx_v_current;
 
-      /* "src/tree/bst/binary_search_tree.pyx":194
+      /* "src/tree/bst/binary_search_tree.pyx":270
  *             elif LIKELY(key > node.key):
  *                 parent = current
  *                 current = node.right_child             # <<<<<<<<<<<<<<
@@ -29047,7 +29704,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = __pyx_v_node->right_child;
       __pyx_v_current = __pyx_t_1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":195
+      /* "src/tree/bst/binary_search_tree.pyx":271
  *                 parent = current
  *                 current = node.right_child
  *                 is_left_child = False             # <<<<<<<<<<<<<<
@@ -29056,7 +29713,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_is_left_child = 0;
 
-      /* "src/tree/bst/binary_search_tree.pyx":192
+      /* "src/tree/bst/binary_search_tree.pyx":268
  *                 current = node.left_child
  *                 is_left_child = True
  *             elif LIKELY(key > node.key):             # <<<<<<<<<<<<<<
@@ -29066,7 +29723,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L5;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":198
+    /* "src/tree/bst/binary_search_tree.pyx":274
  *             else:
  *                 # node not found
  *                 break             # <<<<<<<<<<<<<<
@@ -29080,7 +29737,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   }
   __pyx_L4_break:;
 
-  /* "src/tree/bst/binary_search_tree.pyx":200
+  /* "src/tree/bst/binary_search_tree.pyx":276
  *                 break
  * 
  *         if UNLIKELY(current == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29090,7 +29747,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_2 = UNLIKELY((__pyx_v_current == -1L));
   if (__pyx_t_2) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":202
+    /* "src/tree/bst/binary_search_tree.pyx":278
  *         if UNLIKELY(current == NONE_SENTINEL):
  *             # node not found
  *             return 0             # <<<<<<<<<<<<<<
@@ -29100,7 +29757,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "src/tree/bst/binary_search_tree.pyx":200
+    /* "src/tree/bst/binary_search_tree.pyx":276
  *                 break
  * 
  *         if UNLIKELY(current == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29109,7 +29766,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":204
+  /* "src/tree/bst/binary_search_tree.pyx":280
  *             return 0
  * 
  *         node = &self.nodes[current]             # <<<<<<<<<<<<<<
@@ -29118,7 +29775,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_current]));
 
-  /* "src/tree/bst/binary_search_tree.pyx":208
+  /* "src/tree/bst/binary_search_tree.pyx":284
  *         # leaf node
  *         if LIKELY(
  *             node.left_child == NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29132,7 +29789,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     goto __pyx_L8_bool_binop_done;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":209
+  /* "src/tree/bst/binary_search_tree.pyx":285
  *         if LIKELY(
  *             node.left_child == NONE_SENTINEL
  *             and node.right_child == NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29143,7 +29800,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_2 = __pyx_t_3;
   __pyx_L8_bool_binop_done:;
 
-  /* "src/tree/bst/binary_search_tree.pyx":207
+  /* "src/tree/bst/binary_search_tree.pyx":283
  * 
  *         # leaf node
  *         if LIKELY(             # <<<<<<<<<<<<<<
@@ -29153,7 +29810,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_3 = LIKELY(__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":211
+    /* "src/tree/bst/binary_search_tree.pyx":287
  *             and node.right_child == NONE_SENTINEL
  *         ):
  *             if UNLIKELY(parent == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29163,7 +29820,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_3 = UNLIKELY((__pyx_v_parent == -1L));
     if (__pyx_t_3) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":212
+      /* "src/tree/bst/binary_search_tree.pyx":288
  *         ):
  *             if UNLIKELY(parent == NONE_SENTINEL):
  *                 self.root_idx = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29172,7 +29829,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_self->__pyx_base.root_idx = -1L;
 
-      /* "src/tree/bst/binary_search_tree.pyx":211
+      /* "src/tree/bst/binary_search_tree.pyx":287
  *             and node.right_child == NONE_SENTINEL
  *         ):
  *             if UNLIKELY(parent == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29182,7 +29839,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L10;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":213
+    /* "src/tree/bst/binary_search_tree.pyx":289
  *             if UNLIKELY(parent == NONE_SENTINEL):
  *                 self.root_idx = NONE_SENTINEL
  *             elif is_left_child:             # <<<<<<<<<<<<<<
@@ -29191,7 +29848,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     if (__pyx_v_is_left_child) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":214
+      /* "src/tree/bst/binary_search_tree.pyx":290
  *                 self.root_idx = NONE_SENTINEL
  *             elif is_left_child:
  *                 self.nodes[parent].left_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29200,7 +29857,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       (__pyx_v_self->__pyx_base.nodes[__pyx_v_parent]).left_child = -1L;
 
-      /* "src/tree/bst/binary_search_tree.pyx":213
+      /* "src/tree/bst/binary_search_tree.pyx":289
  *             if UNLIKELY(parent == NONE_SENTINEL):
  *                 self.root_idx = NONE_SENTINEL
  *             elif is_left_child:             # <<<<<<<<<<<<<<
@@ -29210,7 +29867,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L10;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":216
+    /* "src/tree/bst/binary_search_tree.pyx":292
  *                 self.nodes[parent].left_child = NONE_SENTINEL
  *             else:
  *                 self.nodes[parent].right_child = NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29222,7 +29879,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     }
     __pyx_L10:;
 
-    /* "src/tree/bst/binary_search_tree.pyx":207
+    /* "src/tree/bst/binary_search_tree.pyx":283
  * 
  *         # leaf node
  *         if LIKELY(             # <<<<<<<<<<<<<<
@@ -29232,7 +29889,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     goto __pyx_L7;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":220
+  /* "src/tree/bst/binary_search_tree.pyx":296
  *         # one child
  *         elif LIKELY(
  *             node.left_child == NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29246,7 +29903,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     goto __pyx_L11_bool_binop_done;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":221
+  /* "src/tree/bst/binary_search_tree.pyx":297
  *         elif LIKELY(
  *             node.left_child == NONE_SENTINEL
  *             or node.right_child == NONE_SENTINEL             # <<<<<<<<<<<<<<
@@ -29257,7 +29914,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_3 = __pyx_t_2;
   __pyx_L11_bool_binop_done:;
 
-  /* "src/tree/bst/binary_search_tree.pyx":219
+  /* "src/tree/bst/binary_search_tree.pyx":295
  * 
  *         # one child
  *         elif LIKELY(             # <<<<<<<<<<<<<<
@@ -29267,7 +29924,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_t_2 = LIKELY(__pyx_t_3);
   if (__pyx_t_2) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":223
+    /* "src/tree/bst/binary_search_tree.pyx":299
  *             or node.right_child == NONE_SENTINEL
  *         ):
  *             child = node.left_child if node.left_child != NONE_SENTINEL else node.right_child             # <<<<<<<<<<<<<<
@@ -29282,7 +29939,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     }
     __pyx_v_child = __pyx_t_1;
 
-    /* "src/tree/bst/binary_search_tree.pyx":225
+    /* "src/tree/bst/binary_search_tree.pyx":301
  *             child = node.left_child if node.left_child != NONE_SENTINEL else node.right_child
  * 
  *             if UNLIKELY(parent == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29292,7 +29949,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = UNLIKELY((__pyx_v_parent == -1L));
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":226
+      /* "src/tree/bst/binary_search_tree.pyx":302
  * 
  *             if UNLIKELY(parent == NONE_SENTINEL):
  *                 self.root_idx = child             # <<<<<<<<<<<<<<
@@ -29301,7 +29958,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_self->__pyx_base.root_idx = __pyx_v_child;
 
-      /* "src/tree/bst/binary_search_tree.pyx":225
+      /* "src/tree/bst/binary_search_tree.pyx":301
  *             child = node.left_child if node.left_child != NONE_SENTINEL else node.right_child
  * 
  *             if UNLIKELY(parent == NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29311,7 +29968,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L13;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":227
+    /* "src/tree/bst/binary_search_tree.pyx":303
  *             if UNLIKELY(parent == NONE_SENTINEL):
  *                 self.root_idx = child
  *             elif is_left_child:             # <<<<<<<<<<<<<<
@@ -29320,7 +29977,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     if (__pyx_v_is_left_child) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":228
+      /* "src/tree/bst/binary_search_tree.pyx":304
  *                 self.root_idx = child
  *             elif is_left_child:
  *                 self.nodes[parent].left_child = child             # <<<<<<<<<<<<<<
@@ -29329,7 +29986,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       (__pyx_v_self->__pyx_base.nodes[__pyx_v_parent]).left_child = __pyx_v_child;
 
-      /* "src/tree/bst/binary_search_tree.pyx":227
+      /* "src/tree/bst/binary_search_tree.pyx":303
  *             if UNLIKELY(parent == NONE_SENTINEL):
  *                 self.root_idx = child
  *             elif is_left_child:             # <<<<<<<<<<<<<<
@@ -29339,7 +29996,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L13;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":230
+    /* "src/tree/bst/binary_search_tree.pyx":306
  *                 self.nodes[parent].left_child = child
  *             else:
  *                 self.nodes[parent].right_child = child             # <<<<<<<<<<<<<<
@@ -29351,7 +30008,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     }
     __pyx_L13:;
 
-    /* "src/tree/bst/binary_search_tree.pyx":219
+    /* "src/tree/bst/binary_search_tree.pyx":295
  * 
  *         # one child
  *         elif LIKELY(             # <<<<<<<<<<<<<<
@@ -29361,7 +30018,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     goto __pyx_L7;
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":234
+  /* "src/tree/bst/binary_search_tree.pyx":310
  *         # two children, find inorder successor
  *         else:
  *             successor = node.right_child             # <<<<<<<<<<<<<<
@@ -29372,7 +30029,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = __pyx_v_node->right_child;
     __pyx_v_successor = __pyx_t_1;
 
-    /* "src/tree/bst/binary_search_tree.pyx":235
+    /* "src/tree/bst/binary_search_tree.pyx":311
  *         else:
  *             successor = node.right_child
  *             successor_parent = current             # <<<<<<<<<<<<<<
@@ -29381,7 +30038,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
     __pyx_v_successor_parent = __pyx_v_current;
 
-    /* "src/tree/bst/binary_search_tree.pyx":238
+    /* "src/tree/bst/binary_search_tree.pyx":314
  * 
  *             # find left-most node in right subtree
  *             while LIKELY(self.nodes[successor].left_child != NONE_SENTINEL):             # <<<<<<<<<<<<<<
@@ -29392,7 +30049,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_2 = LIKELY(((__pyx_v_self->__pyx_base.nodes[__pyx_v_successor]).left_child != -1L));
       if (!__pyx_t_2) break;
 
-      /* "src/tree/bst/binary_search_tree.pyx":239
+      /* "src/tree/bst/binary_search_tree.pyx":315
  *             # find left-most node in right subtree
  *             while LIKELY(self.nodes[successor].left_child != NONE_SENTINEL):
  *                 successor_parent = successor             # <<<<<<<<<<<<<<
@@ -29401,7 +30058,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
       __pyx_v_successor_parent = __pyx_v_successor;
 
-      /* "src/tree/bst/binary_search_tree.pyx":240
+      /* "src/tree/bst/binary_search_tree.pyx":316
  *             while LIKELY(self.nodes[successor].left_child != NONE_SENTINEL):
  *                 successor_parent = successor
  *                 successor = self.nodes[successor].left_child             # <<<<<<<<<<<<<<
@@ -29412,7 +30069,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_v_successor = __pyx_t_1;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":242
+    /* "src/tree/bst/binary_search_tree.pyx":318
  *                 successor = self.nodes[successor].left_child
  * 
  *             node.key = self.nodes[successor].key             # <<<<<<<<<<<<<<
@@ -29422,7 +30079,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = (__pyx_v_self->__pyx_base.nodes[__pyx_v_successor]).key;
     __pyx_v_node->key = __pyx_t_1;
 
-    /* "src/tree/bst/binary_search_tree.pyx":243
+    /* "src/tree/bst/binary_search_tree.pyx":319
  * 
  *             node.key = self.nodes[successor].key
  *             node.value = self.nodes[successor].value             # <<<<<<<<<<<<<<
@@ -29432,7 +30089,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_1 = (__pyx_v_self->__pyx_base.nodes[__pyx_v_successor]).value;
     __pyx_v_node->value = __pyx_t_1;
 
-    /* "src/tree/bst/binary_search_tree.pyx":246
+    /* "src/tree/bst/binary_search_tree.pyx":322
  * 
  *             # delete sucessor (at most one child)
  *             if successor_parent == current:             # <<<<<<<<<<<<<<
@@ -29442,7 +30099,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     __pyx_t_2 = (__pyx_v_successor_parent == __pyx_v_current);
     if (__pyx_t_2) {
 
-      /* "src/tree/bst/binary_search_tree.pyx":247
+      /* "src/tree/bst/binary_search_tree.pyx":323
  *             # delete sucessor (at most one child)
  *             if successor_parent == current:
  *                 self.nodes[current].right_child = self.nodes[successor].right_child             # <<<<<<<<<<<<<<
@@ -29452,7 +30109,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       __pyx_t_1 = (__pyx_v_self->__pyx_base.nodes[__pyx_v_successor]).right_child;
       (__pyx_v_self->__pyx_base.nodes[__pyx_v_current]).right_child = __pyx_t_1;
 
-      /* "src/tree/bst/binary_search_tree.pyx":246
+      /* "src/tree/bst/binary_search_tree.pyx":322
  * 
  *             # delete sucessor (at most one child)
  *             if successor_parent == current:             # <<<<<<<<<<<<<<
@@ -29462,7 +30119,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
       goto __pyx_L16;
     }
 
-    /* "src/tree/bst/binary_search_tree.pyx":249
+    /* "src/tree/bst/binary_search_tree.pyx":325
  *                 self.nodes[current].right_child = self.nodes[successor].right_child
  *             else:
  *                 self.nodes[successor_parent].left_child = self.nodes[successor].right_child             # <<<<<<<<<<<<<<
@@ -29475,7 +30132,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
     }
     __pyx_L16:;
 
-    /* "src/tree/bst/binary_search_tree.pyx":251
+    /* "src/tree/bst/binary_search_tree.pyx":327
  *                 self.nodes[successor_parent].left_child = self.nodes[successor].right_child
  * 
  *             current = successor  # the node that gets deleted             # <<<<<<<<<<<<<<
@@ -29486,16 +30143,16 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   }
   __pyx_L7:;
 
-  /* "src/tree/bst/binary_search_tree.pyx":253
+  /* "src/tree/bst/binary_search_tree.pyx":329
  *             current = successor  # the node that gets deleted
  * 
  *         self._deallocate_node(current)             # <<<<<<<<<<<<<<
  *         self._size -= 1
  *         return 1
 */
-  __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__deallocate_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_current); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__deallocate_node(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_current); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 329, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":254
+  /* "src/tree/bst/binary_search_tree.pyx":330
  * 
  *         self._deallocate_node(current)
  *         self._size -= 1             # <<<<<<<<<<<<<<
@@ -29504,7 +30161,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
 */
   __pyx_v_self->__pyx_base._size = (__pyx_v_self->__pyx_base._size - 1);
 
-  /* "src/tree/bst/binary_search_tree.pyx":255
+  /* "src/tree/bst/binary_search_tree.pyx":331
  *         self._deallocate_node(current)
  *         self._size -= 1
  *         return 1             # <<<<<<<<<<<<<<
@@ -29514,7 +30171,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   __pyx_r = 1;
   goto __pyx_L0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":173
+  /* "src/tree/bst/binary_search_tree.pyx":249
  *         return 1
  * 
  *     cdef intp_t _delete_node(self, intp_t key):             # <<<<<<<<<<<<<<
@@ -29530,7 +30187,7 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3bst_18binary_search_tre
   return __pyx_r;
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":257
+/* "src/tree/bst/binary_search_tree.pyx":333
  *         return 1
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
@@ -29558,7 +30215,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_resize_arrays", 0);
 
-  /* "src/tree/bst/binary_search_tree.pyx":259
+  /* "src/tree/bst/binary_search_tree.pyx":335
  *     cdef void _resize_arrays(self):
  *         """Double capacity when running low on space"""
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR             # <<<<<<<<<<<<<<
@@ -29567,7 +30224,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   __pyx_v_new_capacity = (__pyx_v_self->__pyx_base.capacity * 2);
 
-  /* "src/tree/bst/binary_search_tree.pyx":260
+  /* "src/tree/bst/binary_search_tree.pyx":336
  *         """Double capacity when running low on space"""
  *         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
  *         cdef Node_t* new_nodes = <Node_t*>realloc(             # <<<<<<<<<<<<<<
@@ -29576,7 +30233,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   __pyx_v_new_nodes = ((__pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *)realloc(__pyx_v_self->__pyx_base.nodes, ((sizeof(__pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t)) * __pyx_v_new_capacity)));
 
-  /* "src/tree/bst/binary_search_tree.pyx":263
+  /* "src/tree/bst/binary_search_tree.pyx":339
  *             self.nodes, sizeof(Node_t) * new_capacity
  *         )
  *         cdef intp_t* new_free_stack = <intp_t*>realloc(             # <<<<<<<<<<<<<<
@@ -29585,7 +30242,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   __pyx_v_new_free_stack = ((__pyx_t_3src_8typedefs_intp_t *)realloc(__pyx_v_self->__pyx_base.free_stack, ((sizeof(__pyx_t_3src_8typedefs_intp_t)) * __pyx_v_new_capacity)));
 
-  /* "src/tree/bst/binary_search_tree.pyx":267
+  /* "src/tree/bst/binary_search_tree.pyx":343
  *         )
  * 
  *         if not new_nodes or not new_free_stack:             # <<<<<<<<<<<<<<
@@ -29603,7 +30260,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":268
+    /* "src/tree/bst/binary_search_tree.pyx":344
  * 
  *         if not new_nodes or not new_free_stack:
  *             raise MemoryError("Failed to resize")             # <<<<<<<<<<<<<<
@@ -29619,14 +30276,14 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 268, __pyx_L1_error)
+    __PYX_ERR(0, 344, __pyx_L1_error)
 
-    /* "src/tree/bst/binary_search_tree.pyx":267
+    /* "src/tree/bst/binary_search_tree.pyx":343
  *         )
  * 
  *         if not new_nodes or not new_free_stack:             # <<<<<<<<<<<<<<
@@ -29635,7 +30292,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":270
+  /* "src/tree/bst/binary_search_tree.pyx":346
  *             raise MemoryError("Failed to resize")
  * 
  *         self.nodes = new_nodes             # <<<<<<<<<<<<<<
@@ -29644,7 +30301,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   __pyx_v_self->__pyx_base.nodes = __pyx_v_new_nodes;
 
-  /* "src/tree/bst/binary_search_tree.pyx":271
+  /* "src/tree/bst/binary_search_tree.pyx":347
  * 
  *         self.nodes = new_nodes
  *         self.free_stack = new_free_stack             # <<<<<<<<<<<<<<
@@ -29653,7 +30310,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   __pyx_v_self->__pyx_base.free_stack = __pyx_v_new_free_stack;
 
-  /* "src/tree/bst/binary_search_tree.pyx":275
+  /* "src/tree/bst/binary_search_tree.pyx":351
  *         # Add new indices to free stack
  *         cdef intp_t i
  *         for i in range(self.capacity, new_capacity):             # <<<<<<<<<<<<<<
@@ -29665,7 +30322,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
   for (__pyx_t_9 = __pyx_v_self->__pyx_base.capacity; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "src/tree/bst/binary_search_tree.pyx":276
+    /* "src/tree/bst/binary_search_tree.pyx":352
  *         cdef intp_t i
  *         for i in range(self.capacity, new_capacity):
  *             self.free_stack_top += 1             # <<<<<<<<<<<<<<
@@ -29674,7 +30331,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
     __pyx_v_self->__pyx_base.free_stack_top = (__pyx_v_self->__pyx_base.free_stack_top + 1);
 
-    /* "src/tree/bst/binary_search_tree.pyx":277
+    /* "src/tree/bst/binary_search_tree.pyx":353
  *         for i in range(self.capacity, new_capacity):
  *             self.free_stack_top += 1
  *             self.free_stack[self.free_stack_top] = i             # <<<<<<<<<<<<<<
@@ -29683,7 +30340,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
     (__pyx_v_self->__pyx_base.free_stack[__pyx_v_self->__pyx_base.free_stack_top]) = __pyx_v_i;
 
-    /* "src/tree/bst/binary_search_tree.pyx":278
+    /* "src/tree/bst/binary_search_tree.pyx":354
  *             self.free_stack_top += 1
  *             self.free_stack[self.free_stack_top] = i
  *             self.free_count += 1             # <<<<<<<<<<<<<<
@@ -29693,7 +30350,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
     __pyx_v_self->__pyx_base.free_count = (__pyx_v_self->__pyx_base.free_count + 1);
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":280
+  /* "src/tree/bst/binary_search_tree.pyx":356
  *             self.free_count += 1
  * 
  *         self.capacity = new_capacity             # <<<<<<<<<<<<<<
@@ -29702,7 +30359,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
 */
   __pyx_v_self->__pyx_base.capacity = __pyx_v_new_capacity;
 
-  /* "src/tree/bst/binary_search_tree.pyx":257
+  /* "src/tree/bst/binary_search_tree.pyx":333
  *         return 1
  * 
  *     cdef void _resize_arrays(self):             # <<<<<<<<<<<<<<
@@ -29721,7 +30378,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__res
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":282
+/* "src/tree/bst/binary_search_tree.pyx":358
  *         self.capacity = new_capacity
  * 
  *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
@@ -29739,504 +30396,9 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":289
- *     ):
- *         """Left, root, right"""
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node_idx == -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":290
- *         """Left, root, right"""
- *         if node_idx == NONE_SENTINEL:
- *             return             # <<<<<<<<<<<<<<
- * 
- *         cdef Node_t* node = &self.nodes[node_idx]
-*/
-    goto __pyx_L0;
-
-    /* "src/tree/bst/binary_search_tree.pyx":289
- *     ):
- *         """Left, root, right"""
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":292
- *             return
- * 
- *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
- * 
- *         if node.left_child != NONE_SENTINEL:
-*/
-  __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
-
-  /* "src/tree/bst/binary_search_tree.pyx":294
- *         cdef Node_t* node = &self.nodes[node_idx]
- * 
- *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.left_child])
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node->left_child != -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":295
- * 
- *         if node.left_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
- * 
- *         self._inorder_traversal(node.left_child, result, result_idx)
-*/
-    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
-
-    /* "src/tree/bst/binary_search_tree.pyx":294
- *         cdef Node_t* node = &self.nodes[node_idx]
- * 
- *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.left_child])
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":297
- *             PREFETCH_READ(&self.nodes[node.left_child])
- * 
- *         self._inorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
- *         result[result_idx[0]] = node.key
- *         result_idx[0] += 1
-*/
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 297, __pyx_L1_error)
-
-  /* "src/tree/bst/binary_search_tree.pyx":298
- * 
- *         self._inorder_traversal(node.left_child, result, result_idx)
- *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
- *         result_idx[0] += 1
- * 
-*/
-  __pyx_t_2 = __pyx_v_node->key;
-  __pyx_t_3 = (__pyx_v_result_idx[0]);
-  *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
-
-  /* "src/tree/bst/binary_search_tree.pyx":299
- *         self._inorder_traversal(node.left_child, result, result_idx)
- *         result[result_idx[0]] = node.key
- *         result_idx[0] += 1             # <<<<<<<<<<<<<<
- * 
- *         if node.right_child != NONE_SENTINEL:
-*/
-  __pyx_t_4 = 0;
-  (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
-
-  /* "src/tree/bst/binary_search_tree.pyx":301
- *         result_idx[0] += 1
- * 
- *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node->right_child != -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":302
- * 
- *         if node.right_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
- * 
- *         self._inorder_traversal(node.right_child, result, result_idx)
-*/
-    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
-
-    /* "src/tree/bst/binary_search_tree.pyx":301
- *         result_idx[0] += 1
- * 
- *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":304
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
- *         self._inorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
- * 
- *     cdef void _inorder_values_traversal(
-*/
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 304, __pyx_L1_error)
-
-  /* "src/tree/bst/binary_search_tree.pyx":282
- *         self.capacity = new_capacity
- * 
- *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
- *         self,
- *         intp_t node_idx,
-*/
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree._inorder_traversal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-}
-
-/* "src/tree/bst/binary_search_tree.pyx":306
- *         self._inorder_traversal(node.right_child, result, result_idx)
- * 
- *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
- *         self,
- *         intp_t node_idx,
-*/
-
-static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__inorder_values_traversal(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __Pyx_memviewslice __pyx_v_result, __pyx_t_3src_8typedefs_intp_t *__pyx_v_result_idx) {
-  __pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *__pyx_v_node;
-  int __pyx_t_1;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
-  long __pyx_t_4;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "src/tree/bst/binary_search_tree.pyx":318
- *         the values rather than the keys. Helper method for `values()`.
- *         """
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node_idx == -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":319
- *         """
- *         if node_idx == NONE_SENTINEL:
- *             return             # <<<<<<<<<<<<<<
- * 
- *         cdef Node_t* node = &self.nodes[node_idx]
-*/
-    goto __pyx_L0;
-
-    /* "src/tree/bst/binary_search_tree.pyx":318
- *         the values rather than the keys. Helper method for `values()`.
- *         """
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":321
- *             return
- * 
- *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
- * 
- *         if node.left_child != NONE_SENTINEL:
-*/
-  __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
-
-  /* "src/tree/bst/binary_search_tree.pyx":323
- *         cdef Node_t* node = &self.nodes[node_idx]
- * 
- *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.left_child])
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node->left_child != -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":324
- * 
- *         if node.left_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
- * 
- *         self._inorder_values_traversal(node.left_child, result, result_idx)
-*/
-    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
-
-    /* "src/tree/bst/binary_search_tree.pyx":323
- *         cdef Node_t* node = &self.nodes[node_idx]
- * 
- *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.left_child])
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":326
- *             PREFETCH_READ(&self.nodes[node.left_child])
- * 
- *         self._inorder_values_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
- *         result[result_idx[0]] = node.value
- *         result_idx[0] += 1
-*/
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 326, __pyx_L1_error)
-
-  /* "src/tree/bst/binary_search_tree.pyx":327
- * 
- *         self._inorder_values_traversal(node.left_child, result, result_idx)
- *         result[result_idx[0]] = node.value             # <<<<<<<<<<<<<<
- *         result_idx[0] += 1
- * 
-*/
-  __pyx_t_2 = __pyx_v_node->value;
-  __pyx_t_3 = (__pyx_v_result_idx[0]);
-  *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
-
-  /* "src/tree/bst/binary_search_tree.pyx":328
- *         self._inorder_values_traversal(node.left_child, result, result_idx)
- *         result[result_idx[0]] = node.value
- *         result_idx[0] += 1             # <<<<<<<<<<<<<<
- * 
- *         if node.right_child != NONE_SENTINEL:
-*/
-  __pyx_t_4 = 0;
-  (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
-
-  /* "src/tree/bst/binary_search_tree.pyx":330
- *         result_idx[0] += 1
- * 
- *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node->right_child != -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":331
- * 
- *         if node.right_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
- * 
- *         self._inorder_values_traversal(node.right_child, result, result_idx)
-*/
-    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
-
-    /* "src/tree/bst/binary_search_tree.pyx":330
- *         result_idx[0] += 1
- * 
- *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":333
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
- *         self._inorder_values_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
- * 
- *     cdef void _preorder_traversal(
-*/
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 333, __pyx_L1_error)
-
-  /* "src/tree/bst/binary_search_tree.pyx":306
- *         self._inorder_traversal(node.right_child, result, result_idx)
- * 
- *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
- *         self,
- *         intp_t node_idx,
-*/
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree._inorder_values_traversal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-}
-
-/* "src/tree/bst/binary_search_tree.pyx":335
- *         self._inorder_values_traversal(node.right_child, result, result_idx)
- * 
- *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
- *         self,
- *         intp_t node_idx,
-*/
-
-static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__preorder_traversal(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __Pyx_memviewslice __pyx_v_result, __pyx_t_3src_8typedefs_intp_t *__pyx_v_result_idx) {
-  __pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *__pyx_v_node;
-  int __pyx_t_1;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
-  long __pyx_t_4;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "src/tree/bst/binary_search_tree.pyx":342
- *     ):
- *         """Root, left, right"""
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node_idx == -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":343
- *         """Root, left, right"""
- *         if node_idx == NONE_SENTINEL:
- *             return             # <<<<<<<<<<<<<<
- * 
- *         cdef Node_t* node = &self.nodes[node_idx]
-*/
-    goto __pyx_L0;
-
-    /* "src/tree/bst/binary_search_tree.pyx":342
- *     ):
- *         """Root, left, right"""
- *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             return
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":345
- *             return
- * 
- *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
- * 
- *         result[result_idx[0]] = node.key
-*/
-  __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
-
-  /* "src/tree/bst/binary_search_tree.pyx":347
- *         cdef Node_t* node = &self.nodes[node_idx]
- * 
- *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
- *         result_idx[0] += 1
- * 
-*/
-  __pyx_t_2 = __pyx_v_node->key;
-  __pyx_t_3 = (__pyx_v_result_idx[0]);
-  *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
-
-  /* "src/tree/bst/binary_search_tree.pyx":348
- * 
- *         result[result_idx[0]] = node.key
- *         result_idx[0] += 1             # <<<<<<<<<<<<<<
- * 
- *         if node.left_child != NONE_SENTINEL:
-*/
-  __pyx_t_4 = 0;
-  (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
-
-  /* "src/tree/bst/binary_search_tree.pyx":350
- *         result_idx[0] += 1
- * 
- *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.left_child])
- *         if node.right_child != NONE_SENTINEL:
-*/
-  __pyx_t_1 = (__pyx_v_node->left_child != -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":351
- * 
- *         if node.left_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
- *         if node.right_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.right_child])
-*/
-    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
-
-    /* "src/tree/bst/binary_search_tree.pyx":350
- *         result_idx[0] += 1
- * 
- *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.left_child])
- *         if node.right_child != NONE_SENTINEL:
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":352
- *         if node.left_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.left_child])
- *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
-*/
-  __pyx_t_1 = (__pyx_v_node->right_child != -1L);
-  if (__pyx_t_1) {
-
-    /* "src/tree/bst/binary_search_tree.pyx":353
- *             PREFETCH_READ(&self.nodes[node.left_child])
- *         if node.right_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
- * 
- *         self._preorder_traversal(node.left_child, result, result_idx)
-*/
-    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
-
-    /* "src/tree/bst/binary_search_tree.pyx":352
- *         if node.left_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.left_child])
- *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
-*/
-  }
-
-  /* "src/tree/bst/binary_search_tree.pyx":355
- *             PREFETCH_READ(&self.nodes[node.right_child])
- * 
- *         self._preorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
- *         self._preorder_traversal(node.right_child, result, result_idx)
- * 
-*/
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L1_error)
-
-  /* "src/tree/bst/binary_search_tree.pyx":356
- * 
- *         self._preorder_traversal(node.left_child, result, result_idx)
- *         self._preorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
- * 
- *     cdef void _postorder_traversal(
-*/
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 356, __pyx_L1_error)
-
-  /* "src/tree/bst/binary_search_tree.pyx":335
- *         self._inorder_values_traversal(node.right_child, result, result_idx)
- * 
- *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
- *         self,
- *         intp_t node_idx,
-*/
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree._preorder_traversal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-}
-
-/* "src/tree/bst/binary_search_tree.pyx":358
- *         self._preorder_traversal(node.right_child, result, result_idx)
- * 
- *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
- *         self,
- *         intp_t node_idx,
-*/
-
-static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__postorder_traversal(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __Pyx_memviewslice __pyx_v_result, __pyx_t_3src_8typedefs_intp_t *__pyx_v_result_idx) {
-  __pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *__pyx_v_node;
-  int __pyx_t_1;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
-  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
-  long __pyx_t_4;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
   /* "src/tree/bst/binary_search_tree.pyx":365
  *     ):
- *         """Left, right, root"""
+ *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
  *             return
  * 
@@ -30245,7 +30407,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   if (__pyx_t_1) {
 
     /* "src/tree/bst/binary_search_tree.pyx":366
- *         """Left, right, root"""
+ *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
  * 
@@ -30255,7 +30417,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
 
     /* "src/tree/bst/binary_search_tree.pyx":365
  *     ):
- *         """Left, right, root"""
+ *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
  *             return
  * 
@@ -30276,7 +30438,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
  * 
  *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
  *             PREFETCH_READ(&self.nodes[node.left_child])
- *         if node.right_child != NONE_SENTINEL:
+ * 
 */
   __pyx_t_1 = (__pyx_v_node->left_child != -1L);
   if (__pyx_t_1) {
@@ -30285,8 +30447,8 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
  * 
  *         if node.left_child != NONE_SENTINEL:
  *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
- *         if node.right_child != NONE_SENTINEL:
- *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+ *         self._inorder_traversal(node.left_child, result, result_idx)
 */
     PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
 
@@ -30295,11 +30457,362 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
  * 
  *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
  *             PREFETCH_READ(&self.nodes[node.left_child])
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":373
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ * 
+ *         self._inorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
+ *         result[result_idx[0]] = node.key
+ *         result_idx[0] += 1
+*/
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 373, __pyx_L1_error)
+
+  /* "src/tree/bst/binary_search_tree.pyx":374
+ * 
+ *         self._inorder_traversal(node.left_child, result, result_idx)
+ *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
+ *         result_idx[0] += 1
+ * 
+*/
+  __pyx_t_2 = __pyx_v_node->key;
+  __pyx_t_3 = (__pyx_v_result_idx[0]);
+  *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
+
+  /* "src/tree/bst/binary_search_tree.pyx":375
+ *         self._inorder_traversal(node.left_child, result, result_idx)
+ *         result[result_idx[0]] = node.key
+ *         result_idx[0] += 1             # <<<<<<<<<<<<<<
+ * 
+ *         if node.right_child != NONE_SENTINEL:
+*/
+  __pyx_t_4 = 0;
+  (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
+
+  /* "src/tree/bst/binary_search_tree.pyx":377
+ *         result_idx[0] += 1
+ * 
+ *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node->right_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":378
+ * 
+ *         if node.right_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
+ * 
+ *         self._inorder_traversal(node.right_child, result, result_idx)
+*/
+    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
+
+    /* "src/tree/bst/binary_search_tree.pyx":377
+ *         result_idx[0] += 1
+ * 
+ *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":380
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+ *         self._inorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef void _inorder_values_traversal(
+*/
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L1_error)
+
+  /* "src/tree/bst/binary_search_tree.pyx":358
+ *         self.capacity = new_capacity
+ * 
+ *     cdef void _inorder_traversal(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree._inorder_traversal", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+}
+
+/* "src/tree/bst/binary_search_tree.pyx":382
+ *         self._inorder_traversal(node.right_child, result, result_idx)
+ * 
+ *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__inorder_values_traversal(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __Pyx_memviewslice __pyx_v_result, __pyx_t_3src_8typedefs_intp_t *__pyx_v_result_idx) {
+  __pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *__pyx_v_node;
+  int __pyx_t_1;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
+  long __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":394
+ *         the values rather than the keys. Helper method for `values()`.
+ *         """
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":395
+ *         """
+ *         if node_idx == NONE_SENTINEL:
+ *             return             # <<<<<<<<<<<<<<
+ * 
+ *         cdef Node_t* node = &self.nodes[node_idx]
+*/
+    goto __pyx_L0;
+
+    /* "src/tree/bst/binary_search_tree.pyx":394
+ *         the values rather than the keys. Helper method for `values()`.
+ *         """
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":397
+ *             return
+ * 
+ *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *         if node.left_child != NONE_SENTINEL:
+*/
+  __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
+
+  /* "src/tree/bst/binary_search_tree.pyx":399
+ *         cdef Node_t* node = &self.nodes[node_idx]
+ * 
+ *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node->left_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":400
+ * 
+ *         if node.left_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
+ * 
+ *         self._inorder_values_traversal(node.left_child, result, result_idx)
+*/
+    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
+
+    /* "src/tree/bst/binary_search_tree.pyx":399
+ *         cdef Node_t* node = &self.nodes[node_idx]
+ * 
+ *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":402
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ * 
+ *         self._inorder_values_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
+ *         result[result_idx[0]] = node.value
+ *         result_idx[0] += 1
+*/
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 402, __pyx_L1_error)
+
+  /* "src/tree/bst/binary_search_tree.pyx":403
+ * 
+ *         self._inorder_values_traversal(node.left_child, result, result_idx)
+ *         result[result_idx[0]] = node.value             # <<<<<<<<<<<<<<
+ *         result_idx[0] += 1
+ * 
+*/
+  __pyx_t_2 = __pyx_v_node->value;
+  __pyx_t_3 = (__pyx_v_result_idx[0]);
+  *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
+
+  /* "src/tree/bst/binary_search_tree.pyx":404
+ *         self._inorder_values_traversal(node.left_child, result, result_idx)
+ *         result[result_idx[0]] = node.value
+ *         result_idx[0] += 1             # <<<<<<<<<<<<<<
+ * 
+ *         if node.right_child != NONE_SENTINEL:
+*/
+  __pyx_t_4 = 0;
+  (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
+
+  /* "src/tree/bst/binary_search_tree.pyx":406
+ *         result_idx[0] += 1
+ * 
+ *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node->right_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":407
+ * 
+ *         if node.right_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
+ * 
+ *         self._inorder_values_traversal(node.right_child, result, result_idx)
+*/
+    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
+
+    /* "src/tree/bst/binary_search_tree.pyx":406
+ *         result_idx[0] += 1
+ * 
+ *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":409
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+ *         self._inorder_values_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef void _preorder_traversal(
+*/
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_values_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 409, __pyx_L1_error)
+
+  /* "src/tree/bst/binary_search_tree.pyx":382
+ *         self._inorder_traversal(node.right_child, result, result_idx)
+ * 
+ *     cdef void _inorder_values_traversal(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree._inorder_values_traversal", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+}
+
+/* "src/tree/bst/binary_search_tree.pyx":411
+ *         self._inorder_values_traversal(node.right_child, result, result_idx)
+ * 
+ *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__preorder_traversal(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __Pyx_memviewslice __pyx_v_result, __pyx_t_3src_8typedefs_intp_t *__pyx_v_result_idx) {
+  __pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *__pyx_v_node;
+  int __pyx_t_1;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
+  long __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":418
+ *     ):
+ *         """Root, left, right"""
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":419
+ *         """Root, left, right"""
+ *         if node_idx == NONE_SENTINEL:
+ *             return             # <<<<<<<<<<<<<<
+ * 
+ *         cdef Node_t* node = &self.nodes[node_idx]
+*/
+    goto __pyx_L0;
+
+    /* "src/tree/bst/binary_search_tree.pyx":418
+ *     ):
+ *         """Root, left, right"""
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":421
+ *             return
+ * 
+ *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *         result[result_idx[0]] = node.key
+*/
+  __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
+
+  /* "src/tree/bst/binary_search_tree.pyx":423
+ *         cdef Node_t* node = &self.nodes[node_idx]
+ * 
+ *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
+ *         result_idx[0] += 1
+ * 
+*/
+  __pyx_t_2 = __pyx_v_node->key;
+  __pyx_t_3 = (__pyx_v_result_idx[0]);
+  *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
+
+  /* "src/tree/bst/binary_search_tree.pyx":424
+ * 
+ *         result[result_idx[0]] = node.key
+ *         result_idx[0] += 1             # <<<<<<<<<<<<<<
+ * 
+ *         if node.left_child != NONE_SENTINEL:
+*/
+  __pyx_t_4 = 0;
+  (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
+
+  /* "src/tree/bst/binary_search_tree.pyx":426
+ *         result_idx[0] += 1
+ * 
+ *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ *         if node.right_child != NONE_SENTINEL:
+*/
+  __pyx_t_1 = (__pyx_v_node->left_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":427
+ * 
+ *         if node.left_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
+ *         if node.right_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+*/
+    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
+
+    /* "src/tree/bst/binary_search_tree.pyx":426
+ *         result_idx[0] += 1
+ * 
+ *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.left_child])
  *         if node.right_child != NONE_SENTINEL:
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":372
+  /* "src/tree/bst/binary_search_tree.pyx":428
  *         if node.left_child != NONE_SENTINEL:
  *             PREFETCH_READ(&self.nodes[node.left_child])
  *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30309,16 +30822,16 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   __pyx_t_1 = (__pyx_v_node->right_child != -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":373
+    /* "src/tree/bst/binary_search_tree.pyx":429
  *             PREFETCH_READ(&self.nodes[node.left_child])
  *         if node.right_child != NONE_SENTINEL:
  *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
  * 
- *         self._postorder_traversal(node.left_child, result, result_idx)
+ *         self._preorder_traversal(node.left_child, result, result_idx)
 */
     PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
 
-    /* "src/tree/bst/binary_search_tree.pyx":372
+    /* "src/tree/bst/binary_search_tree.pyx":428
  *         if node.left_child != NONE_SENTINEL:
  *             PREFETCH_READ(&self.nodes[node.left_child])
  *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30327,25 +30840,169 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":375
+  /* "src/tree/bst/binary_search_tree.pyx":431
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+ *         self._preorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
+ *         self._preorder_traversal(node.right_child, result, result_idx)
+ * 
+*/
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 431, __pyx_L1_error)
+
+  /* "src/tree/bst/binary_search_tree.pyx":432
+ * 
+ *         self._preorder_traversal(node.left_child, result, result_idx)
+ *         self._preorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef void _postorder_traversal(
+*/
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 432, __pyx_L1_error)
+
+  /* "src/tree/bst/binary_search_tree.pyx":411
+ *         self._inorder_values_traversal(node.right_child, result, result_idx)
+ * 
+ *     cdef void _preorder_traversal(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.tree.bst.binary_search_tree.BinarySearchTree._preorder_traversal", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+}
+
+/* "src/tree/bst/binary_search_tree.pyx":434
+ *         self._preorder_traversal(node.right_child, result, result_idx)
+ * 
+ *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__postorder_traversal(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __Pyx_memviewslice __pyx_v_result, __pyx_t_3src_8typedefs_intp_t *__pyx_v_result_idx) {
+  __pyx_t_3src_4tree_3bst_18binary_search_tree_Node_t *__pyx_v_node;
+  int __pyx_t_1;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_3;
+  long __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":441
+ *     ):
+ *         """Left, right, root"""
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":442
+ *         """Left, right, root"""
+ *         if node_idx == NONE_SENTINEL:
+ *             return             # <<<<<<<<<<<<<<
+ * 
+ *         cdef Node_t* node = &self.nodes[node_idx]
+*/
+    goto __pyx_L0;
+
+    /* "src/tree/bst/binary_search_tree.pyx":441
+ *     ):
+ *         """Left, right, root"""
+ *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             return
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":444
+ *             return
+ * 
+ *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *         if node.left_child != NONE_SENTINEL:
+*/
+  __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
+
+  /* "src/tree/bst/binary_search_tree.pyx":446
+ *         cdef Node_t* node = &self.nodes[node_idx]
+ * 
+ *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ *         if node.right_child != NONE_SENTINEL:
+*/
+  __pyx_t_1 = (__pyx_v_node->left_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":447
+ * 
+ *         if node.left_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.left_child])             # <<<<<<<<<<<<<<
+ *         if node.right_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+*/
+    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->left_child])));
+
+    /* "src/tree/bst/binary_search_tree.pyx":446
+ *         cdef Node_t* node = &self.nodes[node_idx]
+ * 
+ *         if node.left_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ *         if node.right_child != NONE_SENTINEL:
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":448
+ *         if node.left_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_node->right_child != -1L);
+  if (__pyx_t_1) {
+
+    /* "src/tree/bst/binary_search_tree.pyx":449
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ *         if node.right_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.right_child])             # <<<<<<<<<<<<<<
+ * 
+ *         self._postorder_traversal(node.left_child, result, result_idx)
+*/
+    PREFETCH_READ((&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node->right_child])));
+
+    /* "src/tree/bst/binary_search_tree.pyx":448
+ *         if node.left_child != NONE_SENTINEL:
+ *             PREFETCH_READ(&self.nodes[node.left_child])
+ *         if node.right_child != NONE_SENTINEL:             # <<<<<<<<<<<<<<
+ *             PREFETCH_READ(&self.nodes[node.right_child])
+ * 
+*/
+  }
+
+  /* "src/tree/bst/binary_search_tree.pyx":451
  *             PREFETCH_READ(&self.nodes[node.right_child])
  * 
  *         self._postorder_traversal(node.left_child, result, result_idx)             # <<<<<<<<<<<<<<
  *         self._postorder_traversal(node.right_child, result, result_idx)
  *         result[result_idx[0]] = node.key
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 451, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":376
+  /* "src/tree/bst/binary_search_tree.pyx":452
  * 
  *         self._postorder_traversal(node.left_child, result, result_idx)
  *         self._postorder_traversal(node.right_child, result, result_idx)             # <<<<<<<<<<<<<<
  *         result[result_idx[0]] = node.key
  *         result_idx[0] += 1
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 376, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_traversal(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result, __pyx_v_result_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 452, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":377
+  /* "src/tree/bst/binary_search_tree.pyx":453
  *         self._postorder_traversal(node.left_child, result, result_idx)
  *         self._postorder_traversal(node.right_child, result, result_idx)
  *         result[result_idx[0]] = node.key             # <<<<<<<<<<<<<<
@@ -30356,7 +31013,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   __pyx_t_3 = (__pyx_v_result_idx[0]);
   *((__pyx_t_3src_8typedefs_intp_t *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_3 * __pyx_v_result.strides[0]) )) = __pyx_t_2;
 
-  /* "src/tree/bst/binary_search_tree.pyx":378
+  /* "src/tree/bst/binary_search_tree.pyx":454
  *         self._postorder_traversal(node.right_child, result, result_idx)
  *         result[result_idx[0]] = node.key
  *         result_idx[0] += 1             # <<<<<<<<<<<<<<
@@ -30366,7 +31023,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   __pyx_t_4 = 0;
   (__pyx_v_result_idx[__pyx_t_4]) = ((__pyx_v_result_idx[__pyx_t_4]) + 1);
 
-  /* "src/tree/bst/binary_search_tree.pyx":358
+  /* "src/tree/bst/binary_search_tree.pyx":434
  *         self._preorder_traversal(node.right_child, result, result_idx)
  * 
  *     cdef void _postorder_traversal(             # <<<<<<<<<<<<<<
@@ -30381,7 +31038,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   __pyx_L0:;
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":380
+/* "src/tree/bst/binary_search_tree.pyx":456
  *         result_idx[0] += 1
  * 
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -30402,7 +31059,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_inorder_items_traverse", 0);
 
-  /* "src/tree/bst/binary_search_tree.pyx":382
+  /* "src/tree/bst/binary_search_tree.pyx":458
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30412,7 +31069,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
   __pyx_t_1 = (__pyx_v_node_idx == -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":383
+    /* "src/tree/bst/binary_search_tree.pyx":459
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
@@ -30421,7 +31078,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
 */
     goto __pyx_L0;
 
-    /* "src/tree/bst/binary_search_tree.pyx":382
+    /* "src/tree/bst/binary_search_tree.pyx":458
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, root, right"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30430,7 +31087,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":385
+  /* "src/tree/bst/binary_search_tree.pyx":461
  *             return
  * 
  *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -30439,16 +31096,16 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
 */
   __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/bst/binary_search_tree.pyx":387
+  /* "src/tree/bst/binary_search_tree.pyx":463
  *         cdef Node_t* node = &self.nodes[node_idx]
  * 
  *         self._inorder_items_traverse(node.left_child, result)             # <<<<<<<<<<<<<<
  *         result.append((node.key, node.value))
  *         self._inorder_items_traverse(node.right_child, result)
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 387, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 463, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":388
+  /* "src/tree/bst/binary_search_tree.pyx":464
  * 
  *         self._inorder_items_traverse(node.left_child, result)
  *         result.append((node.key, node.value))             # <<<<<<<<<<<<<<
@@ -30457,33 +31114,33 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
 */
   if (unlikely(__pyx_v_result == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 388, __pyx_L1_error)
+    __PYX_ERR(0, 464, __pyx_L1_error)
   }
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 388, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 464, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 388, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 464, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 464, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":389
+  /* "src/tree/bst/binary_search_tree.pyx":465
  *         self._inorder_items_traverse(node.left_child, result)
  *         result.append((node.key, node.value))
  *         self._inorder_items_traverse(node.right_child, result)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._inorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 465, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":380
+  /* "src/tree/bst/binary_search_tree.pyx":456
  *         result_idx[0] += 1
  * 
  *     cdef void _inorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -30502,7 +31159,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__ino
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":391
+/* "src/tree/bst/binary_search_tree.pyx":467
  *         self._inorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -30523,7 +31180,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_preorder_items_traverse", 0);
 
-  /* "src/tree/bst/binary_search_tree.pyx":393
+  /* "src/tree/bst/binary_search_tree.pyx":469
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30533,7 +31190,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
   __pyx_t_1 = (__pyx_v_node_idx == -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":394
+    /* "src/tree/bst/binary_search_tree.pyx":470
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
@@ -30542,7 +31199,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
 */
     goto __pyx_L0;
 
-    /* "src/tree/bst/binary_search_tree.pyx":393
+    /* "src/tree/bst/binary_search_tree.pyx":469
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
  *         """Root, left, right"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30551,7 +31208,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":396
+  /* "src/tree/bst/binary_search_tree.pyx":472
  *             return
  * 
  *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -30560,7 +31217,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
 */
   __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/bst/binary_search_tree.pyx":398
+  /* "src/tree/bst/binary_search_tree.pyx":474
  *         cdef Node_t* node = &self.nodes[node_idx]
  * 
  *         result.append((node.key, node.value))             # <<<<<<<<<<<<<<
@@ -30569,42 +31226,42 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
 */
   if (unlikely(__pyx_v_result == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 398, __pyx_L1_error)
+    __PYX_ERR(0, 474, __pyx_L1_error)
   }
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 398, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 474, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 398, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 474, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 398, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":399
+  /* "src/tree/bst/binary_search_tree.pyx":475
  * 
  *         result.append((node.key, node.value))
  *         self._preorder_items_traverse(node.left_child, result)             # <<<<<<<<<<<<<<
  *         self._preorder_items_traverse(node.right_child, result)
  * 
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 399, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 475, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":400
+  /* "src/tree/bst/binary_search_tree.pyx":476
  *         result.append((node.key, node.value))
  *         self._preorder_items_traverse(node.left_child, result)
  *         self._preorder_items_traverse(node.right_child, result)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 400, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._preorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 476, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":391
+  /* "src/tree/bst/binary_search_tree.pyx":467
  *         self._inorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _preorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -30623,7 +31280,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pre
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/tree/bst/binary_search_tree.pyx":402
+/* "src/tree/bst/binary_search_tree.pyx":478
  *         self._preorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -30644,7 +31301,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_postorder_items_traverse", 0);
 
-  /* "src/tree/bst/binary_search_tree.pyx":404
+  /* "src/tree/bst/binary_search_tree.pyx":480
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30654,7 +31311,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
   __pyx_t_1 = (__pyx_v_node_idx == -1L);
   if (__pyx_t_1) {
 
-    /* "src/tree/bst/binary_search_tree.pyx":405
+    /* "src/tree/bst/binary_search_tree.pyx":481
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL:
  *             return             # <<<<<<<<<<<<<<
@@ -30663,7 +31320,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
 */
     goto __pyx_L0;
 
-    /* "src/tree/bst/binary_search_tree.pyx":404
+    /* "src/tree/bst/binary_search_tree.pyx":480
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
  *         """Left, right, root"""
  *         if node_idx == NONE_SENTINEL:             # <<<<<<<<<<<<<<
@@ -30672,7 +31329,7 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
 */
   }
 
-  /* "src/tree/bst/binary_search_tree.pyx":407
+  /* "src/tree/bst/binary_search_tree.pyx":483
  *             return
  * 
  *         cdef Node_t* node = &self.nodes[node_idx]             # <<<<<<<<<<<<<<
@@ -30681,48 +31338,48 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
 */
   __pyx_v_node = (&(__pyx_v_self->__pyx_base.nodes[__pyx_v_node_idx]));
 
-  /* "src/tree/bst/binary_search_tree.pyx":409
+  /* "src/tree/bst/binary_search_tree.pyx":485
  *         cdef Node_t* node = &self.nodes[node_idx]
  * 
  *         self._postorder_items_traverse(node.left_child, result)             # <<<<<<<<<<<<<<
  *         self._postorder_items_traverse(node.right_child, result)
  *         result.append((node.key, node.value))
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 409, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->left_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 485, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":410
+  /* "src/tree/bst/binary_search_tree.pyx":486
  * 
  *         self._postorder_items_traverse(node.left_child, result)
  *         self._postorder_items_traverse(node.right_child, result)             # <<<<<<<<<<<<<<
  *         result.append((node.key, node.value))
 */
-  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 410, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._postorder_items_traverse(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *)__pyx_v_self), __pyx_v_node->right_child, __pyx_v_result); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 486, __pyx_L1_error)
 
-  /* "src/tree/bst/binary_search_tree.pyx":411
+  /* "src/tree/bst/binary_search_tree.pyx":487
  *         self._postorder_items_traverse(node.left_child, result)
  *         self._postorder_items_traverse(node.right_child, result)
  *         result.append((node.key, node.value))             # <<<<<<<<<<<<<<
 */
   if (unlikely(__pyx_v_result == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 411, __pyx_L1_error)
+    __PYX_ERR(0, 487, __pyx_L1_error)
   }
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_v_node->key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 487, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_node->value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 487, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 487, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 411, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 487, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 411, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 487, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 487, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/tree/bst/binary_search_tree.pyx":402
+  /* "src/tree/bst/binary_search_tree.pyx":478
  *         self._preorder_items_traverse(node.right_child, result)
  * 
  *     cdef void _postorder_items_traverse(self, intp_t node_idx, list result):             # <<<<<<<<<<<<<<
@@ -30748,15 +31405,15 @@ static void __pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__pos
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_9__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_9__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_9__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_9__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -30782,14 +31439,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2__reduce_cython__(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_8__reduce_cython__(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_8__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -30829,15 +31486,15 @@ static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTre
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_11__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_11__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_11__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_11__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -30903,7 +31560,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4__setstate_cython__(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_10__setstate_cython__(((struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -30913,7 +31570,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_10__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3bst_18binary_search_tree_BinarySearchTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -31193,8 +31850,8 @@ static PyObject *__pyx_tp_new_3src_4tree_3bst_18binary_search_tree_BinarySearchT
 }
 
 static PyMethodDef __pyx_methods_3src_4tree_3bst_18binary_search_tree_BinarySearchTree[] = {
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_9__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_11__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
@@ -32242,7 +32899,6 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   __pyx_vtabptr_3src_4tree_3bst_18binary_search_tree__BaseTree = &__pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree;
-  __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.delete_multiple = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.insert = (int (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_insert;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.__pyx_delete = (int (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree._allocate_node = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__allocate_node;
@@ -32250,8 +32906,6 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.is_empty = (int (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_is_empty;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.get = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.contains = (int (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains;
-  __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.get_multiple = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple;
-  __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.contains_multiple = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.keys = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_keys;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.values = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_values;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.items = (PyObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_items;
@@ -32264,6 +32918,9 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.range_query = (PyObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_range_query;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree._count_range = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__count_range;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree._range_query_fill = (void (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __Pyx_memviewslice, __Pyx_memviewslice, __pyx_t_3src_8typedefs_intp_t *))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__range_query_fill;
+  __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.get_multiple = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_get_multiple;
+  __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.delete_multiple = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_delete_multiple;
+  __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.contains_multiple = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_contains_multiple;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree.build_tree = (void (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree_build_tree;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree._find_node = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__find_node;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree__BaseTree._insert_node = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3bst_18binary_search_tree_9_BaseTree__insert_node;
@@ -32348,6 +33005,9 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
   __pyx_vtabptr_3src_4tree_3bst_18binary_search_tree_BinarySearchTree = &__pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base = *__pyx_vtabptr_3src_4tree_3bst_18binary_search_tree__BaseTree;
+  __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base.get_multiple = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_get_multiple;
+  __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base.delete_multiple = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_delete_multiple;
+  __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base.contains_multiple = (PyArrayObject *(*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_contains_multiple;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base.build_tree = (void (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, PyObject *, PyObject *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_build_tree;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base._find_node = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__find_node;
   __pyx_vtable_3src_4tree_3bst_18binary_search_tree_BinarySearchTree.__pyx_base._insert_node = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3bst_18binary_search_tree__BaseTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree__insert_node;
@@ -33528,289 +34188,235 @@ __Pyx_RefNannySetupContext("PyInit_binary_search_tree", 0);
   /* "src/tree/_base_tree.pxi":103
  *             raise KeyError(f"Key {key} not found")
  * 
- *     cpdef intp_t delete_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Delete multiple keys and return number of successful deletions.
-*/
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 103, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17delete_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_delete_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_5);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_delete_multiple, __pyx_t_4) < 0) __PYX_ERR(1, 103, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "src/tree/_base_tree.pxi":121
- *         return deleted_count
- * 
  *     cpdef bint insert(self, intp_t key, intp_t value):             # <<<<<<<<<<<<<<
  *         """
  *         Insert key-value pair in the tree.
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19insert, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_insert, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 121, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_insert, __pyx_t_4) < 0) __PYX_ERR(1, 121, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_17insert, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_insert, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_insert, __pyx_t_5) < 0) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":146
+  /* "src/tree/_base_tree.pxi":128
  *         return bool(success)
  * 
  *     cpdef bint delete(self, intp_t key):             # <<<<<<<<<<<<<<
  *         """
  *         Delete a key and it's value.
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21delete, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_delete, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 146, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_delete, __pyx_t_4) < 0) __PYX_ERR(1, 146, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_19delete, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_delete, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_delete, __pyx_t_5) < 0) __PYX_ERR(1, 128, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":185
+  /* "src/tree/_base_tree.pxi":167
  * 
  *     # public methods
  *     cpdef bint is_empty(self):             # <<<<<<<<<<<<<<
  *         """Check whether the BST is empty."""
  *         return self._size == 0
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23is_empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_is_empty, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 185, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_is_empty, __pyx_t_4) < 0) __PYX_ERR(1, 185, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_21is_empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_is_empty, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 167, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_is_empty, __pyx_t_5) < 0) __PYX_ERR(1, 167, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":189
+  /* "src/tree/_base_tree.pxi":171
  *         return self._size == 0
  * 
  *     cpdef intp_t get(self, intp_t key):             # <<<<<<<<<<<<<<
  *         """
  *         Retrieve value for a key.
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25get, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_get, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 189, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_get, __pyx_t_4) < 0) __PYX_ERR(1, 189, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_23get, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_get, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 171, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_get, __pyx_t_5) < 0) __PYX_ERR(1, 171, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":216
+  /* "src/tree/_base_tree.pxi":198
  *         return self.nodes[idx].value
  * 
  *     cpdef bint contains(self, intp_t key):             # <<<<<<<<<<<<<<
  *         """
  *         Check existence of a value for a key.
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27contains, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_contains, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 216, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_contains, __pyx_t_4) < 0) __PYX_ERR(1, 216, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "src/tree/_base_tree.pxi":234
- *         return idx != NONE_SENTINEL
- * 
- *     cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
-*/
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 234, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 234, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29get_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_get_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 234, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_25contains, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_contains, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_4);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_get_multiple, __pyx_t_5) < 0) __PYX_ERR(1, 234, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_contains, __pyx_t_5) < 0) __PYX_ERR(1, 198, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":286
- *         return np.asarray(results)
- * 
- *     cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Check existence of multiple keys efficiently, returns boolean NumPy
-*/
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 286, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 286, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31contains_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_contains_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 286, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_5);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_contains_multiple, __pyx_t_4) < 0) __PYX_ERR(1, 286, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "src/tree/_base_tree.pxi":307
+  /* "src/tree/_base_tree.pxi":217
  * 
  *     # public methods: tree traversals
  *     cpdef np.ndarray keys(self):             # <<<<<<<<<<<<<<
  *         """Return all keys in sorted order (inorder traversal)."""
  *         return self.inorder()
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33keys, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_keys, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 307, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_keys, __pyx_t_4) < 0) __PYX_ERR(1, 307, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_27keys, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_keys, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 217, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_keys, __pyx_t_5) < 0) __PYX_ERR(1, 217, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":311
+  /* "src/tree/_base_tree.pxi":221
  *         return self.inorder()
  * 
  *     cpdef np.ndarray values(self):             # <<<<<<<<<<<<<<
  *         """Return all values in key-sorted order."""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35values, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_values, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 311, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_values, __pyx_t_4) < 0) __PYX_ERR(1, 311, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_29values, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_values, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 221, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_values, __pyx_t_5) < 0) __PYX_ERR(1, 221, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":322
+  /* "src/tree/_base_tree.pxi":232
  *         return np.asarray(result)
  * 
  *     cpdef list items(self):             # <<<<<<<<<<<<<<
  *         """Return all (key, value) pairs in sorted order."""
  *         return self.inorder_items()
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 322, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_items, __pyx_t_4) < 0) __PYX_ERR(1, 322, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_31items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_items, __pyx_t_5) < 0) __PYX_ERR(1, 232, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":326
+  /* "src/tree/_base_tree.pxi":236
  *         return self.inorder_items()
  * 
  *     cpdef np.ndarray inorder(self):             # <<<<<<<<<<<<<<
  *         """Return inorder traversal of keys"""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_inorder, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 326, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_inorder, __pyx_t_4) < 0) __PYX_ERR(1, 326, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_33inorder, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_inorder, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 236, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_inorder, __pyx_t_5) < 0) __PYX_ERR(1, 236, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":337
+  /* "src/tree/_base_tree.pxi":247
  *         return np.asarray(result)
  * 
  *     cpdef np.ndarray preorder(self):             # <<<<<<<<<<<<<<
  *         """Return preorder traversal of keys"""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_preorder, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 337, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_preorder, __pyx_t_4) < 0) __PYX_ERR(1, 337, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_35preorder, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_preorder, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 247, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_preorder, __pyx_t_5) < 0) __PYX_ERR(1, 247, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":348
+  /* "src/tree/_base_tree.pxi":258
  *         return np.asarray(result)
  * 
  *     cpdef np.ndarray postorder(self):             # <<<<<<<<<<<<<<
  *         """Return postorder traversal of keys"""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_postorder, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 348, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_postorder, __pyx_t_4) < 0) __PYX_ERR(1, 348, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_37postorder, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_postorder, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_postorder, __pyx_t_5) < 0) __PYX_ERR(1, 258, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":359
+  /* "src/tree/_base_tree.pxi":269
  *         return np.asarray(result)
  * 
  *     cpdef list inorder_items(self):             # <<<<<<<<<<<<<<
  *         """Return inorder traversal of (key, value) pairs"""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45inorder_items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_inorder_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 359, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_inorder_items, __pyx_t_4) < 0) __PYX_ERR(1, 359, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_39inorder_items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_inorder_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 269, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_inorder_items, __pyx_t_5) < 0) __PYX_ERR(1, 269, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":368
+  /* "src/tree/_base_tree.pxi":278
  *         return result
  * 
  *     cpdef list preorder_items(self):             # <<<<<<<<<<<<<<
  *         """Return preorder traversal of (key, value) pairs"""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47preorder_items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_preorder_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_preorder_items, __pyx_t_4) < 0) __PYX_ERR(1, 368, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_41preorder_items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_preorder_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_preorder_items, __pyx_t_5) < 0) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":377
+  /* "src/tree/_base_tree.pxi":287
  *         return result
  * 
  *     cpdef list postorder_items(self):             # <<<<<<<<<<<<<<
  *         """Return postorder traversal of (key, value) pairs"""
  *         if self._size == 0:
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49postorder_items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_postorder_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[16])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 377, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_postorder_items, __pyx_t_4) < 0) __PYX_ERR(1, 377, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_43postorder_items, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_postorder_items, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_postorder_items, __pyx_t_5) < 0) __PYX_ERR(1, 287, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":387
+  /* "src/tree/_base_tree.pxi":297
  * 
  *     # range queries
  *     cpdef tuple range_query(self, intp_t min_key, intp_t max_key):             # <<<<<<<<<<<<<<
  *         """
  *         Range query returning arrays for keys and values.
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51range_query, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_range_query, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[17])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 387, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_range_query, __pyx_t_4) < 0) __PYX_ERR(1, 387, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_45range_query, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_range_query, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 297, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_range_query, __pyx_t_5) < 0) __PYX_ERR(1, 297, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/tree/_base_tree.pxi":473
+  /* "src/tree/_base_tree.pxi":383
  *     # basic tree operations
  *     # to be overridden by subclass
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement get_multiple")
+ * 
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_47get_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_get_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 383, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_get_multiple, __pyx_t_5) < 0) __PYX_ERR(1, 383, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/tree/_base_tree.pxi":386
+ *         raise NotImplementedError("Subclass must implement get_multiple")
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement delete_multiple")
+ * 
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_49delete_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_delete_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[16])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 386, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_delete_multiple, __pyx_t_5) < 0) __PYX_ERR(1, 386, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/tree/_base_tree.pxi":389
+ *         raise NotImplementedError("Subclass must implement delete_multiple")
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("Subclass must implement contains_multiple")
+ * 
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_51contains_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_contains_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[17])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 389, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_contains_multiple, __pyx_t_5) < 0) __PYX_ERR(1, 389, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "src/tree/_base_tree.pxi":392
+ *         raise NotImplementedError("Subclass must implement contains_multiple")
+ * 
  *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
  *         raise NotImplementedError("Subclass must implement build_tree")
  * 
 */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 473, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 473, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_values, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 473, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_53build_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_build_tree, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[18])); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 473, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_4);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_build_tree, __pyx_t_5) < 0) __PYX_ERR(1, 473, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
- * def __setstate_cython__(self, __pyx_state):
-*/
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_55__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[19])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_5) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-  /* "(tree fragment)":3
- * def __reduce_cython__(self):
- *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
-*/
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_57__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[20])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_5) < 0) __PYX_ERR(2, 3, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-  /* "src/tree/bst/binary_search_tree.pyx":62
- *     """
- * 
- *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
- *         """
- *         Build Tree in optimized manner through an array of keys and values.
-*/
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_values, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1build_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree_build_tree, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[21])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 392, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_values, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(1, 392, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_53build_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree_build_tree, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[18])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree, __pyx_mstate_global->__pyx_n_u_build_tree, __pyx_t_4) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree__BaseTree, __pyx_mstate_global->__pyx_n_u_build_tree, __pyx_t_4) < 0) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
@@ -33818,7 +34424,7 @@ __Pyx_RefNannySetupContext("PyInit_binary_search_tree", 0);
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[22])); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_55__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[19])); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_4) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -33829,20 +34435,95 @@ __Pyx_RefNannySetupContext("PyInit_binary_search_tree", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree___setstate_cyth, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[23])); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 3, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_9_BaseTree_57__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BaseTree___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[20])); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_4) < 0) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":62
+ *     """
+ * 
+ *     cpdef np.ndarray get_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_1get_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree_get_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[21])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree, __pyx_mstate_global->__pyx_n_u_get_multiple, __pyx_t_4) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":100
+ *         return np.asarray(results)
+ * 
+ *     cpdef intp_t delete_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Delete multiple keys and return number of successful deletions.
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_3delete_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree_delete_multiple, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[22])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree, __pyx_mstate_global->__pyx_n_u_delete_multiple, __pyx_t_4) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":118
+ *         return deleted_count
+ * 
+ *     cpdef np.ndarray contains_multiple(self, np.ndarray keys):             # <<<<<<<<<<<<<<
+ *         """
+ *         Check existence of multiple keys efficiently, returns boolean NumPy
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_5contains_multiple, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree_contains_multip, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[23])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree, __pyx_mstate_global->__pyx_n_u_contains_multiple, __pyx_t_4) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "src/tree/bst/binary_search_tree.pyx":138
+ *         return np.asarray(result, dtype=bool)
+ * 
+ *     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):             # <<<<<<<<<<<<<<
+ *         """
+ *         Build Tree in optimized manner through an array of keys and values.
+*/
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_keys, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_values, __pyx_mstate_global->__pyx_kp_u_list_np_ndarray) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_7build_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree_build_tree, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[24])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_4);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3bst_18binary_search_tree_BinarySearchTree, __pyx_mstate_global->__pyx_n_u_build_tree, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_9__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[25])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_5) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3bst_18binary_search_tree_16BinarySearchTree_11__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_BinarySearchTree___setstate_cyth, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_bst_binary_search_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[26])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_5) < 0) __PYX_ERR(2, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "src/tree/bst/binary_search_tree.pyx":1
  * """             # <<<<<<<<<<<<<<
  * Author: Just van der Kroft
  * 
 */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_4) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_5) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -33934,6 +34615,9 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_BinarySearchTree___reduce_cython, sizeof(__pyx_k_BinarySearchTree___reduce_cython), 0, 1, 1}, /* PyObject cname: __pyx_n_u_BinarySearchTree___reduce_cython */
   {__pyx_k_BinarySearchTree___setstate_cyth, sizeof(__pyx_k_BinarySearchTree___setstate_cyth), 0, 1, 1}, /* PyObject cname: __pyx_n_u_BinarySearchTree___setstate_cyth */
   {__pyx_k_BinarySearchTree_build_tree, sizeof(__pyx_k_BinarySearchTree_build_tree), 0, 1, 1}, /* PyObject cname: __pyx_n_u_BinarySearchTree_build_tree */
+  {__pyx_k_BinarySearchTree_contains_multip, sizeof(__pyx_k_BinarySearchTree_contains_multip), 0, 1, 1}, /* PyObject cname: __pyx_n_u_BinarySearchTree_contains_multip */
+  {__pyx_k_BinarySearchTree_delete_multiple, sizeof(__pyx_k_BinarySearchTree_delete_multiple), 0, 1, 1}, /* PyObject cname: __pyx_n_u_BinarySearchTree_delete_multiple */
+  {__pyx_k_BinarySearchTree_get_multiple, sizeof(__pyx_k_BinarySearchTree_get_multiple), 0, 1, 1}, /* PyObject cname: __pyx_n_u_BinarySearchTree_get_multiple */
   {__pyx_k_Buffer_view_does_not_expose_stri, sizeof(__pyx_k_Buffer_view_does_not_expose_stri), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Buffer_view_does_not_expose_stri */
   {__pyx_k_Can_only_create_a_buffer_that_is, sizeof(__pyx_k_Can_only_create_a_buffer_that_is), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Can_only_create_a_buffer_that_is */
   {__pyx_k_Cannot_assign_to_read_only_memor, sizeof(__pyx_k_Cannot_assign_to_read_only_memor), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Cannot_assign_to_read_only_memor */
@@ -33965,6 +34649,9 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_Sequence, sizeof(__pyx_k_Sequence), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Sequence */
   {__pyx_k_Step_may_not_be_zero_axis_d, sizeof(__pyx_k_Step_may_not_be_zero_axis_d), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Step_may_not_be_zero_axis_d */
   {__pyx_k_Subclass_must_implement_build_tr, sizeof(__pyx_k_Subclass_must_implement_build_tr), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclass_must_implement_build_tr */
+  {__pyx_k_Subclass_must_implement_contains, sizeof(__pyx_k_Subclass_must_implement_contains), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclass_must_implement_contains */
+  {__pyx_k_Subclass_must_implement_delete_m, sizeof(__pyx_k_Subclass_must_implement_delete_m), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclass_must_implement_delete_m */
+  {__pyx_k_Subclass_must_implement_get_mult, sizeof(__pyx_k_Subclass_must_implement_get_mult), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclass_must_implement_get_mult */
   {__pyx_k_Subclasses_must_implement__delet, sizeof(__pyx_k_Subclasses_must_implement__delet), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclasses_must_implement__delet */
   {__pyx_k_Subclasses_must_implement__find, sizeof(__pyx_k_Subclasses_must_implement__find), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclasses_must_implement__find */
   {__pyx_k_Subclasses_must_implement__inord, sizeof(__pyx_k_Subclasses_must_implement__inord), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Subclasses_must_implement__inord */
@@ -34122,9 +34809,9 @@ static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 63, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(1, 67, __pyx_L1_error)
   __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_KeyError); if (!__pyx_builtin_KeyError) __PYX_ERR(1, 101, __pyx_L1_error)
-  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_NotImplementedError); if (!__pyx_builtin_NotImplementedError) __PYX_ERR(1, 474, __pyx_L1_error)
+  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_NotImplementedError); if (!__pyx_builtin_NotImplementedError) __PYX_ERR(1, 384, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(2, 2, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 150, __pyx_L1_error)
   __pyx_builtin___import__ = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_import); if (!__pyx_builtin___import__) __PYX_ERR(2, 101, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(2, 157, __pyx_L1_error)
   __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(2, 373, __pyx_L1_error)
@@ -34210,7 +34897,7 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
             unsigned int nlocals : 2;
             unsigned int flags : 10;
             unsigned int first_line : 9;
-            unsigned int line_table_length : 13;
+            unsigned int line_table_length : 12;
         } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -34227,99 +34914,99 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 103, 57};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_delete_multiple, __pyx_k_Q_A_3aq_E_aq_t_Qa_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 121, 50};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 103, 50};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_value};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_insert, __pyx_k_A_81D_Ba_q_m1E_t1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_insert, __pyx_k_A_81D_Ba_q_m1E_t1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 146, 24};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 128, 24};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_delete, __pyx_k_A_m1A_t1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_delete, __pyx_k_A_m1A_t1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 185, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 167, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_is_empty, __pyx_k_A_t7_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_is_empty, __pyx_k_A_t7_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 189, 50};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 171, 50};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_get, __pyx_k_A_d_Qa_4s_2XQ_t6_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_get, __pyx_k_A_d_Qa_4s_2XQ_t6_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 216, 24};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 198, 24};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_contains, __pyx_k_A_d_Qa_t3a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_contains, __pyx_k_A_d_Qa_t3a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 234, 243};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_get_multiple, __pyx_k_a2_1A_2S_2V1D_b_2Rq_b_as_U_1_d, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 286, 94};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_contains_multiple, __pyx_k_31_1A_BfAS_b_E_aq_k_aq_5_T_7q_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 307, 11};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 217, 11};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_keys, __pyx_k_A_t81, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_keys, __pyx_k_A_t81, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 311, 83};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 221, 83};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_values, __pyx_k_A_4wc_2V1D_b_XV2Q_at_haq_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_values, __pyx_k_A_4wc_2V1D_b_XV2Q_at_haq_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 322, 11};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 232, 11};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_items, __pyx_k_A_t, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_items, __pyx_k_A_t, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 326, 83};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 236, 83};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_inorder, __pyx_k_A_4wc_2V1D_b_XV2Q_q_Kxq_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_inorder, __pyx_k_A_4wc_2V1D_b_XV2Q_q_Kxq_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 337, 83};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 247, 83};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_preorder, __pyx_k_A_4wc_2V1D_b_XV2Q_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_preorder, __pyx_k_A_4wc_2V1D_b_XV2Q_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 348, 83};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 258, 83};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_postorder, __pyx_k_A_4wc_2V1D_b_XV2Q_k_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_postorder, __pyx_k_A_4wc_2V1D_b_XV2Q_k_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 359, 42};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 269, 42};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_inorder_items, __pyx_k_A_4wc_1_1_AT_A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_inorder_items, __pyx_k_A_4wc_1_1_AT_A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 368, 42};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 278, 42};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_preorder_items, __pyx_k_A_4wc_1_1_Qd_Q_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_preorder_items, __pyx_k_A_4wc_1_1_Qd_Q_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 377, 42};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 287, 42};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[16] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_postorder_items, __pyx_k_A_4wc_1_1_at_a_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[16])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_postorder_items, __pyx_k_A_4wc_1_1_at_a_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 387, 171};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 297, 171};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_min_key, __pyx_mstate->__pyx_n_u_max_key};
-    __pyx_mstate_global->__pyx_codeobj_tab[17] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_range_query, __pyx_k_A_4wc_BfAT_r_G1_D_Qd_Ya_6_A_BfAT, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[17])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_range_query, __pyx_k_A_4wc_BfAT_r_G1_D_Qd_Ya_6_A_BfAT, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 473, 18};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 383, 12};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
+    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_get_multiple, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 386, 12};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
+    __pyx_mstate_global->__pyx_codeobj_tab[16] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_delete_multiple, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[16])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 389, 12};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
+    __pyx_mstate_global->__pyx_codeobj_tab[17] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_contains_multiple, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[17])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 392, 18};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys, __pyx_mstate->__pyx_n_u_values};
-    __pyx_mstate_global->__pyx_codeobj_tab[18] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_build_tree, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[18])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[18] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree__base_tree_pxi, __pyx_mstate->__pyx_n_u_build_tree, __pyx_k_A_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[18])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
@@ -34332,19 +35019,34 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[20] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[20])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 62, 144};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 62, 148};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
+    __pyx_mstate_global->__pyx_codeobj_tab[21] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_bst_binary_search_tree_2, __pyx_mstate->__pyx_n_u_get_multiple, __pyx_k_A_1A_2S_2V1D_b_1_T_Kq_E_aq_k_Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[21])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 100, 54};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
+    __pyx_mstate_global->__pyx_codeobj_tab[22] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_bst_binary_search_tree_2, __pyx_mstate->__pyx_n_u_delete_multiple, __pyx_k_A_A_3aq_E_aq_t_Qa_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[22])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 118, 91};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys};
+    __pyx_mstate_global->__pyx_codeobj_tab[23] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_bst_binary_search_tree_2, __pyx_mstate->__pyx_n_u_contains_multiple, __pyx_k_A_1A_BfAS_b_E_aq_k_aq_5_T_7q_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[23])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 138, 144};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_keys, __pyx_mstate->__pyx_n_u_values};
-    __pyx_mstate_global->__pyx_codeobj_tab[21] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_bst_binary_search_tree_2, __pyx_mstate->__pyx_n_u_build_tree, __pyx_k_A_3avS_1A_AQ_gRs_1_d_Ba_q_HAV6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[21])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[24] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_bst_binary_search_tree_2, __pyx_mstate->__pyx_n_u_build_tree, __pyx_k_A_3avS_1A_AQ_gRs_1_d_Ba_q_HAV6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[24])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[22] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[22])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[25] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[25])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[23] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[23])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[26] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[26])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

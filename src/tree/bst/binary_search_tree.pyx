@@ -59,6 +59,82 @@ cdef class BinarySearchTree(_BaseTree):
     insertion, deletion, and search logic.
     """
 
+    cpdef np.ndarray get_multiple(self, np.ndarray keys):
+        """
+        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+        for missing keys. I.e., if the key does not exist, the array will
+        contain -1 as a value.
+
+        Keys are sorted before lookup. This improves cache locality in the
+        binary search tree traversal (`_find_node()`),
+        since lookups of nearby keys tend to reuse nodes higher in the tree.
+        Prefetching is also more effective, reducing cache misses.
+
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of keys to retrieve.
+
+        Returns
+        -------
+        np.ndarray[int64]
+            Array of values corresponding to the input keys, with
+            missing keys marked as NONE_SENTINEL.
+        """
+        cdef intp_t n = len(keys)
+        if n == 0:
+            return np.array([], dtype=np.int64)
+
+        # sort for cache-friendly traversal
+        cdef intp_t[:] sorted_indices = np.argsort(keys)
+        cdef intp_t[:] sorted_keys = keys[sorted_indices]
+        results = np.empty_like(keys)
+
+        cdef intp_t original_pos
+        for i in range(n):
+            idx = self._find_node(sorted_keys[i])
+            original_pos = sorted_indices[i]
+            results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
+        return np.asarray(results)
+
+    cpdef intp_t delete_multiple(self, np.ndarray keys):
+        """
+        Delete multiple keys and return number of successful deletions.
+        
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of keys to delete.
+        """
+        cdef intp_t deleted_count = 0
+        cdef intp_t i, n = len(keys)
+        
+        for i in range(n):
+            if self._delete_node(keys[i]):
+                deleted_count += 1
+        
+        return deleted_count
+
+    cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+        """
+        Check existence of multiple keys efficiently, returns boolean NumPy
+        array: 1 if the key exists in the tree, 0 if not.
+
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of keys to check for existence.
+        """
+        cdef intp_t n = len(keys)
+        cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
+        cdef intp_t i, idx
+        
+        for i in range(n):
+            idx = self._find_node(keys[i])
+            result[i] = 1 if idx != NONE_SENTINEL else 0
+        
+        return np.asarray(result, dtype=bool)
+
     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
         """
         Build Tree in optimized manner through an array of keys and values.

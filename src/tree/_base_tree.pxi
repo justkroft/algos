@@ -99,24 +99,6 @@ cdef class _BaseTree:
         """del bst[key], same as delete()"""
         if not self.delete(key):
             raise KeyError(f"Key {key} not found")
-    
-    cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
-        """
-        Delete multiple keys and return number of successful deletions.
-        
-        Parameters
-        ----------
-        keys : list | np.ndarray
-            An array of keys to delete.
-        """
-        cdef intp_t deleted_count = 0
-        cdef intp_t i, n = len(keys)
-        
-        for i in range(n):
-            if self._delete_node(keys[i]):
-                deleted_count += 1
-        
-        return deleted_count
 
     cpdef bint insert(self, intp_t key, intp_t value):
         """
@@ -230,78 +212,6 @@ cdef class _BaseTree:
         cdef intp_t idx
         idx = self._find_node(key)
         return idx != NONE_SENTINEL
-
-    cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):
-        """
-        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
-        for missing keys. I.e., if the key does not exist, the array will
-        contain -1 as a value.
-
-        - For small inputs (len(keys) < 32), a simple unsorted loop is used.
-        This avoids the O(n log n) sort overhead and is faster when the
-        number of lookups is small.
-        - For larger inputs, keys are sorted before lookup. This improves
-        cache locality in the binary search tree traversal (`_find_node()`),
-        since lookups of nearby keys tend to reuse nodes higher in the tree.
-        Prefetching is also more effective, reducing cache misses.
-
-        Parameters
-        ----------
-        keys : list | np.ndarray
-            An array of keys to retrieve.
-
-        Returns
-        -------
-        np.ndarray[int64]
-            Array of values corresponding to the input keys, with
-            missing keys marked as NONE_SENTINEL.
-        """
-        cdef intp_t n = len(keys)
-        if n == 0:
-            return np.array([], dtype=np.int64)
-
-        # heuristic cutoff
-        cdef intp_t[:] results
-        cdef intp_t i, idx
-        if n < 32:
-            results = np.empty(n, dtype=np.int64)
-            for i in range(n):
-                idx = self._find_node(keys[i])
-                results[i] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
-            return np.asarray(results)
-
-        # larger input array
-        # sort for cache-friendly traversal
-        cdef intp_t[:] sorted_indices = np.argsort(keys)
-        cdef intp_t[:] sorted_keys = keys[sorted_indices]
-        results = np.empty_like(keys)
-
-        cdef intp_t original_pos
-        for i in range(n):
-            idx = self._find_node(sorted_keys[i])
-            original_pos = sorted_indices[i]
-            results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
-        return np.asarray(results)
-    
-    cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):
-        """
-        Check existence of multiple keys efficiently, returns boolean NumPy
-        array: 1 if the key exists in the tree, 0 if not.
-
-        Parameters
-        ----------
-        keys : list | np.ndarray
-            An array of keys to check for existence.
-        """
-        cdef intp_t n = len(keys)
-        cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
-        cdef intp_t i, idx
-        
-        for i in range(n):
-            idx = self._find_node(keys[i])
-            result[i] = 1 if idx != NONE_SENTINEL else 0
-        
-        return np.asarray(result, dtype=bool)
 
     # public methods: tree traversals
     cpdef np.ndarray keys(self):
@@ -470,6 +380,15 @@ cdef class _BaseTree:
 
     # basic tree operations
     # to be overridden by subclass
+    cpdef np.ndarray get_multiple(self, np.ndarray keys):
+        raise NotImplementedError("Subclass must implement get_multiple")
+
+    cpdef intp_t delete_multiple(self, np.ndarray keys):
+        raise NotImplementedError("Subclass must implement delete_multiple")
+
+    cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+        raise NotImplementedError("Subclass must implement contains_multiple")
+
     cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
         raise NotImplementedError("Subclass must implement build_tree")
 
