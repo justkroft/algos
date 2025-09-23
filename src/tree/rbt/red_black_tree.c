@@ -2119,6 +2119,8 @@ struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree {
   __pyx_t_3src_8typedefs_intp_t (*_calculate_black_height)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t);
   PyObject *(*statistics)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, int __pyx_skip_dispatch);
   void (*_calculate_depths)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t *, __pyx_t_3src_8typedefs_intp_t *, __pyx_t_3src_8typedefs_intp_t *);
+  __pyx_t_3src_8typedefs_intp_t (*_validate)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, int __pyx_skip_dispatch);
+  __pyx_t_3src_8typedefs_intp_t (*_validate_node_recursive)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t);
 };
 static struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_vtabptr_3src_4tree_3rbt_14red_black_tree_RedBlackTree;
 static CYTHON_INLINE int __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t);
@@ -3490,6 +3492,8 @@ static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12
 static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_black_height(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx); /* proto*/
 static PyObject *__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statistics(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_depths(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __pyx_t_3src_8typedefs_intp_t __pyx_v_current_depth, __pyx_t_3src_8typedefs_intp_t *__pyx_v_max_depth, __pyx_t_3src_8typedefs_intp_t *__pyx_v_total_depth, __pyx_t_3src_8typedefs_intp_t *__pyx_v_node_count); /* proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate_node_recursive(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __pyx_t_3src_8typedefs_intp_t __pyx_v_current_black_height, __pyx_t_3src_8typedefs_intp_t __pyx_v_expected_black_height); /* proto*/
 
 /* Module declarations from "cython.view" */
 
@@ -3685,6 +3689,7 @@ static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_register[] = "register";
 static const char __pyx_k_set_name[] = "__set_name__";
 static const char __pyx_k_setstate[] = "__setstate__";
+static const char __pyx_k_validate[] = "_validate";
 static const char __pyx_k_A_m1A_t1A[] = "\200A\360\036\000\t\023\220$\220m\2401\240A\340\010\017\210t\2201\220A";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_enumerate[] = "enumerate";
@@ -3761,12 +3766,14 @@ static const char __pyx_k_Invalid_shape_in_axis[] = "Invalid shape in axis ";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_BaseTree_inorder_items[] = "_BaseTree.inorder_items";
 static const char __pyx_k_Cannot_index_with_type[] = "Cannot index with type '";
+static const char __pyx_k_RedBlackTree__validate[] = "RedBlackTree._validate";
 static const char __pyx_k_BaseTree_preorder_items[] = "_BaseTree.preorder_items";
 static const char __pyx_k_Failed_to_resize_arrays[] = "Failed to resize arrays";
 static const char __pyx_k_RedBlackTree_build_tree[] = "RedBlackTree.build_tree";
 static const char __pyx_k_RedBlackTree_statistics[] = "RedBlackTree.statistics";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_src_tree__base_tree_pxi[] = "src/tree/_base_tree.pxi";
+static const char __pyx_k_A_4wc_1_4t_Qd_D0H_Q_d_31[] = "\200A\360 \000\t\014\2104\210w\220c\230\021\330\014\023\2201\340\010!\240\021\360\006\000\t\014\2104\210t\220:\230Q\230d\240!\330\014\032\230!\360\006\000\t-\250D\3200H\310\001\310\024\310Q\330\010\026\220d\320\0323\2601\330\014\020\220\001\330\014\r\330\014\r";
 static const char __pyx_k_BaseTree___reduce_cython[] = "_BaseTree.__reduce_cython__";
 static const char __pyx_k_BaseTree_delete_multiple[] = "_BaseTree.delete_multiple";
 static const char __pyx_k_BaseTree_postorder_items[] = "_BaseTree.postorder_items";
@@ -3911,8 +3918,9 @@ static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_10dele
 static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_12build_tree(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, PyObject *__pyx_v_keys, PyObject *__pyx_v_values); /* proto */
 static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_14black_height(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_16statistics(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18_validate(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_3src_4tree_3rbt_14red_black_tree__BaseTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_3src_4tree_3rbt_14red_black_tree_RedBlackTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3988,8 +3996,8 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[3];
-  PyObject *__pyx_codeobj_tab[30];
-  PyObject *__pyx_string_tab[219];
+  PyObject *__pyx_codeobj_tab[31];
+  PyObject *__pyx_string_tab[221];
   PyObject *__pyx_float_0_0;
   PyObject *__pyx_int_0;
   PyObject *__pyx_int_1;
@@ -4094,165 +4102,167 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_RedBlackTree __pyx_string_tab[57]
 #define __pyx_n_u_RedBlackTree___reduce_cython __pyx_string_tab[58]
 #define __pyx_n_u_RedBlackTree___setstate_cython __pyx_string_tab[59]
-#define __pyx_n_u_RedBlackTree_black_height __pyx_string_tab[60]
-#define __pyx_n_u_RedBlackTree_build_tree __pyx_string_tab[61]
-#define __pyx_n_u_RedBlackTree_contains_multiple __pyx_string_tab[62]
-#define __pyx_n_u_RedBlackTree_delete_multiple __pyx_string_tab[63]
-#define __pyx_n_u_RedBlackTree_get __pyx_string_tab[64]
-#define __pyx_n_u_RedBlackTree_get_multiple __pyx_string_tab[65]
-#define __pyx_n_u_RedBlackTree_statistics __pyx_string_tab[66]
-#define __pyx_n_u_Sequence __pyx_string_tab[67]
-#define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[68]
-#define __pyx_kp_u_Subclass_must_implement_build_tr __pyx_string_tab[69]
-#define __pyx_kp_u_Subclass_must_implement_contains __pyx_string_tab[70]
-#define __pyx_kp_u_Subclass_must_implement_delete_m __pyx_string_tab[71]
-#define __pyx_kp_u_Subclass_must_implement_get_mult __pyx_string_tab[72]
-#define __pyx_kp_u_Subclasses_must_implement__delet __pyx_string_tab[73]
-#define __pyx_kp_u_Subclasses_must_implement__find __pyx_string_tab[74]
-#define __pyx_kp_u_Subclasses_must_implement__inord __pyx_string_tab[75]
-#define __pyx_kp_u_Subclasses_must_implement__inord_2 __pyx_string_tab[76]
-#define __pyx_kp_u_Subclasses_must_implement__inord_3 __pyx_string_tab[77]
-#define __pyx_kp_u_Subclasses_must_implement__inser __pyx_string_tab[78]
-#define __pyx_kp_u_Subclasses_must_implement__posto __pyx_string_tab[79]
-#define __pyx_kp_u_Subclasses_must_implement__posto_2 __pyx_string_tab[80]
-#define __pyx_kp_u_Subclasses_must_implement__preor __pyx_string_tab[81]
-#define __pyx_kp_u_Subclasses_must_implement__preor_2 __pyx_string_tab[82]
-#define __pyx_kp_u_Subclasses_must_implement__resiz __pyx_string_tab[83]
-#define __pyx_n_u_TypeError __pyx_string_tab[84]
-#define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[85]
-#define __pyx_n_u_ValueError __pyx_string_tab[86]
-#define __pyx_n_u_View_MemoryView __pyx_string_tab[87]
-#define __pyx_kp_u__2 __pyx_string_tab[88]
-#define __pyx_kp_u__3 __pyx_string_tab[89]
-#define __pyx_kp_u__4 __pyx_string_tab[90]
-#define __pyx_kp_u__5 __pyx_string_tab[91]
-#define __pyx_kp_u__6 __pyx_string_tab[92]
-#define __pyx_n_u_abc __pyx_string_tab[93]
-#define __pyx_kp_u_add_note __pyx_string_tab[94]
-#define __pyx_n_u_allocate_buffer __pyx_string_tab[95]
-#define __pyx_kp_u_and __pyx_string_tab[96]
-#define __pyx_n_u_argsort __pyx_string_tab[97]
-#define __pyx_n_u_array __pyx_string_tab[98]
-#define __pyx_n_u_asarray __pyx_string_tab[99]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[100]
-#define __pyx_kp_u_at_0x __pyx_string_tab[101]
-#define __pyx_n_u_base __pyx_string_tab[102]
-#define __pyx_n_u_black_height __pyx_string_tab[103]
-#define __pyx_n_u_build_tree __pyx_string_tab[104]
-#define __pyx_n_u_c __pyx_string_tab[105]
-#define __pyx_n_u_class __pyx_string_tab[106]
-#define __pyx_n_u_class_getitem __pyx_string_tab[107]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[108]
-#define __pyx_kp_u_collections_abc __pyx_string_tab[109]
-#define __pyx_n_u_contains __pyx_string_tab[110]
-#define __pyx_n_u_contains_multiple __pyx_string_tab[111]
-#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[112]
-#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[113]
-#define __pyx_n_u_count __pyx_string_tab[114]
-#define __pyx_n_u_delete __pyx_string_tab[115]
-#define __pyx_n_u_delete_multiple __pyx_string_tab[116]
-#define __pyx_n_u_dict __pyx_string_tab[117]
-#define __pyx_kp_u_disable __pyx_string_tab[118]
-#define __pyx_n_u_dtype __pyx_string_tab[119]
-#define __pyx_n_u_dtype_is_object __pyx_string_tab[120]
-#define __pyx_n_u_empty __pyx_string_tab[121]
-#define __pyx_kp_u_enable __pyx_string_tab[122]
-#define __pyx_n_u_encode __pyx_string_tab[123]
-#define __pyx_n_u_enumerate __pyx_string_tab[124]
-#define __pyx_n_u_error __pyx_string_tab[125]
-#define __pyx_n_u_flags __pyx_string_tab[126]
-#define __pyx_n_u_format __pyx_string_tab[127]
-#define __pyx_n_u_fortran __pyx_string_tab[128]
-#define __pyx_n_u_func __pyx_string_tab[129]
-#define __pyx_kp_u_gc __pyx_string_tab[130]
-#define __pyx_n_u_get __pyx_string_tab[131]
-#define __pyx_n_u_get_multiple __pyx_string_tab[132]
-#define __pyx_n_u_getstate __pyx_string_tab[133]
-#define __pyx_kp_u_got __pyx_string_tab[134]
-#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[135]
-#define __pyx_n_u_id __pyx_string_tab[136]
-#define __pyx_n_u_import __pyx_string_tab[137]
-#define __pyx_n_u_index __pyx_string_tab[138]
-#define __pyx_n_u_initial_capacity __pyx_string_tab[139]
-#define __pyx_n_u_initializing __pyx_string_tab[140]
-#define __pyx_n_u_inorder __pyx_string_tab[141]
-#define __pyx_n_u_inorder_items __pyx_string_tab[142]
-#define __pyx_n_u_insert __pyx_string_tab[143]
-#define __pyx_n_u_int64 __pyx_string_tab[144]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[145]
-#define __pyx_n_u_is_empty __pyx_string_tab[146]
-#define __pyx_kp_u_isenabled __pyx_string_tab[147]
-#define __pyx_n_u_items __pyx_string_tab[148]
-#define __pyx_n_u_itemsize __pyx_string_tab[149]
-#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[150]
-#define __pyx_n_u_key __pyx_string_tab[151]
-#define __pyx_n_u_keys __pyx_string_tab[152]
-#define __pyx_kp_u_list_np_ndarray __pyx_string_tab[153]
-#define __pyx_n_u_main __pyx_string_tab[154]
-#define __pyx_n_u_max_key __pyx_string_tab[155]
-#define __pyx_n_u_memview __pyx_string_tab[156]
-#define __pyx_n_u_min_key __pyx_string_tab[157]
-#define __pyx_n_u_mode __pyx_string_tab[158]
-#define __pyx_n_u_module __pyx_string_tab[159]
-#define __pyx_n_u_name __pyx_string_tab[160]
-#define __pyx_n_u_name_2 __pyx_string_tab[161]
-#define __pyx_n_u_ndim __pyx_string_tab[162]
-#define __pyx_n_u_new __pyx_string_tab[163]
-#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[164]
-#define __pyx_kp_u_not_found __pyx_string_tab[165]
-#define __pyx_n_u_np __pyx_string_tab[166]
-#define __pyx_n_u_numpy __pyx_string_tab[167]
-#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[168]
-#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[169]
-#define __pyx_n_u_obj __pyx_string_tab[170]
-#define __pyx_kp_u_object __pyx_string_tab[171]
-#define __pyx_n_u_pack __pyx_string_tab[172]
-#define __pyx_n_u_pickle __pyx_string_tab[173]
-#define __pyx_n_u_pop __pyx_string_tab[174]
-#define __pyx_n_u_postorder __pyx_string_tab[175]
-#define __pyx_n_u_postorder_items __pyx_string_tab[176]
-#define __pyx_n_u_preorder __pyx_string_tab[177]
-#define __pyx_n_u_preorder_items __pyx_string_tab[178]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[179]
-#define __pyx_n_u_pyx_state __pyx_string_tab[180]
-#define __pyx_n_u_pyx_type __pyx_string_tab[181]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[182]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[183]
-#define __pyx_n_u_qualname __pyx_string_tab[184]
-#define __pyx_n_u_range __pyx_string_tab[185]
-#define __pyx_n_u_range_query __pyx_string_tab[186]
-#define __pyx_n_u_reduce __pyx_string_tab[187]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[188]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[189]
-#define __pyx_n_u_register __pyx_string_tab[190]
-#define __pyx_n_u_self __pyx_string_tab[191]
-#define __pyx_n_u_set_name __pyx_string_tab[192]
-#define __pyx_n_u_setstate __pyx_string_tab[193]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[194]
-#define __pyx_n_u_shape __pyx_string_tab[195]
-#define __pyx_n_u_size __pyx_string_tab[196]
-#define __pyx_n_u_spec __pyx_string_tab[197]
-#define __pyx_kp_u_src_tree__base_tree_pxi __pyx_string_tab[198]
-#define __pyx_n_u_src_tree_rbt_red_black_tree __pyx_string_tab[199]
-#define __pyx_kp_u_src_tree_rbt_red_black_tree_pyx __pyx_string_tab[200]
-#define __pyx_n_u_start __pyx_string_tab[201]
-#define __pyx_n_u_statistics __pyx_string_tab[202]
-#define __pyx_n_u_step __pyx_string_tab[203]
-#define __pyx_n_u_stop __pyx_string_tab[204]
-#define __pyx_kp_u_strided_and_direct __pyx_string_tab[205]
-#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[206]
-#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[207]
-#define __pyx_kp_u_stringsource __pyx_string_tab[208]
-#define __pyx_n_u_struct __pyx_string_tab[209]
-#define __pyx_n_u_test __pyx_string_tab[210]
-#define __pyx_n_u_uint8 __pyx_string_tab[211]
-#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[212]
-#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[213]
-#define __pyx_n_u_unpack __pyx_string_tab[214]
-#define __pyx_n_u_update __pyx_string_tab[215]
-#define __pyx_n_u_value __pyx_string_tab[216]
-#define __pyx_n_u_values __pyx_string_tab[217]
-#define __pyx_n_u_x __pyx_string_tab[218]
+#define __pyx_n_u_RedBlackTree__validate __pyx_string_tab[60]
+#define __pyx_n_u_RedBlackTree_black_height __pyx_string_tab[61]
+#define __pyx_n_u_RedBlackTree_build_tree __pyx_string_tab[62]
+#define __pyx_n_u_RedBlackTree_contains_multiple __pyx_string_tab[63]
+#define __pyx_n_u_RedBlackTree_delete_multiple __pyx_string_tab[64]
+#define __pyx_n_u_RedBlackTree_get __pyx_string_tab[65]
+#define __pyx_n_u_RedBlackTree_get_multiple __pyx_string_tab[66]
+#define __pyx_n_u_RedBlackTree_statistics __pyx_string_tab[67]
+#define __pyx_n_u_Sequence __pyx_string_tab[68]
+#define __pyx_kp_u_Step_may_not_be_zero_axis_d __pyx_string_tab[69]
+#define __pyx_kp_u_Subclass_must_implement_build_tr __pyx_string_tab[70]
+#define __pyx_kp_u_Subclass_must_implement_contains __pyx_string_tab[71]
+#define __pyx_kp_u_Subclass_must_implement_delete_m __pyx_string_tab[72]
+#define __pyx_kp_u_Subclass_must_implement_get_mult __pyx_string_tab[73]
+#define __pyx_kp_u_Subclasses_must_implement__delet __pyx_string_tab[74]
+#define __pyx_kp_u_Subclasses_must_implement__find __pyx_string_tab[75]
+#define __pyx_kp_u_Subclasses_must_implement__inord __pyx_string_tab[76]
+#define __pyx_kp_u_Subclasses_must_implement__inord_2 __pyx_string_tab[77]
+#define __pyx_kp_u_Subclasses_must_implement__inord_3 __pyx_string_tab[78]
+#define __pyx_kp_u_Subclasses_must_implement__inser __pyx_string_tab[79]
+#define __pyx_kp_u_Subclasses_must_implement__posto __pyx_string_tab[80]
+#define __pyx_kp_u_Subclasses_must_implement__posto_2 __pyx_string_tab[81]
+#define __pyx_kp_u_Subclasses_must_implement__preor __pyx_string_tab[82]
+#define __pyx_kp_u_Subclasses_must_implement__preor_2 __pyx_string_tab[83]
+#define __pyx_kp_u_Subclasses_must_implement__resiz __pyx_string_tab[84]
+#define __pyx_n_u_TypeError __pyx_string_tab[85]
+#define __pyx_kp_u_Unable_to_convert_item_to_object __pyx_string_tab[86]
+#define __pyx_n_u_ValueError __pyx_string_tab[87]
+#define __pyx_n_u_View_MemoryView __pyx_string_tab[88]
+#define __pyx_kp_u__2 __pyx_string_tab[89]
+#define __pyx_kp_u__3 __pyx_string_tab[90]
+#define __pyx_kp_u__4 __pyx_string_tab[91]
+#define __pyx_kp_u__5 __pyx_string_tab[92]
+#define __pyx_kp_u__6 __pyx_string_tab[93]
+#define __pyx_n_u_abc __pyx_string_tab[94]
+#define __pyx_kp_u_add_note __pyx_string_tab[95]
+#define __pyx_n_u_allocate_buffer __pyx_string_tab[96]
+#define __pyx_kp_u_and __pyx_string_tab[97]
+#define __pyx_n_u_argsort __pyx_string_tab[98]
+#define __pyx_n_u_array __pyx_string_tab[99]
+#define __pyx_n_u_asarray __pyx_string_tab[100]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[101]
+#define __pyx_kp_u_at_0x __pyx_string_tab[102]
+#define __pyx_n_u_base __pyx_string_tab[103]
+#define __pyx_n_u_black_height __pyx_string_tab[104]
+#define __pyx_n_u_build_tree __pyx_string_tab[105]
+#define __pyx_n_u_c __pyx_string_tab[106]
+#define __pyx_n_u_class __pyx_string_tab[107]
+#define __pyx_n_u_class_getitem __pyx_string_tab[108]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[109]
+#define __pyx_kp_u_collections_abc __pyx_string_tab[110]
+#define __pyx_n_u_contains __pyx_string_tab[111]
+#define __pyx_n_u_contains_multiple __pyx_string_tab[112]
+#define __pyx_kp_u_contiguous_and_direct __pyx_string_tab[113]
+#define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[114]
+#define __pyx_n_u_count __pyx_string_tab[115]
+#define __pyx_n_u_delete __pyx_string_tab[116]
+#define __pyx_n_u_delete_multiple __pyx_string_tab[117]
+#define __pyx_n_u_dict __pyx_string_tab[118]
+#define __pyx_kp_u_disable __pyx_string_tab[119]
+#define __pyx_n_u_dtype __pyx_string_tab[120]
+#define __pyx_n_u_dtype_is_object __pyx_string_tab[121]
+#define __pyx_n_u_empty __pyx_string_tab[122]
+#define __pyx_kp_u_enable __pyx_string_tab[123]
+#define __pyx_n_u_encode __pyx_string_tab[124]
+#define __pyx_n_u_enumerate __pyx_string_tab[125]
+#define __pyx_n_u_error __pyx_string_tab[126]
+#define __pyx_n_u_flags __pyx_string_tab[127]
+#define __pyx_n_u_format __pyx_string_tab[128]
+#define __pyx_n_u_fortran __pyx_string_tab[129]
+#define __pyx_n_u_func __pyx_string_tab[130]
+#define __pyx_kp_u_gc __pyx_string_tab[131]
+#define __pyx_n_u_get __pyx_string_tab[132]
+#define __pyx_n_u_get_multiple __pyx_string_tab[133]
+#define __pyx_n_u_getstate __pyx_string_tab[134]
+#define __pyx_kp_u_got __pyx_string_tab[135]
+#define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[136]
+#define __pyx_n_u_id __pyx_string_tab[137]
+#define __pyx_n_u_import __pyx_string_tab[138]
+#define __pyx_n_u_index __pyx_string_tab[139]
+#define __pyx_n_u_initial_capacity __pyx_string_tab[140]
+#define __pyx_n_u_initializing __pyx_string_tab[141]
+#define __pyx_n_u_inorder __pyx_string_tab[142]
+#define __pyx_n_u_inorder_items __pyx_string_tab[143]
+#define __pyx_n_u_insert __pyx_string_tab[144]
+#define __pyx_n_u_int64 __pyx_string_tab[145]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[146]
+#define __pyx_n_u_is_empty __pyx_string_tab[147]
+#define __pyx_kp_u_isenabled __pyx_string_tab[148]
+#define __pyx_n_u_items __pyx_string_tab[149]
+#define __pyx_n_u_itemsize __pyx_string_tab[150]
+#define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[151]
+#define __pyx_n_u_key __pyx_string_tab[152]
+#define __pyx_n_u_keys __pyx_string_tab[153]
+#define __pyx_kp_u_list_np_ndarray __pyx_string_tab[154]
+#define __pyx_n_u_main __pyx_string_tab[155]
+#define __pyx_n_u_max_key __pyx_string_tab[156]
+#define __pyx_n_u_memview __pyx_string_tab[157]
+#define __pyx_n_u_min_key __pyx_string_tab[158]
+#define __pyx_n_u_mode __pyx_string_tab[159]
+#define __pyx_n_u_module __pyx_string_tab[160]
+#define __pyx_n_u_name __pyx_string_tab[161]
+#define __pyx_n_u_name_2 __pyx_string_tab[162]
+#define __pyx_n_u_ndim __pyx_string_tab[163]
+#define __pyx_n_u_new __pyx_string_tab[164]
+#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[165]
+#define __pyx_kp_u_not_found __pyx_string_tab[166]
+#define __pyx_n_u_np __pyx_string_tab[167]
+#define __pyx_n_u_numpy __pyx_string_tab[168]
+#define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[169]
+#define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[170]
+#define __pyx_n_u_obj __pyx_string_tab[171]
+#define __pyx_kp_u_object __pyx_string_tab[172]
+#define __pyx_n_u_pack __pyx_string_tab[173]
+#define __pyx_n_u_pickle __pyx_string_tab[174]
+#define __pyx_n_u_pop __pyx_string_tab[175]
+#define __pyx_n_u_postorder __pyx_string_tab[176]
+#define __pyx_n_u_postorder_items __pyx_string_tab[177]
+#define __pyx_n_u_preorder __pyx_string_tab[178]
+#define __pyx_n_u_preorder_items __pyx_string_tab[179]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[180]
+#define __pyx_n_u_pyx_state __pyx_string_tab[181]
+#define __pyx_n_u_pyx_type __pyx_string_tab[182]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[183]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[184]
+#define __pyx_n_u_qualname __pyx_string_tab[185]
+#define __pyx_n_u_range __pyx_string_tab[186]
+#define __pyx_n_u_range_query __pyx_string_tab[187]
+#define __pyx_n_u_reduce __pyx_string_tab[188]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[189]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[190]
+#define __pyx_n_u_register __pyx_string_tab[191]
+#define __pyx_n_u_self __pyx_string_tab[192]
+#define __pyx_n_u_set_name __pyx_string_tab[193]
+#define __pyx_n_u_setstate __pyx_string_tab[194]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[195]
+#define __pyx_n_u_shape __pyx_string_tab[196]
+#define __pyx_n_u_size __pyx_string_tab[197]
+#define __pyx_n_u_spec __pyx_string_tab[198]
+#define __pyx_kp_u_src_tree__base_tree_pxi __pyx_string_tab[199]
+#define __pyx_n_u_src_tree_rbt_red_black_tree __pyx_string_tab[200]
+#define __pyx_kp_u_src_tree_rbt_red_black_tree_pyx __pyx_string_tab[201]
+#define __pyx_n_u_start __pyx_string_tab[202]
+#define __pyx_n_u_statistics __pyx_string_tab[203]
+#define __pyx_n_u_step __pyx_string_tab[204]
+#define __pyx_n_u_stop __pyx_string_tab[205]
+#define __pyx_kp_u_strided_and_direct __pyx_string_tab[206]
+#define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[207]
+#define __pyx_kp_u_strided_and_indirect __pyx_string_tab[208]
+#define __pyx_kp_u_stringsource __pyx_string_tab[209]
+#define __pyx_n_u_struct __pyx_string_tab[210]
+#define __pyx_n_u_test __pyx_string_tab[211]
+#define __pyx_n_u_uint8 __pyx_string_tab[212]
+#define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[213]
+#define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[214]
+#define __pyx_n_u_unpack __pyx_string_tab[215]
+#define __pyx_n_u_update __pyx_string_tab[216]
+#define __pyx_n_u_validate __pyx_string_tab[217]
+#define __pyx_n_u_value __pyx_string_tab[218]
+#define __pyx_n_u_values __pyx_string_tab[219]
+#define __pyx_n_u_x __pyx_string_tab[220]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -4303,8 +4313,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<3; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<30; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<219; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<31; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<221; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_float_0_0);
   Py_CLEAR(clear_module_state->__pyx_int_0);
   Py_CLEAR(clear_module_state->__pyx_int_1);
@@ -4362,8 +4372,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<3; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<30; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<219; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<31; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<221; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_0_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_1);
@@ -35258,6 +35268,579 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
   __pyx_L0:;
 }
 
+/* "src/tree/rbt/red_black_tree.pyx":784
+ *         )
+ * 
+ *     cpdef intp_t _validate(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Validate Red-Black tree properties and return error count.
+*/
+
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, int __pyx_skip_dispatch) {
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_violations;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_expected_black_height;
+  __pyx_t_3src_8typedefs_intp_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  size_t __pyx_t_5;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_6;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_validate", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (
+  #if !CYTHON_USE_TYPE_SLOTS
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree &&
+  __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
+  #else
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
+  #endif
+  ) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_validate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 784, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate)) {
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = 1;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          assert(__pyx_t_3);
+          PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(__pyx__function);
+          __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+          __pyx_t_5 = 0;
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 784, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+        }
+        __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 784, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_6;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":800
+ *             Number of property violations found (0 = valid tree)
+ *         """
+ *         if self._size == 0:             # <<<<<<<<<<<<<<
+ *             return 0
+ * 
+*/
+  __pyx_t_7 = (__pyx_v_self->__pyx_base._size == 0);
+  if (__pyx_t_7) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":801
+ *         """
+ *         if self._size == 0:
+ *             return 0             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t violations = 0
+*/
+    __pyx_r = 0;
+    goto __pyx_L0;
+
+    /* "src/tree/rbt/red_black_tree.pyx":800
+ *             Number of property violations found (0 = valid tree)
+ *         """
+ *         if self._size == 0:             # <<<<<<<<<<<<<<
+ *             return 0
+ * 
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":803
+ *             return 0
+ * 
+ *         cdef intp_t violations = 0             # <<<<<<<<<<<<<<
+ * 
+ *         # 2
+*/
+  __pyx_v_violations = 0;
+
+  /* "src/tree/rbt/red_black_tree.pyx":806
+ * 
+ *         # 2
+ *         if not self._is_black(self.root_idx):             # <<<<<<<<<<<<<<
+ *             violations += 1
+ * 
+*/
+  __pyx_t_7 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_8 = (!__pyx_t_7);
+  if (__pyx_t_8) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":807
+ *         # 2
+ *         if not self._is_black(self.root_idx):
+ *             violations += 1             # <<<<<<<<<<<<<<
+ * 
+ *         # 1, 3, 4, 5
+*/
+    __pyx_v_violations = (__pyx_v_violations + 1);
+
+    /* "src/tree/rbt/red_black_tree.pyx":806
+ * 
+ *         # 2
+ *         if not self._is_black(self.root_idx):             # <<<<<<<<<<<<<<
+ *             violations += 1
+ * 
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":810
+ * 
+ *         # 1, 3, 4, 5
+ *         cdef intp_t expected_black_height = self._calculate_black_height(self.root_idx)             # <<<<<<<<<<<<<<
+ *         violations += self._validate_node_recursive(
+ *             self.root_idx,
+*/
+  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_calculate_black_height(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 810, __pyx_L1_error)
+  __pyx_v_expected_black_height = __pyx_t_6;
+
+  /* "src/tree/rbt/red_black_tree.pyx":811
+ *         # 1, 3, 4, 5
+ *         cdef intp_t expected_black_height = self._calculate_black_height(self.root_idx)
+ *         violations += self._validate_node_recursive(             # <<<<<<<<<<<<<<
+ *             self.root_idx,
+ *             0,
+*/
+  __pyx_t_6 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_validate_node_recursive(__pyx_v_self, __pyx_v_self->__pyx_base.root_idx, 0, __pyx_v_expected_black_height); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 811, __pyx_L1_error)
+  __pyx_v_violations = (__pyx_v_violations + __pyx_t_6);
+
+  /* "src/tree/rbt/red_black_tree.pyx":784
+ *         )
+ * 
+ *     cpdef intp_t _validate(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Validate Red-Black tree properties and return error count.
+*/
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("src.tree.rbt.red_black_tree.RedBlackTree._validate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18_validate, "\n        Validate Red-Black tree properties and return error count.\n        \n        Checks all five Red-Black tree properties:\n        1. Every node is either red or black\n        2. The root is black  \n        3. All leaves (NIL nodes) are black\n        4. Red nodes have only black children (no two red nodes are adjacent)\n        5. All paths from root to leaves have the same black height\n        \n        Returns\n        -------\n        intp_t\n            Number of property violations found (0 = valid tree)\n        ");
+static PyMethodDef __pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate = {"_validate", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18_validate};
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_validate (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("_validate", 1, 0, 0, __pyx_nargs); return NULL; }
+  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+  if (unlikely(__pyx_kwds_len < 0)) return NULL;
+  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("_validate", __pyx_kwds); return NULL;}
+  __pyx_r = __pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18_validate(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18_validate(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_validate", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 784, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 784, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("src.tree.rbt.red_black_tree.RedBlackTree._validate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/tree/rbt/red_black_tree.pyx":817
+ *         )
+ * 
+ *     cdef intp_t _validate_node_recursive(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+static __pyx_t_3src_8typedefs_intp_t __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate_node_recursive(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, __pyx_t_3src_8typedefs_intp_t __pyx_v_node_idx, __pyx_t_3src_8typedefs_intp_t __pyx_v_current_black_height, __pyx_t_3src_8typedefs_intp_t __pyx_v_expected_black_height) {
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_final_black_height;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_violations;
+  __pyx_t_3src_4tree_3rbt_14red_black_tree_RBNode_t *__pyx_v_node;
+  __pyx_t_3src_8typedefs_intp_t __pyx_v_new_black_height;
+  __pyx_t_3src_8typedefs_intp_t __pyx_r;
+  int __pyx_t_1;
+  __pyx_t_3src_8typedefs_intp_t __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/tree/rbt/red_black_tree.pyx":841
+ *         """
+ *         cdef intp_t final_black_height
+ *         if node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
+ *             # 3, 5
+ *             final_black_height = current_black_height - 1
+*/
+  __pyx_t_1 = (__pyx_v_node_idx == __pyx_v_self->nil_node_idx);
+  if (__pyx_t_1) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":843
+ *         if node_idx == self.nil_node_idx:
+ *             # 3, 5
+ *             final_black_height = current_black_height - 1             # <<<<<<<<<<<<<<
+ *             return 1 if final_black_height != current_black_height else 0
+ * 
+*/
+    __pyx_v_final_black_height = (__pyx_v_current_black_height - 1);
+
+    /* "src/tree/rbt/red_black_tree.pyx":844
+ *             # 3, 5
+ *             final_black_height = current_black_height - 1
+ *             return 1 if final_black_height != current_black_height else 0             # <<<<<<<<<<<<<<
+ * 
+ *         if node_idx == NONE_SENTINEL or node_idx < 0 or node_idx >= self.capacity:
+*/
+    __pyx_t_1 = (__pyx_v_final_black_height != __pyx_v_current_black_height);
+    if (__pyx_t_1) {
+      __pyx_t_2 = 1;
+    } else {
+      __pyx_t_2 = 0;
+    }
+    __pyx_r = __pyx_t_2;
+    goto __pyx_L0;
+
+    /* "src/tree/rbt/red_black_tree.pyx":841
+ *         """
+ *         cdef intp_t final_black_height
+ *         if node_idx == self.nil_node_idx:             # <<<<<<<<<<<<<<
+ *             # 3, 5
+ *             final_black_height = current_black_height - 1
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":846
+ *             return 1 if final_black_height != current_black_height else 0
+ * 
+ *         if node_idx == NONE_SENTINEL or node_idx < 0 or node_idx >= self.capacity:             # <<<<<<<<<<<<<<
+ *             return 1
+ * 
+*/
+  __pyx_t_3 = (__pyx_v_node_idx == -1L);
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_1 = __pyx_t_3;
+    goto __pyx_L5_bool_binop_done;
+  }
+  __pyx_t_3 = (__pyx_v_node_idx < 0);
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_1 = __pyx_t_3;
+    goto __pyx_L5_bool_binop_done;
+  }
+  __pyx_t_3 = (__pyx_v_node_idx >= __pyx_v_self->__pyx_base.capacity);
+  __pyx_t_1 = __pyx_t_3;
+  __pyx_L5_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":847
+ * 
+ *         if node_idx == NONE_SENTINEL or node_idx < 0 or node_idx >= self.capacity:
+ *             return 1             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t violations = 0
+*/
+    __pyx_r = 1;
+    goto __pyx_L0;
+
+    /* "src/tree/rbt/red_black_tree.pyx":846
+ *             return 1 if final_black_height != current_black_height else 0
+ * 
+ *         if node_idx == NONE_SENTINEL or node_idx < 0 or node_idx >= self.capacity:             # <<<<<<<<<<<<<<
+ *             return 1
+ * 
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":849
+ *             return 1
+ * 
+ *         cdef intp_t violations = 0             # <<<<<<<<<<<<<<
+ *         cdef RBNode_t* node = &self.rb_nodes[node_idx]
+ * 
+*/
+  __pyx_v_violations = 0;
+
+  /* "src/tree/rbt/red_black_tree.pyx":850
+ * 
+ *         cdef intp_t violations = 0
+ *         cdef RBNode_t* node = &self.rb_nodes[node_idx]             # <<<<<<<<<<<<<<
+ * 
+ *         # 4
+*/
+  __pyx_v_node = (&(__pyx_v_self->rb_nodes[__pyx_v_node_idx]));
+
+  /* "src/tree/rbt/red_black_tree.pyx":853
+ * 
+ *         # 4
+ *         if self._is_red(node_idx):             # <<<<<<<<<<<<<<
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):
+ *                 violations += 1
+*/
+  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_node_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 853, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":854
+ *         # 4
+ *         if self._is_red(node_idx):
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):             # <<<<<<<<<<<<<<
+ *                 violations += 1
+ *             if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):
+*/
+    __pyx_t_3 = (__pyx_v_node->left_child != __pyx_v_self->nil_node_idx);
+    if (__pyx_t_3) {
+    } else {
+      __pyx_t_1 = __pyx_t_3;
+      goto __pyx_L10_bool_binop_done;
+    }
+    __pyx_t_3 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_node->left_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 854, __pyx_L1_error)
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_L10_bool_binop_done:;
+    if (__pyx_t_1) {
+
+      /* "src/tree/rbt/red_black_tree.pyx":855
+ *         if self._is_red(node_idx):
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):
+ *                 violations += 1             # <<<<<<<<<<<<<<
+ *             if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):
+ *                 violations += 1
+*/
+      __pyx_v_violations = (__pyx_v_violations + 1);
+
+      /* "src/tree/rbt/red_black_tree.pyx":854
+ *         # 4
+ *         if self._is_red(node_idx):
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):             # <<<<<<<<<<<<<<
+ *                 violations += 1
+ *             if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):
+*/
+    }
+
+    /* "src/tree/rbt/red_black_tree.pyx":856
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):
+ *                 violations += 1
+ *             if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):             # <<<<<<<<<<<<<<
+ *                 violations += 1
+ * 
+*/
+    __pyx_t_3 = (__pyx_v_node->right_child != __pyx_v_self->nil_node_idx);
+    if (__pyx_t_3) {
+    } else {
+      __pyx_t_1 = __pyx_t_3;
+      goto __pyx_L13_bool_binop_done;
+    }
+    __pyx_t_3 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_red(__pyx_v_self, __pyx_v_node->right_child); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 856, __pyx_L1_error)
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_L13_bool_binop_done:;
+    if (__pyx_t_1) {
+
+      /* "src/tree/rbt/red_black_tree.pyx":857
+ *                 violations += 1
+ *             if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):
+ *                 violations += 1             # <<<<<<<<<<<<<<
+ * 
+ *         cdef intp_t new_black_height = current_black_height
+*/
+      __pyx_v_violations = (__pyx_v_violations + 1);
+
+      /* "src/tree/rbt/red_black_tree.pyx":856
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):
+ *                 violations += 1
+ *             if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):             # <<<<<<<<<<<<<<
+ *                 violations += 1
+ * 
+*/
+    }
+
+    /* "src/tree/rbt/red_black_tree.pyx":853
+ * 
+ *         # 4
+ *         if self._is_red(node_idx):             # <<<<<<<<<<<<<<
+ *             if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):
+ *                 violations += 1
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":859
+ *                 violations += 1
+ * 
+ *         cdef intp_t new_black_height = current_black_height             # <<<<<<<<<<<<<<
+ *         if self._is_black(node_idx):
+ *             new_black_height += 1
+*/
+  __pyx_v_new_black_height = __pyx_v_current_black_height;
+
+  /* "src/tree/rbt/red_black_tree.pyx":860
+ * 
+ *         cdef intp_t new_black_height = current_black_height
+ *         if self._is_black(node_idx):             # <<<<<<<<<<<<<<
+ *             new_black_height += 1
+ * 
+*/
+  __pyx_t_1 = __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__is_black(__pyx_v_self, __pyx_v_node_idx); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 860, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "src/tree/rbt/red_black_tree.pyx":861
+ *         cdef intp_t new_black_height = current_black_height
+ *         if self._is_black(node_idx):
+ *             new_black_height += 1             # <<<<<<<<<<<<<<
+ * 
+ *         violations += self._validate_node_recursive(
+*/
+    __pyx_v_new_black_height = (__pyx_v_new_black_height + 1);
+
+    /* "src/tree/rbt/red_black_tree.pyx":860
+ * 
+ *         cdef intp_t new_black_height = current_black_height
+ *         if self._is_black(node_idx):             # <<<<<<<<<<<<<<
+ *             new_black_height += 1
+ * 
+*/
+  }
+
+  /* "src/tree/rbt/red_black_tree.pyx":863
+ *             new_black_height += 1
+ * 
+ *         violations += self._validate_node_recursive(             # <<<<<<<<<<<<<<
+ *             node.left_child,
+ *             new_black_height,
+*/
+  __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_validate_node_recursive(__pyx_v_self, __pyx_v_node->left_child, __pyx_v_new_black_height, __pyx_v_expected_black_height); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 863, __pyx_L1_error)
+  __pyx_v_violations = (__pyx_v_violations + __pyx_t_2);
+
+  /* "src/tree/rbt/red_black_tree.pyx":868
+ *             expected_black_height
+ *         )
+ *         violations += self._validate_node_recursive(             # <<<<<<<<<<<<<<
+ *             node.right_child,
+ *             new_black_height,
+*/
+  __pyx_t_2 = ((struct __pyx_vtabstruct_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self->__pyx_base.__pyx_vtab)->_validate_node_recursive(__pyx_v_self, __pyx_v_node->right_child, __pyx_v_new_black_height, __pyx_v_expected_black_height); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 868, __pyx_L1_error)
+  __pyx_v_violations = (__pyx_v_violations + __pyx_t_2);
+
+  /* "src/tree/rbt/red_black_tree.pyx":873
+ *             expected_black_height
+ *         )
+ *         return violations             # <<<<<<<<<<<<<<
+ * 
+*/
+  __pyx_r = __pyx_v_violations;
+  goto __pyx_L0;
+
+  /* "src/tree/rbt/red_black_tree.pyx":817
+ *         )
+ * 
+ *     cdef intp_t _validate_node_recursive(             # <<<<<<<<<<<<<<
+ *         self,
+ *         intp_t node_idx,
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("src.tree.rbt.red_black_tree.RedBlackTree._validate_node_recursive", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
@@ -35265,15 +35848,15 @@ static void __pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_d
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -35299,14 +35882,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18__reduce_cython__(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_20__reduce_cython__(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -35346,15 +35929,15 @@ static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_18__re
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_23__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_23__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_23__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_23__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -35420,7 +36003,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_20__setstate_cython__(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_22__setstate_cython__(((struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -35430,7 +36013,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -35733,8 +36316,8 @@ static void __pyx_tp_dealloc_3src_4tree_3rbt_14red_black_tree_RedBlackTree(PyObj
 }
 
 static PyMethodDef __pyx_methods_3src_4tree_3rbt_14red_black_tree_RedBlackTree[] = {
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_23__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
@@ -36921,6 +37504,8 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtable_3src_4tree_3rbt_14red_black_tree_RedBlackTree._calculate_black_height = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_black_height;
   __pyx_vtable_3src_4tree_3rbt_14red_black_tree_RedBlackTree.statistics = (PyObject *(*)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_statistics;
   __pyx_vtable_3src_4tree_3rbt_14red_black_tree_RedBlackTree._calculate_depths = (void (*)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t *, __pyx_t_3src_8typedefs_intp_t *, __pyx_t_3src_8typedefs_intp_t *))__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__calculate_depths;
+  __pyx_vtable_3src_4tree_3rbt_14red_black_tree_RedBlackTree._validate = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, int __pyx_skip_dispatch))__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate;
+  __pyx_vtable_3src_4tree_3rbt_14red_black_tree_RedBlackTree._validate_node_recursive = (__pyx_t_3src_8typedefs_intp_t (*)(struct __pyx_obj_3src_4tree_3rbt_14red_black_tree_RedBlackTree *, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t, __pyx_t_3src_8typedefs_intp_t))__pyx_f_3src_4tree_3rbt_14red_black_tree_12RedBlackTree__validate_node_recursive;
   #if CYTHON_USE_TYPE_SPECS
   __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree__BaseTree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -38440,12 +39025,24 @@ __Pyx_RefNannySetupContext("PyInit_red_black_tree", 0);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_statistics, __pyx_t_5) < 0) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
+  /* "src/tree/rbt/red_black_tree.pyx":784
+ *         )
+ * 
+ *     cpdef intp_t _validate(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Validate Red-Black tree properties and return error count.
+*/
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19_validate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree__validate, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[28])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 784, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_4tree_3rbt_14red_black_tree_RedBlackTree, __pyx_mstate_global->__pyx_n_u_validate, __pyx_t_5) < 0) __PYX_ERR(0, 784, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_19__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[28])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[29])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_5) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -38456,7 +39053,7 @@ __Pyx_RefNannySetupContext("PyInit_red_black_tree", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_21__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[29])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 3, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3src_4tree_3rbt_14red_black_tree_12RedBlackTree_23__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_RedBlackTree___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_tree_rbt_red_black_tree, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[30])); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_5) < 0) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -38591,6 +39188,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_RedBlackTree, sizeof(__pyx_k_RedBlackTree), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree */
   {__pyx_k_RedBlackTree___reduce_cython, sizeof(__pyx_k_RedBlackTree___reduce_cython), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree___reduce_cython */
   {__pyx_k_RedBlackTree___setstate_cython, sizeof(__pyx_k_RedBlackTree___setstate_cython), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree___setstate_cython */
+  {__pyx_k_RedBlackTree__validate, sizeof(__pyx_k_RedBlackTree__validate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree__validate */
   {__pyx_k_RedBlackTree_black_height, sizeof(__pyx_k_RedBlackTree_black_height), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree_black_height */
   {__pyx_k_RedBlackTree_build_tree, sizeof(__pyx_k_RedBlackTree_build_tree), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree_build_tree */
   {__pyx_k_RedBlackTree_contains_multiple, sizeof(__pyx_k_RedBlackTree_contains_multiple), 0, 1, 1}, /* PyObject cname: __pyx_n_u_RedBlackTree_contains_multiple */
@@ -38747,6 +39345,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_unable_to_allocate_shape_and_str */
   {__pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 1, 1}, /* PyObject cname: __pyx_n_u_unpack */
   {__pyx_k_update, sizeof(__pyx_k_update), 0, 1, 1}, /* PyObject cname: __pyx_n_u_update */
+  {__pyx_k_validate, sizeof(__pyx_k_validate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_validate */
   {__pyx_k_value, sizeof(__pyx_k_value), 0, 1, 1}, /* PyObject cname: __pyx_n_u_value */
   {__pyx_k_values, sizeof(__pyx_k_values), 0, 1, 1}, /* PyObject cname: __pyx_n_u_values */
   {__pyx_k_x, sizeof(__pyx_k_x), 0, 1, 1}, /* PyObject cname: __pyx_n_u_x */
@@ -39019,14 +39618,19 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[27] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_rbt_red_black_tree_pyx, __pyx_mstate->__pyx_n_u_statistics, __pyx_k_A_4wc_Cs_S_a_Q_Q_Q_BnKrQXXY_Ba_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[27])) goto bad;
   }
   {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 784, 84};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[28] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_tree_rbt_red_black_tree_pyx, __pyx_mstate->__pyx_n_u_validate, __pyx_k_A_4wc_1_4t_Qd_D0H_Q_d_31, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[28])) goto bad;
+  }
+  {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[28] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[28])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[29] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[29])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[29] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[29])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[30] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[30])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

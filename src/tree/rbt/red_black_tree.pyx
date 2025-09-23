@@ -780,3 +780,95 @@ cdef class RedBlackTree(_BaseTree):
             total_depth,
             node_count
         )
+
+    cpdef intp_t _validate(self):
+        """
+        Validate Red-Black tree properties and return error count.
+        
+        Checks all five Red-Black tree properties:
+        1. Every node is either red or black
+        2. The root is black  
+        3. All leaves (NIL nodes) are black
+        4. Red nodes have only black children (no two red nodes are adjacent)
+        5. All paths from root to leaves have the same black height
+        
+        Returns
+        -------
+        intp_t
+            Number of property violations found (0 = valid tree)
+        """
+        if self._size == 0:
+            return 0
+
+        cdef intp_t violations = 0
+
+        # 2
+        if not self._is_black(self.root_idx):
+            violations += 1
+
+        # 1, 3, 4, 5
+        cdef intp_t expected_black_height = self._calculate_black_height(self.root_idx)
+        violations += self._validate_node_recursive(
+            self.root_idx,
+            0,
+            expected_black_height
+        )
+
+    cdef intp_t _validate_node_recursive(
+        self,
+        intp_t node_idx,
+        intp_t current_black_height,
+        intp_t expected_black_height
+    ):
+        """
+        Recursively validate Red-Black tree properties for a subtree.
+        
+        Parameters
+        ----------
+        node_idx : intp_t
+            Index of current node being validated
+        current_black_height : intp_t
+            Current black height from root to this node
+        expected_black_height : intp_t
+            Expected black height for all leaf paths
+            
+        Returns
+        -------
+        intp_t
+            Number of violations found in this subtree
+        """
+        cdef intp_t final_black_height
+        if node_idx == self.nil_node_idx:
+            # 3, 5
+            final_black_height = current_black_height - 1
+            return 1 if final_black_height != current_black_height else 0
+
+        if node_idx == NONE_SENTINEL or node_idx < 0 or node_idx >= self.capacity:
+            return 1
+
+        cdef intp_t violations = 0
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+
+        # 4
+        if self._is_red(node_idx):
+            if (node.left_child != self.nil_node_idx and self._is_red(node.left_child)):
+                violations += 1
+            if (node.right_child != self.nil_node_idx and self._is_red(node.right_child)):
+                violations += 1
+
+        cdef intp_t new_black_height = current_black_height
+        if self._is_black(node_idx):
+            new_black_height += 1
+
+        violations += self._validate_node_recursive(
+            node.left_child,
+            new_black_height,
+            expected_black_height
+        )
+        violations += self._validate_node_recursive(
+            node.right_child,
+            new_black_height,
+            expected_black_height
+        )
+        return violations
+
