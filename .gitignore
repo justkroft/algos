@@ -9,3 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .ruff_cache
+
+# Generated files with compilation
+*.so
+*.c
