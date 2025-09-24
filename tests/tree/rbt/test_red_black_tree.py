@@ -12,15 +12,14 @@ class TestRedBlackTree:
 
     @pytest.fixture
     def simple_tree(self):
-        tree = RedBlackTree()
         keys = np.array([20, 25, 30, 35, 40])
         values = np.array([200, 250, 300, 350, 400])
+        tree = RedBlackTree()
         tree.build_tree(keys, values)
         return tree
 
     @pytest.fixture
     def complex_tree(self):
-        tree = RedBlackTree()
         keys = np.array(
             [50, 25, 75, 15, 35, 60, 85, 10,
              20, 30, 40, 55, 65, 80, 90]
@@ -29,6 +28,7 @@ class TestRedBlackTree:
             [500, 250, 750, 150, 350, 600, 850, 100,
              200, 300, 400, 550, 650, 800, 900]
         )
+        tree = RedBlackTree()
         tree.build_tree(keys, values)
         return tree
 
@@ -192,7 +192,7 @@ class TestRedBlackTree:
         expected = np.array(
             [10, 15, 20, 25, 30, 35, 40,
              50, 55, 60, 65, 75, 80, 85, 90]
-            )
+        )
         np.testing.assert_array_equal(sorted_postorder, expected)
 
     def test_values_traversal(self, simple_tree):
@@ -225,3 +225,66 @@ class TestRedBlackTree:
         items_dict = dict(items)
         assert items_dict[25] == 250
         assert items_dict[40] == 400
+
+    def test_statistics_empty_tree(self, empty_tree):
+        stats = empty_tree.statistics()
+        assert stats == (0, 0, 0, 0, 0.0)
+
+    def test_statistics_simple_tree(self, simple_tree):
+        stats = simple_tree.statistics()
+        size, height, black_height, max_depth, avg_depth = stats
+
+        assert size == 5
+        assert height == 3
+        assert black_height == 2
+        assert max_depth == 2
+        assert avg_depth == 1.2
+
+    def test_statistics_complex_tree(self, complex_tree):
+        stats = complex_tree.statistics()
+        size, height, black_height, max_depth, avg_depth = stats
+
+        assert size == 15
+        assert height == 4
+        assert black_height == 2
+        assert max_depth == 3
+        assert avg_depth == pytest.approx(2.266666, 0.05) 
+
+    def test_validate(self, complex_tree):
+        violations = complex_tree._validate()
+        assert violations == 0, "Red-Black Tree properties should be maintaind"
+
+    def test_large_tree_performance(self):
+        n = 1000
+        keys = list(range(n))
+        values = [x * 10 for x in keys]
+
+        tree = RedBlackTree()
+        tree.build_tree(np.array(keys), np.array(values))
+
+        assert len(tree) == n
+        assert tree[500] == 5000
+        assert 999 in tree
+        assert 1000 not in tree
+
+        stats = tree.statistics()
+        assert stats[1] == 10
+
+    @pytest.mark.parametrize("n", [1, 5, 10, 50, 100])
+    def test_tree_invariants(self, n):
+        keys = list(range(n))
+        values = [x * 2 for x in keys]
+
+        tree = RedBlackTree()
+        tree.build_tree(np.array(keys), np.array(values))
+
+        assert len(tree) == n
+
+        inorder_keys = tree.keys()
+        # keys should be sorted
+        assert np.all(inorder_keys[:-1] <= inorder_keys[1:])
+
+        for key in keys:
+            assert key in tree
+
+        assert tree._validate() == 0
