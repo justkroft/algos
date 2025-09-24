@@ -389,7 +389,7 @@ cdef class _BaseTree:
     cpdef np.ndarray contains_multiple(self, np.ndarray keys):
         raise NotImplementedError("Subclass must implement contains_multiple")
 
-    cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+    cpdef void build_tree(self, np.ndarray keys, np.ndarray values):
         raise NotImplementedError("Subclass must implement build_tree")
 
     cdef intp_t _find_node(self, intp_t key):

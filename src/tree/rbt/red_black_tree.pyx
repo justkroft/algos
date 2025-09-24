@@ -76,8 +76,8 @@ cdef class RedBlackTree(_BaseTree):
 
         # NIL_SENTINEL at index 0
         self.nil_node_idx = 0
-        self.rb_nodes[0].key = 0  # Add this
-        self.rb_nodes[0].value = 0  # Add this
+        self.rb_nodes[0].key = 0
+        self.rb_nodes[0].value = 0
         self.rb_nodes[0].flags = BLACK  # NIL is always a black node
         self.rb_nodes[0].parent = self.nil_node_idx
         self.rb_nodes[0].left_child = self.nil_node_idx
@@ -109,6 +109,27 @@ cdef class RedBlackTree(_BaseTree):
         return self.rb_nodes[idx].value
 
     cpdef np.ndarray get_multiple(self, np.ndarray keys):
+        """
+        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+        for missing keys. I.e., if the key does not exist, the array will
+        contain -1 as a value.
+
+        Keys are sorted before lookup. This improves cache locality in the
+        Red-Black tree traversal (`_find_node()`),
+        since lookups of nearby keys tend to reuse nodes higher in the tree.
+        Prefetching is also more effective, reducing cache misses.
+
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of keys to retrieve.
+
+        Returns
+        -------
+        np.ndarray[int64]
+            Array of values corresponding to the input keys, with
+            missing keys marked as NONE_SENTINEL (i.e., -1).
+        """
         cdef intp_t n = len(keys)
         if n == 0:
             return np.array([], dtype=np.int64)
@@ -125,7 +146,33 @@ cdef class RedBlackTree(_BaseTree):
             result[original_pos] = self.rb_nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
         return np.asarray(result)
 
+    cpdef intp_t delete_multiple(self, np.ndarray keys):
+        """
+        Delete multiple keys and return number of successful deletions.
+        
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of keys to delete.
+        """
+        cdef intp_t deleted_count = 0
+        cdef intp_t i, n = len(keys)
+
+        for i in range(n):
+            if self._delete_node(keys[i]):
+                deleted_count += 1
+        return deleted_count
+    
     cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+        """
+        Check existence of multiple keys efficiently, returns boolean NumPy
+        array: 1 if the key exists in the tree, 0 if not.
+
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of keys to check for existence.
+        """
         cdef intp_t n = len(keys)
         cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
         cdef intp_t i, idx
@@ -136,16 +183,17 @@ cdef class RedBlackTree(_BaseTree):
 
         return np.asarray(result, dtype=bool)
 
-    cpdef intp_t delete_multiple(self, np.ndarray keys):
-        cdef intp_t deleted_count = 0
-        cdef intp_t i, n = len(keys)
+    cpdef void build_tree(self, np.ndarray keys, np.ndarray values):
+        """
+        Build Tree in optimized manner through an array of keys and values.
 
-        for i in range(n):
-            if self._delete_node(keys[i]):
-                deleted_count += 1
-        return deleted_count
-
-    cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of associative keys.
+        values : np.ndarray
+            An array of data you want to store/retrieve.
+        """
         if len(keys) != len(values):
             raise ValueError("Keys and values must have same length")
 
@@ -170,10 +218,6 @@ cdef class RedBlackTree(_BaseTree):
             self.free_stack_top += 1
             self.free_stack[self.free_stack_top] = i
             self.free_count += 1
-
-        # CRUCIAL: Sort the keys and values together
-        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
-        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
         
         # Sort by keys, keeping key-value pairs together
         cdef intp_t[:] sorted_indices = np.argsort(keys)
@@ -225,30 +269,36 @@ cdef class RedBlackTree(_BaseTree):
         return node_idx
 
     cdef inline bint _is_red(self, intp_t node_idx):
+        """Evaluate if the node is red"""
         return (
             node_idx != self.nil_node_idx
             and (self.rb_nodes[node_idx].flags & COLOR_MASK) == RED
         )
 
     cdef inline bint _is_black(self, intp_t node_idx):
+        """Evaluate if the node is black"""
         return (
             node_idx == self.nil_node_idx
             or (self.rb_nodes[node_idx].flags & COLOR_MASK) == BLACK
         )
 
     cdef inline void _set_red(self, intp_t node_idx):
+        """Make the color of a node red"""
         if LIKELY(node_idx != self.nil_node_idx):
             self.rb_nodes[node_idx].flags &= ~COLOR_MASK
 
     cdef inline void _set_black(self, intp_t node_idx):
+        """Make the color of a node black"""
         if LIKELY(node_idx != self.nil_node_idx):
             self.rb_nodes[node_idx].flags |= BLACK
 
     cdef inline void _set_color(self, intp_t node_idx, NodeColor color):
+        """Set the color of a node"""
         if LIKELY(node_idx != self.nil_node_idx):
             self.rb_nodes[node_idx].flags = (self.rb_nodes[node_idx].flags & ~COLOR_MASK) | color
 
     cdef inline NodeColor _get_color(self, intp_t node_idx):
+        """Get the color of a node"""
         return (
             BLACK
             if node_idx == self.nil_node_idx
@@ -513,6 +563,10 @@ cdef class RedBlackTree(_BaseTree):
         self._set_black(current)
 
     cdef void _rotate_left(self, intp_t node_idx):
+        """
+        Left rotation to maintain Red-Black properties after deletion or
+        insertion
+        """
         cdef intp_t right_child = self.rb_nodes[node_idx].right_child
 
         self.rb_nodes[node_idx].right_child = self.rb_nodes[right_child].left_child
@@ -531,6 +585,10 @@ cdef class RedBlackTree(_BaseTree):
         self.rb_nodes[node_idx].parent = right_child
 
     cdef void _rotate_right(self, intp_t node_idx):
+        """
+        Right rotation to maintain Red-Black properties after deletion or
+        insertion
+        """
         cdef intp_t left_child = self.rb_nodes[node_idx].left_child
 
         self.rb_nodes[node_idx].left_child = self.rb_nodes[left_child].right_child
@@ -570,6 +628,7 @@ cdef class RedBlackTree(_BaseTree):
         return node_idx
 
     cdef void _resize_arrays(self):
+        """Double capacity when running low on space"""
         cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
         cdef RBNode_t* new_rb_nodes = <RBNode_t*>realloc(
             self.rb_nodes, sizeof(RBNode_t) * new_capacity

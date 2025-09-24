@@ -248,7 +248,7 @@ class TestRedBlackTree:
         assert height == 4
         assert black_height == 2
         assert max_depth == 3
-        assert avg_depth == pytest.approx(2.266666, 0.05) 
+        assert avg_depth == pytest.approx(2.266666, 0.05)
 
     def test_validate(self, complex_tree):
         violations = complex_tree._validate()

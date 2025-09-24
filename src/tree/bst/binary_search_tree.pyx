@@ -79,7 +79,7 @@ cdef class BinarySearchTree(_BaseTree):
         -------
         np.ndarray[int64]
             Array of values corresponding to the input keys, with
-            missing keys marked as NONE_SENTINEL.
+            missing keys marked as NONE_SENTINEL (i.e., -1).
         """
         cdef intp_t n = len(keys)
         if n == 0:
@@ -135,15 +135,15 @@ cdef class BinarySearchTree(_BaseTree):
         
         return np.asarray(result, dtype=bool)
 
-    cpdef void build_tree(self, keys: list | np.ndarray, values: list | np.ndarray):
+    cpdef void build_tree(self, np.ndarray keys, np.ndarray values):
         """
         Build Tree in optimized manner through an array of keys and values.
 
         Parameters
         ----------
-        keys : list | np.ndarray
+        keys : np.ndarray
             An array of associative keys.
-        values : list | np.ndarray
+        values : np.ndarray
             An array of data you want to store/retrieve.
         """
         if len(keys) != len(values):
