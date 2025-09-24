@@ -50,6 +50,20 @@ ctypedef packed struct RBNode_t:
 
 
 cdef class RedBlackTree(_BaseTree):
+    """
+    Array-based Cython representation of a Red-Black Tree (RBT).
+
+    Unlike a Binary Search Tree (BST), an RBT is a self-balancing tree, meaning
+    that it guarantees logarithmic time complexity for standard operations.
+
+    This implementation can be used as an associative data structure, and is
+    highly optimized for (and can only be used with) integer key-value pairs.
+    The keys are used for ordering and search, and the values is the data one
+    wants to store and retrieve.
+
+    This implementation inherits from `_BaseTree` and adds RBT-specific
+    insertion, deletion, and search logic.
+    """
 
     cdef RBNode_t* rb_nodes
     cdef intp_t nil_node_idx
