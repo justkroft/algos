@@ -138,6 +138,7 @@ cdef class BinarySearchTree(_BaseTree):
     cpdef void build_tree(self, np.ndarray keys, np.ndarray values):
         """
         Build Tree in optimized manner through an array of keys and values.
+        Creates a balanced binary search tree by sorting input and building recursively.
 
         Parameters
         ----------
@@ -149,17 +150,74 @@ cdef class BinarySearchTree(_BaseTree):
         if len(keys) != len(values):
             raise ValueError("Keys and values must have same length")
 
-        needed_capacity = self._size + len(keys)
+        if len(keys) == 0:
+            self.root_idx = NONE_SENTINEL
+            self._size = 0
+            return
+
+        needed_capacity = len(keys) + 1
         while self.capacity < needed_capacity:
             self._resize_arrays()
-        
-        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
-        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
-        cdef intp_t n = len(keys)
-        cdef intp_t i
 
-        for i in range(n):
-            self._insert_node(key_view[i], val_view[i])
+        # Reset tree state
+        self.root_idx = NONE_SENTINEL
+        self._size = 0
+
+        # Reset free stack
+        self.free_stack_top = -1
+        self.free_count = 0
+        cdef intp_t i
+        for i in range(self.capacity):
+            self.free_stack_top += 1
+            self.free_stack[self.free_stack_top] = i
+            self.free_count += 1
+        
+        # Sort by keys, keeping key-value pairs together
+        sorted_indices = np.argsort(keys)
+        sorted_keys = keys[sorted_indices]
+        sorted_values = values[sorted_indices]
+        
+        cdef intp_t n = len(keys)
+
+        # Build balanced tree recursively
+        self.root_idx = self._build_balanced_tree_recursive(
+            sorted_keys, sorted_values, 0, n - 1
+        )
+        self._size = n
+
+    cdef intp_t _build_balanced_tree_recursive(
+        self,
+        intp_t[:] keys,
+        intp_t[:] values,
+        intp_t start,
+        intp_t end
+    ):
+        """Build a balanced BST recursively from sorted arrays."""
+        if start > end:
+            return NONE_SENTINEL
+
+        cdef intp_t mid = start + (end - start) // 2
+        cdef intp_t node_idx = self._allocate_node()
+
+        if node_idx == NONE_SENTINEL:
+            raise MemoryError("Failed to allocate node during tree building")
+
+        # Initialize the node
+        self.nodes[node_idx].key = keys[mid]
+        self.nodes[node_idx].value = values[mid]
+
+        # Recursively build left and right subtrees
+        cdef intp_t left_child = self._build_balanced_tree_recursive(
+            keys, values, start, mid - 1
+        )
+        cdef intp_t right_child = self._build_balanced_tree_recursive(
+            keys, values, mid + 1, end
+        )
+
+        self.nodes[node_idx].left_child = left_child
+        self.nodes[node_idx].right_child = right_child
+
+        return node_idx
 
     cdef intp_t _find_node(self, intp_t key):
         """Find node index for a key (-1 if not found)"""
@@ -537,3 +595,62 @@ cdef class BinarySearchTree(_BaseTree):
             
             self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
 
+    cpdef tuple statistics(self):
+        """
+        Return tree statistics
+
+        Returns
+        -------
+        tuple
+            (size, tree_height, max_depth, avg_depth)
+        """
+        if self._size == 0:
+            return (0, 0, 0, 0.0)
+
+        cdef intp_t max_depth = 0
+        cdef intp_t node_count = 0
+        cdef intp_t total_depth = 0
+
+        self._calculate_depths(
+            self.root_idx,
+            0,
+            &max_depth,
+            &total_depth,
+            &node_count
+        )
+
+        cdef double avg_depth = <double>total_depth / node_count if node_count > 0 else 0.0
+        cdef intp_t tree_height = max_depth + 1
+        return (self._size, tree_height, max_depth, avg_depth)
+
+    cdef void _calculate_depths(
+        self,
+        intp_t node_idx,
+        intp_t current_depth,
+        intp_t* max_depth,
+        intp_t* total_depth,
+        intp_t* node_count
+    ):
+        if node_idx == NONE_SENTINEL:
+            return
+
+        node_count[0] += 1
+        total_depth[0] += current_depth
+
+        if current_depth > max_depth[0]:
+            max_depth[0] = current_depth
+
+        self._calculate_depths(
+            self.nodes[node_idx].left_child,
+            current_depth + 1,
+            max_depth,
+            total_depth,
+            node_count
+        )
+        self._calculate_depths(
+            self.nodes[node_idx].right_child,
+            current_depth + 1,
+            max_depth,
+            total_depth,
+            node_count
+        )
