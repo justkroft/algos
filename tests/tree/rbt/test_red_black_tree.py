@@ -288,3 +288,15 @@ class TestRedBlackTree:
             assert key in tree
 
         assert tree._validate() == 0
+
+    def test_range_query(self):
+        keys = np.array([50, 30, 70, 20, 40, 60, 80])
+        values = np.array([100, 200, 300, 400, 500, 600, 700])
+
+        tree = RedBlackTree()
+        tree.build_tree(keys, values)
+
+        rk, rv = tree.range_query(20, 55)
+
+        np.testing.assert_array_equal(rk, np.array([20, 30, 40, 50]))
+        np.testing.assert_array_equal(rv, np.array([400, 200, 500, 100]))
