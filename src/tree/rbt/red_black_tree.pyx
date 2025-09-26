@@ -775,6 +775,57 @@ cdef class RedBlackTree(_BaseTree):
         self._postorder_items_traverse(node.right_child, result)
         result.append((node.key, node.value))
 
+    cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
+        """Count nodes in range"""
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return 0
+
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+        cdef intp_t count = 0
+
+        if node.key > max_key:
+            return self._count_range(node.left_child, min_key, max_key)
+        elif node.key < min_key:
+            return self._count_range(node.right_child, min_key, max_key)
+        else:
+            count = 1
+            count += self._count_range(node.left_child, min_key, max_key)
+            count += self._count_range(node.right_child, min_key, max_key)
+            return count
+
+    cdef void _range_query_fill(
+        self,
+        intp_t node_idx,
+        intp_t min_key,
+        intp_t max_key,
+        intp_t[:] keys,
+        intp_t[:] values,
+        intp_t* idx
+    ):
+        """
+        Fill pre-allocated arrays.
+
+        Get the number of nodes in the range using `_count_range()`.
+        Pass empty numpy arrays with this size and fill.
+        """
+        if node_idx == NONE_SENTINEL or node_idx == self.nil_node_idx:
+            return
+
+        cdef RBNode_t* node = &self.rb_nodes[node_idx]
+
+        if node.key > max_key:
+            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+        elif node.key < min_key:
+            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
+        else:
+            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+
+            keys[idx[0]] = node.key
+            values[idx[0]] = node.value
+            idx[0] += 1
+
+            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
+
     cpdef intp_t black_height(self):
         """Return the black height of the tree"""
         if self.root_idx == NONE_SENTINEL:
