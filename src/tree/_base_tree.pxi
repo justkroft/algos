@@ -11,6 +11,17 @@ cdef class _BaseTree:
     
     Contains common functionality like memory management, traversals, 
     and basic operations that can be shared across different tree variants.
+
+    Tree algorithms that inherit from this base class are expected to implement
+    the following 'private' methods by itself:
+        - _find_node(self, intp_t key):
+            Find node index for a key
+        - _insert_node(self, intp_t key, intp_t value):
+            Internal tree insertion logic
+        - _delete_node(self, intp_t key):
+            Internal tree deletion logic
+        - _resize_arrays(self):
+            Resize the arrays of nodes in line with tree logic
     
     Attributes
     ----------
@@ -80,6 +91,59 @@ cdef class _BaseTree:
         if self.free_stack:
             free(self.free_stack)
 
+    def __setitem__(self, intp_t key, intp_t value) -> None:
+        """bst[key] = val, same as set()"""
+        self.insert(key, value)
+
+    def __delitem__(self, intp_t key) -> None:
+        """del bst[key], same as delete()"""
+        if not self.delete(key):
+            raise KeyError(f"Key {key} not found")
+
+    cpdef bint insert(self, intp_t key, intp_t value):
+        """
+        Insert key-value pair in the tree.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+        value : intp_t
+            The value associated to the key.
+
+        Returns
+        -------
+        bint
+            Boolean indicating whether the insertion was successfull or not.
+        """
+        # resize if needed
+        if UNLIKELY(self.free_count < 2):
+            self._resize_arrays()
+        
+        cdef intp_t success
+        success = self._insert_node(key, value)
+        
+        return bool(success)
+    
+    cpdef bint delete(self, intp_t key):
+        """
+        Delete a key and it's value.
+
+        Parameters
+        ----------
+        key : intp_t
+            The associative key.
+
+        Returns
+        -------
+        intp_t
+            Boolean indicating whether the deletion was successfull or not.
+        """
+        cdef intp_t success
+        success = self._delete_node(key)
+
+        return bool(success)
+
     # memory management methods
     cdef inline intp_t _allocate_node(self):
         """Get free node from free stack (O(1))"""
@@ -98,31 +162,6 @@ cdef class _BaseTree:
             self.free_stack_top += 1
             self.free_stack[self.free_stack_top] = idx
             self.free_count += 1
-    
-    cdef void _resize_arrays(self):
-        """Double capacity when running low on space"""
-        cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
-        cdef Node_t* new_nodes = <Node_t*>realloc(
-            self.nodes, sizeof(Node_t) * new_capacity
-        )
-        cdef intp_t* new_free_stack = <intp_t*>realloc(
-            self.free_stack, sizeof(intp_t) * new_capacity
-        )
-        
-        if not new_nodes or not new_free_stack:
-            raise MemoryError("Failed to resize")
-
-        self.nodes = new_nodes
-        self.free_stack = new_free_stack
-
-        # Add new indices to free stack
-        cdef intp_t i
-        for i in range(self.capacity, new_capacity):
-            self.free_stack_top += 1
-            self.free_stack[self.free_stack_top] = i
-            self.free_count += 1
-        
-        self.capacity = new_capacity
 
     # public methods
     cpdef bint is_empty(self):
@@ -173,78 +212,6 @@ cdef class _BaseTree:
         cdef intp_t idx
         idx = self._find_node(key)
         return idx != NONE_SENTINEL
-
-    cpdef np.ndarray get_multiple(self, keys: list | np.ndarray):
-        """
-        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
-        for missing keys. I.e., if the key does not exist, the array will
-        contain -1 as a value.
-
-        - For small inputs (len(keys) < 32), a simple unsorted loop is used.
-        This avoids the O(n log n) sort overhead and is faster when the
-        number of lookups is small.
-        - For larger inputs, keys are sorted before lookup. This improves
-        cache locality in the binary search tree traversal (`_find_node()`),
-        since lookups of nearby keys tend to reuse nodes higher in the tree.
-        Prefetching is also more effective, reducing cache misses.
-
-        Parameters
-        ----------
-        keys : list | np.ndarray
-            An array of keys to retrieve.
-
-        Returns
-        -------
-        np.ndarray[int64]
-            Array of values corresponding to the input keys, with
-            missing keys marked as NONE_SENTINEL.
-        """
-        cdef intp_t n = len(keys)
-        if n == 0:
-            return np.array([], dtype=np.int64)
-
-        # heuristic cutoff
-        cdef intp_t[:] results
-        cdef intp_t i, idx
-        if n < 32:
-            results = np.empty(n, dtype=np.int64)
-            for i in range(n):
-                idx = self._find_node(keys[i])
-                results[i] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
-            return np.asarray(results)
-
-        # larger input array
-        # sort for cache-friendly traversal
-        cdef intp_t[:] sorted_indices = np.argsort(keys)
-        cdef intp_t[:] sorted_keys = keys[sorted_indices]
-        results = np.empty_like(keys)
-
-        cdef intp_t original_pos
-        for i in range(n):
-            idx = self._find_node(sorted_keys[i])
-            original_pos = sorted_indices[i]
-            results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
-        return np.asarray(results)
-    
-    cpdef np.ndarray contains_multiple(self, keys: list | np.ndarray):
-        """
-        Check existence of multiple keys efficiently, returns boolean NumPy
-        array: 1 if the key exists in the tree, 0 if not.
-
-        Parameters
-        ----------
-        keys : list | np.ndarray
-            An array of keys to check for existence.
-        """
-        cdef intp_t n = len(keys)
-        cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
-        cdef intp_t i, idx
-        
-        for i in range(n):
-            idx = self._find_node(keys[i])
-            result[i] = 1 if idx != NONE_SENTINEL else 0
-        
-        return np.asarray(result, dtype=bool)
 
     # public methods: tree traversals
     cpdef np.ndarray keys(self):
@@ -326,137 +293,6 @@ cdef class _BaseTree:
         self._postorder_items_traverse(self.root_idx, result)
         return result
 
-    cdef void _inorder_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """Left, root, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-
-        self._inorder_traversal(node.left_child, result, result_idx)
-        result[result_idx[0]] = node.key
-        result_idx[0] += 1
-
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-
-        self._inorder_traversal(node.right_child, result, result_idx)
-    
-    cdef void _inorder_values_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """
-        Left, root, right.
-
-        Same method as `_inorder_traversal()`, but instead this method traverses
-        the values rather than the keys. Helper method for `values()`.
-        """
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-
-        self._inorder_values_traversal(node.left_child, result, result_idx)
-        result[result_idx[0]] = node.value
-        result_idx[0] += 1
-
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-
-        self._inorder_values_traversal(node.right_child, result, result_idx)
-
-    cdef void _preorder_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """Root, left, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        result[result_idx[0]] = node.key
-        result_idx[0] += 1
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-
-        self._preorder_traversal(node.left_child, result, result_idx)
-        self._preorder_traversal(node.right_child, result, result_idx)
-
-    cdef void _postorder_traversal(
-        self,
-        intp_t node_idx,
-        intp_t[:] result,
-        intp_t* result_idx
-    ):
-        """Left, right, root"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.left_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.left_child])
-        if node.right_child != NONE_SENTINEL:
-            PREFETCH_READ(&self.nodes[node.right_child])
-        
-        self._postorder_traversal(node.left_child, result, result_idx)
-        self._postorder_traversal(node.right_child, result, result_idx)
-        result[result_idx[0]] = node.key
-        result_idx[0] += 1
-
-    cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
-        """Left, root, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-        
-        self._inorder_items_traverse(node.left_child, result)
-        result.append((node.key, node.value))
-        self._inorder_items_traverse(node.right_child, result)
-
-    cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
-        """Root, left, right"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-        
-        result.append((node.key, node.value))
-        self._preorder_items_traverse(node.left_child, result)
-        self._preorder_items_traverse(node.right_child, result)
-
-    cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
-        """Left, right, root"""
-        if node_idx == NONE_SENTINEL:
-            return
-        
-        cdef Node_t* node = &self.nodes[node_idx]
-        
-        self._postorder_items_traverse(node.left_child, result)
-        self._postorder_items_traverse(node.right_child, result)
-        result.append((node.key, node.value))
-
     # range queries
     cpdef tuple range_query(self, intp_t min_key, intp_t max_key):
         """
@@ -492,22 +328,7 @@ cdef class _BaseTree:
         return (np.asarray(keys), np.asarray(values))
 
     cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
-        """Count nodes in range"""
-        if node_idx == NONE_SENTINEL:
-            return 0
-
-        cdef Node_t* node = &self.nodes[node_idx]
-        cdef intp_t count = 0
-
-        if node.key > max_key:
-            return self._count_range(node.left_child, min_key, max_key)
-        elif node.key < min_key:
-            return self._count_range(node.right_child, min_key, max_key)
-        else:
-            count = 1
-            count += self._count_range(node.left_child, min_key, max_key)
-            count += self._count_range(node.right_child, min_key, max_key)
-            return count
+        raise NotImplementedError("Subclass must implement _count_range")
 
     cdef void _range_query_fill(
         self,
@@ -518,32 +339,22 @@ cdef class _BaseTree:
         intp_t[:] values,
         intp_t* idx
     ):
-        """
-        Fill pre-allocated arrays.
+        raise NotImplementedError("Sublcass must implement _range_query_fill")
 
-        Get the number of nodes in the range using `_count_range()`.
-        Pass empty numpy arrays with this size and fill.
-        """
-        if node_idx == NONE_SENTINEL:
-            return
-
-        cdef Node_t* node = &self.nodes[node_idx]
-
-        if node.key > max_key:
-            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
-        elif node.key < min_key:
-            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
-        else:
-            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
-
-            keys[idx[0]] = node.key
-            values[idx[0]] = node.value
-            idx[0] += 1
-            
-            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
-
-    # private methods: basic tree operations
+    # basic tree operations
     # to be overridden by subclass
+    cpdef np.ndarray get_multiple(self, np.ndarray keys):
+        raise NotImplementedError("Subclass must implement get_multiple")
+
+    cpdef intp_t delete_multiple(self, np.ndarray keys):
+        raise NotImplementedError("Subclass must implement delete_multiple")
+
+    cpdef np.ndarray contains_multiple(self, np.ndarray keys):
+        raise NotImplementedError("Subclass must implement contains_multiple")
+
+    cpdef void build_tree(self, np.ndarray keys, np.ndarray values):
+        raise NotImplementedError("Subclass must implement build_tree")
+
     cdef intp_t _find_node(self, intp_t key):
         raise NotImplementedError("Subclasses must implement _find_node")
 
@@ -552,3 +363,59 @@ cdef class _BaseTree:
 
     cdef intp_t _delete_node(self, intp_t key):
         raise NotImplementedError("Subclasses must implement _delete_node")
+
+    cdef void _resize_arrays(self):
+        raise NotImplementedError("Subclasses must implement _resize_arrays")
+
+    cdef void _inorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, root, right"""
+        raise NotImplementedError("Subclasses must implement _inorder_traversal")
+    
+    cdef void _inorder_values_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """
+        Left, root, right.
+
+        Same method as `_inorder_traversal()`, but instead this method traverses
+        the values rather than the keys. Helper method for `values()`.
+        """
+        raise NotImplementedError("Subclasses must implement _inorder_values_traversal")
+
+    cdef void _preorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Root, left, right"""
+        raise NotImplementedError("Subclasses must implement _preorder_traversal")
+
+    cdef void _postorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, right, root"""
+        raise NotImplementedError("Subclasses must implement _postorder_traversal")
+
+    cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, root, right"""
+        raise NotImplementedError("Subclasses must implement _inorder_items_traverse")
+
+    cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
+        """Root, left, right"""
+        raise NotImplementedError("Subclasses must implement _preorder_items_traverse")
+
+    cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, right, root"""
+        raise NotImplementedError("Subclasses must implement _postorder_items_traverse")

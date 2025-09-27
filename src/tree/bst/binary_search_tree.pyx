@@ -59,48 +59,51 @@ cdef class BinarySearchTree(_BaseTree):
     insertion, deletion, and search logic.
     """
 
-    def __setitem__(self, intp_t key, intp_t value) -> None:
-        """bst[key] = val, same as set()"""
-        self.insert(key, value)
-
-    def __delitem__(self, intp_t key) -> None:
-        """del bst[key], same as delete()"""
-        if not self.delete(key):
-            raise KeyError(f"Key {key} not found")
-
-    def build_tree(self, keys: list | np.ndarray, values: list | np.ndarray) -> None:
+    cpdef np.ndarray get_multiple(self, np.ndarray keys):
         """
-        Build Tree in optimized manner through an array of keys and values.
+        Get multiple values efficiently, returns NumPy array with NONE_SENTINEL
+        for missing keys. I.e., if the key does not exist, the array will
+        contain -1 as a value.
+
+        Keys are sorted before lookup. This improves cache locality in the
+        binary search tree traversal (`_find_node()`),
+        since lookups of nearby keys tend to reuse nodes higher in the tree.
+        Prefetching is also more effective, reducing cache misses.
 
         Parameters
         ----------
-        keys : list | np.ndarray
-            An array of associative keys.
-        values : list | np.ndarray
-            An array of data you want to store/retrieve.
+        keys : np.ndarray
+            An array of keys to retrieve.
+
+        Returns
+        -------
+        np.ndarray[int64]
+            Array of values corresponding to the input keys, with
+            missing keys marked as NONE_SENTINEL (i.e., -1).
         """
-        if len(keys) != len(values):
-            raise ValueError("Keys and values must have same length")
-
-        needed_capacity = self._size + len(keys)
-        while self.capacity < needed_capacity:
-            self._resize_arrays()
-        
-        cdef intp_t[:] key_view = np.asarray(keys, dtype=np.int64)
-        cdef intp_t[:] val_view = np.asarray(values, dtype=np.int64)
         cdef intp_t n = len(keys)
-        cdef intp_t i
+        if n == 0:
+            return np.array([], dtype=np.int64)
 
+        # sort for cache-friendly traversal
+        cdef intp_t[:] sorted_indices = np.argsort(keys)
+        cdef intp_t[:] sorted_keys = keys[sorted_indices]
+        results = np.empty_like(keys)
+
+        cdef intp_t original_pos
         for i in range(n):
-            self._insert_node(key_view[i], val_view[i])
-    
-    cpdef intp_t delete_multiple(self, keys: list | np.ndarray):
+            idx = self._find_node(sorted_keys[i])
+            original_pos = sorted_indices[i]
+            results[original_pos] = self.nodes[idx].value if idx != NONE_SENTINEL else NONE_SENTINEL
+        return np.asarray(results)
+
+    cpdef intp_t delete_multiple(self, np.ndarray keys):
         """
         Delete multiple keys and return number of successful deletions.
         
         Parameters
         ----------
-        keys : list | np.ndarray
+        keys : np.ndarray
             An array of keys to delete.
         """
         cdef intp_t deleted_count = 0
@@ -112,49 +115,109 @@ cdef class BinarySearchTree(_BaseTree):
         
         return deleted_count
 
-    cpdef bint insert(self, intp_t key, intp_t value):
+    cpdef np.ndarray contains_multiple(self, np.ndarray keys):
         """
-        Insert key-value pair in the tree.
+        Check existence of multiple keys efficiently, returns boolean NumPy
+        array: 1 if the key exists in the tree, 0 if not.
 
         Parameters
         ----------
-        key : intp_t
-            The associative key.
-        value : intp_t
-            The value associated to the key.
-
-        Returns
-        -------
-        bint
-            Boolean indicating whether the insertion was successfull or not.
+        keys : np.ndarray
+            An array of keys to check for existence.
         """
-        # resize if needed
-        if UNLIKELY(self.free_count < 2):
+        cdef intp_t n = len(keys)
+        cdef np.uint8_t[:] result = np.empty(n, dtype=np.uint8)
+        cdef intp_t i, idx
+        
+        for i in range(n):
+            idx = self._find_node(keys[i])
+            result[i] = 1 if idx != NONE_SENTINEL else 0
+        
+        return np.asarray(result, dtype=bool)
+
+    cpdef void build_tree(self, np.ndarray keys, np.ndarray values):
+        """
+        Build Tree in optimized manner through an array of keys and values.
+        Creates a balanced binary search tree by sorting input and building recursively.
+
+        Parameters
+        ----------
+        keys : np.ndarray
+            An array of associative keys.
+        values : np.ndarray
+            An array of data you want to store/retrieve.
+        """
+        if len(keys) != len(values):
+            raise ValueError("Keys and values must have same length")
+
+        if len(keys) == 0:
+            self.root_idx = NONE_SENTINEL
+            self._size = 0
+            return
+
+        needed_capacity = len(keys) + 1
+        while self.capacity < needed_capacity:
             self._resize_arrays()
+
+        # Reset tree state
+        self.root_idx = NONE_SENTINEL
+        self._size = 0
+
+        # Reset free stack
+        self.free_stack_top = -1
+        self.free_count = 0
+        cdef intp_t i
+        for i in range(self.capacity):
+            self.free_stack_top += 1
+            self.free_stack[self.free_stack_top] = i
+            self.free_count += 1
         
-        cdef intp_t success
-        success = self._insert_node(key, value)
+        # Sort by keys, keeping key-value pairs together
+        sorted_indices = np.argsort(keys)
+        sorted_keys = keys[sorted_indices]
+        sorted_values = values[sorted_indices]
         
-        return bool(success)
-    
-    cpdef bint delete(self, intp_t key):
-        """
-        Delete a key and it's value.
+        cdef intp_t n = len(keys)
 
-        Parameters
-        ----------
-        key : intp_t
-            The associative key.
+        # Build balanced tree recursively
+        self.root_idx = self._build_balanced_tree_recursive(
+            sorted_keys, sorted_values, 0, n - 1
+        )
+        self._size = n
 
-        Returns
-        -------
-        intp_t
-            Boolean indicating whether the deletion was successfull or not.
-        """
-        cdef intp_t success
-        success = self._delete_node(key)
+    cdef intp_t _build_balanced_tree_recursive(
+        self,
+        intp_t[:] keys,
+        intp_t[:] values,
+        intp_t start,
+        intp_t end
+    ):
+        """Build a balanced BST recursively from sorted arrays."""
+        if start > end:
+            return NONE_SENTINEL
 
-        return bool(success)
+        cdef intp_t mid = start + (end - start) // 2
+        cdef intp_t node_idx = self._allocate_node()
+
+        if node_idx == NONE_SENTINEL:
+            raise MemoryError("Failed to allocate node during tree building")
+
+        # Initialize the node
+        self.nodes[node_idx].key = keys[mid]
+        self.nodes[node_idx].value = values[mid]
+
+        # Recursively build left and right subtrees
+        cdef intp_t left_child = self._build_balanced_tree_recursive(
+            keys, values, start, mid - 1
+        )
+        cdef intp_t right_child = self._build_balanced_tree_recursive(
+            keys, values, mid + 1, end
+        )
+
+        self.nodes[node_idx].left_child = left_child
+        self.nodes[node_idx].right_child = right_child
+
+        return node_idx
 
     cdef intp_t _find_node(self, intp_t key):
         """Find node index for a key (-1 if not found)"""
@@ -324,3 +387,270 @@ cdef class BinarySearchTree(_BaseTree):
         self._deallocate_node(current)
         self._size -= 1
         return 1
+
+    cdef void _resize_arrays(self):
+        """Double capacity when running low on space"""
+        cdef intp_t new_capacity = self.capacity * GROWTH_FACTOR
+        cdef Node_t* new_nodes = <Node_t*>realloc(
+            self.nodes, sizeof(Node_t) * new_capacity
+        )
+        cdef intp_t* new_free_stack = <intp_t*>realloc(
+            self.free_stack, sizeof(intp_t) * new_capacity
+        )
+        
+        if not new_nodes or not new_free_stack:
+            raise MemoryError("Failed to resize")
+
+        self.nodes = new_nodes
+        self.free_stack = new_free_stack
+
+        # Add new indices to free stack
+        cdef intp_t i
+        for i in range(self.capacity, new_capacity):
+            self.free_stack_top += 1
+            self.free_stack[self.free_stack_top] = i
+            self.free_count += 1
+        
+        self.capacity = new_capacity
+
+    cdef void _inorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, root, right"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+
+        self._inorder_traversal(node.left_child, result, result_idx)
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+
+        self._inorder_traversal(node.right_child, result, result_idx)
+    
+    cdef void _inorder_values_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """
+        Left, root, right.
+
+        Same method as `_inorder_traversal()`, but instead this method traverses
+        the values rather than the keys. Helper method for `values()`.
+        """
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+
+        self._inorder_values_traversal(node.left_child, result, result_idx)
+        result[result_idx[0]] = node.value
+        result_idx[0] += 1
+
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+
+        self._inorder_values_traversal(node.right_child, result, result_idx)
+
+    cdef void _preorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Root, left, right"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+
+        self._preorder_traversal(node.left_child, result, result_idx)
+        self._preorder_traversal(node.right_child, result, result_idx)
+
+    cdef void _postorder_traversal(
+        self,
+        intp_t node_idx,
+        intp_t[:] result,
+        intp_t* result_idx
+    ):
+        """Left, right, root"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.left_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.left_child])
+        if node.right_child != NONE_SENTINEL:
+            PREFETCH_READ(&self.nodes[node.right_child])
+        
+        self._postorder_traversal(node.left_child, result, result_idx)
+        self._postorder_traversal(node.right_child, result, result_idx)
+        result[result_idx[0]] = node.key
+        result_idx[0] += 1
+
+    cdef void _inorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, root, right"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+        
+        self._inorder_items_traverse(node.left_child, result)
+        result.append((node.key, node.value))
+        self._inorder_items_traverse(node.right_child, result)
+
+    cdef void _preorder_items_traverse(self, intp_t node_idx, list result):
+        """Root, left, right"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+        
+        result.append((node.key, node.value))
+        self._preorder_items_traverse(node.left_child, result)
+        self._preorder_items_traverse(node.right_child, result)
+
+    cdef void _postorder_items_traverse(self, intp_t node_idx, list result):
+        """Left, right, root"""
+        if node_idx == NONE_SENTINEL:
+            return
+        
+        cdef Node_t* node = &self.nodes[node_idx]
+        
+        self._postorder_items_traverse(node.left_child, result)
+        self._postorder_items_traverse(node.right_child, result)
+        result.append((node.key, node.value))
+
+    cdef intp_t _count_range(self, intp_t node_idx, intp_t min_key, intp_t max_key):
+        """Count nodes in range"""
+        if node_idx == NONE_SENTINEL:
+            return 0
+
+        cdef Node_t* node = &self.nodes[node_idx]
+        cdef intp_t count = 0
+
+        if node.key > max_key:
+            return self._count_range(node.left_child, min_key, max_key)
+        elif node.key < min_key:
+            return self._count_range(node.right_child, min_key, max_key)
+        else:
+            count = 1
+            count += self._count_range(node.left_child, min_key, max_key)
+            count += self._count_range(node.right_child, min_key, max_key)
+            return count
+
+    cdef void _range_query_fill(
+        self,
+        intp_t node_idx,
+        intp_t min_key,
+        intp_t max_key,
+        intp_t[:] keys,
+        intp_t[:] values,
+        intp_t* idx
+    ):
+        """
+        Fill pre-allocated arrays.
+
+        Get the number of nodes in the range using `_count_range()`.
+        Pass empty numpy arrays with this size and fill.
+        """
+        if node_idx == NONE_SENTINEL:
+            return
+
+        cdef Node_t* node = &self.nodes[node_idx]
+
+        if node.key > max_key:
+            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+        elif node.key < min_key:
+            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
+        else:
+            self._range_query_fill(node.left_child, min_key, max_key, keys, values, idx)
+
+            keys[idx[0]] = node.key
+            values[idx[0]] = node.value
+            idx[0] += 1
+            
+            self._range_query_fill(node.right_child, min_key, max_key, keys, values, idx)
+
+    cpdef tuple statistics(self):
+        """
+        Return tree statistics
+
+        Returns
+        -------
+        tuple
+            (size, tree_height, max_depth, avg_depth)
+        """
+        if self._size == 0:
+            return (0, 0, 0, 0.0)
+
+        cdef intp_t max_depth = 0
+        cdef intp_t node_count = 0
+        cdef intp_t total_depth = 0
+
+        self._calculate_depths(
+            self.root_idx,
+            0,
+            &max_depth,
+            &total_depth,
+            &node_count
+        )
+
+        cdef double avg_depth = <double>total_depth / node_count if node_count > 0 else 0.0
+        cdef intp_t tree_height = max_depth + 1
+        return (self._size, tree_height, max_depth, avg_depth)
+
+    cdef void _calculate_depths(
+        self,
+        intp_t node_idx,
+        intp_t current_depth,
+        intp_t* max_depth,
+        intp_t* total_depth,
+        intp_t* node_count
+    ):
+        if node_idx == NONE_SENTINEL:
+            return
+
+        node_count[0] += 1
+        total_depth[0] += current_depth
+
+        if current_depth > max_depth[0]:
+            max_depth[0] = current_depth
+
+        self._calculate_depths(
+            self.nodes[node_idx].left_child,
+            current_depth + 1,
+            max_depth,
+            total_depth,
+            node_count
+        )
+        self._calculate_depths(
+            self.nodes[node_idx].right_child,
+            current_depth + 1,
+            max_depth,
+            total_depth,
+            node_count
+        )

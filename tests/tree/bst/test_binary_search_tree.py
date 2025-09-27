@@ -5,7 +5,6 @@ from src.tree.bst.binary_search_tree import BinarySearchTree
 
 
 class TestBinarySearchTree:
-
     def setup_method(self):
         self.bst = BinarySearchTree()
 
@@ -50,7 +49,7 @@ class TestBinarySearchTree:
             (20, 200),
             (40, 400),
             (60, 600),
-            (80, 800)
+            (80, 800),
         ]
 
         for key, value in test_data:
@@ -99,7 +98,7 @@ class TestBinarySearchTree:
             (20, 200),
             (40, 400),
             (60, 600),
-            (80, 800)
+            (80, 800),
         ]
         for k, v in keys_values:
             self.bst.insert(k, v)
@@ -163,43 +162,41 @@ class TestBinarySearchTree:
         assert self.bst[large_key] == large_key
 
     def test_traversal(self):
-        keys = [50, 30, 70, 20, 40, 60, 80]
-        values = [100, 200, 300, 400, 500, 600, 700]
+        keys = np.array([50, 30, 70, 20, 40, 60, 80])
+        values = np.array([100, 200, 300, 400, 500, 600, 700])
         self.bst.build_tree(keys, values)
 
         # inorder test
         np.testing.assert_array_equal(
             np.array(self.bst.inorder()),
-            np.array([20, 30, 40, 50, 60, 70, 80])
+            np.array([20, 30, 40, 50, 60, 70, 80]),
         )
 
         # preorder test
         np.testing.assert_array_equal(
             np.array(self.bst.preorder()),
-            np.array([50, 30, 20, 40, 70, 60, 80])
+            np.array([50, 30, 20, 40, 70, 60, 80]),
         )
 
         # postorder test
         np.testing.assert_array_equal(
             np.array(self.bst.postorder()),
-            np.array([20, 40, 30, 60, 80, 70, 50])
+            np.array([20, 40, 30, 60, 80, 70, 50]),
         )
 
     def test_dict_api(self):
-        keys = [50, 30, 70, 20, 40, 60, 80]
-        values = [100, 200, 300, 400, 500, 600, 700]
+        keys = np.array([50, 30, 70, 20, 40, 60, 80])
+        values = np.array([100, 200, 300, 400, 500, 600, 700])
         self.bst.build_tree(keys, values)
 
         # test keys
         np.testing.assert_array_equal(
-            self.bst.keys(),
-            np.array([20, 30, 40, 50, 60, 70, 80])
+            self.bst.keys(), np.array([20, 30, 40, 50, 60, 70, 80])
         )
 
         # test values
         np.testing.assert_array_equal(
-            self.bst.values(),
-            np.array([400, 200, 500, 100, 600, 300, 700])
+            self.bst.values(), np.array([400, 200, 500, 100, 600, 300, 700])
         )
 
         # test items
@@ -213,33 +210,33 @@ class TestBinarySearchTree:
                     (50, 100),
                     (60, 600),
                     (70, 300),
-                    (80, 700)
+                    (80, 700),
                 ]
-            )
+            ),
         )
 
     def test_multiple(self):
-        keys = [50, 30, 70, 20, 40, 60, 80]
-        values = [100, 200, 300, 400, 500, 600, 700]
+        keys = np.array([50, 30, 70, 20, 40, 60, 80])
+        values = np.array([100, 200, 300, 400, 500, 600, 700])
         self.bst.build_tree(keys, values)
 
         np.testing.assert_array_equal(
-            self.bst.get_multiple([20, 30, 80]),
+            self.bst.get_multiple(np.array([20, 30, 80])),
             np.array([400, 200, 700])
         )
 
         np.testing.assert_array_equal(
-            self.bst.contains_multiple([10, 20, 30, 90]),
-            np.array([False, True, True, False])
+            self.bst.contains_multiple(np.array([10, 20, 30, 90])),
+            np.array([False, True, True, False]),
         )
 
-        self.bst.delete_multiple([20, 30])
+        self.bst.delete_multiple(np.array([20, 30]))
         assert 20 not in self.bst
         assert 30 not in self.bst
 
     def test_range_query(self):
-        keys = [50, 30, 70, 20, 40, 60, 80]
-        values = [100, 200, 300, 400, 500, 600, 700]
+        keys = np.array([50, 30, 70, 20, 40, 60, 80])
+        values = np.array([100, 200, 300, 400, 500, 600, 700])
         self.bst.build_tree(keys, values)
 
         rk, rv = self.bst.range_query(20, 55)
