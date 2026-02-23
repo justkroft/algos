@@ -45,7 +45,7 @@ jobs:
       run: uv pip install --no-build-isolation -e .
 
     - name: Run tests
-      run: uv run pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
+      run: uv run pytest tests/ -v
 
   lint:
     runs-on: ubuntu-latest
