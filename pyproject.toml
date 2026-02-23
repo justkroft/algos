@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest"]
+dev = ["pytest", "pytest-cov", "ruff"]
 
 [dependency-groups]
 dev = [
