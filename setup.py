@@ -1,3 +1,8 @@
+# Note: this is the legacy setup, keeping it in for reference.
+# The correct way to compile the extensions is to use the CMakeLists.txt with
+# scikit-build-core, which is more robust and cross-platform compatible.
+# The setup.py is provided here for reference and should not be used for
+# building the package.
 # python setup.py build_ext -i clean
 import os
 import sys
