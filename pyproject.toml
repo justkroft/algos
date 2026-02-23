@@ -16,6 +16,8 @@ test = ["pytest"]
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.5.1",
+    "pre-commit-hooks>=6.0.0",
     "pytest>=8.4.1",
     "ruff>=0.12.10",
 ]
