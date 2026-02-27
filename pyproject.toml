@@ -54,7 +54,7 @@ select = [
 ]
 ignore = [
     "E731",   # Do not assign a lambda expression, use a def
-    # "W502",   # Line break occured before binary operator (ignore anti pattern)
+    "E999",   # Cython unexpected toker error
     "ANN002", # Missing type annotation for *args
     "ANN003", # Missing type annotation for **kwargs
     "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
@@ -74,6 +74,7 @@ convention = "numpy"
 max-line-length = 88
 ignore = [
     "E731",
+    "E999",
     "W503",
     "W504"
 ]

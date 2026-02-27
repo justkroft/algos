@@ -49,4 +49,4 @@ help:
 	@echo "  test     - Run pytest"
 	@echo "  lint     - Run ruff and cython-lint"
 	@echo "  ci       - Full pipeline: rebuild + test + lint"
-	@echo "  wheel    - Build a distributable wheel for PyPI"
+# 	@echo "  wheel    - Build a distributable wheel for PyPI"
