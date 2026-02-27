@@ -13,143 +13,80 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ['3.10', '3.11']
+        python-version: ['3.9', '3.10']
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        id: setup-python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          enable-cache: true
-          cache-suffix: ${{ runner.os }}-${{ runner.arch }}-py${{ matrix.python-version }}
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
 
-      - name: Create uv venv with matrix Python
-        run: uv venv --python "${{ steps.setup-python.outputs.python-path }}"
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+    - name: Install dependencies
+      run: |
+        uv sync --all-extras --dev
 
-      - name: Install CMake
-        uses: jwlawson/actions-setup-cmake@v2
-        with:
-          cmake-version: '3.15'
-
-      - name: Install OpenMP (macOS only)
-        if: runner.os == 'macOS'
-        run: brew install libomp
-
-      - name: Set arch flags (macOS only)
-        if: runner.os == 'macOS'
-        run: |
-          echo "ARCHFLAGS=-arch arm64" >> $GITHUB_ENV
-          # Optional for OpenMP if your build needs it:
-          echo "CPPFLAGS=-Xpreprocessor -fopenmp $(brew --prefix libomp)/include" >> $GITHUB_ENV
-          echo "LDFLAGS=-L$(brew --prefix libomp)/lib -lomp" >> $GITHUB_ENV
-
-      - name: Install dependencies
-        run: uv sync --all-groups
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
-
-      - name: Build Cython extensions (editable)
-        run: uv pip install --no-build-isolation -e .
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
-
-      - name: Run tests
-        run: uv run pytest tests/ -v
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+    - name: Run tests
+      run: |
+        uv run pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
 
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        id: setup-python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          enable-cache: true
-          cache-suffix: ${{ runner.os }}-${{ runner.arch }}-py3.10
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
 
-      - name: Create uv venv with Python 3.10
-        run: uv venv --python "${{ steps.setup-python.outputs.python-path }}"
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+    - name: Install dependencies
+      run: |
+        uv sync --all-extras --dev
 
-      - name: Install dependencies
-        run: uv sync --all-groups
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+    - name: Run ruff check
+      run: |
+        uv run ruff check src tests
+      continue-on-error: true
 
-      - name: Run ruff check
-        run: uv run ruff check src tests
-        continue-on-error: true
-
-      - name: Run ruff format check
-        run: uv run ruff format --check src tests
-        continue-on-error: true
-
-      - name: Run cython-lint
-        run: uv run cython-lint src/**/*.pyx
-        continue-on-error: true
+    - name: Run ruff format check
+      run: |
+        uv run ruff format --check src tests
+      continue-on-error: true
 
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        id: setup-python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          enable-cache: true
-          cache-suffix: ${{ runner.os }}-${{ runner.arch }}-py3.10
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
 
-      - name: Create uv venv with Python 3.10
-        run: uv venv --python "${{ steps.setup-python.outputs.python-path }}"
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+    - name: Build package
+      run: |
+        uv build
 
-      - name: Install CMake
-        uses: jwlawson/actions-setup-cmake@v2
-        with:
-          cmake-version: '3.15'
-
-      - name: Install dependencies
-        run: uv sync --all-groups
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
-
-      - name: Build package
-        run: uv build
-        env:
-          UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist/
