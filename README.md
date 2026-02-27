@@ -39,15 +39,32 @@ uv run pytest
 
 
 # Installation
+*Prerequisites — you need CMake and a C compiler installed on your machine.*
+
 Clone the repository
 ```bash
 git clone https://github.com/justkroft/algos.git
 cd algos
 ```
 
-and setup your virtual environment using `uv`. Afterwards, the code can be compiled using the following command:
+and setup your virtual environment using `uv`.
+
 ```bash
-python setup.py build_ext -i clean
+uv venv  # create environment
+uv sync  # sync all dependencies from toml file
+```
+
+Then, activate the environment:
+
+```bash
+source .venv/bin/activate  # on Mac
+./venv/Scripts/activate    # on Windows
+```
+
+Once the environment is setup and all the dependencies are installed, you can create a local, editable install:
+
+```bash
+uv pip install --no-build-isolation -e .
 ```
 
 # Contributing

@@ -1,3 +1,7 @@
+[build-system]
+requires = ["scikit-build-core", "cython>=3.1.3", "numpy>=2.2.6"]
+build-backend = "scikit_build_core.build"
+
 [project]
 name = "algos"
 version = "0.1.0"
@@ -8,17 +12,26 @@ dependencies = [
     "cython>=3.1.3",
     "cython-lint>=0.16.7",
     "numpy>=2.2.6",
-    "setuptools>=80.9.0",
 ]
 
 [project.optional-dependencies]
-test = ["pytest"]
+dev = ["pytest", "pytest-cov", "ruff"]
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.5.1",
+    "pre-commit-hooks>=6.0.0",
     "pytest>=8.4.1",
     "ruff>=0.12.10",
+    "scikit-build-core>=0.11.6",
 ]
+
+[tool.scikit-build]
+wheel.packages = ["src"]
+
+# Tells scikit-build-core to use the installed Cython rather than fetching one
+[tool.scikit-build.cmake.define]
+CMAKE_BUILD_TYPE = "Release"
 
 [tool.ruff]
 # Set the maximum line length to 79.
@@ -41,7 +54,7 @@ select = [
 ]
 ignore = [
     "E731",   # Do not assign a lambda expression, use a def
-    # "W502",   # Line break occured before binary operator (ignore anti pattern)
+    "E999",   # Cython unexpected toker error
     "ANN002", # Missing type annotation for *args
     "ANN003", # Missing type annotation for **kwargs
     "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
@@ -61,6 +74,7 @@ convention = "numpy"
 max-line-length = 88
 ignore = [
     "E731",
+    "E999",
     "W503",
     "W504"
 ]
